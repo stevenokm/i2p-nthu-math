@@ -1,0 +1,423 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 3-4: 精確科學記號比大小 - Introduction to Programming (I)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(一)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-1.html"><strong aria-hidden="true">2.</strong> Lecture 1-1: Introduction to Programming &amp; C++</a></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-2.html"><strong aria-hidden="true">3.</strong> Lecture 1-2: Data Type &amp; Formatted Input/Output (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_1.html"><strong aria-hidden="true">3.1.</strong> Lab 1-1: Hello Wolrd! (1)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_2.html"><strong aria-hidden="true">3.2.</strong> Lab 1-2: Hello Wolrd! (2)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Data Type &amp; Formatted Input/Output (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_2_1.html"><strong aria-hidden="true">4.1.</strong> Lab 2-1: 正實數顯示</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_2.html"><strong aria-hidden="true">4.2.</strong> Lab 2-2: 正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_3.html"><strong aria-hidden="true">4.3.</strong> Lab 2-3: 正實數乘法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_4.html"><strong aria-hidden="true">4.4.</strong> Lab 2-4: 大正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_5.html"><strong aria-hidden="true">4.5.</strong> Lab 2-5: 大正實數乘法</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_3-1.html"><strong aria-hidden="true">5.</strong> Lecture 3-1: Data Type &amp; Formatted Input/Output (3)</a></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_3-2.html"><strong aria-hidden="true">6.</strong> Lecture 3-2: Operator &amp; expression (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator_expression/lab_3_1.html"><strong aria-hidden="true">6.1.</strong> Lab 3-1: 科學記號顯示</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_2.html"><strong aria-hidden="true">6.2.</strong> Lab 3-2: 科學記號比大小</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_3.html"><strong aria-hidden="true">6.3.</strong> Lab 3-3: IEEE-754 誤差計算</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_4.html" class="active"><strong aria-hidden="true">6.4.</strong> Lab 3-4: 精確科學記號比大小</a></li></ol></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_4-1.html"><strong aria-hidden="true">7.</strong> Lecture 4-1: Operator &amp; expression (2)</a></li><li class="chapter-item expanded "><a href="../branch/lecture_4-2.html"><strong aria-hidden="true">8.</strong> Lecture 4-2: Branch Statement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../branch/lab_4_1.html"><strong aria-hidden="true">8.1.</strong> Lab 4-1: 計算機功能選擇</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_2.html"><strong aria-hidden="true">8.2.</strong> Lab 4-2: 計算機四則運算</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_3.html"><strong aria-hidden="true">8.3.</strong> Lab 4-3: 計算機輸入檢查及例外處理</a></li></ol></li><li class="chapter-item expanded "><a href="../loop/lecture_5.html"><strong aria-hidden="true">9.</strong> Lecture 5: Loop Statement (1)</a></li><li class="chapter-item expanded "><a href="../loop/lecture_6-1.html"><strong aria-hidden="true">10.</strong> Lecture 6-1: Loop Statement (2)</a></li><li class="chapter-item expanded "><a href="../array_vector/lecture_6-2.html"><strong aria-hidden="true">11.</strong> Lecture 6-2: Array &amp; String (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../loop/lab_6_1.html"><strong aria-hidden="true">11.1.</strong> Lab 6-1: 特殊數列計算機</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_2.html"><strong aria-hidden="true">11.2.</strong> Lab 6-2: 最大公因數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_3.html"><strong aria-hidden="true">11.3.</strong> Lab 6-3: 大數取餘數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_4.html"><strong aria-hidden="true">11.4.</strong> Lab 6-4: 大數最大公因數</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_7.html"><strong aria-hidden="true">12.</strong> Lecture 7: Array &amp; String (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../array_vector/lab_7_1.html"><strong aria-hidden="true">12.1.</strong> Lab 7: 真・大數四則運算</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_8.html"><strong aria-hidden="true">13.</strong> Lecture 8: Array &amp; String (3)</a></li><li class="chapter-item expanded "><a href="../midterm.html"><strong aria-hidden="true">14.</strong> Midterm Exam</a></li><li class="chapter-item expanded "><a href="../function/lecture_10.html"><strong aria-hidden="true">15.</strong> Lecture 10: Function &amp; Reference (1)</a></li><li class="chapter-item expanded "><a href="../function/lecture_11.html"><strong aria-hidden="true">16.</strong> Lecture 11: Function &amp; Reference (2)</a></li><li class="chapter-item expanded "><a href="../function/lecture_12.html"><strong aria-hidden="true">17.</strong> Lecture 12: Function &amp; Reference (3)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../function/lab_12_1.html"><strong aria-hidden="true">17.1.</strong> Lab 12-1: 整數指令列四則計算機顯示</a></li><li class="chapter-item expanded "><a href="../function/lab_12_2.html"><strong aria-hidden="true">17.2.</strong> Lab 12-2: Infix 整數指令列四則計算機</a></li><li class="chapter-item expanded "><a href="../function/lab_12_3.html"><strong aria-hidden="true">17.3.</strong> Lab 12-3: Postfix 整數指令列四則計算機</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (I)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p1/src/operator_expression/lab_3_4.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="lab-3-4-精確科學記號比大小-10"><a class="header" href="#lab-3-4-精確科學記號比大小-10">Lab 3-4: 精確科學記號比大小 (10%)</a></h2>
+<ul>
+<li>輸入：兩個以 10 為底的實數。
+<ul>
+<li>實數的正負號 (sign)，正負號輸入大於等於 0 為正數，小於 0 為負數。</li>
+<li>實數的尾數 (mantissa)，尾數部分固定 19 位數字，第一位不為 <code>0</code>，數值為輸入數字乘以\( \frac{1}{1,000,000,000,000,000,000} \)，。</li>
+<li>實數的指數部分 (exponent)，指數部分為 -126 至 +127。</li>
+</ul>
+</li>
+<li>輸出：
+<ul>
+<li>兩實數的科學記號表示，有效位數 (<a href="https://en.wikipedia.org/wiki/Significant_figures">Significant figures - Wikipedia</a>) 顯示固定為 19 位。</li>
+<li>兩實數比較結果，如果第一數較大則輸出 <code>1</code>，相同則輸出 <code>0</code>，第一數較小則輸出 <code>-1</code></li>
+</ul>
+</li>
+<li>檔名：lab3_4_&lt;學號&gt;.cpp (e.g. lab3_4_106062802.cpp)</li>
+</ul>
+<p>程式需提示使用者輸入兩個實數的正負號 (sign)、實數的尾數 (mantissa，輸入數字乘以\( \frac{1}{1,000,000,000,000,000,000} \))、實數的指數部分 (exponent)，程式需輸出數字顯示比較結果。</p>
+<h3 id="format"><a class="header" href="#format">Format</a></h3>
+<pre><code class="language-text">Input real number (a), sign: &lt;sign a&gt;⏎
+Input real number (a), mantissa: &lt;mantissa a&gt;⏎
+Input real number (a), exponent: &lt;exponent a&gt;⏎
+Input real number (b), sign: &lt;sign b&gt;⏎
+Input real number (b), mantissa: &lt;mantissa b&gt;⏎
+Input real number (b), exponent: &lt;exponent b&gt;⏎
+The real number (a) is: &lt;output real number a&gt;
+The real number (b) is: &lt;output real number b&gt;
+Compare result: &lt;1, 0, or -1&gt;
+</code></pre>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code class="language-console">$ ./a.out
+Input real number (a), sign: -100⏎
+Input real number (a), mantissa: 1234567890123456789⏎
+Input real number (a), exponent: 10⏎
+Input real number (b), sign: -10⏎
+Input real number (b), mantissa: 1234567890123456788⏎
+Input real number (b), exponent: 10⏎
+The real number (a) is: -1.234567890123456789e+10
+The real number (b) is: -1.234567890123456788e+10
+Compare result: -1
+</code></pre>
+<p>Reference Code:</p>
+<p>TA version: using <code>unsigned long long</code> to store mantissa.</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+
+using namespace std;
+
+int main()
+{
+     int a_sign, a_exp, b_sign, b_exp;
+     unsigned long long a_mantissa, b_mantissa;
+
+     cout &lt;&lt; &quot;Input real number (a), sign: &quot;;
+     cin &gt;&gt; a_sign;
+     a_sign = (a_sign &gt;= 0 ? 1 : -1);
+     cout &lt;&lt; &quot;Input real number (a), mantissa: &quot;;
+     cin &gt;&gt; a_mantissa;
+     cout &lt;&lt; &quot;Input real number (a), exponent: &quot;;
+     cin &gt;&gt; a_exp;
+
+     cout &lt;&lt; &quot;Input real number (b), sign: &quot;;
+     cin &gt;&gt; b_sign;
+     b_sign = (b_sign &gt;= 0 ? 1 : -1);
+     cout &lt;&lt; &quot;Input real number (b), mantissa: &quot;;
+     cin &gt;&gt; b_mantissa;
+     cout &lt;&lt; &quot;Input real number (b), exponent: &quot;;
+     cin &gt;&gt; b_exp;
+     // initialize
+
+     cout &lt;&lt; &quot;The real number (a) is: &quot;
+          &lt;&lt; a_sign * (int)(a_mantissa / (long long)1e+18)
+          &lt;&lt; &quot;.&quot;
+          &lt;&lt; setw(18) &lt;&lt; setfill('0')
+          &lt;&lt; a_mantissa % (long long)1e+18
+          &lt;&lt; &quot;e&quot;
+          &lt;&lt; (a_exp &gt;= 0 ? &quot;+&quot; : &quot;-&quot;)
+          &lt;&lt; setw(2) &lt;&lt; setfill('0')
+          &lt;&lt; (a_exp &gt;= 0 ? a_exp : -a_exp)
+          &lt;&lt; endl;
+
+     cout &lt;&lt; &quot;The real number (b) is: &quot;
+          &lt;&lt; b_sign * (int)(b_mantissa / (long long)1e+18)
+          &lt;&lt; &quot;.&quot;
+          &lt;&lt; setw(18) &lt;&lt; setfill('0')
+          &lt;&lt; b_mantissa % (long long)1e+18
+          &lt;&lt; &quot;e&quot;
+          &lt;&lt; (b_exp &gt;= 0 ? &quot;+&quot; : &quot;-&quot;)
+          &lt;&lt; setw(2) &lt;&lt; setfill('0')
+          &lt;&lt; (b_exp &gt;= 0 ? b_exp : -b_exp)
+          &lt;&lt; endl;
+
+     int result = (a_sign * b_sign == -1 ? (a_sign &gt; b_sign ? 1 : -1) : 
+               (a_exp &gt; b_exp ? a_sign : 
+                    (a_exp &lt; b_exp ? -a_sign : 
+                         (a_mantissa &gt; b_mantissa ? a_sign : 
+                              (a_mantissa &lt; b_mantissa ? -a_sign : 0)
+                         )
+                    )
+               )
+          );
+
+     cout &lt;&lt; &quot;Compare result: &quot;
+          &lt;&lt; result
+          &lt;&lt; endl;
+
+     return 0;
+}
+</code></pre>
+<p>Credit: 鄭楷庭 (110021119)</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+#include &lt;cmath&gt;
+#include &lt;string&gt;
+
+int main()
+{
+    long long sign1, num1, sign2, num2;
+    std::string man1, man2;
+    signed int expo1, expo2;
+    int comp = 0, i;
+
+    std::cout &lt;&lt; &quot;Input real number (a), sign: &quot;;
+    std::cin &gt;&gt; sign1;
+
+    std::cout &lt;&lt; &quot;Input real number (a), mantissa: &quot;;
+    std::cin &gt;&gt; man1;
+
+    if (sign1 &lt; 0)
+    {
+        man1.insert(0, &quot;-&quot;);
+        man1.insert(2, &quot;.&quot;);
+    }
+    else
+    {
+        man1.insert(1, &quot;.&quot;);
+    }
+
+    std::cout &lt;&lt; &quot;Input real number (a), exponent: &quot;;
+    std::cin &gt;&gt; expo1;
+
+    std::cout &lt;&lt; &quot;Input real number (b), sign: &quot;;
+    std::cin &gt;&gt; sign2;
+
+    std::cout &lt;&lt; &quot;Input real number (b), mantissa: &quot;;
+    std::cin &gt;&gt; man2;
+
+    if (sign2 &lt; 0)
+    {
+        man2.insert(0, &quot;-&quot;);
+        man2.insert(2, &quot;.&quot;);
+    }
+    else
+    {
+        man2.insert(1, &quot;.&quot;);
+    }
+
+    std::cout &lt;&lt; &quot;Input real number (b), exponent: &quot;;
+    std::cin &gt;&gt; expo2;
+
+    std::cout &lt;&lt; &quot;The real number (a) is: &quot; &lt;&lt; man1 &lt;&lt; &quot;e&quot; &lt;&lt; std::showpos &lt;&lt; expo1
+              &lt;&lt; std::noshowpos &lt;&lt; std::endl;
+    std::cout &lt;&lt; &quot;The real number (b) is: &quot; &lt;&lt; man2 &lt;&lt; &quot;e&quot; &lt;&lt; std::showpos &lt;&lt; expo2
+              &lt;&lt; std::noshowpos &lt;&lt; std::endl;
+
+    if (sign1 &gt;= 0 &amp;&amp; sign2 &lt; 0)
+        comp = 1;
+    else if (sign1 &lt; 0 &amp;&amp; sign2 &gt;= 0)
+        comp = -1;
+    else
+    {
+        if (sign1 &gt;= 0)
+        {
+            if (expo1 &gt; expo2)
+                comp = 1;
+            else if (expo1 &lt; expo2)
+                comp = -1;
+            else
+            {
+                for (i = 0; i &lt; man1.length(); i++)
+                {
+                    if (man1[i] &gt; man2[i])
+                    {
+                        comp = 1;
+                        break;
+                    }
+                    else if (man1[i] &gt; man2[i])
+                    {
+                        comp = -1;
+                        break;
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (expo1 &gt; expo2)
+                comp = -1;
+            else if (expo1 &lt; expo2)
+                comp = 1;
+            else
+            {
+                for (i = 0; i &lt; man1.length(); i++)
+                {
+                    if (man1[i] &gt; man2[i])
+                    {
+                        comp = -1;
+                        break;
+                    }
+                    else if (man1[i] &gt; man2[i])
+                    {
+                        comp = 1;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    std::cout &lt;&lt; &quot;Compare result: &quot; &lt;&lt; comp &lt;&lt; std::endl;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../operator_expression/lab_3_3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../operator_expression/lecture_4-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../operator_expression/lab_3_3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../operator_expression/lecture_4-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>

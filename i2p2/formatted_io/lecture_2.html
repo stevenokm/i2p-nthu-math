@@ -1,0 +1,461 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 2: Data Type &amp; Formatted Input/Output (2) - Introduction to Programming (I)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(一)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-1.html"><strong aria-hidden="true">2.</strong> Lecture 1-1: Introduction to Programming &amp; C++</a></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-2.html"><strong aria-hidden="true">3.</strong> Lecture 1-2: Data Type &amp; Formatted Input/Output (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_1.html"><strong aria-hidden="true">3.1.</strong> Lab 1-1: Hello Wolrd! (1)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_2.html"><strong aria-hidden="true">3.2.</strong> Lab 1-2: Hello Wolrd! (2)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_2.html" class="active"><strong aria-hidden="true">4.</strong> Lecture 2: Data Type &amp; Formatted Input/Output (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_2_1.html"><strong aria-hidden="true">4.1.</strong> Lab 2-1: 正實數顯示</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_2.html"><strong aria-hidden="true">4.2.</strong> Lab 2-2: 正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_3.html"><strong aria-hidden="true">4.3.</strong> Lab 2-3: 正實數乘法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_4.html"><strong aria-hidden="true">4.4.</strong> Lab 2-4: 大正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_5.html"><strong aria-hidden="true">4.5.</strong> Lab 2-5: 大正實數乘法</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_3-1.html"><strong aria-hidden="true">5.</strong> Lecture 3-1: Data Type &amp; Formatted Input/Output (3)</a></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_3-2.html"><strong aria-hidden="true">6.</strong> Lecture 3-2: Operator &amp; expression (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator_expression/lab_3_1.html"><strong aria-hidden="true">6.1.</strong> Lab 3-1: 科學記號顯示</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_2.html"><strong aria-hidden="true">6.2.</strong> Lab 3-2: 科學記號比大小</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_3.html"><strong aria-hidden="true">6.3.</strong> Lab 3-3: IEEE-754 誤差計算</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_4.html"><strong aria-hidden="true">6.4.</strong> Lab 3-4: 精確科學記號比大小</a></li></ol></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_4-1.html"><strong aria-hidden="true">7.</strong> Lecture 4-1: Operator &amp; expression (2)</a></li><li class="chapter-item expanded "><a href="../branch/lecture_4-2.html"><strong aria-hidden="true">8.</strong> Lecture 4-2: Branch Statement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../branch/lab_4_1.html"><strong aria-hidden="true">8.1.</strong> Lab 4-1: 計算機功能選擇</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_2.html"><strong aria-hidden="true">8.2.</strong> Lab 4-2: 計算機四則運算</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_3.html"><strong aria-hidden="true">8.3.</strong> Lab 4-3: 計算機輸入檢查及例外處理</a></li></ol></li><li class="chapter-item expanded "><a href="../loop/lecture_5.html"><strong aria-hidden="true">9.</strong> Lecture 5: Loop Statement (1)</a></li><li class="chapter-item expanded "><a href="../loop/lecture_6-1.html"><strong aria-hidden="true">10.</strong> Lecture 6-1: Loop Statement (2)</a></li><li class="chapter-item expanded "><a href="../array_vector/lecture_6-2.html"><strong aria-hidden="true">11.</strong> Lecture 6-2: Array &amp; String (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../loop/lab_6_1.html"><strong aria-hidden="true">11.1.</strong> Lab 6-1: 特殊數列計算機</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_2.html"><strong aria-hidden="true">11.2.</strong> Lab 6-2: 最大公因數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_3.html"><strong aria-hidden="true">11.3.</strong> Lab 6-3: 大數取餘數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_4.html"><strong aria-hidden="true">11.4.</strong> Lab 6-4: 大數最大公因數</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_7.html"><strong aria-hidden="true">12.</strong> Lecture 7: Array &amp; String (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../array_vector/lab_7_1.html"><strong aria-hidden="true">12.1.</strong> Lab 7: 真・大數四則運算</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_8.html"><strong aria-hidden="true">13.</strong> Lecture 8: Array &amp; String (3)</a></li><li class="chapter-item expanded "><a href="../midterm.html"><strong aria-hidden="true">14.</strong> Midterm Exam</a></li><li class="chapter-item expanded "><a href="../function/lecture_10.html"><strong aria-hidden="true">15.</strong> Lecture 10: Function &amp; Reference (1)</a></li><li class="chapter-item expanded "><a href="../function/lecture_11.html"><strong aria-hidden="true">16.</strong> Lecture 11: Function &amp; Reference (2)</a></li><li class="chapter-item expanded "><a href="../function/lecture_12.html"><strong aria-hidden="true">17.</strong> Lecture 12: Function &amp; Reference (3)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../function/lab_12_1.html"><strong aria-hidden="true">17.1.</strong> Lab 12-1: 整數指令列四則計算機顯示</a></li><li class="chapter-item expanded "><a href="../function/lab_12_2.html"><strong aria-hidden="true">17.2.</strong> Lab 12-2: Infix 整數指令列四則計算機</a></li><li class="chapter-item expanded "><a href="../function/lab_12_3.html"><strong aria-hidden="true">17.3.</strong> Lab 12-3: Postfix 整數指令列四則計算機</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (I)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p1/src/formatted_io/lecture_2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lecture-2-data-type--formatted-inputoutput-2"><a class="header" href="#lecture-2-data-type--formatted-inputoutput-2">Lecture 2: Data Type &amp; Formatted Input/Output (2)</a></h1>
+<h2 id="細部拆解一個-c-程式碼"><a class="header" href="#細部拆解一個-c-程式碼">細部拆解一個 C++ 程式碼</a></h2>
+<p>Debugger 逐行解釋</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+int main(void)
+{
+    int a = 0, b = 0, c = 0;
+    std::cout &lt;&lt; &quot;input a:&quot;;
+    std::cin &gt;&gt; a;
+    std::cout &lt;&lt; &quot;input b:&quot;;
+    std::cin &gt;&gt; b;
+    c = a + b;
+    std::cout &lt;&lt; &quot;a: &quot; &lt;&lt; a &lt;&lt; std::endl
+              &lt;&lt; &quot;b: &quot; &lt;&lt; b &lt;&lt; std::endl
+              &lt;&lt; &quot;a + b = &quot; &lt;&lt; c &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<h3 id="為何要寫-include--"><a class="header" href="#為何要寫-include--">為何要寫 <code>#include &lt;&gt;</code> ?</a></h3>
+<p>Include 了許多已經先寫好的 function，有些是跟系統有關，我們看不到原始碼的，我們只要拿來用就好。
+可以打開 <code>/usr/include/c++/9/iostream</code> 看原始碼。</p>
+<h3 id="為何-int-mainvoid-"><a class="header" href="#為何-int-mainvoid-">為何 <code>int main(void)</code> ?</a></h3>
+<p><code>main</code> 的定義</p>
+<ol>
+<li><code>int main () { body }</code></li>
+<li><code>int main (int argc, char *argv[]) { body }</code></li>
+</ol>
+<blockquote>
+<p>The main function is called at program startup after initialization of the non-local objects with static storage duration.
+It is the designated entry point to a program that is executed in hosted environment (that is, with an operating system).
+The entry points to freestanding programs (boot loaders, OS kernels, etc) are implementation-defined.</p>
+</blockquote>
+<p>Another example:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+
+int main(int argc, char *argv[])
+{
+    int a = 0, b = 0, c = 0;
+    std::stringstream char_array_to_int;
+    std::cout &lt;&lt; argc &lt;&lt; std::endl;
+    char_array_to_int &lt;&lt; argv[1] &lt;&lt; ' ' &lt;&lt; argv[2];
+    char_array_to_int &gt;&gt; a;
+    char_array_to_int &gt;&gt; b;
+    c = a + b;
+    std::cout &lt;&lt; &quot;a: &quot; &lt;&lt; a &lt;&lt; std::endl
+              &lt;&lt; &quot;b: &quot; &lt;&lt; b &lt;&lt; std::endl
+              &lt;&lt; &quot;a + b = &quot; &lt;&lt; c &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<h2 id="coding-style--變數名稱規則"><a class="header" href="#coding-style--變數名稱規則">Coding Style &amp; 變數名稱規則</a></h2>
+<p>好的 coding style 很重要</p>
+<p>Bad example:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+int main(int argc, char *argv[]){int a = 0, b = 0, c = 0;std::stringstream char_array_to_int;std::cout &lt;&lt; argc &lt;&lt; std::endl;char_array_to_int &lt;&lt; argv[1] &lt;&lt; ' ' &lt;&lt; argv[2];char_array_to_int &gt;&gt; a;char_array_to_int &gt;&gt; b;c = a + b;std::cout &lt;&lt; &quot;a: &quot; &lt;&lt; a &lt;&lt; std::endl &lt;&lt; &quot;b: &quot; &lt;&lt; b &lt;&lt; std::endl &lt;&lt; &quot;a + b = &quot; &lt;&lt; c &lt;&lt; std::endl;return 0;}
+</code></pre>
+<h3 id="intend--spacing"><a class="header" href="#intend--spacing">intend &amp; spacing</a></h3>
+<p>Bad example:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+int main(int argc, char *argv[]){int a = 0, b = 0, c = 0;
+  std::stringstream char_array_to_int;
+    std::cout&lt;&lt;argc&lt;&lt;std::endl;
+    char_array_to_int&lt;&lt;argv[1]&lt;&lt;' '&lt;&lt;argv[2];
+char_array_to_int&gt;&gt;a;
+    char_array_to_int&gt;&gt;b;
+ c=a+b;
+    std::cout&lt;&lt;&quot;a: &quot;&lt;&lt;a&lt;&lt;std::endl
+              &lt;&lt;    &quot;b: &quot;      &lt;&lt; b &lt;&lt;      std::endl
+    &lt;&lt; &quot;a + b = &quot;&lt;&lt; c &lt;&lt; std::endl;
+    return 0;
+}
+</code></pre>
+<h3 id="fomatter"><a class="header" href="#fomatter">fomatter</a></h3>
+<p>In vscode:</p>
+<ul>
+<li>Windows: <kbd>Shift</kbd> <kbd>Alt</kbd> <kbd>F</kbd></li>
+<li>macOS: <kbd>Shift</kbd> <kbd>Option</kbd> <kbd>F</kbd></li>
+<li>Linux: <kbd>Ctrl</kbd> <kbd>Shift</kbd> <kbd>I</kbd></li>
+</ul>
+<p>Demo</p>
+<h3 id="變數名稱規則"><a class="header" href="#變數名稱規則">變數名稱規則</a></h3>
+<p>GNU</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+int main(int argc, char *argv[])
+{
+  int a = 0, b = 0, c = 0;
+  std::stringstream char_array_to_int;
+  std::cout &lt;&lt; argc &lt;&lt; std::endl;
+  char_array_to_int &lt;&lt; argv[1] &lt;&lt; ' ' &lt;&lt; argv[2];
+  char_array_to_int &gt;&gt; a;
+  char_array_to_int &gt;&gt; b;
+  c = a + b;
+  std::cout &lt;&lt; &quot;a: &quot; &lt;&lt; a &lt;&lt; std::endl
+            &lt;&lt; &quot;b: &quot; &lt;&lt; b &lt;&lt; std::endl
+            &lt;&lt; &quot;a + b = &quot; &lt;&lt; c &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+<p>Hungarian notation</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+int main(int argc, char *argv[])
+{
+  int a = 0, b = 0, c = 0;
+  std::stringstream charArrayToInt;
+  std::cout &lt;&lt; argc &lt;&lt; std::endl;
+  charArrayToInt &lt;&lt; argv[1] &lt;&lt; ' ' &lt;&lt; argv[2];
+  charArrayToInt &gt;&gt; a;
+  charArrayToInt &gt;&gt; b;
+  c = a + b;
+  std::cout &lt;&lt; &quot;a: &quot; &lt;&lt; a &lt;&lt; std::endl
+            &lt;&lt; &quot;b: &quot; &lt;&lt; b &lt;&lt; std::endl
+            &lt;&lt; &quot;a + b = &quot; &lt;&lt; c &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+<h2 id="變數格式--型態轉換"><a class="header" href="#變數格式--型態轉換">變數格式 &amp; 型態轉換</a></h2>
+<h3 id="int-long-long-long"><a class="header" href="#int-long-long-long">int, long, long long</a></h3>
+<table><thead><tr><th align="center">Type</th><th align="center">Size in bits</th><th align="center">Format</th><th align="center">Value range</th></tr></thead><tbody>
+<tr><td align="center">int</td><td align="center">16</td><td align="center">signed</td><td align="center">\(-32768\) to \(32767\)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center">unsigned</td><td align="center">\(0\) to \(65535\)</td></tr>
+<tr><td align="center">long</td><td align="center">32</td><td align="center">signed</td><td align="center">\(-2,147,483,648\) to \(2,147,483,647\)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center">unsigned</td><td align="center">\(0\) to \(4,294,967,295\)</td></tr>
+<tr><td align="center">long long</td><td align="center">64</td><td align="center">signed</td><td align="center">\(-9,223,372,036,854,775,808\) to \(9,223,372,036,854,775,807\)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center">unsigned</td><td align="center">\(0\) to \(18,446,744,073,709,551,615\)</td></tr>
+</tbody></table>
+<h3 id="unsigned-int--overflow"><a class="header" href="#unsigned-int--overflow">unsigned int &amp; overflow</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+int main(void)
+{
+  int i = 2147483647;
+  unsigned int j = 4294967295U;
+  std::cout &lt;&lt; i &lt;&lt; ' ' &lt;&lt; i + 1 &lt;&lt; ' ' &lt;&lt; i + 2 &lt;&lt; std::endl;
+  std::cout &lt;&lt; j &lt;&lt; ' ' &lt;&lt; j + 1 &lt;&lt; ' ' &lt;&lt; j + 2 &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+<h3 id="float-double-double-double"><a class="header" href="#float-double-double-double">float, double, double double</a></h3>
+<table><thead><tr><th align="center">Type</th><th align="center">Size in bits</th><th align="center">Format</th><th align="center">Value range</th></tr></thead><tbody>
+<tr><td align="center">float</td><td align="center">32</td><td align="center">IEEE-754</td><td align="center">min subnormal: \( \pm 1.401,298,4 \times 10^{-45} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">min normal: \( \pm 1.175,494,3 \times 10^{-38} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">max: \( \pm 3.402,823,4 \times 10^{38} \)</td></tr>
+<tr><td align="center">double</td><td align="center">64</td><td align="center">IEEE-754</td><td align="center">min subnormal: \( \pm 4.940,656,458,412 \times 10^{-324} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">min normal: \( \pm  2.225,073,858,507,201,4 \times 10^{-308} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">max: \( \pm 1.797,693,134,862,315,7 \times 10^{308} \)</td></tr>
+<tr><td align="center">long doulbe</td><td align="center">80</td><td align="center">x86</td><td align="center">min subnormal: \( \pm  3.645,199,531,882, \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">\( 474,602,528 \times 10^{-4951} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">min normal: \( \pm 3.362,103,143,112, \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">\( 093,506,263 \times 10^{-4932} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">max: \( \pm 1.189,731,495,357, \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">\( 231,765,021 \times 10^{4932} \)</td></tr>
+<tr><td align="center">__float128</td><td align="center">128</td><td align="center">IEEE-754</td><td align="center">min subnormal: \( \pm  6.475,175,119,438,025, \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">\( 110,924,438,958,227,646,552,5 \times 10^{-4966} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">min normal: \( \pm 3.362,103,143,112,093, \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">\( 506,262,677,817,321,752,602,6 \times 10^{-4932} \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">max: \( \pm 1.189,731,495,357,231, \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center"></td><td align="center">\( 765,085,759,326,628,007,016,2 \times 10^{4932} \)</td></tr>
+</tbody></table>
+<h3 id="floating-point-precision"><a class="header" href="#floating-point-precision">floating point precision</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;iomanip&gt;
+int main(void)
+{
+  float x = 1.23456789;
+  std::cout &lt;&lt; std::setprecision(3) &lt;&lt; x &lt;&lt; std::endl;
+  std::cout &lt;&lt; std::setprecision(4) &lt;&lt; x &lt;&lt; std::endl;
+  std::cout &lt;&lt; std::fixed;
+  std::cout &lt;&lt; std::setprecision(5) &lt;&lt; x &lt;&lt; std::endl;
+  std::cout &lt;&lt; std::setprecision(9) &lt;&lt; x &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+<h3 id="cast"><a class="header" href="#cast">cast</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+int main(void)
+{
+  double f = 3.14;
+  unsigned int n1 = (unsigned int)f; // C-style cast
+  std::cout &lt;&lt; f &lt;&lt; std::endl;
+  std::cout &lt;&lt; n1 &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+<h3 id="char"><a class="header" href="#char">char</a></h3>
+<table><thead><tr><th align="center">Type</th><th align="center">Size in bits</th><th align="center">Format</th><th align="center">Value range</th></tr></thead><tbody>
+<tr><td align="center">character</td><td align="center">8</td><td align="center">signed</td><td align="center">\( -128 \) to \( 127 \)</td></tr>
+<tr><td align="center"></td><td align="center"></td><td align="center">unsigned</td><td align="center">\( 0 \) to \( 255 \)</td></tr>
+<tr><td align="center"></td><td align="center">16</td><td align="center">UTF-16</td><td align="center">\( 0 \) to \( 65535 \)</td></tr>
+<tr><td align="center"></td><td align="center">32</td><td align="center">UTF-32</td><td align="center">\( 0 \) to \( 1,114,111 \) (<code>0x10ffff</code>)</td></tr>
+</tbody></table>
+<h4 id="ascii"><a class="header" href="#ascii">ASCII</a></h4>
+<p><strong>Hex</strong>  = Hexdecimal Value, <strong>Char</strong> = Character</p>
+<table><thead><tr><th align="center">Hex</th><th align="center">Char</th><th align="center">Hex</th><th align="center">Char</th><th align="center">Hex</th><th align="center">Char</th><th align="center">Hex</th><th align="center">Char</th></tr></thead><tbody>
+<tr><td align="center">0</td><td align="center">NUL (null)</td><td align="center">20</td><td align="center">SPACE</td><td align="center">40</td><td align="center">@</td><td align="center">60</td><td align="center">`</td></tr>
+<tr><td align="center">1</td><td align="center">SOH (start of heading)</td><td align="center">21</td><td align="center">!</td><td align="center">41</td><td align="center">A</td><td align="center">61</td><td align="center">a</td></tr>
+<tr><td align="center">2</td><td align="center">STX (start of text)</td><td align="center">22</td><td align="center">&quot; <code>\&quot;</code></td><td align="center">42</td><td align="center">B</td><td align="center">62</td><td align="center">b</td></tr>
+<tr><td align="center">3</td><td align="center">ETX (end of text)</td><td align="center">23</td><td align="center">#</td><td align="center">43</td><td align="center">C</td><td align="center">63</td><td align="center">c</td></tr>
+<tr><td align="center">4</td><td align="center">EOT (end of transmission)</td><td align="center">24</td><td align="center">$</td><td align="center">44</td><td align="center">D</td><td align="center">64</td><td align="center">d</td></tr>
+<tr><td align="center">5</td><td align="center">ENQ (enquiry)</td><td align="center">25</td><td align="center">%</td><td align="center">45</td><td align="center">E</td><td align="center">65</td><td align="center">e</td></tr>
+<tr><td align="center">6</td><td align="center">ACK (acknowledge)</td><td align="center">26</td><td align="center">&amp;</td><td align="center">46</td><td align="center">F</td><td align="center">66</td><td align="center">f</td></tr>
+<tr><td align="center">7</td><td align="center">BEL (bell <code>\a</code>)</td><td align="center">27</td><td align="center">' <code>\'</code></td><td align="center">47</td><td align="center">G</td><td align="center">67</td><td align="center">g</td></tr>
+<tr><td align="center">8</td><td align="center">BS  (backspace <code>\b</code>)</td><td align="center">28</td><td align="center">(</td><td align="center">48</td><td align="center">H</td><td align="center">68</td><td align="center">h</td></tr>
+<tr><td align="center">9</td><td align="center">TAB (horizontal tab <code>\t</code>)</td><td align="center">29</td><td align="center">)</td><td align="center">49</td><td align="center">I</td><td align="center">69</td><td align="center">i</td></tr>
+<tr><td align="center">A</td><td align="center">LF  (NL line feed, new line <code>\n</code>)</td><td align="center">2A</td><td align="center">*</td><td align="center">4A</td><td align="center">J</td><td align="center">6A</td><td align="center">j</td></tr>
+<tr><td align="center">B</td><td align="center">VT  (vertical tab <code>\v</code>)</td><td align="center">2B</td><td align="center">+</td><td align="center">4B</td><td align="center">K</td><td align="center">6B</td><td align="center">k</td></tr>
+<tr><td align="center">C</td><td align="center">FF  (NP form feed, new page <code>\f</code>)</td><td align="center">2C</td><td align="center">,</td><td align="center">4C</td><td align="center">L</td><td align="center">6C</td><td align="center">l</td></tr>
+<tr><td align="center">D</td><td align="center">CR  (carriage return <code>\r</code>)</td><td align="center">2D</td><td align="center">-</td><td align="center">4D</td><td align="center">M</td><td align="center">6D</td><td align="center">m</td></tr>
+<tr><td align="center">E</td><td align="center">SO  (shift out)</td><td align="center">2E</td><td align="center">.</td><td align="center">4E</td><td align="center">N</td><td align="center">6E</td><td align="center">n</td></tr>
+<tr><td align="center">F</td><td align="center">SI  (shift in)</td><td align="center">2F</td><td align="center">/</td><td align="center">4F</td><td align="center">O</td><td align="center">6F</td><td align="center">o</td></tr>
+<tr><td align="center">10</td><td align="center">DLE (data link escape)</td><td align="center">30</td><td align="center">0</td><td align="center">50</td><td align="center">P</td><td align="center">70</td><td align="center">p</td></tr>
+<tr><td align="center">11</td><td align="center">DC1 (device control 1)</td><td align="center">31</td><td align="center">1</td><td align="center">51</td><td align="center">Q</td><td align="center">71</td><td align="center">q</td></tr>
+<tr><td align="center">12</td><td align="center">DC2 (device control 2)</td><td align="center">32</td><td align="center">2</td><td align="center">52</td><td align="center">R</td><td align="center">72</td><td align="center">r</td></tr>
+<tr><td align="center">13</td><td align="center">DC3 (device control 3)</td><td align="center">33</td><td align="center">3</td><td align="center">53</td><td align="center">S</td><td align="center">73</td><td align="center">s</td></tr>
+<tr><td align="center">14</td><td align="center">DC4 (device control 4)</td><td align="center">34</td><td align="center">4</td><td align="center">54</td><td align="center">T</td><td align="center">74</td><td align="center">t</td></tr>
+<tr><td align="center">15</td><td align="center">NAK (negative acknowledge)</td><td align="center">35</td><td align="center">5</td><td align="center">55</td><td align="center">U</td><td align="center">75</td><td align="center">u</td></tr>
+<tr><td align="center">16</td><td align="center">SYN (synchronous idle)</td><td align="center">36</td><td align="center">6</td><td align="center">56</td><td align="center">V</td><td align="center">76</td><td align="center">v</td></tr>
+<tr><td align="center">17</td><td align="center">ETB (end of trans. block)</td><td align="center">37</td><td align="center">7</td><td align="center">57</td><td align="center">W</td><td align="center">77</td><td align="center">w</td></tr>
+<tr><td align="center">18</td><td align="center">CAN (cancel)</td><td align="center">38</td><td align="center">8</td><td align="center">58</td><td align="center">X</td><td align="center">78</td><td align="center">x</td></tr>
+<tr><td align="center">19</td><td align="center">EM  (end of medium)</td><td align="center">39</td><td align="center">9</td><td align="center">59</td><td align="center">Y</td><td align="center">79</td><td align="center">y</td></tr>
+<tr><td align="center">1A</td><td align="center">SUB (substitute)</td><td align="center">3A</td><td align="center">:</td><td align="center">5A</td><td align="center">Z</td><td align="center">7A</td><td align="center">z</td></tr>
+<tr><td align="center">1B</td><td align="center">ESC (escape <code>\e</code>)</td><td align="center">3B</td><td align="center">;</td><td align="center">5B</td><td align="center">[</td><td align="center">7B</td><td align="center">{</td></tr>
+<tr><td align="center">1C</td><td align="center">FS  (file separator)</td><td align="center">3C</td><td align="center">&lt;</td><td align="center">5C</td><td align="center">\ <code>\\</code></td><td align="center">7C</td><td align="center">|</td></tr>
+<tr><td align="center">1D</td><td align="center">GS  (group separator)</td><td align="center">3D</td><td align="center">=</td><td align="center">5D</td><td align="center">]</td><td align="center">7D</td><td align="center">}</td></tr>
+<tr><td align="center">1E</td><td align="center">RS  (record separator)</td><td align="center">3E</td><td align="center">&gt;</td><td align="center">5E</td><td align="center">^</td><td align="center">7E</td><td align="center">~</td></tr>
+<tr><td align="center">1F</td><td align="center">US  (unit separator)</td><td align="center">3F</td><td align="center">? <code>\?</code></td><td align="center">5F</td><td align="center">_</td><td align="center">7F</td><td align="center">DEL</td></tr>
+</tbody></table>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+int main(void)
+{
+  char char_five = '5';       // char_five = 53
+  char char_diff = '5' - '0'; // char_diff = 53-48 = 5
+  char c = 'B' + 32;          // c = 98 = 'b'
+  std::cout &lt;&lt; char_five &lt;&lt; std::endl;
+  std::cout &lt;&lt; (int)char_five &lt;&lt; std::endl;
+  std::cout &lt;&lt; (int)char_diff &lt;&lt; std::endl;
+  std::cout &lt;&lt; c &lt;&lt; std::endl;
+  return 0;
+}
+</code></pre>
+<h4 id="others"><a class="header" href="#others">others</a></h4>
+<p><a href="https://zh.wikipedia.org/wiki/UTF-8">UTF-8</a>, <a href="https://zh.wikipedia.org/wiki/UTF-16">UTF-16</a>,
+<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E4%BA%94%E7%A2%BC">Big5</a>, <a href="https://zh.wikipedia.org/wiki/Shift_JIS">Shift_JIS</a>, etc.</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://github.com/htchen/i2p-nthu/tree/master/%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E4%B8%80">htchen/i2p-nthu by 陳煥宗老師</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/main_function">Main function - cppreference.com</a></li>
+<li><a href="https://zamhuang.medium.com/vscode-%E5%A6%82%E4%BD%95%E5%9C%A8-vscode-%E4%B8%8A%E8%87%AA%E5%AE%9A%E7%BE%A9-c-%E7%9A%84-coding-style-c8eb199c57ce">【VSCode】如何在 VSCode 上自定義 C++ 的 coding style | by Zam Huang | Medium</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Naming_convention_(programming)">Naming convention (programming) - Wikipedia</a></li>
+<li><a href="https://www.gnu.org/prep/standards/standards.html">GNU Coding Standards</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/types">Fundamental types - cppreference.com</a></li>
+<li><a href="https://www.cplusplus.com/reference/iomanip/setprecision/">setprecision - C++ Reference</a></li>
+<li><a href="https://en.cppreference.com/w/cpp/language/explicit_cast">Explicit type conversion - cppreference.com</a></li>
+<li><a href="https://www.cs.cmu.edu/%7Epattis/15-1XX/common/handouts/ascii.html">ASCII Table</a></li>
+<li><a href="https://www.educative.io/edpresso/what-is-a-buffer-in-c">What is a buffer in C?</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../formatted_io/lab_1_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../formatted_io/lab_2_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../formatted_io/lab_1_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../formatted_io/lab_2_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
