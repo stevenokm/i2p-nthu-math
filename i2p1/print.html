@@ -7752,6 +7752,8 @@ int main(int argc, char *argv[])
 <li>Example：使用者輸入 4 個數字，但運算子只有 2 個，並非 3 個，則顯示錯誤訊息 <code>Invalid input</code> 並結束程式。</li>
 </ul>
 </li>
+<li>程式需檢查運算子是否為 '+'、'-'、'*'、'/'，若不相符則顯示錯誤訊息 <code>Invalid expression.</code> 並結束程式。</li>
+<li>程式需檢查運算式是否為 Infix notation，若不相符則顯示錯誤訊息 <code>Invalid expression.</code> 並結束程式。</li>
 <li>程式需依據 infix 的規則計算運算式，不考慮先乘除後加減，並將每步運算子的計算中間結果輸出。
 <ul>
 <li>Example：使用者輸入 <code>-1 + -2 * -3</code>，程式將計算結果為 <code>-3 9</code>。</li>
