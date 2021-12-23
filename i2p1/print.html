@@ -10161,8 +10161,8 @@ int main()
 <ul>
 <li>矩陣 \(M\) 及 \(N\) 的維度為正整數 \(M_n\)、\(M_m\)、\(N_n\)、\(N_m\)。</li>
 <li>矩陣的起始位置為 \(M[0][0]\)、\(N[0][0]\)。</li>
-<li>非 <code>0</code> 元素的個數為 \(M_{nnz}\)、\(N_{nnz}\)。</li>
-<li>非 <code>0</code> 元素紀錄的方式為 <code>(i, j, v)</code>。</li>
+<li>欲輸入的元素的個數為 \(M_{elements}\)、\(N_{elements}\)。</li>
+<li>元素紀錄的方式為 <code>(i, j, v)</code>。</li>
 <li>紀錄格式參考以下的範例。</li>
 </ul>
 </li>
@@ -10186,7 +10186,7 @@ int main()
 <li>程式需檢查輸入的資料是否為合法矩陣，若不相符則顯示錯誤訊息 <code>Invalid matrix.</code> 並結束程式。
 <ul>
 <li>若矩陣維度為非正整數，則該矩陣為非法矩陣。</li>
-<li>若非 <code>0</code> 元素的個數為負整數，則該矩陣為非法矩陣。</li>
+<li>欲輸入的元素的個數為負整數，則該矩陣為非法矩陣。</li>
 <li>如元素的索引值大於矩陣的維度則不算為合法元素。</li>
 <li>若元素的索引值重複，則以最後一筆紀錄為主。</li>
 <li>若元素的值為 <code>0</code> 則忽略不紀錄。</li>
@@ -10200,7 +10200,7 @@ int main()
 <pre><code class="language-text">Input COO matrix M:
 &lt;matrix rows&gt;⏎
 &lt;matrix columns&gt;⏎
-&lt;matrix number of non-zeros&gt;⏎
+&lt;matrix number of elements&gt;⏎
 &lt;element index&gt; &lt;element index&gt; &lt;element value&gt;⏎
 &lt;element index&gt; &lt;element index&gt; &lt;element value&gt;⏎
 ...⏎
