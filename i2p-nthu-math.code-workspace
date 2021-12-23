@@ -10,5 +10,14 @@
 			"path": "i2p2"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"vector": "cpp",
+			"functional": "cpp",
+			"iosfwd": "cpp",
+			"iterator": "cpp",
+			"version": "cpp",
+			"ostream": "cpp"
+		}
+	}
 }

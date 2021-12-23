@@ -455,3 +455,9 @@ int main()
 1. unzip `html-book-20201016.zip`.
 2. open `html-book-20201016/reference/en/index.html`.
 3. Find what you want.
+
+Reference Code:
+
+``` c++
+{{#include midterm.cpp}}
+```

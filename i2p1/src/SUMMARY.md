@@ -43,3 +43,7 @@
     - [Lab 12-2: Infix 整數指令列四則計算機](./function/lab_12_2.md)
     - [Lab 12-3: Postfix 整數指令列四則計算機](./function/lab_12_3.md)]
 - [Lecture 13: Structure (1)](./structure/lecture_13.md)
+- [Lecture 14: Structure (2)](./structure/lecture_14.md)
+    - [Lab 14-1: COO Sparse Matrix 儲存及顯示](./structure/lab_14_1.md)
+    - [Lab 14-2: COO Sparse Matrix 相加](./structure/lab_14_2.md)
+    - [Lab 14-3: COO Sparse Matrix 相乘](./structure/lab_14_3.md)
