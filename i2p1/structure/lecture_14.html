@@ -1,0 +1,1084 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 14: Structure (2) - Introduction to Programming (I)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(一)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_315.html"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-1.html"><strong aria-hidden="true">2.</strong> Lecture 1-1: Introduction to Programming &amp; C++</a></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-2.html"><strong aria-hidden="true">3.</strong> Lecture 1-2: Data Type &amp; Formatted Input/Output (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_1.html"><strong aria-hidden="true">3.1.</strong> Lab 1-1: Hello Wolrd! (1)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_2.html"><strong aria-hidden="true">3.2.</strong> Lab 1-2: Hello Wolrd! (2)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Data Type &amp; Formatted Input/Output (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_2_1.html"><strong aria-hidden="true">4.1.</strong> Lab 2-1: 正實數顯示</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_2.html"><strong aria-hidden="true">4.2.</strong> Lab 2-2: 正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_3.html"><strong aria-hidden="true">4.3.</strong> Lab 2-3: 正實數乘法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_4.html"><strong aria-hidden="true">4.4.</strong> Lab 2-4: 大正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_5.html"><strong aria-hidden="true">4.5.</strong> Lab 2-5: 大正實數乘法</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_3-1.html"><strong aria-hidden="true">5.</strong> Lecture 3-1: Data Type &amp; Formatted Input/Output (3)</a></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_3-2.html"><strong aria-hidden="true">6.</strong> Lecture 3-2: Operator &amp; expression (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator_expression/lab_3_1.html"><strong aria-hidden="true">6.1.</strong> Lab 3-1: 科學記號顯示</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_2.html"><strong aria-hidden="true">6.2.</strong> Lab 3-2: 科學記號比大小</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_3.html"><strong aria-hidden="true">6.3.</strong> Lab 3-3: IEEE-754 誤差計算</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_4.html"><strong aria-hidden="true">6.4.</strong> Lab 3-4: 精確科學記號比大小</a></li></ol></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_4-1.html"><strong aria-hidden="true">7.</strong> Lecture 4-1: Operator &amp; expression (2)</a></li><li class="chapter-item expanded "><a href="../branch/lecture_4-2.html"><strong aria-hidden="true">8.</strong> Lecture 4-2: Branch Statement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../branch/lab_4_1.html"><strong aria-hidden="true">8.1.</strong> Lab 4-1: 計算機功能選擇</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_2.html"><strong aria-hidden="true">8.2.</strong> Lab 4-2: 計算機四則運算</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_3.html"><strong aria-hidden="true">8.3.</strong> Lab 4-3: 計算機輸入檢查及例外處理</a></li></ol></li><li class="chapter-item expanded "><a href="../loop/lecture_5.html"><strong aria-hidden="true">9.</strong> Lecture 5: Loop Statement (1)</a></li><li class="chapter-item expanded "><a href="../loop/lecture_6-1.html"><strong aria-hidden="true">10.</strong> Lecture 6-1: Loop Statement (2)</a></li><li class="chapter-item expanded "><a href="../array_vector/lecture_6-2.html"><strong aria-hidden="true">11.</strong> Lecture 6-2: Array &amp; String (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../loop/lab_6_1.html"><strong aria-hidden="true">11.1.</strong> Lab 6-1: 特殊數列計算機</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_2.html"><strong aria-hidden="true">11.2.</strong> Lab 6-2: 最大公因數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_3.html"><strong aria-hidden="true">11.3.</strong> Lab 6-3: 大數取餘數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_4.html"><strong aria-hidden="true">11.4.</strong> Lab 6-4: 大數最大公因數</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_7.html"><strong aria-hidden="true">12.</strong> Lecture 7: Array &amp; String (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../array_vector/lab_7_1.html"><strong aria-hidden="true">12.1.</strong> Lab 7: 真・大數四則運算</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_8.html"><strong aria-hidden="true">13.</strong> Lecture 8: Array &amp; String (3)</a></li><li class="chapter-item expanded "><a href="../midterm.html"><strong aria-hidden="true">14.</strong> Midterm Exam</a></li><li class="chapter-item expanded "><a href="../function/lecture_10.html"><strong aria-hidden="true">15.</strong> Lecture 10: Function &amp; Reference (1)</a></li><li class="chapter-item expanded "><a href="../function/lecture_11.html"><strong aria-hidden="true">16.</strong> Lecture 11: Function &amp; Reference (2)</a></li><li class="chapter-item expanded "><a href="../function/lecture_12.html"><strong aria-hidden="true">17.</strong> Lecture 12: Function &amp; Reference (3)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../function/lab_12_1.html"><strong aria-hidden="true">17.1.</strong> Lab 12-1: 整數指令列四則計算機顯示</a></li><li class="chapter-item expanded "><a href="../function/lab_12_2.html"><strong aria-hidden="true">17.2.</strong> Lab 12-2: Infix 整數指令列四則計算機</a></li><li class="chapter-item expanded "><a href="../function/lab_12_3.html"><strong aria-hidden="true">17.3.</strong> Lab 12-3: Postfix 整數指令列四則計算機</a></li></ol></li><li class="chapter-item expanded "><a href="../structure/lecture_13.html"><strong aria-hidden="true">18.</strong> Lecture 13: Structure (1)</a></li><li class="chapter-item expanded "><a href="../structure/lecture_14.html" class="active"><strong aria-hidden="true">19.</strong> Lecture 14: Structure (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../structure/lab_14_1.html"><strong aria-hidden="true">19.1.</strong> Lab 14-1: COO Sparse Matrix 儲存及顯示</a></li><li class="chapter-item expanded "><a href="../structure/lab_14_2.html"><strong aria-hidden="true">19.2.</strong> Lab 14-2: COO Sparse Matrix 相加</a></li><li class="chapter-item expanded "><a href="../structure/lab_14_3.html"><strong aria-hidden="true">19.3.</strong> Lab 14-3: COO Sparse Matrix 相乘</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (I)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p1/src/structure/lecture_14.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lecture-14-structure-2"><a class="header" href="#lecture-14-structure-2">Lecture 14: Structure (2)</a></h1>
+<h2 id="structure-example-floating-point-number"><a class="header" href="#structure-example-floating-point-number">Structure example: Floating point number</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cctype&gt;  // isdigit()
+#include &lt;cmath&gt;   // pow()
+#include &lt;climits&gt; // INT_MAX
+
+using namespace std;
+
+typedef struct Float_t
+{
+    int sign;
+    int exp;
+    long mantissa;
+} Float;
+
+void normalize_float(Float &amp;f)
+{
+    while (f.mantissa &gt; 0 &amp;&amp; f.mantissa % 10 == 0)
+    {
+        f.mantissa /= 10;
+        f.exp++;
+    }
+    while (f.mantissa &gt; INT_MAX)
+    {
+        f.mantissa /= 10;
+        f.exp++;
+    }
+    if (f.mantissa == 0)
+    {
+        f.exp = 0;
+        f.sign = 1;
+    }
+}
+
+Float parse_float_number(char input_buffer[])
+{
+    Float result;
+    result.sign = 1;
+    result.exp = 0;
+    result.mantissa = 0;
+
+    int i = 0;
+    if (input_buffer[i] == '-')
+    {
+        result.sign = -1;
+        i++;
+    }
+
+    if (input_buffer[i] == '0')
+    {
+        i++;
+    }
+    else
+    {
+        while (isdigit(input_buffer[i]))
+        {
+            result.mantissa = result.mantissa * 10 + input_buffer[i] - '0';
+            i++;
+        }
+    }
+
+    if (input_buffer[i] == '.')
+    {
+        i++;
+        int factor = 1;
+        while (isdigit(input_buffer[i]))
+        {
+            result.mantissa = result.mantissa * 10 + input_buffer[i] - '0';
+            factor *= 10;
+            i++;
+        }
+        result.exp = -1 * (int)log10(factor);
+    }
+
+    if (input_buffer[i] == 'e' || input_buffer[i] == 'E')
+    {
+        i++;
+        int exp = 0;
+        if (input_buffer[i] == '-')
+        {
+            i++;
+            while (isdigit(input_buffer[i]))
+            {
+                exp = exp * 10 + input_buffer[i] - '0';
+                i++;
+            }
+            result.exp += -1 * exp;
+        }
+        else
+        {
+            while (isdigit(input_buffer[i]))
+            {
+                exp = exp * 10 + input_buffer[i] - '0';
+                i++;
+            }
+            result.exp += exp;
+        }
+    }
+    // normalize the result float
+    normalize_float(result);
+    return result;
+}
+
+void print_float_number(Float number)
+{
+    if (number.sign == -1)
+    {
+        cout &lt;&lt; &quot;-&quot;;
+    }
+    cout &lt;&lt; number.mantissa;
+    if (number.exp != 0)
+    {
+        cout &lt;&lt; &quot;e&quot; &lt;&lt; number.exp;
+    }
+}
+
+void clean_up_input_buffer(char input_buffer[])
+{
+    for (int i = 0; input_buffer[i] != '\0'; i++)
+    {
+        input_buffer[i] = '\0';
+    }
+}
+
+Float add(Float a, Float b)
+{
+    Float result;
+    int same_sign = a.sign * b.sign;
+    if (a.exp == b.exp)
+    {
+        result.sign = a.sign;
+        result.exp = a.exp;
+        result.mantissa = a.mantissa + same_sign * b.mantissa;
+    }
+    else if (a.exp &gt; b.exp)
+    {
+        result.sign = a.sign;
+        result.exp = a.exp;
+        long exp_factor = (long)pow(10, a.exp - b.exp);
+        result.mantissa = a.mantissa + same_sign * b.mantissa / exp_factor;
+    }
+    else
+    {
+        result.sign = b.sign;
+        result.exp = b.exp;
+        long exp_factor = (long)pow(10, b.exp - a.exp);
+        result.mantissa = b.mantissa + same_sign * a.mantissa / exp_factor;
+    }
+    if (result.mantissa &lt; 0)
+    {
+        result.sign *= -1;
+        result.mantissa *= -1;
+    } else if (result.mantissa == 0) {
+        result.sign = 1;
+    }
+    normalize_float(result);
+    return result;
+}
+
+Float sub(Float a, Float b)
+{
+    Float result;
+    int same_sign = a.sign * b.sign;
+    if (a.exp == b.exp)
+    {
+        result.sign = a.sign;
+        result.exp = a.exp;
+        result.mantissa = a.mantissa - same_sign * b.mantissa;
+    }
+    else if (a.exp &gt; b.exp)
+    {
+        result.sign = a.sign;
+        result.exp = a.exp;
+        long exp_factor = (long)pow(10, a.exp - b.exp);
+        result.mantissa = a.mantissa - same_sign * b.mantissa / exp_factor;
+    }
+    else
+    {
+        result.sign = b.sign;
+        result.exp = b.exp;
+        long exp_factor = (long)pow(10, b.exp - a.exp);
+        result.mantissa = b.mantissa - same_sign * a.mantissa / exp_factor;
+    }
+    if (result.mantissa &lt; 0)
+    {
+        result.sign *= -1;
+        result.mantissa *= -1;
+    } else if (result.mantissa == 0) {
+        result.sign = 1;
+    }
+    normalize_float(result);
+    return result;
+}
+
+Float mul(Float a, Float b)
+{
+    Float result;
+    result.sign = a.sign * b.sign;
+    result.exp = a.exp + b.exp;
+    result.mantissa = a.mantissa * b.mantissa;
+    normalize_float(result);
+    return result;
+}
+
+Float div(Float a, Float b)
+{
+    Float result;
+    result.sign = a.sign * b.sign;
+    result.exp = a.exp - b.exp;
+    result.mantissa = a.mantissa / b.mantissa;
+    normalize_float(result);
+    return result;
+}
+
+int main()
+{
+    char input_buffer[10000 + 1]; // + 1 for the last '\0'
+    Float a, b;
+
+    cout &lt;&lt; &quot;Input a float number (a) in (-)xxx.xxx(e|E)(-)(xxx): &quot;;
+    cin &gt;&gt; input_buffer;
+
+    a = parse_float_number(input_buffer);
+
+    clean_up_input_buffer(input_buffer);
+
+    cout &lt;&lt; &quot;(a) = &quot;;
+    print_float_number(a);
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;Input a float number (b) in (-)xxx.xxx(e|E)(-)(xxx): &quot;;
+    cin &gt;&gt; input_buffer;
+
+    b = parse_float_number(input_buffer);
+
+    clean_up_input_buffer(input_buffer);
+
+    cout &lt;&lt; &quot;(b) = &quot;;
+    print_float_number(b);
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;(a) + (b) = &quot;;
+    print_float_number(add(a, b));
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;(a) - (b) = &quot;;
+    print_float_number(sub(a, b));
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;(a) * (b) = &quot;;
+    print_float_number(mul(a, b));
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;(a) / (b) = &quot;;
+    print_float_number(div(a, b));
+    cout &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<pre><code class="language-console">$ g++ -g test.cpp &amp;&amp; ./a.out
+Input a float number (a) in (-)xxx.xxx(e|E)(-)(xxx): -123.456e3
+456.789e4(a) = -123456
+Input a float number (b) in (-)xxx.xxx(e|E)(-)(xxx): 
+(b) = 456789e1
+(a) + (b) = 444444e1
+(a) - (b) = 469134e1
+(a) * (b) = -563933427e3
+(a) / (b) = 0
+$ 
+</code></pre>
+<h2 id="structure-example-polynomial-equation"><a class="header" href="#structure-example-polynomial-equation">Structure example: Polynomial Equation</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cctype&gt; // isdigit()
+#include &lt;vector&gt;
+
+using namespace std;
+
+typedef struct Poly_t
+{
+    int coef;
+    int exp;
+} Poly;
+
+void normalize(vector&lt;Poly&gt; &amp;poly)
+{
+    for (int i = 0; i &lt; poly.size(); i++)
+    {
+        if (poly[i].coef == 0)
+        {
+            poly.erase(poly.begin() + i);
+            i--;
+        }
+    }
+}
+
+vector&lt;Poly&gt; parse_poly(char input_buffer[])
+{
+    vector&lt;Poly&gt; result;
+    int i = 0;
+    while (input_buffer[i] != '\0')
+    {
+        Poly p;
+        int sign = 1;
+        p.coef = 0;
+        p.exp = 0;
+        if (input_buffer[i] == '-')
+        {
+            sign = -1;
+            i++;
+        }
+        else if (input_buffer[i] == '+')
+        {
+            i++;
+        }
+        if (input_buffer[i] == '0')
+        {
+            p.coef = 0;
+            i++;
+        }
+        else
+        {
+            while (isdigit(input_buffer[i]))
+            {
+                p.coef = p.coef * 10 + input_buffer[i] - '0';
+                i++;
+            }
+        }
+        p.coef *= sign;
+        if (input_buffer[i] == 'x')
+        {
+            i++;
+            if (input_buffer[i] == '^')
+            {
+                i++;
+                while (isdigit(input_buffer[i]))
+                {
+                    p.exp = p.exp * 10 + input_buffer[i] - '0';
+                    i++;
+                }
+            }
+        }
+        result.push_back(p);
+    }
+    return result;
+}
+
+void print_poly(const vector&lt;Poly&gt; &amp;poly)
+{
+    if (poly.size() == 0)
+    {
+        cout &lt;&lt; &quot;0&quot;;
+        return;
+    }
+    for (int i = 0; i &lt; poly.size(); i++)
+    {
+        if (poly[i].coef == 0)
+        {
+            continue;
+        }
+        if (poly[i].coef &gt;= 1 &amp;&amp; i != 0)
+        {
+            cout &lt;&lt; &quot;+&quot; &lt;&lt; poly[i].coef;
+        }
+        else if (poly[i].coef == -1)
+        {
+            cout &lt;&lt; &quot;-&quot;;
+        }
+        else
+        {
+            cout &lt;&lt; poly[i].coef;
+        }
+        if (poly[i].exp == 0)
+        {
+            continue;
+        }
+        else
+        {
+            cout &lt;&lt; &quot;x^&quot; &lt;&lt; poly[i].exp;
+        }
+    }
+}
+
+vector&lt;Poly&gt; poly_add(const vector&lt;Poly&gt; &amp;a, const vector&lt;Poly&gt; &amp;b)
+{
+    vector&lt;Poly&gt; result;
+    int i = 0;
+    int j = 0;
+    while (i &lt; a.size() &amp;&amp; j &lt; b.size())
+    {
+        if (a[i].exp == b[j].exp)
+        {
+            Poly p;
+            p.exp = a[i].exp;
+            p.coef = a[i].coef + b[j].coef;
+            result.push_back(p);
+            i++;
+            j++;
+        }
+        else if (a[i].exp &gt; b[j].exp)
+        {
+            result.push_back(a[i]);
+            i++;
+        }
+        else
+        {
+            result.push_back(b[j]);
+            j++;
+        }
+    }
+    while (i &lt; a.size())
+    {
+        result.push_back(a[i]);
+        i++;
+    }
+    while (j &lt; b.size())
+    {
+        result.push_back(b[j]);
+        j++;
+    }
+    normalize(result);
+    return result;
+}
+
+void clean_up_input_buffer(char input_buffer[])
+{
+    for (int i = 0; input_buffer[i] != '\0'; i++)
+    {
+        input_buffer[i] = '\0';
+    }
+}
+
+int main()
+{
+    char input_buffer[10000 + 1];
+    vector&lt;Poly&gt; a, b;
+
+    cout &lt;&lt; &quot;Enter polynomial a: &quot;;
+    cin &gt;&gt; input_buffer;
+
+    a = parse_poly(input_buffer);
+
+    clean_up_input_buffer(input_buffer);
+
+    cout &lt;&lt; &quot;Polynomial a: &quot;;
+    print_poly(a);
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;Enter polynomial b: &quot;;
+    cin &gt;&gt; input_buffer;
+
+    b = parse_poly(input_buffer);
+
+    clean_up_input_buffer(input_buffer);
+
+    cout &lt;&lt; &quot;Polynomial b: &quot;;
+    print_poly(b);
+    cout &lt;&lt; endl;
+
+    vector&lt;Poly&gt; c = poly_add(a, b);
+
+    cout &lt;&lt; &quot;Polynomial c = a + b: &quot;;
+    print_poly(c);
+    cout &lt;&lt; endl;
+}
+</code></pre>
+<pre><code class="language-console">$ g++ -g test.cpp &amp;&amp; ./a.out
+Enter polynomial a: -30x^3+20x^1
+Polynomial a: -30x^3+20x^1
+Enter polynomial b: 50x^3-20
+Polynomial b: 50x^3-20
+Polynomial c = a + b: 20x^3+20x^1-20
+$ 
+</code></pre>
+<h2 id="structure-example-geometry-object"><a class="header" href="#structure-example-geometry-object">Structure example: Geometry Object</a></h2>
+<p>Ref: <a href="https://en.wikipedia.org/wiki/Computational_geometry">Computational geometry - Wikipedia</a></p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+typedef struct Point_t
+{
+    int x;
+    int y;
+} Point;
+
+typedef struct Triangle_t
+{
+    Point p[3];
+} Triangle;
+
+typedef struct Quadrilateral_t
+{
+    Point p[4];
+} Quadrilateral;
+
+typedef struct Polygon_t
+{
+    vector&lt;Point&gt; p;
+} Polygon;
+
+Point parse_point(char input_buffer[], int i)
+{
+    Point p;
+    while (input_buffer[i] != '\0')
+    {
+        if (input_buffer[i] == '(')
+        {
+            i++;
+        }
+        if (input_buffer[i] == '0')
+        {
+            p.x = 0;
+            i++;
+        }
+        else
+        {
+            while (isdigit(input_buffer[i]))
+            {
+                p.x = p.x * 10 + input_buffer[i] - '0';
+                i++;
+            }
+        }
+        if (input_buffer[i] == ',')
+        {
+            i++;
+        }
+        if (input_buffer[i] == '0')
+        {
+            p.y = 0;
+            i++;
+        }
+        else
+        {
+            while (isdigit(input_buffer[i]))
+            {
+                p.y = p.y * 10 + input_buffer[i] - '0';
+                i++;
+            }
+        }
+        if (input_buffer[i] == ')')
+        {
+            i++;
+        }
+    }
+    return p;
+}
+
+Triangle parse_triangle(char input_buffer[])
+{
+    Triangle t;
+    int i = 0;
+    while (input_buffer[i] != '\0')
+    {
+        for (int j = 0; j &lt; 3; j++)
+        {
+            if (input_buffer[i] == '(')
+            {
+                i++;
+            }
+            t.p[j] = parse_point(input_buffer, i);
+            i += 2;
+        }
+    }
+    return t;
+}
+
+Quadrilateral parse_quadrilateral(char input_buffer[])
+{
+    Quadrilateral q;
+    int i = 0;
+    while (input_buffer[i] != '\0')
+    {
+        for (int j = 0; j &lt; 4; j++)
+        {
+            if (input_buffer[i] == '(')
+            {
+                i++;
+            }
+            q.p[j] = parse_point(input_buffer, i);
+            i += 2;
+        }
+    }
+    return q;
+}
+
+Polygon parse_polygon(char input_buffer[])
+{
+    Polygon poly;
+    int i = 0;
+    while (input_buffer[i] != '\0')
+    {
+        if (input_buffer[i] == '(')
+        {
+            i++;
+        }
+        poly.p.push_back(parse_point(input_buffer, i));
+        i += 2;
+    }
+    return poly;
+}
+
+void print_geometry(const Point &amp;p)
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;, &quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+
+void print_geometry(const Triangle &amp;t)
+{
+    cout &lt;&lt; &quot;Triangle: &quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; 3; i++)
+    {
+        print_geometry(t.p[i]);
+    }
+}
+
+void print_geometry(const Quadrilateral &amp;q)
+{
+    cout &lt;&lt; &quot;Quadrilateral: &quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; 4; i++)
+    {
+        print_geometry(q.p[i]);
+    }
+}
+
+void print_geometry(const Polygon &amp;poly)
+{
+    cout &lt;&lt; &quot;Polygon: &quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; poly.p.size(); i++)
+    {
+        print_geometry(poly.p[i]);
+    }
+}
+
+unsigned long int area(const Triangle &amp;t)
+{
+    unsigned long int sum = 0;
+    for (int i = 0; i &lt; 3; i++)
+    {
+        sum += t.p[i].x * t.p[(i + 1) % 3].y;
+        sum -= t.p[i].y * t.p[(i + 1) % 3].x;
+    }
+    return sum / 2;
+}
+
+unsigned long int area(const Quadrilateral &amp;q)
+{
+    unsigned long int sum = 0;
+    for (int i = 0; i &lt; 4; i++)
+    {
+        sum += q.p[i].x * q.p[(i + 1) % 4].y;
+        sum -= q.p[i].y * q.p[(i + 1) % 4].x;
+    }
+    return sum / 2;
+}
+
+unsigned long int area(const Polygon &amp;poly)
+{
+    unsigned long int sum = 0;
+    for (int i = 0; i &lt; poly.p.size(); i++)
+    {
+        sum += poly.p[i].x * poly.p[(i + 1) % poly.p.size()].y;
+        sum -= poly.p[i].y * poly.p[(i + 1) % poly.p.size()].x;
+    }
+    return sum / 2;
+}
+
+int main()
+{
+    char input_buffer[10000 + 1];
+
+    cout &lt;&lt; &quot;Enter the type of geometry (t|q|p) with points (x,y): &quot;;
+    cin.getline(input_buffer, 10000);
+
+    if (input_buffer[0] == 't')
+    {
+        Triangle t = parse_triangle(input_buffer);
+        print_geometry(t);
+        cout &lt;&lt; &quot;Area: &quot; &lt;&lt; area(t) &lt;&lt; endl;
+    }
+    else if (input_buffer[0] == 'q')
+    {
+        Quadrilateral q = parse_quadrilateral(input_buffer);
+        print_geometry(q);
+        cout &lt;&lt; &quot;Area: &quot; &lt;&lt; area(q) &lt;&lt; endl;
+    }
+    else if (input_buffer[0] == 'p')
+    {
+        Polygon poly = parse_polygon(input_buffer);
+        print_geometry(poly);
+        cout &lt;&lt; &quot;Area: &quot; &lt;&lt; area(poly) &lt;&lt; endl;
+    }
+    else
+    {
+        cout &lt;&lt; &quot;Invalid input&quot; &lt;&lt; endl;
+    }
+}
+</code></pre>
+<pre><code class="language-console">$ g++ -g test.cpp &amp;&amp; ./a.out
+Enter the type of geometry (t|q|p) with points (x,y): t((0,0),(1,1),(0,4))
+Triangle: 
+(0, 0)
+(1, 1)
+(0, 4)
+Area: 2
+$ g++ -g test.cpp &amp;&amp; ./a.out
+Enter the type of geometry (t|q|p) with points (x,y): q((0,0),(1,1),(3,4),(0,4))
+Quadrilateral: 
+(0, 0)
+(1, 1)
+(3, 4)
+(0, 4)
+Area: 6
+$ g++ -g test.cpp &amp;&amp; ./a.out
+Enter the type of geometry (t|q|p) with points (x,y): p((0,0),(1,1),(3,4),(4,4),(0,4))
+Polygon: 
+(0, 0)
+(1, 1)
+(3, 4)
+(4, 4)
+(0, 4)
+Area: 6
+$
+</code></pre>
+<h2 id="structure-example-vector--matrix-mathmatical"><a class="header" href="#structure-example-vector--matrix-mathmatical">Structure example: Vector &amp; Matrix (Mathmatical)</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;cmath&gt;
+
+using std::cin;
+using std::cout;
+using std::endl;
+
+typedef struct Vector_t
+{
+    std::vector&lt;double&gt; unit;
+    double length;
+} Vector;
+
+typedef struct Matrix_t
+{
+    std::vector&lt;Vector&gt; row_vectors;
+} Matrix;
+
+Vector parse_vector(char input_buffer[], int &amp;i)
+{
+    Vector v;
+    // parse normal vector
+    while (input_buffer[i] != '\0')
+    {
+        if (input_buffer[i] == '[')
+        {
+            i++;
+        }
+        if (input_buffer[i] == '0')
+        {
+            v.unit.push_back(0);
+            i++;
+        }
+        else
+        {
+            while (isdigit(input_buffer[i]))
+            {
+                v.unit.push_back(input_buffer[i] - '0');
+                i++;
+            }
+        }
+        if (input_buffer[i] == ',')
+        {
+            i++;
+        }
+        if (input_buffer[i] == ' ')
+        {
+            i++;
+        }
+        if (input_buffer[i] == ']')
+        {
+            break;
+        }
+    }
+    // calc vector length
+    for (int j = 0; j &lt; v.unit.size(); j++)
+    {
+        v.length = v.length + v.unit[j] * v.unit[j];
+    }
+    v.length = sqrt(v.length);
+    // normalize vector
+    for (int j = 0; j &lt; v.unit.size(); j++)
+    {
+        v.unit[j] = v.unit[j] / v.length;
+    }
+    return v;
+}
+
+Matrix parse_matrix(char input_buffer[])
+{
+    Matrix m;
+    // parse matrix
+    int i = 0;
+    while (input_buffer[i] != '\0')
+    {
+        if (input_buffer[i] == '[')
+        {
+            i++;
+        }
+        while (input_buffer[i] != ']')
+        {
+            m.row_vectors.push_back(parse_vector(input_buffer, i));
+        }
+        if (input_buffer[i] == ']')
+        {
+            i++;
+        }
+    }
+    return m;
+}
+
+void print_vector(const Vector &amp;v)
+{
+    cout &lt;&lt; &quot;[&quot;;
+    for (int i = 0; i &lt; v.unit.size(); i++)
+    {
+        cout &lt;&lt; v.unit[i] * v.length;
+        if (i != v.unit.size() - 1)
+        {
+            cout &lt;&lt; &quot;, &quot;;
+        }
+    }
+    cout &lt;&lt; &quot;]&quot;;
+}
+
+void print_matrix(const Matrix &amp;m)
+{
+    cout &lt;&lt; &quot;[&quot;;
+    for (int i = 0; i &lt; m.row_vectors.size(); i++)
+    {
+        print_vector(m.row_vectors[i]);
+        cout &lt;&lt; endl;
+    }
+    cout &lt;&lt; &quot;]&quot;;
+}
+
+int main()
+{
+    char input_buffer[10000 + 1];
+
+    cout &lt;&lt; &quot;Enter a vector: &quot;;
+    cin.getline(input_buffer, 10000);
+
+    int i = 0;
+    Vector v = parse_vector(input_buffer, i);
+
+    cout &lt;&lt; &quot;Vector v: &quot; &lt;&lt; endl;
+    print_vector(v);
+    cout &lt;&lt; &quot;Length: &quot; &lt;&lt; v.length &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;Enter a matrix: &quot;;
+    cin.getline(input_buffer, 10000);
+
+    Matrix m = parse_matrix(input_buffer);
+
+    cout &lt;&lt; &quot;Matrix m: &quot; &lt;&lt; endl;
+    print_matrix(m);
+    cout &lt;&lt; endl;
+}
+</code></pre>
+<pre><code class="language-console">$ g++ -g test.cpp &amp;&amp; ./a.out
+Enter a vector: [9,10,11,12]
+Vector v: 
+[9, 10, 11, 12]
+Length: 21.1187
+
+Enter a matrix: [[1,2,3,4][5,6,7,8][9,10,11,12]]
+Matrix m: 
+[[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+]
+$ 
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../structure/lecture_13.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../structure/lab_14_1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../structure/lecture_13.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../structure/lab_14_1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
