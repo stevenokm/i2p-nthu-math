@@ -19,11 +19,11 @@ typedef struct matrix_struct
 
 void sort_col_ind(coo_sparse_matrix &coo_matrix)
 {
-    for(i = 0; i < coo_matrix.col_ind.size(); i++)
+    for (i = 0; i < coo_matrix.col_ind.size(); i++)
     {
-        for(j = i + 1; j < coo_matrix.col_ind.size(); j++)
+        for (j = i + 1; j < coo_matrix.col_ind.size(); j++)
         {
-            if(coo_matrix.col_ind[i] > coo_matrix.col_ind[j])
+            if (coo_matrix.col_ind[i] > coo_matrix.col_ind[j])
             {
                 swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
                 swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
@@ -34,11 +34,13 @@ void sort_col_ind(coo_sparse_matrix &coo_matrix)
 }
 void sort_row_ind(coo_sparse_matrix &coo_matrix)
 {
-    for(i = 0; i < coo_matrix.row_ind.size(); i++)
+    for (i = 0; i < coo_matrix.row_ind.size(); i++)
     {
-        for(j = i + 1; j < coo_matrix.row_ind.size(); j++)
+        for (j = i + 1; j < coo_matrix.row_ind.size(); j++)
         {
-            if(coo_matrix.row_ind[i] > coo_matrix.row_ind[j])
+            if (coo_matrix.row_ind[i] > coo_matrix.row_ind[j] ||
+                (coo_matrix.row_ind[i] == coo_matrix.row_ind[j] &&
+                 coo_matrix.col_ind[i] > coo_matrix.col_ind[j]))
             {
                 swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
                 swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
