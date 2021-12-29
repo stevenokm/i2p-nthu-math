@@ -47,3 +47,7 @@
     - [Lab 14-1: COO Sparse Matrix 儲存及顯示](./structure/lab_14_1.md)
     - [Lab 14-2: COO Sparse Matrix 相加](./structure/lab_14_2.md)
     - [Lab 14-3: COO Sparse Matrix 相乘](./structure/lab_14_3.md)
+- [Lecture 15: Github Tutorial](./github/lecture_15.md)
+    - [Forking](./github/lecture_15_2.md)
+    - [Following GitHub flow](./github/lecture_15_3.md)
+    - [Which discussion tool should I use?](./github/lecture_15_4.md)]
