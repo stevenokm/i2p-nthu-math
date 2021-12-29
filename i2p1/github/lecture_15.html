@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 15: Github Tutorial - Introduction to Programming (I)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(一)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_315.html"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-1.html"><strong aria-hidden="true">2.</strong> Lecture 1-1: Introduction to Programming &amp; C++</a></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_1-2.html"><strong aria-hidden="true">3.</strong> Lecture 1-2: Data Type &amp; Formatted Input/Output (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_1.html"><strong aria-hidden="true">3.1.</strong> Lab 1-1: Hello Wolrd! (1)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_2.html"><strong aria-hidden="true">3.2.</strong> Lab 1-2: Hello Wolrd! (2)</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Data Type &amp; Formatted Input/Output (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_2_1.html"><strong aria-hidden="true">4.1.</strong> Lab 2-1: 正實數顯示</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_2.html"><strong aria-hidden="true">4.2.</strong> Lab 2-2: 正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_3.html"><strong aria-hidden="true">4.3.</strong> Lab 2-3: 正實數乘法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_4.html"><strong aria-hidden="true">4.4.</strong> Lab 2-4: 大正實數加法</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_2_5.html"><strong aria-hidden="true">4.5.</strong> Lab 2-5: 大正實數乘法</a></li></ol></li><li class="chapter-item expanded "><a href="../formatted_io/lecture_3-1.html"><strong aria-hidden="true">5.</strong> Lecture 3-1: Data Type &amp; Formatted Input/Output (3)</a></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_3-2.html"><strong aria-hidden="true">6.</strong> Lecture 3-2: Operator &amp; expression (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../operator_expression/lab_3_1.html"><strong aria-hidden="true">6.1.</strong> Lab 3-1: 科學記號顯示</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_2.html"><strong aria-hidden="true">6.2.</strong> Lab 3-2: 科學記號比大小</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_3.html"><strong aria-hidden="true">6.3.</strong> Lab 3-3: IEEE-754 誤差計算</a></li><li class="chapter-item expanded "><a href="../operator_expression/lab_3_4.html"><strong aria-hidden="true">6.4.</strong> Lab 3-4: 精確科學記號比大小</a></li></ol></li><li class="chapter-item expanded "><a href="../operator_expression/lecture_4-1.html"><strong aria-hidden="true">7.</strong> Lecture 4-1: Operator &amp; expression (2)</a></li><li class="chapter-item expanded "><a href="../branch/lecture_4-2.html"><strong aria-hidden="true">8.</strong> Lecture 4-2: Branch Statement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../branch/lab_4_1.html"><strong aria-hidden="true">8.1.</strong> Lab 4-1: 計算機功能選擇</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_2.html"><strong aria-hidden="true">8.2.</strong> Lab 4-2: 計算機四則運算</a></li><li class="chapter-item expanded "><a href="../branch/lab_4_3.html"><strong aria-hidden="true">8.3.</strong> Lab 4-3: 計算機輸入檢查及例外處理</a></li></ol></li><li class="chapter-item expanded "><a href="../loop/lecture_5.html"><strong aria-hidden="true">9.</strong> Lecture 5: Loop Statement (1)</a></li><li class="chapter-item expanded "><a href="../loop/lecture_6-1.html"><strong aria-hidden="true">10.</strong> Lecture 6-1: Loop Statement (2)</a></li><li class="chapter-item expanded "><a href="../array_vector/lecture_6-2.html"><strong aria-hidden="true">11.</strong> Lecture 6-2: Array &amp; String (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../loop/lab_6_1.html"><strong aria-hidden="true">11.1.</strong> Lab 6-1: 特殊數列計算機</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_2.html"><strong aria-hidden="true">11.2.</strong> Lab 6-2: 最大公因數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_3.html"><strong aria-hidden="true">11.3.</strong> Lab 6-3: 大數取餘數</a></li><li class="chapter-item expanded "><a href="../loop/lab_6_4.html"><strong aria-hidden="true">11.4.</strong> Lab 6-4: 大數最大公因數</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_7.html"><strong aria-hidden="true">12.</strong> Lecture 7: Array &amp; String (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../array_vector/lab_7_1.html"><strong aria-hidden="true">12.1.</strong> Lab 7: 真・大數四則運算</a></li></ol></li><li class="chapter-item expanded "><a href="../array_vector/lecture_8.html"><strong aria-hidden="true">13.</strong> Lecture 8: Array &amp; String (3)</a></li><li class="chapter-item expanded "><a href="../midterm.html"><strong aria-hidden="true">14.</strong> Midterm Exam</a></li><li class="chapter-item expanded "><a href="../function/lecture_10.html"><strong aria-hidden="true">15.</strong> Lecture 10: Function &amp; Reference (1)</a></li><li class="chapter-item expanded "><a href="../function/lecture_11.html"><strong aria-hidden="true">16.</strong> Lecture 11: Function &amp; Reference (2)</a></li><li class="chapter-item expanded "><a href="../function/lecture_12.html"><strong aria-hidden="true">17.</strong> Lecture 12: Function &amp; Reference (3)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../function/lab_12_1.html"><strong aria-hidden="true">17.1.</strong> Lab 12-1: 整數指令列四則計算機顯示</a></li><li class="chapter-item expanded "><a href="../function/lab_12_2.html"><strong aria-hidden="true">17.2.</strong> Lab 12-2: Infix 整數指令列四則計算機</a></li><li class="chapter-item expanded "><a href="../function/lab_12_3.html"><strong aria-hidden="true">17.3.</strong> Lab 12-3: Postfix 整數指令列四則計算機</a></li></ol></li><li class="chapter-item expanded "><a href="../structure/lecture_13.html"><strong aria-hidden="true">18.</strong> Lecture 13: Structure (1)</a></li><li class="chapter-item expanded "><a href="../structure/lecture_14.html"><strong aria-hidden="true">19.</strong> Lecture 14: Structure (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../structure/lab_14_1.html"><strong aria-hidden="true">19.1.</strong> Lab 14-1: COO Sparse Matrix 儲存及顯示</a></li><li class="chapter-item expanded "><a href="../structure/lab_14_2.html"><strong aria-hidden="true">19.2.</strong> Lab 14-2: COO Sparse Matrix 相加</a></li><li class="chapter-item expanded "><a href="../structure/lab_14_3.html"><strong aria-hidden="true">19.3.</strong> Lab 14-3: COO Sparse Matrix 相乘</a></li></ol></li><li class="chapter-item expanded "><a href="../github/lecture_15.html" class="active"><strong aria-hidden="true">20.</strong> Lecture 15: Github Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../github/lecture_15_2.html"><strong aria-hidden="true">20.1.</strong> Forking</a></li><li class="chapter-item expanded "><a href="../github/lecture_15_3.html"><strong aria-hidden="true">20.2.</strong> Following GitHub flow</a></li><li class="chapter-item expanded "><a href="../github/lecture_15_4.html"><strong aria-hidden="true">20.3.</strong> Which discussion tool should I use?</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (I)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p1/src/github/lecture_15.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lecture-15-github-tutorial"><a class="header" href="#lecture-15-github-tutorial">Lecture 15: Github Tutorial</a></h1>
+<p>Credit: <a href="https://docs.github.com/en">Github Documention</a></p>
+<h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
+<h3 id="creating-a-repository"><a class="header" href="#creating-a-repository">Creating a repository</a></h3>
+<p>A repository is usually used to organize a single project. Repositories can contain folders and files, images, videos, spreadsheets, and data sets -- anything your project needs. Often, repositories include a <code>README</code> file, a file with information about your project. GitHub makes it easy to add one at the same time you create your new repository. It also offers other common options such as a license file.</p>
+<p>Your <code>hello-world</code> repository can be a place where you store ideas, resources, or even share and discuss things with others.</p>
+<ol>
+<li>
+<p>In the upper-right corner of any page, use the <img src="./icons/plus-24.svg" alt="Plus symbol" /> drop-down menu, and select <strong>New repository</strong>.</p>
+<p><img src="./images/help/repository/repo-create.png" alt="Drop-down with option to create a new repository" /></p>
+</li>
+<li>
+<p>In the <strong>Repository name</strong> box, enter <code>hello-world</code>.</p>
+</li>
+<li>
+<p>In the <strong>Description</strong> box, write a short description.</p>
+</li>
+<li>
+<p>Select <strong>Add a README file</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Create repository</strong>.</p>
+<p><img src="./images/help/repository/hello-world-repo.png" alt="Create a hello world repository" /></p>
+</li>
+</ol>
+<h3 id="creating-a-branch"><a class="header" href="#creating-a-branch">Creating a branch</a></h3>
+<p>Branching lets you have different versions of a repository at one time.</p>
+<p>By default, your repository has one branch named <code>main</code> that is considered to be the definitive branch. You can use branches to experiment and make edits before committing them to <code>main</code>.</p>
+<p>When you create a branch off the <code>main</code> branch, you're making a copy, or snapshot, of <code>main</code> as it was at that point in time. If someone else made changes to the <code>main</code> branch while you were working on your branch, you could pull in those updates.</p>
+<p>This diagram shows:</p>
+<ul>
+<li>The <code>main</code> branch</li>
+<li>A new branch called <code>feature</code></li>
+<li>The journey that <code>feature</code> takes before it's merged into <code>main</code></li>
+</ul>
+<p><img src="./images/help/repository/branching.png" alt="branching diagram" /></p>
+<p>Have you ever saved different versions of a file? Something like:</p>
+<ul>
+<li><code>story.txt</code></li>
+<li><code>story-joe-edit.txt</code></li>
+<li><code>story-joe-edit-reviewed.txt</code></li>
+</ul>
+<p>Branches accomplish similar goals in GitHub repositories.</p>
+<p>Here at GitHub, our developers, writers, and designers use branches for keeping bug fixes and feature work separate from our <code>main</code> (production) branch. When a change is ready, they merge their branch into <code>main</code>.</p>
+<h4 id="create-a-branch"><a class="header" href="#create-a-branch">Create a branch</a></h4>
+<ol>
+<li>Click the <strong>Code</strong> tab of your <code>hello-world</code> repository.</li>
+<li>Click the drop down at the top of the file list that says <strong>main</strong>.
+<img src="./images/help/branch/branch-selection-dropdown.png" alt="Branch menu" /></li>
+<li>Type a branch name, <code>readme-edits</code>, into the text box.</li>
+<li>Click <strong>Create branch: readme-edits from main</strong>.</li>
+</ol>
+<p><img src="./images/help/repository/new-branch.png" alt="Branch menu" /></p>
+<p>Now you have two branches, <code>main</code> and <code>readme-edits</code>. Right now, they look exactly the same. Next you'll add changes to the new branch.</p>
+<h3 id="making-and-committing-changes"><a class="header" href="#making-and-committing-changes">Making and committing changes</a></h3>
+<p>When you created a new branch in the previous step, GitHub brought you to the code page for your new <code>readme-edits</code> branch, which is a copy of <code>main</code>.</p>
+<p>You can make and save changes to the files in your repository. On GitHub, saved changes are called commits. Each commit has an associated commit message, which is a description explaining why a particular change was made. Commit messages capture the history of your changes so that other contributors can understand what you’ve done and why.</p>
+<ol>
+<li>
+<p>Click the <code>README.md</code> file.</p>
+</li>
+<li>
+<p>Click <img src="./icons/pencil-24.svg" alt="The edit icon" /> to edit the file.</p>
+</li>
+<li>
+<p>In the editor, write a bit about yourself.</p>
+</li>
+<li>
+<p>In the <strong>Commit changes</strong> box, write a commit message that describes your changes.</p>
+</li>
+<li>
+<p>Click <strong>Commit changes</strong>.</p>
+<p><img src="./images/help/repository/first-commit.png" alt="Commit example" /></p>
+</li>
+</ol>
+<p>These changes will be made only to the README file on your <code>readme-edits</code> branch, so now this branch contains content that's different from <code>main</code>.</p>
+<h3 id="opening-a-pull-request"><a class="header" href="#opening-a-pull-request">Opening a pull request</a></h3>
+<p>Now that you have changes in a branch off of <code>main</code>, you can open a pull request.</p>
+<p>Pull requests are the heart of collaboration on GitHub. When you open a pull request, you're proposing your changes and requesting that someone review and pull in your contribution and merge them into their branch. Pull requests show diffs, or differences, of the content from both branches. The changes, additions, and subtractions are shown in different colors.</p>
+<p>As soon as you make a commit, you can open a pull request and start a discussion, even before the code is finished.</p>
+<p>By using GitHub's <code>@mention</code> feature in your pull request message, you can ask for feedback from specific people or teams, whether they're down the hall or 10 time zones away.</p>
+<p>You can even open pull requests in your own repository and merge them yourself. It's a great way to learn the GitHub flow before working on larger projects.</p>
+<ol>
+<li>
+<p>Click the <strong>Pull requests</strong> tab of your <code>hello-world</code> repository.</p>
+</li>
+<li>
+<p>Click <strong>New pull request</strong></p>
+</li>
+<li>
+<p>In the <strong>Example Comparisons</strong> box, select the branch you made, <code>readme-edits</code>, to compare with <code>main</code> (the original).</p>
+</li>
+<li>
+<p>Look over your changes in the diffs on the Compare page, make sure they're what you want to submit.</p>
+<p><img src="./images/help/repository/diffs.png" alt="diff example" /></p>
+</li>
+<li>
+<p>Click <strong>Create pull request</strong>.</p>
+</li>
+<li>
+<p>Give your pull request a title and write a brief description of your changes. You can include emojis and drag and drop images and gifs.</p>
+</li>
+<li>
+<p>Click <strong>Create pull request</strong>.</p>
+</li>
+</ol>
+<p>Your collaborators can now review your edits and make suggestions.</p>
+<h3 id="merging-your-pull-request"><a class="header" href="#merging-your-pull-request">Merging your pull request</a></h3>
+<p>In this final step, you will merge your <code>readme-edits</code> branch into the <code>main</code> branch.</p>
+<ol>
+<li>Click <strong>Merge pull request</strong> to merge the changes into <code>main</code>.</li>
+<li>Click <strong>Confirm merge</strong>.</li>
+<li>Go ahead and delete the branch, since its changes have been incorporated, by clicking <strong>Delete branch</strong>.</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../structure/lab_14_3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../github/lecture_15_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../structure/lab_14_3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../github/lecture_15_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
