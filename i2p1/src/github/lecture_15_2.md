@@ -44,22 +44,22 @@ When you fork a project in order to propose changes to the original repository, 
 3. To clone the repository using HTTPS, under "Clone with HTTPS", click ![The clipboard icon](icons/paste-24.svg). To clone the repository using an SSH key, including a certificate issued by your organization's SSH certificate authority, click **Use SSH**, then click ![The clipboard icon](icons/paste-24.svg). To clone a repository using GitHub CLI, click **Use GitHub CLI**, then click ![The clipboard icon](icons/paste-24.svg).
   ![The clipboard icon for copying the URL to clone a repository](./images/help/repository/https-url-clone.png)
 4. Open Terminal.
-3. Change directories to the location of the fork you cloned.
+5. Change directories to the location of the fork you cloned.
     - To go to your home directory, type just `cd` with no other text.
     - To list the files and folders in your current directory, type `ls`.
     - To go into one of your listed directories, type `cd your_listed_directory`.
     - To go up one directory, type `cd ..`.
-4. Type `git remote -v` and press **Enter**. You'll see the current configured remote repository for your fork.
+6. Type `git remote -v` and press **Enter**. You'll see the current configured remote repository for your fork.
   ```shell
   $ git remote -v
   > origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
   > origin  https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
   ```
-6. Type `git remote add upstream`, and then paste the URL you copied in Step 2 and press **Enter**. It will look like this:
+7. Type `git remote add upstream`, and then paste the URL you copied in Step 2 and press **Enter**. It will look like this:
   ```shell
   $ git remote add upstream https://github.com/octocat/Spoon-Knife.git
   ```
-7. To verify the new upstream repository you've specified for your fork, type `git remote -v` again. You should see the URL for your fork as `origin`, and the URL for the original repository as `upstream`.
+8. To verify the new upstream repository you've specified for your fork, type `git remote -v` again. You should see the URL for your fork as `origin`, and the URL for the original repository as `upstream`.
   ```shell
   $ git remote -v
   > origin    https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
