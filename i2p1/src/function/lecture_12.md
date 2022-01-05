@@ -33,7 +33,7 @@ int add(int a, int b) // callee & caller
 {
     print_operand(a);
     print_operand(b);
-    c = a + b;
+    int c = a + b;
     print_result(c);
     return c;
 }
