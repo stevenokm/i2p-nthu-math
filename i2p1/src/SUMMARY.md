@@ -51,3 +51,4 @@
     - [Forking](./github/lecture_15_2.md)
     - [Following GitHub flow](./github/lecture_15_3.md)
     - [Which discussion tool should I use?](./github/lecture_15_4.md)]
+- [Lecture 16: GoogleTest Tutorial](./googletest/lecture16.md)
