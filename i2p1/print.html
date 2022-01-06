@@ -12224,6 +12224,212 @@ int main()
 </code></pre>
 <p>Reference:
 <a href="https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)">Sparse matrix - Wikipedia</a></p>
+<p>TA version:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+typedef struct coo_sparse_matrix_struct
+{
+    unsigned long rows;
+    unsigned long cols;
+    std::vector&lt;unsigned long&gt; row_ind;
+    std::vector&lt;unsigned long&gt; col_ind;
+    std::vector&lt;long&gt; val;
+} coo_sparse_matrix;
+
+typedef struct matrix_struct
+{
+    unsigned long rows;
+    unsigned long cols;
+    std::vector&lt; std::vector&lt;long&gt; &gt; val;
+} matrix;
+
+void insert_coo_matrix_element(
+    coo_sparse_matrix &amp;coo_matrix,
+    unsigned long row,
+    unsigned long col,
+    long val);
+void sort_col_ind(coo_sparse_matrix &amp;coo_matrix)
+{
+    for (int i = 0; i &lt; coo_matrix.col_ind.size(); i++)
+    {
+        for (int j = i + 1; j &lt; coo_matrix.col_ind.size(); j++)
+        {
+            if (coo_matrix.col_ind[i] &gt; coo_matrix.col_ind[j])
+            {
+                swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
+                swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
+                swap(coo_matrix.val[i], coo_matrix.val[j]);
+            }
+        }
+    }
+}
+void sort_row_ind(coo_sparse_matrix &amp;coo_matrix)
+{
+    for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        for (int j = i + 1; j &lt; coo_matrix.row_ind.size(); j++)
+        {
+            if (coo_matrix.row_ind[i] &gt; coo_matrix.row_ind[j] ||
+                (coo_matrix.row_ind[i] == coo_matrix.row_ind[j] &amp;&amp;
+                 coo_matrix.col_ind[i] &gt; coo_matrix.col_ind[j]))
+            {
+                swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
+                swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
+                swap(coo_matrix.val[i], coo_matrix.val[j]);
+            }
+        }
+    }
+}
+void sort_coo_matrix(coo_sparse_matrix &amp;coo_matrix)
+{
+    sort_col_ind(coo_matrix);
+    sort_row_ind(coo_matrix);
+}
+void parse_coo_matrix(coo_sparse_matrix &amp;coo_matrix);
+void print_coo_matrix(const coo_sparse_matrix &amp;coo_matrix);
+matrix convert_coo_matrix_to_matrix(const coo_sparse_matrix &amp;coo_matrix);
+void print_matrix(const matrix &amp;matrix);
+
+int main()
+{
+    coo_sparse_matrix coo_matrix_M;
+    parse_coo_matrix(coo_matrix_M);
+    sort_coo_matrix(coo_matrix_M);
+    std::cout &lt;&lt; &quot;The COO matrix is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_M);
+    matrix matrix_M = convert_coo_matrix_to_matrix(coo_matrix_M);
+    std::cout &lt;&lt; &quot;The matrix is:&quot; &lt;&lt; std::endl;
+    print_matrix(matrix_M);
+    return 0;
+}
+
+void parse_coo_matrix(coo_sparse_matrix &amp;coo_matrix)
+{
+    int n; // n lines of inputs
+
+    // Exceptions: rows and col can't be nonpositive, n can't be negative
+    for (int i = 0; i &lt; 3; i++)
+    {
+        int temp;
+        cin &gt;&gt; temp;
+        if (i == 0 &amp;&amp; temp &gt; 0)
+        {
+            coo_matrix.rows = temp;
+            continue;
+        }
+        if (i == 1 &amp;&amp; temp &gt; 0)
+        {
+            coo_matrix.cols = temp;
+            continue;
+        }
+        if (i == 2 &amp;&amp; temp &gt;= 0)
+        {
+            n = temp;
+            continue;
+        }
+        cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+        exit(0);
+    }
+
+    // Start of Parsing
+    while (n--)
+    {
+        unsigned long r, c;
+        long v;
+        cin &gt;&gt; r &gt;&gt; c &gt;&gt; v;
+
+        // Exceptions: Index Out of Range
+        if (r &lt; 0 ||
+            r &gt;= coo_matrix.rows ||
+            c &lt; 0 ||
+            c &gt;= coo_matrix.cols)
+        {
+            cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        // Store COO
+        bool flag = false;
+        for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+        {
+            // Rewrite val if already exist
+            if (r == coo_matrix.row_ind[i] &amp;&amp; c == coo_matrix.col_ind[i])
+            {
+                if (v == 0) // Erase if val = 0
+                {
+                    coo_matrix.row_ind.erase(coo_matrix.row_ind.begin() + i);
+                    coo_matrix.col_ind.erase(coo_matrix.col_ind.begin() + i);
+                    coo_matrix.val.erase(coo_matrix.val.begin() + i);
+                }
+                else // Rewrite if val != 0
+                    coo_matrix.val[i] = v;
+
+                flag = true;
+                break;
+            }
+        }
+
+        // Push_back if not exists yet
+        if (!flag &amp;&amp; v != 0)
+        {
+            coo_matrix.row_ind.push_back(r);
+            coo_matrix.col_ind.push_back(c);
+            coo_matrix.val.push_back(v);
+        }
+    }
+    // End of Parsing
+
+    // Sorting
+    sort_coo_matrix(coo_matrix);
+}
+
+matrix convert_coo_matrix_to_matrix(const coo_sparse_matrix &amp;coo_matrix)
+{
+    matrix mtrx;
+    mtrx.rows = coo_matrix.rows;
+    mtrx.cols = coo_matrix.cols;
+
+    for (unsigned long i = 0; i &lt; mtrx.rows; i++)
+        mtrx.val.push_back(vector&lt;long&gt;(mtrx.cols, 0));
+
+    for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        unsigned long r = coo_matrix.row_ind[i], c = coo_matrix.col_ind[i];
+        long v = coo_matrix.val[i];
+        mtrx.val[r][c] = v;
+    }
+
+    return mtrx;
+}
+
+void print_matrix(const matrix &amp;matrix)
+{
+    for (unsigned long i = 0; i &lt; matrix.rows; i++)
+    {
+        for (unsigned long j = 0; j &lt; matrix.cols; j++)
+        {
+            cout &lt;&lt; matrix.val[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+void print_coo_matrix(const coo_sparse_matrix &amp;coo_matrix)
+{
+    cout &lt;&lt; coo_matrix.rows &lt;&lt; '\n'
+         &lt;&lt; coo_matrix.cols &lt;&lt; endl;
+    for (unsigned long i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        cout &lt;&lt; coo_matrix.row_ind[i]
+             &lt;&lt; &quot; &quot;
+             &lt;&lt; coo_matrix.col_ind[i]
+             &lt;&lt; &quot; &quot;
+             &lt;&lt; coo_matrix.val[i]
+             &lt;&lt; endl;
+    }
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="lab-14-2-coo-sparse-matrix-相加-40"><a class="header" href="#lab-14-2-coo-sparse-matrix-相加-40">Lab 14-2: COO Sparse Matrix 相加 (40%)</a></h2>
 <ul>
 <li>輸入：以整數 (符合 <code>long</code> 型態) 的兩矩陣 \(M\) 及 \(N\)
@@ -12621,6 +12827,327 @@ int main()
 </code></pre>
 <p>Reference:
 <a href="https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)">Sparse matrix - Wikipedia</a></p>
+<p>TA version:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+typedef struct coo_sparse_matrix_struct
+{
+    unsigned long rows;
+    unsigned long cols;
+    std::vector&lt;unsigned long&gt; row_ind;
+    std::vector&lt;unsigned long&gt; col_ind;
+    std::vector&lt;long&gt; val;
+} coo_sparse_matrix;
+
+typedef struct matrix_struct
+{
+    unsigned long rows;
+    unsigned long cols;
+    std::vector&lt; std::vector&lt;long&gt; &gt; val;
+} matrix;
+
+void sort_col_ind(coo_sparse_matrix &amp;coo_matrix)
+{
+    for (int i = 0; i &lt; coo_matrix.col_ind.size(); i++)
+    {
+        for (int j = i + 1; j &lt; coo_matrix.col_ind.size(); j++)
+        {
+            if (coo_matrix.col_ind[i] &gt; coo_matrix.col_ind[j])
+            {
+                swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
+                swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
+                swap(coo_matrix.val[i], coo_matrix.val[j]);
+            }
+        }
+    }
+}
+void sort_row_ind(coo_sparse_matrix &amp;coo_matrix)
+{
+    for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        for (int j = i + 1; j &lt; coo_matrix.row_ind.size(); j++)
+        {
+            if (coo_matrix.row_ind[i] &gt; coo_matrix.row_ind[j] ||
+                (coo_matrix.row_ind[i] == coo_matrix.row_ind[j] &amp;&amp;
+                 coo_matrix.col_ind[i] &gt; coo_matrix.col_ind[j]))
+            {
+                swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
+                swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
+                swap(coo_matrix.val[i], coo_matrix.val[j]);
+            }
+        }
+    }
+}
+void sort_coo_matrix(coo_sparse_matrix &amp;coo_matrix)
+{
+    sort_col_ind(coo_matrix);
+    sort_row_ind(coo_matrix);
+}
+void insert_coo_matrix_element(
+    coo_sparse_matrix &amp;coo_matrix,
+    unsigned long row,
+    unsigned long col,
+    long val);
+void add_coo_matrix_element(
+    coo_sparse_matrix &amp;coo_matrix,
+    unsigned long row,
+    unsigned long col,
+    long val);
+void parse_coo_matrix(coo_sparse_matrix &amp;coo_matrix);
+void print_coo_matrix(const coo_sparse_matrix &amp;coo_matrix);
+coo_sparse_matrix add_coo_matrix(
+    const coo_sparse_matrix &amp;coo_matrix_M,
+    const coo_sparse_matrix &amp;coo_matrix_N);
+matrix convert_coo_matrix_to_matrix(const coo_sparse_matrix &amp;coo_matrix);
+void print_matrix(const matrix &amp;matrix);
+
+int main()
+{
+    coo_sparse_matrix coo_matrix_M, coo_matrix_N, coo_matrix_P;
+    std::cout &lt;&lt; &quot;Input COO matrix M:&quot; &lt;&lt; std::endl;
+    parse_coo_matrix(coo_matrix_M);
+    std::cout &lt;&lt; &quot;The COO matrix M is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_M);
+    std::cout &lt;&lt; &quot;Input COO matrix N:&quot; &lt;&lt; std::endl;
+    parse_coo_matrix(coo_matrix_N);
+    std::cout &lt;&lt; &quot;The COO matrix N is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_N);
+    coo_matrix_P = add_coo_matrix(coo_matrix_M, coo_matrix_N);
+    std::cout &lt;&lt; &quot;The COO matrix P = M + N is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_P);
+    matrix matrix_P = convert_coo_matrix_to_matrix(coo_matrix_P);
+    std::cout &lt;&lt; &quot;The matrix P is:&quot; &lt;&lt; std::endl;
+    print_matrix(matrix_P);
+    return 0;
+}
+
+void parse_coo_matrix(coo_sparse_matrix &amp;coo_matrix)
+{
+    int n; // n lines of inputs
+
+    // Exceptions: rows and col can't be nonpositive, n can't be negative
+    for (int i = 0; i &lt; 3; i++)
+    {
+        int temp;
+        cin &gt;&gt; temp;
+        if (i == 0 &amp;&amp; temp &gt; 0)
+        {
+            coo_matrix.rows = temp;
+            continue;
+        }
+        if (i == 1 &amp;&amp; temp &gt; 0)
+        {
+            coo_matrix.cols = temp;
+            continue;
+        }
+        if (i == 2 &amp;&amp; temp &gt;= 0)
+        {
+            n = temp;
+            continue;
+        }
+        cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+        exit(0);
+    }
+
+    // Start of Parsing
+    while (n--)
+    {
+        unsigned long r, c;
+        long v;
+        cin &gt;&gt; r &gt;&gt; c &gt;&gt; v;
+
+        // Exceptions: Index Out of Range
+        if (r &lt; 0 ||
+            r &gt;= coo_matrix.rows ||
+            c &lt; 0 ||
+            c &gt;= coo_matrix.cols)
+        {
+            cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        // Store COO
+        bool flag = false;
+        for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+        {
+            // Rewrite val if already exist
+            if (r == coo_matrix.row_ind[i] &amp;&amp; c == coo_matrix.col_ind[i])
+            {
+                if (v == 0) // Erase if val = 0
+                {
+                    coo_matrix.row_ind.erase(coo_matrix.row_ind.begin() + i);
+                    coo_matrix.col_ind.erase(coo_matrix.col_ind.begin() + i);
+                    coo_matrix.val.erase(coo_matrix.val.begin() + i);
+                }
+                else // Rewrite if val != 0
+                    coo_matrix.val[i] = v;
+
+                flag = true;
+                break;
+            }
+        }
+
+        // Push_back if not exists yet and v is nonzero
+        if (!flag &amp;&amp; v != 0)
+        {
+            coo_matrix.row_ind.push_back(r);
+            coo_matrix.col_ind.push_back(c);
+            coo_matrix.val.push_back(v);
+        }
+    }
+    // End of Parsing
+
+    // Sorting
+    sort_coo_matrix(coo_matrix);
+}
+
+matrix convert_coo_matrix_to_matrix(const coo_sparse_matrix &amp;coo_matrix)
+{
+    matrix mtrx;
+    mtrx.rows = coo_matrix.rows;
+    mtrx.cols = coo_matrix.cols;
+
+    for (unsigned long i = 0; i &lt; mtrx.rows; i++)
+        mtrx.val.push_back(vector&lt;long&gt;(mtrx.cols, 0));
+
+    for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        unsigned long r = coo_matrix.row_ind[i], c = coo_matrix.col_ind[i];
+        long v = coo_matrix.val[i];
+        mtrx.val[r][c] = v;
+    }
+
+    return mtrx;
+}
+
+void print_matrix(const matrix &amp;matrix)
+{
+    for (unsigned long i = 0; i &lt; matrix.rows; i++)
+    {
+        for (unsigned long j = 0; j &lt; matrix.cols; j++)
+        {
+            cout &lt;&lt; matrix.val[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+void print_coo_matrix(const coo_sparse_matrix &amp;coo_matrix)
+{
+    cout &lt;&lt; coo_matrix.rows &lt;&lt; '\n'
+         &lt;&lt; coo_matrix.cols &lt;&lt; endl;
+    for (unsigned long i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        cout &lt;&lt; coo_matrix.row_ind[i]
+             &lt;&lt; &quot; &quot;
+             &lt;&lt; coo_matrix.col_ind[i]
+             &lt;&lt; &quot; &quot;
+             &lt;&lt; coo_matrix.val[i]
+             &lt;&lt; endl;
+    }
+}
+
+void insert_coo_matrix_element(
+    coo_sparse_matrix &amp;coo_matrix,
+    unsigned long row,
+    unsigned long col,
+    long val)
+{
+    coo_matrix.row_ind.push_back(row);
+    coo_matrix.col_ind.push_back(col);
+    coo_matrix.val.push_back(val);
+}
+
+void add_coo_matrix_element(
+    coo_sparse_matrix &amp;coo_matrix,
+    unsigned long row,
+    unsigned long col,
+    long val);
+
+coo_sparse_matrix add_coo_matrix(
+    const coo_sparse_matrix &amp;coo_matrix_M,
+    const coo_sparse_matrix &amp;coo_matrix_N)
+{
+    // Exception: Matrices are not addable
+    if (coo_matrix_M.rows != coo_matrix_N.rows ||
+        coo_matrix_M.cols != coo_matrix_N.cols)
+    {
+        cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+        exit(0);
+    }
+
+    coo_sparse_matrix P;
+    P.rows = coo_matrix_M.rows;
+    P.cols = coo_matrix_M.cols;
+
+    int m = 0, n = 0;
+    while (m &lt; coo_matrix_M.row_ind.size() &amp;&amp;
+           n &lt; coo_matrix_N.row_ind.size())
+    {
+        if (coo_matrix_M.row_ind[m] &gt; coo_matrix_N.row_ind[n] ||
+            (coo_matrix_M.row_ind[m] == coo_matrix_N.row_ind[n] &amp;&amp;
+             coo_matrix_M.col_ind[m] &gt; coo_matrix_N.col_ind[n]))
+        {
+            insert_coo_matrix_element(
+                P,
+                coo_matrix_N.row_ind[n],
+                coo_matrix_N.col_ind[n],
+                coo_matrix_N.val[n]);
+            n++;
+        }
+
+        else if (coo_matrix_M.row_ind[m] &lt; coo_matrix_N.row_ind[n] ||
+                 (coo_matrix_M.row_ind[m] == coo_matrix_N.row_ind[n] &amp;&amp;
+                  coo_matrix_M.col_ind[m] &lt; coo_matrix_N.col_ind[n]))
+        {
+            insert_coo_matrix_element(
+                P,
+                coo_matrix_M.row_ind[m],
+                coo_matrix_M.col_ind[m],
+                coo_matrix_M.val[m]);
+            m++;
+        }
+        else
+        {
+            int sum = coo_matrix_M.val[m] + coo_matrix_N.val[n];
+
+            if (sum != 0)
+                insert_coo_matrix_element(
+                    P,
+                    coo_matrix_N.row_ind[n],
+                    coo_matrix_N.col_ind[n],
+                    sum);
+            m++;
+            n++;
+        }
+    }
+
+    // Insert the Remaining COO
+    while (m &lt; coo_matrix_M.row_ind.size())
+    {
+        insert_coo_matrix_element(
+            P,
+            coo_matrix_M.row_ind[m],
+            coo_matrix_M.col_ind[m],
+            coo_matrix_M.val[m]);
+        m++;
+    }
+
+    while (n &lt; coo_matrix_N.row_ind.size())
+    {
+        insert_coo_matrix_element(
+            P,
+            coo_matrix_N.row_ind[n],
+            coo_matrix_N.col_ind[n],
+            coo_matrix_N.val[n]);
+        n++;
+    }
+
+    sort_coo_matrix(P);
+    return P;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="lab-14-3-coo-sparse-matrix-相乘-20"><a class="header" href="#lab-14-3-coo-sparse-matrix-相乘-20">Lab 14-3: COO Sparse Matrix 相乘 (20%)</a></h2>
 <ul>
 <li>輸入：以整數 (符合 <code>long</code> 型態) 的兩矩陣 \(M\) 及 \(N\)
@@ -13002,6 +13529,288 @@ int main()
 </code></pre>
 <p>Reference:
 <a href="https://en.wikipedia.org/wiki/Sparse_matrix#Coordinate_list_(COO)">Sparse matrix - Wikipedia</a></p>
+<p>TA version:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+typedef struct coo_sparse_matrix_struct
+{
+    unsigned long rows;
+    unsigned long cols;
+    std::vector&lt;unsigned long&gt; row_ind;
+    std::vector&lt;unsigned long&gt; col_ind;
+    std::vector&lt;long&gt; val;
+} coo_sparse_matrix;
+
+typedef struct matrix_struct
+{
+    unsigned long rows;
+    unsigned long cols;
+    std::vector&lt; std::vector&lt;long&gt; &gt; val;
+} matrix;
+
+void sort_col_ind(coo_sparse_matrix &amp;coo_matrix)
+{
+    for (int i = 0; i &lt; coo_matrix.col_ind.size(); i++)
+    {
+        for (int j = i + 1; j &lt; coo_matrix.col_ind.size(); j++)
+        {
+            if (coo_matrix.col_ind[i] &gt; coo_matrix.col_ind[j])
+            {
+                swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
+                swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
+                swap(coo_matrix.val[i], coo_matrix.val[j]);
+            }
+        }
+    }
+}
+void sort_row_ind(coo_sparse_matrix &amp;coo_matrix)
+{
+    for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        for (int j = i + 1; j &lt; coo_matrix.row_ind.size(); j++)
+        {
+            if (coo_matrix.row_ind[i] &gt; coo_matrix.row_ind[j] ||
+                (coo_matrix.row_ind[i] == coo_matrix.row_ind[j] &amp;&amp;
+                 coo_matrix.col_ind[i] &gt; coo_matrix.col_ind[j]))
+            {
+                swap(coo_matrix.row_ind[i], coo_matrix.row_ind[j]);
+                swap(coo_matrix.col_ind[i], coo_matrix.col_ind[j]);
+                swap(coo_matrix.val[i], coo_matrix.val[j]);
+            }
+        }
+    }
+}
+void sort_coo_matrix(coo_sparse_matrix &amp;coo_matrix)
+{
+    sort_col_ind(coo_matrix);
+    sort_row_ind(coo_matrix);
+}
+void parse_coo_matrix(coo_sparse_matrix &amp;coo_matrix);
+void print_coo_matrix(const coo_sparse_matrix &amp;coo_matrix);
+coo_sparse_matrix mult_coo_matrix(
+    const coo_sparse_matrix &amp;coo_matrix_M,
+    const coo_sparse_matrix &amp;coo_matrix_N);
+matrix convert_coo_matrix_to_matrix(const coo_sparse_matrix &amp;coo_matrix);
+void print_matrix(const matrix &amp;matrix);
+
+int main()
+{
+    coo_sparse_matrix coo_matrix_M, coo_matrix_N, coo_matrix_P;
+    std::cout &lt;&lt; &quot;Input COO matrix M:&quot; &lt;&lt; std::endl;
+    parse_coo_matrix(coo_matrix_M);
+    std::cout &lt;&lt; &quot;The COO matrix M is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_M);
+    std::cout &lt;&lt; &quot;Input COO matrix N:&quot; &lt;&lt; std::endl;
+    parse_coo_matrix(coo_matrix_N);
+    std::cout &lt;&lt; &quot;The COO matrix N is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_N);
+    coo_matrix_P = mult_coo_matrix(coo_matrix_M, coo_matrix_N);
+    std::cout &lt;&lt; &quot;The COO matrix P = M * N is:&quot; &lt;&lt; std::endl;
+    print_coo_matrix(coo_matrix_P);
+    matrix matrix_P = convert_coo_matrix_to_matrix(coo_matrix_P);
+    std::cout &lt;&lt; &quot;The matrix P is:&quot; &lt;&lt; std::endl;
+    print_matrix(matrix_P);
+    return 0;
+}
+
+void parse_coo_matrix(coo_sparse_matrix &amp;coo_matrix)
+{
+    int n; // n lines of inputs
+
+    /// Exceptions: rows and col can't be nonpositive, n can't be negative
+    for (int i = 0; i &lt; 3; i++)
+    {
+        int temp;
+        cin &gt;&gt; temp;
+        if (i == 0 &amp;&amp; temp &gt; 0)
+        {
+            coo_matrix.rows = temp;
+            continue;
+        }
+        if (i == 1 &amp;&amp; temp &gt; 0)
+        {
+            coo_matrix.cols = temp;
+            continue;
+        }
+        if (i == 2 &amp;&amp; temp &gt;= 0)
+        {
+            n = temp;
+            continue;
+        }
+        cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+        exit(0);
+    }
+
+    // Start of Parsing
+    while (n--)
+    {
+        unsigned long r, c;
+        long v;
+        cin &gt;&gt; r &gt;&gt; c &gt;&gt; v;
+
+        // Exceptions: Index Out of Range
+        if (r &lt; 0 ||
+            r &gt;= coo_matrix.rows ||
+            c &lt; 0 ||
+            c &gt;= coo_matrix.cols)
+        {
+            cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+            exit(0);
+        }
+
+        // Store COO
+        bool flag = false;
+        for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+        {
+            // Rewrite val if already exist
+            if (r == coo_matrix.row_ind[i] &amp;&amp; c == coo_matrix.col_ind[i])
+            {
+                if (v == 0) // Erase if val = 0
+                {
+                    coo_matrix.row_ind.erase(coo_matrix.row_ind.begin() + i);
+                    coo_matrix.col_ind.erase(coo_matrix.col_ind.begin() + i);
+                    coo_matrix.val.erase(coo_matrix.val.begin() + i);
+                }
+                else // Rewrite if val != 0
+                    coo_matrix.val[i] = v;
+
+                flag = true;
+                break;
+            }
+        }
+
+        // Push_back if not exists yet
+        if (!flag &amp;&amp; v != 0)
+        {
+            coo_matrix.row_ind.push_back(r);
+            coo_matrix.col_ind.push_back(c);
+            coo_matrix.val.push_back(v);
+        }
+    }
+    // End of Parsing
+
+    // Sorting
+    sort_coo_matrix(coo_matrix);
+}
+
+matrix convert_coo_matrix_to_matrix(const coo_sparse_matrix &amp;coo_matrix)
+{
+    matrix mtrx;
+    mtrx.rows = coo_matrix.rows;
+    mtrx.cols = coo_matrix.cols;
+
+    for (unsigned long i = 0; i &lt; mtrx.rows; i++)
+        mtrx.val.push_back(vector&lt;long&gt;(mtrx.cols, 0));
+
+    for (int i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        unsigned long r = coo_matrix.row_ind[i], c = coo_matrix.col_ind[i];
+        long v = coo_matrix.val[i];
+        mtrx.val[r][c] = v;
+    }
+
+    return mtrx;
+}
+
+void print_matrix(const matrix &amp;matrix)
+{
+    for (unsigned long i = 0; i &lt; matrix.rows; i++)
+    {
+        for (unsigned long j = 0; j &lt; matrix.cols; j++)
+        {
+            cout &lt;&lt; matrix.val[i][j] &lt;&lt; ' ';
+        }
+        cout &lt;&lt; endl;
+    }
+}
+
+void print_coo_matrix(const coo_sparse_matrix &amp;coo_matrix)
+{
+    cout &lt;&lt; coo_matrix.rows &lt;&lt; '\n'
+         &lt;&lt; coo_matrix.cols &lt;&lt; endl;
+    for (unsigned long i = 0; i &lt; coo_matrix.row_ind.size(); i++)
+    {
+        cout &lt;&lt; coo_matrix.row_ind[i]
+             &lt;&lt; &quot; &quot;
+             &lt;&lt; coo_matrix.col_ind[i]
+             &lt;&lt; &quot; &quot;
+             &lt;&lt; coo_matrix.val[i]
+             &lt;&lt; endl;
+    }
+}
+
+void insert_coo_matrix_element(
+    coo_sparse_matrix &amp;coo_matrix,
+    unsigned long row,
+    unsigned long col,
+    long val)
+{
+    coo_matrix.row_ind.push_back(row);
+    coo_matrix.col_ind.push_back(col);
+    coo_matrix.val.push_back(val);
+}
+
+coo_sparse_matrix mult_coo_matrix(
+    const coo_sparse_matrix &amp;coo_matrix_M,
+    const coo_sparse_matrix &amp;coo_matrix_N)
+{
+    // Exception: Matrices are not multipliable
+    if (coo_matrix_M.cols != coo_matrix_N.rows)
+    {
+        cout &lt;&lt; &quot;Invalid matrix.&quot; &lt;&lt; endl;
+        exit(0);
+    }
+
+    coo_sparse_matrix P;
+    P.rows = coo_matrix_M.rows;
+    P.cols = coo_matrix_N.cols;
+
+    // Iterate over all COO of M
+    int m, n;
+    for (m = 0; m &lt; coo_matrix_M.row_ind.size();)
+    {
+        // Current row of P
+        int r = coo_matrix_M.row_ind[m];
+
+        // Iterate over all COO of N
+        for (n = 0; n &lt; coo_matrix_N.row_ind.size();)
+        {
+            // current column of P
+            int c = coo_matrix_N.col_ind[n];
+
+            // Computing the (i, j) entry of P
+            int i = m, j = n, sum = 0;
+
+            while (i &lt; coo_matrix_M.row_ind.size() &amp;&amp;
+                   coo_matrix_M.row_ind[i] == r &amp;&amp;
+                   j &lt; coo_matrix_N.row_ind.size() &amp;&amp;
+                   coo_matrix_N.col_ind[j] == c)
+            {
+                if (coo_matrix_M.col_ind[i] &lt; coo_matrix_N.row_ind[j])
+                    i++;
+                else if (coo_matrix_M.col_ind[i] &gt; coo_matrix_N.row_ind[j])
+                    j++;
+                else
+                    sum += coo_matrix_M.val[i++] * coo_matrix_N.val[j++];
+            }
+
+            // Insert COO if sum is nonzero
+            if (sum != 0)
+                insert_coo_matrix_element(P, r, c, sum);
+
+            // To the next column of P
+            while (n &lt; coo_matrix_N.row_ind.size() &amp;&amp; coo_matrix_N.col_ind[n] == c)
+                n++;
+        }
+        // To the next row of P
+        while (m &lt; coo_matrix_M.row_ind.size() &amp;&amp; coo_matrix_M.row_ind[m] == r)
+            m++;
+    }
+
+    return P;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lecture-15-github-tutorial"><a class="header" href="#lecture-15-github-tutorial">Lecture 15: Github Tutorial</a></h1>
 <p>Credit: <a href="https://docs.github.com/en">Github Documention</a></p>
 <h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
