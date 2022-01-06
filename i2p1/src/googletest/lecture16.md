@@ -17,6 +17,12 @@ Credit: [GoogleTest from Google](https://github.com/google/googletest), [CNOCycl
 * 解壓縮到你的 vscode 目錄下，並打開 vscode
   * 可以在 `Explorer` 內右鍵，選擇 `Reveal in File Explorer` 或 `Reveal in Finder` 來打開現在 vscode 的目錄
 
+### (Optional) Install CMake
+
+如果自己的電腦上沒有安裝 CMake，可以從 [Download | CMake](https://cmake.org/download/) 下載自己電腦的安裝檔後安裝。
+
+* 若是 windows，要記得選 **Add CMake to the system PATH for all users** ，並重新開啟 vscode，才能讓 vscode 的 terminal 讀到 cmake 指令。
+
 ### Build GoogleTest
 
 打開 vscode 的 Terminal，輸入以下指令，將 GoogleTest 安裝到你的 vscode 目錄下
