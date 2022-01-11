@@ -20,6 +20,7 @@ typedef struct Matrix_t
 Vector parse_vector(char input_buffer[], int &i)
 {
     Vector v;
+    int number = 0
     // parse normal vector
     while (input_buffer[i] != '\0')
     {
@@ -36,9 +37,11 @@ Vector parse_vector(char input_buffer[], int &i)
         {
             while (isdigit(input_buffer[i]))
             {
-                v.unit.push_back(input_buffer[i] - '0');
+                number = number * 10 + input_buffer[i] - '0';
                 i++;
             }
+            v.unit.push_back(number);
+            number = 0;
         }
         if (input_buffer[i] == ',')
         {
