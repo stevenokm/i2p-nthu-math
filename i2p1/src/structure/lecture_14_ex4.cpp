@@ -130,6 +130,7 @@ int main()
 
     cout << "Vector v: " << endl;
     print_vector(v);
+    cout << endl;
     cout << "Length: " << v.length << endl;
     cout << endl;
 
