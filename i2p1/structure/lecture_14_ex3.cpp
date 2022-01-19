@@ -65,7 +65,7 @@ Point parse_point(char input_buffer[], int i)
         }
         if (input_buffer[i] == ')')
         {
-            i++;
+            break;
         }
     }
     return p;
@@ -199,19 +199,19 @@ int main()
 
     if (input_buffer[0] == 't')
     {
-        Triangle t = parse_triangle(input_buffer);
+        Triangle t = parse_triangle(input_buffer + 1);
         print_geometry(t);
         cout << "Area: " << area(t) << endl;
     }
     else if (input_buffer[0] == 'q')
     {
-        Quadrilateral q = parse_quadrilateral(input_buffer);
+        Quadrilateral q = parse_quadrilateral(input_buffer + 1);
         print_geometry(q);
         cout << "Area: " << area(q) << endl;
     }
     else if (input_buffer[0] == 'p')
     {
-        Polygon poly = parse_polygon(input_buffer);
+        Polygon poly = parse_polygon(input_buffer + 1);
         print_geometry(poly);
         cout << "Area: " << area(poly) << endl;
     }
