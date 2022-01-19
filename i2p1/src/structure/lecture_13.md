@@ -247,7 +247,7 @@ Complex parse_complex_number(const char input_buffer[])
     Complex complex_number;
 
     complex_number.real = 0;
-    complex_number.image = 0;
+    complex_number.imag = 0;
 
     // Parse real part
     int i = 0, real_sign = 1;
