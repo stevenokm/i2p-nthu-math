@@ -1,0 +1,659 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Final Exam 2-1 - Introduction to Programming (I)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(一)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_315.html"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li><li class="chapter-item expanded "><a href="formatted_io/lecture_1-1.html"><strong aria-hidden="true">2.</strong> Lecture 1-1: Introduction to Programming &amp; C++</a></li><li class="chapter-item expanded "><a href="formatted_io/lecture_1-2.html"><strong aria-hidden="true">3.</strong> Lecture 1-2: Data Type &amp; Formatted Input/Output (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="formatted_io/lab_1_1.html"><strong aria-hidden="true">3.1.</strong> Lab 1-1: Hello Wolrd! (1)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_2.html"><strong aria-hidden="true">3.2.</strong> Lab 1-2: Hello Wolrd! (2)</a></li></ol></li><li class="chapter-item expanded "><a href="formatted_io/lecture_2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Data Type &amp; Formatted Input/Output (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="formatted_io/lab_2_1.html"><strong aria-hidden="true">4.1.</strong> Lab 2-1: 正實數顯示</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_2_2.html"><strong aria-hidden="true">4.2.</strong> Lab 2-2: 正實數加法</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_2_3.html"><strong aria-hidden="true">4.3.</strong> Lab 2-3: 正實數乘法</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_2_4.html"><strong aria-hidden="true">4.4.</strong> Lab 2-4: 大正實數加法</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_2_5.html"><strong aria-hidden="true">4.5.</strong> Lab 2-5: 大正實數乘法</a></li></ol></li><li class="chapter-item expanded "><a href="formatted_io/lecture_3-1.html"><strong aria-hidden="true">5.</strong> Lecture 3-1: Data Type &amp; Formatted Input/Output (3)</a></li><li class="chapter-item expanded "><a href="operator_expression/lecture_3-2.html"><strong aria-hidden="true">6.</strong> Lecture 3-2: Operator &amp; expression (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="operator_expression/lab_3_1.html"><strong aria-hidden="true">6.1.</strong> Lab 3-1: 科學記號顯示</a></li><li class="chapter-item expanded "><a href="operator_expression/lab_3_2.html"><strong aria-hidden="true">6.2.</strong> Lab 3-2: 科學記號比大小</a></li><li class="chapter-item expanded "><a href="operator_expression/lab_3_3.html"><strong aria-hidden="true">6.3.</strong> Lab 3-3: IEEE-754 誤差計算</a></li><li class="chapter-item expanded "><a href="operator_expression/lab_3_4.html"><strong aria-hidden="true">6.4.</strong> Lab 3-4: 精確科學記號比大小</a></li></ol></li><li class="chapter-item expanded "><a href="operator_expression/lecture_4-1.html"><strong aria-hidden="true">7.</strong> Lecture 4-1: Operator &amp; expression (2)</a></li><li class="chapter-item expanded "><a href="branch/lecture_4-2.html"><strong aria-hidden="true">8.</strong> Lecture 4-2: Branch Statement</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="branch/lab_4_1.html"><strong aria-hidden="true">8.1.</strong> Lab 4-1: 計算機功能選擇</a></li><li class="chapter-item expanded "><a href="branch/lab_4_2.html"><strong aria-hidden="true">8.2.</strong> Lab 4-2: 計算機四則運算</a></li><li class="chapter-item expanded "><a href="branch/lab_4_3.html"><strong aria-hidden="true">8.3.</strong> Lab 4-3: 計算機輸入檢查及例外處理</a></li></ol></li><li class="chapter-item expanded "><a href="loop/lecture_5.html"><strong aria-hidden="true">9.</strong> Lecture 5: Loop Statement (1)</a></li><li class="chapter-item expanded "><a href="loop/lecture_6-1.html"><strong aria-hidden="true">10.</strong> Lecture 6-1: Loop Statement (2)</a></li><li class="chapter-item expanded "><a href="array_vector/lecture_6-2.html"><strong aria-hidden="true">11.</strong> Lecture 6-2: Array &amp; String (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="loop/lab_6_1.html"><strong aria-hidden="true">11.1.</strong> Lab 6-1: 特殊數列計算機</a></li><li class="chapter-item expanded "><a href="loop/lab_6_2.html"><strong aria-hidden="true">11.2.</strong> Lab 6-2: 最大公因數</a></li><li class="chapter-item expanded "><a href="loop/lab_6_3.html"><strong aria-hidden="true">11.3.</strong> Lab 6-3: 大數取餘數</a></li><li class="chapter-item expanded "><a href="loop/lab_6_4.html"><strong aria-hidden="true">11.4.</strong> Lab 6-4: 大數最大公因數</a></li></ol></li><li class="chapter-item expanded "><a href="array_vector/lecture_7.html"><strong aria-hidden="true">12.</strong> Lecture 7: Array &amp; String (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="array_vector/lab_7_1.html"><strong aria-hidden="true">12.1.</strong> Lab 7: 真・大數四則運算</a></li></ol></li><li class="chapter-item expanded "><a href="array_vector/lecture_8.html"><strong aria-hidden="true">13.</strong> Lecture 8: Array &amp; String (3)</a></li><li class="chapter-item expanded "><a href="midterm.html"><strong aria-hidden="true">14.</strong> Midterm Exam</a></li><li class="chapter-item expanded "><a href="function/lecture_10.html"><strong aria-hidden="true">15.</strong> Lecture 10: Function &amp; Reference (1)</a></li><li class="chapter-item expanded "><a href="function/lecture_11.html"><strong aria-hidden="true">16.</strong> Lecture 11: Function &amp; Reference (2)</a></li><li class="chapter-item expanded "><a href="function/lecture_12.html"><strong aria-hidden="true">17.</strong> Lecture 12: Function &amp; Reference (3)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="function/lab_12_1.html"><strong aria-hidden="true">17.1.</strong> Lab 12-1: 整數指令列四則計算機顯示</a></li><li class="chapter-item expanded "><a href="function/lab_12_2.html"><strong aria-hidden="true">17.2.</strong> Lab 12-2: Infix 整數指令列四則計算機</a></li><li class="chapter-item expanded "><a href="function/lab_12_3.html"><strong aria-hidden="true">17.3.</strong> Lab 12-3: Postfix 整數指令列四則計算機</a></li></ol></li><li class="chapter-item expanded "><a href="structure/lecture_13.html"><strong aria-hidden="true">18.</strong> Lecture 13: Structure (1)</a></li><li class="chapter-item expanded "><a href="structure/lecture_14.html"><strong aria-hidden="true">19.</strong> Lecture 14: Structure (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="structure/lab_14_1.html"><strong aria-hidden="true">19.1.</strong> Lab 14-1: COO Sparse Matrix 儲存及顯示</a></li><li class="chapter-item expanded "><a href="structure/lab_14_2.html"><strong aria-hidden="true">19.2.</strong> Lab 14-2: COO Sparse Matrix 相加</a></li><li class="chapter-item expanded "><a href="structure/lab_14_3.html"><strong aria-hidden="true">19.3.</strong> Lab 14-3: COO Sparse Matrix 相乘</a></li></ol></li><li class="chapter-item expanded "><a href="github/lecture_15.html"><strong aria-hidden="true">20.</strong> Lecture 15: Github Tutorial</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="github/lecture_15_2.html"><strong aria-hidden="true">20.1.</strong> Forking</a></li><li class="chapter-item expanded "><a href="github/lecture_15_3.html"><strong aria-hidden="true">20.2.</strong> Following GitHub flow</a></li><li class="chapter-item expanded "><a href="github/lecture_15_4.html"><strong aria-hidden="true">20.3.</strong> Which discussion tool should I use?</a></li></ol></li><li class="chapter-item expanded "><a href="googletest/lecture16.html"><strong aria-hidden="true">21.</strong> Lecture 16: GoogleTest Tutorial</a></li><li class="chapter-item expanded "><a href="final1_1.html"><strong aria-hidden="true">22.</strong> Final Exam 1-1</a></li><li class="chapter-item expanded "><a href="final1_2.html"><strong aria-hidden="true">23.</strong> Final Exam 1-2</a></li><li class="chapter-item expanded "><a href="final2_1.html" class="active"><strong aria-hidden="true">24.</strong> Final Exam 2-1</a></li><li class="chapter-item expanded "><a href="final2_2.html"><strong aria-hidden="true">25.</strong> Final Exam 2-2</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (I)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p1/src/final2_1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="final-exam-2-geometry-object-computer"><a class="header" href="#final-exam-2-geometry-object-computer">Final Exam 2: Geometry Object Computer</a></h1>
+<h2 id="final-exam-2-1-display-geometry-objects-30"><a class="header" href="#final-exam-2-1-display-geometry-objects-30">Final Exam 2-1: Display Geometry Objects (30%)</a></h2>
+<ul>
+<li>Inputs: The gemoetry object.
+<ol>
+<li>The first line of the input contains the type of the object and the number of points.
+<ol>
+<li>The type of the object is one of the following:
+<ol>
+<li><code>point</code>: a point.</li>
+<li><code>circle</code>: a circle, which is defined by two points, center of the circle and a point on the circle.</li>
+<li><code>triangle</code>: a triangle, which is defined by three points.</li>
+<li><code>rectangle</code>: a rectangle, which is defined by two points.</li>
+</ol>
+</li>
+<li>The number of points is an <code>int</code> between (1) and (100).</li>
+</ol>
+</li>
+<li>The remaining lines of the input contain the coordinates of the points.
+<ol>
+<li>The coordinates of the points are <code>double</code> between (-100) and (100).</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Outputs: 
+<ol>
+<li>The type of the object, the number of points, and the coordinates of the points.
+<ol>
+<li>The format is shown below.</li>
+<li>The coordinates of the points are in defualt <code>double</code> format in <code>std::cout</code>.</li>
+</ol>
+</li>
+<li>If the object is invalid, the output is <code>Invalid Object</code> and exit.
+<ol>
+<li>If the coordinates of the points are out of the range.</li>
+<li>If the number of points is not equal to the defined number.</li>
+<li>If the type of the object is not one of the defined types.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>File name: <code>final2_1_&lt;student_id&gt;.cpp</code> (e.g. <code>final2_1_106062802.cpp</code>)</li>
+</ul>
+<p>Notice：</p>
+<ul>
+<li>The program will not print any user prompts.</li>
+<li>The program should use functions to process the input and output.</li>
+<li>The program should define structures to store the data of the objects.</li>
+<li>The program should be finished within 30 seconds. Any test cases will garuntee the program is finished within 30 second</li>
+</ul>
+<h2 id="format"><a class="header" href="#format">Format</a></h2>
+<pre><code class="language-text">&lt;type&gt; &lt;number_of_points&gt;⏎
+&lt;x_1&gt; &lt;y_1&gt;⏎
+...
+&lt;x_n&gt; &lt;y_n&gt;⏎
+Object Type: &lt;type&gt;
+Number of Points: &lt;number_of_points&gt;
+Points: (&lt;x_1&gt;, &lt;y_1&gt;), ..., (&lt;x_n&gt;, &lt;y_n&gt;)
+</code></pre>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<pre><code class="language-console">$ ./a.out⏎
+point 1⏎
+0.0 0.0⏎
+Object Type: point
+Number of Points: 1
+Points: (0, 0)
+$ ./a.out⏎
+circle 2⏎
+0.0 0.0⏎
+1.0 1.0⏎
+Object Type: circle
+Number of Points: 2
+Point: (0, 0), (1, 1)
+$ ./a.out⏎
+triangle 3⏎
+0.0 0.0⏎
+2.0 0.0⏎
+1.0 1.0⏎
+Object Type: triangle
+Number of Points: 3
+Point: (0, 0), (2, 0), (1, 1)
+$ ./a.out⏎
+rectangle 2⏎
+0.0 0.0⏎
+1.0 2.0⏎
+Object Type: rectangle
+Number of Points: 2
+Point: (0, 0), (1, 2)
+$ ./a.out⏎
+rectangle 3⏎
+Invalid Object
+$ ./a.out⏎
+circle -1⏎
+Invalid Object
+$ ./a.out⏎
+circle 2⏎
+-100.1 -100.1⏎
+1.0 1.0⏎
+Invalid Object
+$ ./a.out⏎
+point 101⏎
+Invalid Object
+$ ./a.out⏎
+square 2⏎
+Invalid Object
+</code></pre>
+<h2 id="pseudo-code"><a class="header" href="#pseudo-code">Pseudo code</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+typedef struct Point_t
+{
+    double x;
+    double y;
+} Point;
+
+typedef struct Triangle_t
+{
+    Point p[3];
+} Triangle;
+
+typedef struct Circle_t
+{
+    Point p[2];
+} Circle;
+
+typedef struct Rectangle_t
+{
+    Point p[2];
+} Rectangle;
+
+// parse_header
+// Parses the first line of the input.
+void parse_header(string &amp;type, int &amp;number_of_points);
+// parse_geometry
+// Parses the list of points based on the type of geometry.
+// Hint: check the number of points and the coordinates.
+void parse_geometry(Point &amp;p, const int &amp;number_of_points);
+void parse_geometry(Triangle &amp;t, const int &amp;number_of_points);
+void parse_geometry(Circle &amp;c, const int &amp;number_of_points);
+void parse_geometry(Rectangle &amp;r, const int &amp;number_of_points);
+// check_geometry
+// Checks if the geometry is valid.
+bool check_geometry(const Point &amp;p);
+bool check_geometry(const Triangle &amp;t);
+bool check_geometry(const Circle &amp;c);
+bool check_geometry(const Rectangle &amp;r);
+// print_geometry
+// Prints the geometry.
+void print_geometry(const Point &amp;p);
+void print_geometry(const Triangle &amp;t);
+void print_geometry(const Circle &amp;c);
+void print_geometry(const Rectangle &amp;r);
+// print_point
+// Prints the coordinates of a point.
+void print_point(const Point &amp;p);
+
+int main()
+{
+    string type;
+    int number_of_points;
+
+    parse_header(type, number_of_points);
+
+    if (type == &quot;point&quot;)
+    {
+        Point p;
+        parse_geometry(p, number_of_points);
+        print_geometry(p);
+    }
+    else if (type == &quot;triangle&quot;)
+    {
+        Triangle t;
+        parse_geometry(t, number_of_points);
+        print_geometry(t);
+    }
+    else if (type == &quot;circle&quot;)
+    {
+        Circle c;
+        parse_geometry(c, number_of_points);
+        print_geometry(c);
+    }
+    else if (type == &quot;rectangle&quot;)
+    {
+        Rectangle r;
+        parse_geometry(r, number_of_points);
+        print_geometry(r);
+    }
+    else
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+</code></pre>
+<p>Reference Code:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+typedef struct Point_t
+{
+    double x;
+    double y;
+} Point;
+
+typedef struct Triangle_t
+{
+    Point p[3];
+} Triangle;
+
+typedef struct Circle_t
+{
+    Point p[2];
+} Circle;
+
+typedef struct Rectangle_t
+{
+    Point p[2];
+} Rectangle;
+
+// parse_header
+// Parses the first line of the input.
+void parse_header(string &amp;type, int &amp;number_of_points);
+// parse_geometry
+// Parses the list of points based on the type of geometry.
+// Hint: check the number of points and the coordinates.
+void parse_geometry(Point &amp;p, const int &amp;number_of_points);
+void parse_geometry(Triangle &amp;t, const int &amp;number_of_points);
+void parse_geometry(Circle &amp;c, const int &amp;number_of_points);
+void parse_geometry(Rectangle &amp;r, const int &amp;number_of_points);
+// check_geometry
+// Checks if the geometry is valid.
+bool check_geometry(const Point &amp;p);
+bool check_geometry(const Triangle &amp;t);
+bool check_geometry(const Circle &amp;c);
+bool check_geometry(const Rectangle &amp;r);
+// print_geometry
+// Prints the geometry.
+void print_geometry(const Point &amp;p);
+void print_geometry(const Triangle &amp;t);
+void print_geometry(const Circle &amp;c);
+void print_geometry(const Rectangle &amp;r);
+// print_point
+// Prints the coordinates of a point.
+void print_point(const Point &amp;p);
+
+int main()
+{
+    string type;
+    int number_of_points;
+
+    parse_header(type, number_of_points);
+
+    if (type == &quot;point&quot;)
+    {
+        Point p;
+        parse_geometry(p, number_of_points);
+        print_geometry(p);
+    }
+    else if (type == &quot;triangle&quot;)
+    {
+        Triangle t;
+        parse_geometry(t, number_of_points);
+        print_geometry(t);
+    }
+    else if (type == &quot;circle&quot;)
+    {
+        Circle c;
+        parse_geometry(c, number_of_points);
+        print_geometry(c);
+    }
+    else if (type == &quot;rectangle&quot;)
+    {
+        Rectangle r;
+        parse_geometry(r, number_of_points);
+        print_geometry(r);
+    }
+    else
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        return EXIT_FAILURE;
+    }
+    return EXIT_SUCCESS;
+}
+
+void parse_header(string &amp;type, int &amp;number_of_points)
+{
+    cin &gt;&gt; type &gt;&gt; number_of_points;
+}
+void parse_geometry(Point &amp;p, const int &amp;number_of_points)
+{
+    if (number_of_points != 1)
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i &lt; number_of_points; i++)
+    {
+        cin &gt;&gt; p.x &gt;&gt; p.y;
+    }
+    if (!check_geometry(p))
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+}
+void parse_geometry(Triangle &amp;t, const int &amp;number_of_points)
+{
+    if (number_of_points != 3)
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i &lt; number_of_points; i++)
+    {
+        cin &gt;&gt; t.p[i].x &gt;&gt; t.p[i].y;
+    }
+    if (!check_geometry(t))
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+}
+void parse_geometry(Circle &amp;c, const int &amp;number_of_points)
+{
+    if (number_of_points != 2)
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i &lt; number_of_points; i++)
+    {
+        cin &gt;&gt; c.p[i].x &gt;&gt; c.p[i].y;
+    }
+    if (!check_geometry(c))
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+}
+void parse_geometry(Rectangle &amp;r, const int &amp;number_of_points)
+{
+    if (number_of_points != 2)
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+    for (int i = 0; i &lt; number_of_points; i++)
+    {
+        cin &gt;&gt; r.p[i].x &gt;&gt; r.p[i].y;
+    }
+    if (!check_geometry(r))
+    {
+        cout &lt;&lt; &quot;Invalid Object&quot; &lt;&lt; endl;
+        exit(EXIT_FAILURE);
+    }
+}
+bool check_geometry(const Point &amp;p)
+{
+    if (p.x &lt; -100.0 || p.y &lt; -100.0 || p.x &gt; 100.0 || p.y &gt; 100.0)
+    {
+        return false;
+    }
+    return true;
+}
+bool check_geometry(const Triangle &amp;t)
+{
+    for (int i = 0; i &lt; 3; i++)
+    {
+        if (!check_geometry(t.p[i]))
+        {
+            return false;
+        }
+    }
+    return true;
+}
+bool check_geometry(const Circle &amp;c)
+{
+    if (!check_geometry(c.p[0]) || !check_geometry(c.p[1]))
+    {
+        return false;
+    }
+    return true;
+}
+bool check_geometry(const Rectangle &amp;r)
+{
+    if (!check_geometry(r.p[0]) || !check_geometry(r.p[1]))
+    {
+        return false;
+    }
+    return true;
+}
+void print_geometry(const Point &amp;p)
+{
+    cout &lt;&lt; &quot;Object Type: point&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Number of Points: 1&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Point: &quot;;
+    print_point(p);
+    cout &lt;&lt; endl;
+}
+void print_geometry(const Triangle &amp;t)
+{
+    cout &lt;&lt; &quot;Object Type: triangle&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Number of Points: 3&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Point: &quot;;
+    for (int i = 0; i &lt; 3; i++)
+    {
+        if (i != 0)
+        {
+            cout &lt;&lt; &quot;, &quot;;
+        }
+        print_point(t.p[i]);
+    }
+    cout &lt;&lt; endl;
+}
+void print_geometry(const Circle &amp;c)
+{
+    cout &lt;&lt; &quot;Object Type: circle&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Number of Points: 2&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Point: &quot;;
+    for (int i = 0; i &lt; 2; i++)
+    {
+        if (i != 0)
+        {
+            cout &lt;&lt; &quot;, &quot;;
+        }
+        print_point(c.p[i]);
+    }
+    cout &lt;&lt; endl;
+}
+void print_geometry(const Rectangle &amp;r)
+{
+    cout &lt;&lt; &quot;Object Type: rectangle&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Number of Points: 2&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;Point: &quot;;
+    for (int i = 0; i &lt; 2; i++)
+    {
+        if (i != 0)
+        {
+            cout &lt;&lt; &quot;, &quot;;
+        }
+        print_point(r.p[i]);
+    }
+    cout &lt;&lt; endl;
+}
+void print_point(const Point &amp;p)
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;, &quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot;;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="final1_2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="final2_2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="final1_2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="final2_2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
