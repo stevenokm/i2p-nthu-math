@@ -378,13 +378,13 @@ void parse_expression(vector&lt;string&gt; &amp;operator_vector,
         {
             break;
         }
-        else if (temp == &quot;+&quot; || temp == &quot;-&quot; || temp == &quot;*&quot; || temp == &quot;/&quot;)
+        else if(isnumber(temp[0]))
         {
-            operator_vector.push_back(temp);
+            operand_vector.push_back(atof(temp.c_str()));
         }
         else
         {
-            operand_vector.push_back(atof(temp.c_str()));
+            operator_vector.push_back(temp);
         }
     }
 }
