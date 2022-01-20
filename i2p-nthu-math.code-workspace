@@ -17,7 +17,8 @@
 			"iosfwd": "cpp",
 			"iterator": "cpp",
 			"version": "cpp",
-			"ostream": "cpp"
+			"ostream": "cpp",
+			"istream": "cpp"
 		}
 	}
 }

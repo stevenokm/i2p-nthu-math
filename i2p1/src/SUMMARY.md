@@ -52,3 +52,7 @@
     - [Following GitHub flow](./github/lecture_15_3.md)
     - [Which discussion tool should I use?](./github/lecture_15_4.md)]
 - [Lecture 16: GoogleTest Tutorial](./googletest/lecture16.md)
+- [Final Exam 1-1](./final1_1.md)
+- [Final Exam 1-2](./final1_2.md)
+- [Final Exam 2-1](./final2_1.md)
+- [Final Exam 2-2](./final2_2.md)
