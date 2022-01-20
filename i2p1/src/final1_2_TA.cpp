@@ -62,13 +62,13 @@ void parse_expression(vector<string> &operator_vector,
         {
             break;
         }
-        else if (temp == "+" || temp == "-" || temp == "*" || temp == "/")
+        else if(isnumber(temp[0]))
         {
-            operator_vector.push_back(temp);
+            operand_vector.push_back(atof(temp.c_str()));
         }
         else
         {
-            operand_vector.push_back(atof(temp.c_str()));
+            operator_vector.push_back(temp);
         }
     }
 }
