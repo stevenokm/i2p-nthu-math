@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_315.html"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -146,21 +146,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="course-introduction"><a class="header" href="#course-introduction">Course Introduction</a></h1>
+                        <hr />
+<h2>marp: true
+author: Yi-Wen Hung
+theme: default</h2>
+<h1 id="course-introduction"><a class="header" href="#course-introduction">Course Introduction</a></h1>
+<hr />
 <h2 id="課程說明-course-description"><a class="header" href="#課程說明-course-description">課程說明 (Course Description)</a></h2>
 <p>本課程之內容包括：物件導向程式設計 (OOP)、C/C++ OOP 寫法、程式寫作技巧與觀念及實作範例。透過課堂解釋實作範例搭配作業練習各主題的語法或技巧。</p>
-<p>The course will introduce the basics of C/C++ and the concepts and skills of programming.
+<p>The course will introduce the Object-Oriented Programming (OOP), the writing of OOP in C/C++ and the concepts and skills of programming.
 Each theme will be instructed with examples and hands-on labs in-class or off-class.</p>
+<hr />
 <h2 id="指定用書-text-books"><a class="header" href="#指定用書-text-books">指定用書 (Text Books)</a></h2>
 <ol>
-<li>S. Prata, C PRIMER PLUS (自由購買)</li>
-<li>課程講義 (Lecture notes)</li>
+<li>課程講義，公布於課程網站上。 (Lecture notes, published on the course website.)</li>
 </ol>
+<hr />
 <h2 id="參考書籍-references"><a class="header" href="#參考書籍-references">參考書籍 (References)</a></h2>
-<p><a href="https://ocw.nthu.edu.tw/ocw/index.php?page=course&amp;cid=240">國立清華大學開放式課程OpenCourseWare(NTHU, OCW) - 計算機程式設計一(資工版)</a></p>
+<p><a href="https://deitel.com/c-plus-plus-how-to-program-10-e/">Paul Deitel, and Harvey Deitel, C++ How to Program, 10/e</a> (主要參考, Primary reference)</p>
+<p><a href="https://www.mheducation.com/highered/product/object-oriented-classical-software-engineering-schach/M9780073376189.html">Stephen Schach, Object-Oriented and Classical Software Engineering, 8/e</a></p>
+<p><a href="https://ocw.nthu.edu.tw/ocw/index.php?page=course&amp;cid=138">國立清華大學開放式課程OpenCourseWare(NTHU, OCW) - 計算機程式設計二</a></p>
 <p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-096-introduction-to-c-january-iap-2011/">Introduction to C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
 <p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s096-introduction-to-c-and-c-january-iap-2013/">Introduction to C and C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
 <p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014/index.htm">Effective Programming in C and C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
+<hr />
 <h2 id="教學方式-teaching-method"><a class="header" href="#教學方式-teaching-method">教學方式 (Teaching Method)</a></h2>
 <p>透過講義解說各主題的實作技巧，由學生練習、測試與完成相關之課堂實作或作業。
 課堂會採用實體及線上混合教學，學生可在滿足防疫規定下參加現場授課，同時於線上平台直播，同學也可同步於線上平台留言發問。
@@ -172,64 +181,80 @@ Students can attend class physically under Taiwan CDC COVID-19 guideline.
 Also, the course will stream on online streaming platform(s).
 Students can discuss in real-time on the online streaming platform(s).
 After class, students can use the discussion forum in the NTHU eeclass or make a reservation with instructor or TA.</p>
+<hr />
 <h2 id="教學進度-syllabus"><a class="header" href="#教學進度-syllabus">教學進度 (Syllabus)</a></h2>
-<p>(9/11 updated)
-週次皆為暫定安排，會依實際授課情形調整。</p>
-<table><thead><tr><th align="center">週次 (Week)</th><th align="left">主題 (Theme)</th><th align="left"></th></tr></thead><tbody>
-<tr><td align="center">Week 2</td><td align="left">程式設計 &amp; C/C++ 語言基本概念</td><td align="left">Basic Concept of Programming</td></tr>
-<tr><td align="center"></td><td align="left"></td><td align="left">&amp; C/C++ Language</td></tr>
-<tr><td align="center"></td><td align="left">資料型態 &amp; 格式化輸出與輸入(1)</td><td align="left">Data Type &amp; Formatted</td></tr>
-<tr><td align="center"></td><td align="left"></td><td align="left">Input/Output(1)</td></tr>
-<tr><td align="center">Week 3</td><td align="left">資料型態 &amp; 格式化輸出與輸入(2)</td><td align="left">Data Type &amp; Formatted</td></tr>
-<tr><td align="center"></td><td align="left"></td><td align="left">Input/Output(2)</td></tr>
-<tr><td align="center">Week 4</td><td align="left">資料型態 &amp; 格式化輸出與輸入(3)</td><td align="left">Data Type &amp; Formatted</td></tr>
-<tr><td align="center"></td><td align="left"></td><td align="left">Input/Output(3)</td></tr>
-<tr><td align="center"></td><td align="left">運算子與運算式</td><td align="left">Operator &amp; expression</td></tr>
-<tr><td align="center">Week 5</td><td align="left">分支敘述</td><td align="left">Branch Statement</td></tr>
-<tr><td align="center"></td><td align="left">迴圈敘述(1)</td><td align="left">Loop Statement(1)</td></tr>
-<tr><td align="center">Week 6</td><td align="left">迴圈敘述(2)</td><td align="left">Loop Statement(2)</td></tr>
-<tr><td align="center">Week 7</td><td align="left">陣列與字串(1)</td><td align="left">Array &amp; String(1)</td></tr>
-<tr><td align="center">Week 8</td><td align="left">陣列與字串(2)</td><td align="left">Array &amp; String(2)</td></tr>
-<tr><td align="center">Week 9</td><td align="left">陣列與字串(3)</td><td align="left">Array &amp; String(3)</td></tr>
-<tr><td align="center"></td><td align="left">位元處裡</td><td align="left">Bit manipulation</td></tr>
-<tr><td align="center">Week 10</td><td align="left">期中評量</td><td align="left">Midterm exam</td></tr>
-<tr><td align="center">Week 11</td><td align="left">函式 &amp; 參考(1)</td><td align="left">Function &amp; Reference(1)</td></tr>
-<tr><td align="center">Week 12</td><td align="left">函式 &amp; 參考(2)</td><td align="left">Function &amp; Reference(2)</td></tr>
-<tr><td align="center">Week 13</td><td align="left">函式 &amp; 參考(3)</td><td align="left">Function &amp; Reference(3)</td></tr>
-<tr><td align="center">Week 14</td><td align="left">結構(1)</td><td align="left">Structure(1)</td></tr>
-<tr><td align="center">Week 15</td><td align="left">結構(2)</td><td align="left">Structure(2)</td></tr>
-<tr><td align="center"></td><td align="left">檔案</td><td align="left">File</td></tr>
-<tr><td align="center">Week 16</td><td align="left">記憶體管理</td><td align="left">Memory management</td></tr>
-<tr><td align="center">Week 17</td><td align="left">前置處理器</td><td align="left">Preprocessor</td></tr>
-<tr><td align="center"></td><td align="left">例外處裡</td><td align="left">Exception handling</td></tr>
-<tr><td align="center"></td><td align="left">除錯 &amp; 斷言</td><td align="left">Debugging &amp; assertion</td></tr>
-<tr><td align="center">Week 18</td><td align="left">期末評量</td><td align="left">Final exam</td></tr>
+<p>(1/30 updated) 週次皆為暫定安排，會依實際授課情形調整。</p>
+<table><thead><tr><th align="center">課程 (Lecture)</th><th align="left">主題 (Theme)</th></tr></thead><tbody>
+<tr><td align="center">Lecture 1</td><td align="left">Course Introduction</td></tr>
+<tr><td align="center"></td><td align="left">Sturcture and Class</td></tr>
+<tr><td align="center">Lab 1</td><td align="left">Programming Environment &amp; Class Helloworld</td></tr>
+<tr><td align="center">Lecture 2</td><td align="left">Class Design 101</td></tr>
+<tr><td align="center">Lecture 3</td><td align="left">Class Members &amp; Methods</td></tr>
+<tr><td align="center">Lecture 4</td><td align="left">Class Constructor &amp; Modifer</td></tr>
+<tr><td align="center">Lab 4</td><td align="left">Class 101</td></tr>
+<tr><td align="center">Lecture 5</td><td align="left">Collaborate with Other Classes</td></tr>
+<tr><td align="center">Lecture 6</td><td align="left">Operaotr &amp; Operator Overloading</td></tr>
+<tr><td align="center">Lab 6</td><td align="left">Complex Number &amp; Complex Number Calculator</td></tr>
+<tr><td align="center">Lecture 7</td><td align="left">Introduction to OOP Design</td></tr>
+<tr><td align="center">Lecture 8</td><td align="left">OOP: Inheritance (1)</td></tr>
+<tr><td align="center">Lecture 9</td><td align="left">Midterm Exam</td></tr>
+<tr><td align="center">Lecture 10</td><td align="left">OOP: Inheritance (2)</td></tr>
+<tr><td align="center">Lecture 11</td><td align="left">OOP: Polymorphism (1)</td></tr>
+<tr><td align="center">Lecture 12</td><td align="left">OOP: Polymorphism (2)</td></tr>
+<tr><td align="center">Lab 12</td><td align="left">Complex Number's Geometry &amp; Operations</td></tr>
+<tr><td align="center">Lecture 13</td><td align="left">Advanced I/O &amp; Exception Handling</td></tr>
+<tr><td align="center">Lecture 14</td><td align="left">File Processing (1)</td></tr>
+<tr><td align="center">Lecture 15</td><td align="left">File Processing (2)</td></tr>
+<tr><td align="center">Lab 15</td><td align="left">File Export of Complex Numbers' Geometry</td></tr>
+<tr><td align="center">Lecture 16</td><td align="left">C++ Image Export &amp; Matplot++</td></tr>
+<tr><td align="center">Lecture 17</td><td align="left">Google Test for Class</td></tr>
+<tr><td align="center">Lecture 18</td><td align="left">Final Exam</td></tr>
 </tbody></table>
+<hr />
 <h2 id="成績考核-evaluation"><a class="header" href="#成績考核-evaluation">成績考核 (Evaluation)</a></h2>
 <p>暫定，會依實際授課情形調整。 (Tentative, will change during the course)</p>
 <p>學期成績 (Grade) ＝ 作業/實作 (Homework/Lab), 50% ＋ 期中考 (Midterm exam), 25% ＋ 期末考 (Final exam), 25% + Bonus, 15%</p>
+<hr />
 <h2 id="相關網頁personal-website"><a class="header" href="#相關網頁personal-website">相關網頁(Personal Website)</a></h2>
-<p>課程網頁 (Course website): <a href="https://stevenokm.github.io/i2p-nthu-math/i2p2">https://stevenokm.github.io/i2p-nthu-math/i2p2</a></p>
+<p>課程網頁 (Course website): <a href="https://stevenokm.github.io/i2p-nthu-math/i2p2">https://stevenokm.github.io/i2p-nthu-math/i2p2</a>
+<img src="qrcode_docs.google.com.png" alt="bg right" /></p>
+<hr />
 <h2 id="課程資訊"><a class="header" href="#課程資訊">課程資訊</a></h2>
+<h3 id="課程上課時間"><a class="header" href="#課程上課時間">課程上課時間</a></h3>
 <ul>
-<li>課程上課時間：每週四 15:30 - 18:10
+<li>每週四 15:30 - 18:10
 <ul>
 <li>前 1 - 1.5 小時講解今日主題</li>
 <li>之後時間開放同學於現場或線上即時提問</li>
 </ul>
 </li>
-<li>課程上課地點：
+</ul>
+<hr />
+<h3 id="課程上課地點實體教室"><a class="header" href="#課程上課地點實體教室">課程上課地點(實體教室)</a></h3>
 <ul>
-<li>綜三館 315 電腦教室 (座位47人，可出席人數 <strong>47</strong> 人，10/7更新)
+<li>綜三館 315 電腦教室 (座位47人，可出席人數 <strong>47</strong> 人)
 <ul>
-<li>實體上課出席登記: <a href="https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=538727748">出席 (不計分)</a> <img src="qrcode_docs.google.com.png" alt="QR code" /></li>
+<li>實體上課出席登記: <a href="https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=538727748">出席 (不計分)</a> </li>
 <li>實體上課出席座位表: <a href="https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=0">座位表</a></li>
 </ul>
 </li>
+</ul>
+<p><img src="qrcode_docs.google.com.png" alt="bg right fit" /></p>
+<hr />
+<h3 id="課程上課地點網路"><a class="header" href="#課程上課地點網路">課程上課地點(網路)</a></h3>
+<ul>
 <li>Youtube (Link: <a href="https://www.youtube.com/playlist?list=PLEpArVdL-rlK1cLK7yxYcNHdL1rsvs5jB">上課錄影 - YouTube</a>)</li>
-<li>Teams (團隊代碼: 0l2nz9s)</li>
+<li>Teams (團隊代碼: 0l2nz9s)
+<ul>
+<li>申請方式: <a href="https://learning.site.nthu.edu.tw/p/412-1319-12292.php?Lang=zh-tw">Office 365 服務 (nthu.edu.tw)</a></li>
+<li>外校同學可提供 office 365 帳號給助教協助加入團隊。
+<img src="qrcode_www.youtube.com.png" alt="bg right fit" /></li>
 </ul>
 </li>
+</ul>
+<hr />
+<h3 id="加簽規則"><a class="header" href="#加簽規則">加簽規則</a></h3>
+<ul>
 <li>本課程開放加簽，原則上限制人數為 50 人，且參加實體課程需配合防疫規定。
 <ul>
 <li>請使用電子加簽系統加簽。</li>
@@ -237,24 +262,22 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <li>外系同學可線上加簽系統加選課程。</li>
 </ul>
 </li>
-<li>本課程有 Teams 團隊，需在申請完學校的 Office 365 帳號後即可使用連結加入，同學可多加利用團隊進行討論。
-<ul>
-<li>申請方式: <a href="https://learning.site.nthu.edu.tw/p/412-1319-12292.php?Lang=zh-tw">Office 365 服務 (nthu.edu.tw)</a></li>
-<li>外校同學可提供 office 365 帳號給助教協助加入團隊。</li>
 </ul>
-</li>
-</ul>
+<hr />
 <h2 id="作業"><a class="header" href="#作業">作業</a></h2>
 <ul>
-<li>每週作業會公布在課程網頁上，並使用 eeclass 平台繳交作業。
+<li>作業會公布在課程網頁上，並使用 eeclass 平台繳交作業。
 <ul>
 <li>eeclass 連結: <a href="https://eeclass.nthu.edu.tw/course/5088">https://eeclass.nthu.edu.tw/course/5088</a></li>
+<li>同學可多加利用 eeclass 的討論區進行討論。</li>
 </ul>
 </li>
 <li>作業會使用自動化工具檢查，若有批改上有問題可與助教詢問。</li>
 <li>作業抄襲一律 0 分計算，並且不計入繳交次數。</li>
 <li>作業須準時繳交，遲交則得到原始成績 80% 的分數。</li>
 </ul>
+<p><img src="qrcode_eeclass.nthu.edu.tw.png" alt="bg right fit" /></p>
+<hr />
 <h2 id="期中--期末評量"><a class="header" href="#期中--期末評量">期中 / 期末評量</a></h2>
 <ul>
 <li>期中 / 期末評量採斷網上機測試。
@@ -264,20 +287,29 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 </li>
 <li>同學皆可參加期中 / 期末評量。</li>
 </ul>
+<hr />
 <h2 id="老師資訊"><a class="header" href="#老師資訊">老師資訊</a></h2>
-<p>洪奕文 <a href="mailto:s106062802@m106.nthu.edu.tw">E-mail: s106062802@m106.nthu.edu.tw</a></p>
+<p>洪奕文 E-mail: <a href="mailto:s106062802@m106.nthu.edu.tw">s106062802@m106.nthu.edu.tw</a></p>
 <p>Office Hours: Every Mon. 14:00 - 15:00</p>
 <p>Office Room: R2341, 2F, EECS Building</p>
 <p>Note: 若要來研究室詢問問題，請 <strong>一定要預約時間</strong> ，臨時來研究室詢問 <strong>不保證</strong> 能夠當下開放詢問。
 若要約 teams 詢問也可以約 Office Hour 時段詢問。</p>
+<hr />
 <h2 id="ta-infos"><a class="header" href="#ta-infos">TA infos</a></h2>
-<p>許廷碩 <a href="mailto:tim890727@gmail.com">E-mail: tim890727@gmail.com</a></p>
-<p>TA Hours: TBA</p>
-<h2 id="上課實況錄影檔"><a class="header" href="#上課實況錄影檔">上課實況/錄影檔</a></h2>
-<p>Youtube (Link: <a href="https://www.youtube.com/playlist?list=PLEpArVdL-rlK1cLK7yxYcNHdL1rsvs5jB">上課錄影 - YouTube</a>)</p>
+<p>許廷碩 E-mail: <a href="mailto:tim890727@gmail.com">tim890727@gmail.com</a></p>
+<p>TA Hours: 寫信詢問</p>
+<hr />
 <h2 id="bonus"><a class="header" href="#bonus">Bonus</a></h2>
-<p>課程內容如果有錯誤，可以在每頁的右上方 &quot;Suggest an edit&quot; 使用 Github 進行修改，修改完畢後利用 Pull Request 的方式提交。</p>
-<p>提交時註明學號以及姓名，並且每提交一次可以增加學期分數，配分依據修改幅度而定，每人總增加分數不超過 5 分。</p>
+<ul>
+<li>課程內容如果有錯誤，可以在每頁的右上方 &quot;Suggest an edit&quot; 使用 Github 進行修改，修改完畢後利用 Pull Request 的方式提交。
+<ul>
+<li>提交時註明學號以及姓名，並且每提交一次可以增加學期分數，配分依據修改幅度而訂。</li>
+<li>Github Commit 提交教學請參考 <a href="https://stevenokm.github.io/i2p-nthu-math/i2p1/github/lecture_15.html#making-and-committing-changes">Lecture 15: Github Tutorial - Introduction to Programming (I)</a></li>
+</ul>
+</li>
+<li>於 eeclass 討論區參與討論，每提交一次可以增加學期分數，配分依據提交次數而訂。</li>
+<li>每人總增加分數不超過 15 分</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-studio-code-tutorial"><a class="header" href="#visual-studio-code-tutorial">Visual Studio Code Tutorial</a></h1>
 <h2 id="設定-vscode-環境-linux"><a class="header" href="#設定-vscode-環境-linux">設定 VSCode 環境 (Linux)</a></h2>
 <h3 id="安裝-gcc"><a class="header" href="#安裝-gcc">安裝 GCC</a></h3>
@@ -786,6 +818,76 @@ $
 <li><a href="https://code.visualstudio.com/docs/cpp/config-wsl">Get Started with C++ and Windows Subsystem for Linux in Visual Studio Code</a></li>
 <li><a href="https://code.visualstudio.com/docs/cpp/config-mingw">Get Started with C++ and Mingw-w64 in Visual Studio Code</a></li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="visual-studio-code-tutorial-315-classroom"><a class="header" href="#visual-studio-code-tutorial-315-classroom">Visual Studio Code Tutorial (315 classroom)</a></h1>
+<h2 id="使用-vscode-環境"><a class="header" href="#使用-vscode-環境">使用 VSCode 環境</a></h2>
+<p>點擊兩下，打開桌面上的 <code>Visual Studio Code</code>。</p>
+<p><img src="formatted_io/img/launch_vscode.png" alt="launch vscode" /></p>
+<p><img src="formatted_io/img/vscode_wellcome.png" alt="vscode welcome" /></p>
+<p>在文字輸入區輸入以下程式碼</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+
+using namespace std;
+
+int main()
+{
+    vector&lt;string&gt; msg {&quot;Hello&quot;, &quot;C++&quot;, &quot;World&quot;, &quot;from&quot;, &quot;VS Code&quot;, &quot;and the C++ extension!&quot;};
+
+    for (const string&amp; word : msg)
+    {
+        cout &lt;&lt; word &lt;&lt; &quot; &quot;;
+    }
+    cout &lt;&lt; endl;
+}
+</code></pre>
+<p><img src="formatted_io/img/input_cpp.png" alt="input cpp code" /></p>
+<h3 id="編譯--執行-hello-world-4"><a class="header" href="#編譯--執行-hello-world-4">編譯 &amp; 執行 Hello world!</a></h3>
+<p>In VSCode: <code>Terminal -&gt; New Terminal</code></p>
+<p><img src="formatted_io/img/create_terminal.png" alt="create terminal" /></p>
+<p>In VSCode Terminal:</p>
+<pre><code class="language-console">$ g++ test.cpp
+$ ./a.out
+Hello C++ World from VS Code and the C++ extension! 
+$ 
+</code></pre>
+<h3 id="測試編譯以及除錯-1"><a class="header" href="#測試編譯以及除錯-1">測試編譯以及除錯</a></h3>
+<h4 id="測試編譯-1"><a class="header" href="#測試編譯-1">測試編譯</a></h4>
+<ol>
+<li>點擊左方test.cpp檔案後，在要中斷的程式碼行號左邊點一下，會出現紅點，如下圖示範：</li>
+</ol>
+<p><img src="formatted_io/img/insert_breakpoint.png" alt="insert breakpoint" /></p>
+<ol>
+<li>按下<code>ctrl+shift+B</code>按鍵，或上方<code>terminal -&gt; Run Build Task</code>，如下圖示範：</li>
+</ol>
+<p><img src="formatted_io/./img/fig_08-run_build_task.png" alt="run_build_task" /></p>
+<ol start="3">
+<li>此時上方會出現以下畫面，選擇中間選項使用 <strong>g++</strong> 編譯檔案，如下圖示範：</li>
+</ol>
+<p><img src="formatted_io/./img/fig_09-build_hint.png" alt="build_hint" /></p>
+<ol start="4">
+<li>設置正確的話，此時下方會出現編譯成功完成的提示，如下圖示範：</li>
+</ol>
+<p><img src="formatted_io/./img/fig_10-build_successfully.png" alt="build_successfully" /></p>
+<h4 id="測試除錯-1"><a class="header" href="#測試除錯-1">測試除錯</a></h4>
+<ol>
+<li>
+<p>完成前項<code>測試編譯</code>的所有流程</p>
+</li>
+<li>
+<p>按下左方三角形按鈕後選擇<code>Run and Debug</code>，如下圖示範：</p>
+</li>
+</ol>
+<p><img src="formatted_io/./img/fig_11-open_debugger.png" alt="open_debugger" /></p>
+<ol start="3">
+<li>此時上方會依序出現相關提示，選擇預設的即可，如下圖示範：</li>
+</ol>
+<p><img src="formatted_io/./img/fig_12-debuger_hint-1.png" alt="debuger_hint-1" />
+<img src="formatted_io/./img/fig_13-debuger_hint-2.png" alt="debuger_hint-2" /></p>
+<ol start="4">
+<li>若設定正確的話，會看到程式停留在選取的那一行，如下圖示範：</li>
+</ol>
+<p><img src="formatted_io/img/run_gdb.png" alt="run gdb" /></p>
 
                     </main>
 
