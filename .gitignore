@@ -20,3 +20,6 @@ tags*
 
 .DS_Store
 fix_permission.sh
+
+# Marp slides
+slides
