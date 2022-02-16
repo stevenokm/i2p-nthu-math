@@ -166,7 +166,7 @@ In VSCode: `Run -> Start Debugging F5`
 
 ## 設定 VSCode 環境 (Windows + mingw)
 
-Credit: [CNOCycle/cpp_tutorial by E. Chen](https://github.com/CNOCycle/cpp_tutorial)
+Modified from: [CNOCycle/cpp_tutorial by E. Chen](https://github.com/CNOCycle/cpp_tutorial)
 
 {{#include install-windows.md}}
 

@@ -323,147 +323,21 @@ In VSCode: `Run -> Start Debugging F5`
 
 ![run gdb](img/run_gdb.png)
 
-## 使用 VSCode server
+## ~~使用 VSCode server~~
 
-![login code-server](img/login_codeserver.png)
+## 使用 web IDE 
 
-### 安裝 GCC & C++ plugin
+Notice: 僅提供方便使用的網站，與 VSCode 環境不同，需自己學習使用。
 
-In VSCode: `Terminal -> New Terminal`
-
-![create terminal](img/codeserver_create_terminal.png)
-
-```console
-sudo apt update
-sudo apt install -y build-essential g++ gdb
-g++ -v
-curl -L https://github.com/microsoft/vscode-cpptools/releases/download/1.5.1/cpptools-linux.vsix --output cpptools-linux.vsix
-code-server --install-extension cpptools-linux.vsix
-```
-
-NOTE: 須重新整理網頁才能生效
-
-### 新增專案 (Hello world!)
-
-In VSCode: `Exploer -> New Folder`
-
-輸入 `projects`
-
-![new folder projects](img/codeserver_new_folder.png)
-
-In VSCode: `File -> Open Folder`
-
-![open folder projects 1](img/codeserver_open_folder_1.png)
-
-![open folder projects 2](img/codeserver_open_folder_2.png)
-
-In VSCode: `Exploer -> New File`
-
-輸入 `test.cpp`
-
-![new file icon](img/new_file.png)
-
-在文字輸入區輸入以下程式碼
-
-```c++
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
-int main()
-{
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-
-    for (const string& word : msg)
-    {
-        cout << word << " ";
-    }
-    cout << endl;
-}
-```
-
-![input cpp code](img/input_cpp.png)
-
-### 編譯 & 執行 Hello world!
-
-In VSCode Terminal:
-```console
-$ g++ test.cpp
-$ ./a.out
-Hello C++ World from VS Code and the C++ extension! 
-$ 
-```
-
-### Debugger
-
-可以設置中斷點，方便程式除錯。
-
-#### `launch.json`
-
-In VSCode: `Exploer -> New Folder`
-
-輸入 `.vscode`
-
-![new folder icon](img/new_folder.png)
-
-In VSCode: `Exploer -> New File`
-
-輸入 `launch.json`
-
-在文字輸入區輸入以下設定檔
-
-```json
-{
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "(gdb) Launch",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/a.out",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": false,
-            "MIMode": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                }
-            ]
-        }
-    ]
-}
-```
-
-#### 編譯 & 執行 Debugger
-
-In VSCode Terminal:
-```console
-$ g++ -g test.cpp
-$ 
-```
-
-插入中斷點
-
-在要中斷的程式碼行號左邊點一下
-
-![insert breakpoint](img/insert_breakpoint.png)
-
-In VSCode: `Run -> Start Debugging F5`
-
-![start debugging](img/start_gdb.png)
-
-![run gdb](img/run_gdb.png)
+* [https://replit.com/](https://replit.com/)
+  * 需註冊帳號，有部分功能需付費。
+* [https://www.onlinegdb.com/](https://www.onlinegdb.com/)
+  * 無須註冊帳號，僅有基本功能。
+* [https://www.online-ide.com/](https://www.online-ide.com/)
+  * 無須註冊帳號，僅有基本功能。
 
 Reference: 
 
 * [Get Started with C++ on Linux in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-linux)
 * [Configure VS Code for Clang/LLVM on macOS](https://code.visualstudio.com/docs/cpp/config-clang-mac)
-* [Get Started with C++ and Windows Subsystem for Linux in Visual Studio Code](https://code.visualstudio.com/docs/cpp/config-wsl)
 

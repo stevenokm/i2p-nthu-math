@@ -4,14 +4,39 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "run all",
+            "type": "shell",
+            "dependsOn": [
+                "marp build slides html",
+                "build mdbook"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "isDefault": true,
+                "kind": "build"
+            }
+        },
+        {
             "label": "build mdbook",
             "type": "shell",
             "command": "mdbook build",
             "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
+        },
+        {
+            "type": "shell",
+            "label": "marp build slides html",
+            "command": "marp",
+            "args": [
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}_slides.html"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "group": "build"
         }
     ]
 }

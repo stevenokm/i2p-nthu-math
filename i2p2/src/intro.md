@@ -1,12 +1,14 @@
----
+<!--
 marp: true
 author: Yi-Wen Hung
 theme: default
----
+headingDivider: 2
+paginate: true
+-->
 
 # Course Introduction
-
----
+> Slides version: [intro_slides.html](./intro_slides.html)
+> Website version: [intro.html](./intro.html)
 
 ## 課程說明 (Course Description)
 
@@ -15,13 +17,9 @@ theme: default
 The course will introduce the Object-Oriented Programming (OOP), the writing of OOP in C/C++ and the concepts and skills of programming.
 Each theme will be instructed with examples and hands-on labs in-class or off-class.
 
----
-
 ## 指定用書 (Text Books)
 
 1.  課程講義，公布於課程網站上。 (Lecture notes, published on the course website.)
-
----
 
 ## 參考書籍 (References)
 
@@ -37,8 +35,6 @@ Each theme will be instructed with examples and hands-on labs in-class or off-cl
 
 [Effective Programming in C and C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014/index.htm)
 
----
-
 ## 教學方式 (Teaching Method)
 
 透過講義解說各主題的實作技巧，由學生練習、測試與完成相關之課堂實作或作業。
@@ -53,40 +49,36 @@ Also, the course will stream on online streaming platform(s).
 Students can discuss in real-time on the online streaming platform(s).
 After class, students can use the discussion forum in the NTHU eeclass or make a reservation with instructor or TA.
 
----
-
 ## 教學進度 (Syllabus)
 
 (1/30 updated) 週次皆為暫定安排，會依實際授課情形調整。
 
-| 課程 (Lecture) | 主題 (Theme)                               |
-| :------------: | :----------------------------------------- |
-|   Lecture 1    | Course Introduction                        |
-|                | Sturcture and Class                        |
-|     Lab 1      | Programming Environment & Class Helloworld |
-|   Lecture 2    | Class Design 101                           |
-|   Lecture 3    | Class Members & Methods                    |
-|   Lecture 4    | Class Constructor & Modifer                |
-|     Lab 4      | Class 101                                  |
-|   Lecture 5    | Collaborate with Other Classes             |
-|   Lecture 6    | Operaotr & Operator Overloading            |
-|     Lab 6      | Complex Number & Complex Number Calculator |
-|   Lecture 7    | Introduction to OOP Design                 |
-|   Lecture 8    | OOP: Inheritance (1)                       |
-|   Lecture 9    | Midterm Exam                               |
-|   Lecture 10   | OOP: Inheritance (2)                       |
-|   Lecture 11   | OOP: Polymorphism (1)                      |
-|   Lecture 12   | OOP: Polymorphism (2)                      |
-|     Lab 12     | Complex Number's Geometry & Operations     |
-|   Lecture 13   | Advanced I/O & Exception Handling          |
-|   Lecture 14   | File Processing (1)                        |
-|   Lecture 15   | File Processing (2)                        |
-|     Lab 15     | File Export of Complex Numbers' Geometry   |
-|   Lecture 16   | C++ Image Export & Matplot++               |
-|   Lecture 17   | Google Test for Class                      |
-|   Lecture 18   | Final Exam                                 |
-
----
+|          課程 (Lecture)          | 主題 (Theme)                               |
+| :------------------------------: | :----------------------------------------- |
+| [Lecture 1](class/lecture1.html) | Course Introduction                        |
+|                                  | Sturcture and Class                        |
+|     [Lab 1](class/lab1.html)     | Programming Environment & Class Helloworld |
+|            Lecture 2             | Class Design 101                           |
+|            Lecture 3             | Class Members & Methods                    |
+|            Lecture 4             | Class Constructor & Modifer                |
+|              Lab 4               | Class 101                                  |
+|            Lecture 5             | Collaborate with Other Classes             |
+|            Lecture 6             | Operaotr & Operator Overloading            |
+|              Lab 6               | Complex Number & Complex Number Calculator |
+|            Lecture 7             | Introduction to OOP Design                 |
+|            Lecture 8             | OOP: Inheritance (1)                       |
+|            Lecture 9             | Midterm Exam                               |
+|            Lecture 10            | OOP: Inheritance (2)                       |
+|            Lecture 11            | OOP: Polymorphism (1)                      |
+|            Lecture 12            | OOP: Polymorphism (2)                      |
+|              Lab 12              | Complex Number's Geometry & Operations     |
+|            Lecture 13            | Advanced I/O & Exception Handling          |
+|            Lecture 14            | File Processing (1)                        |
+|            Lecture 15            | File Processing (2)                        |
+|              Lab 15              | File Export of Complex Numbers' Geometry   |
+|            Lecture 16            | C++ Image Export & Matplot++               |
+|            Lecture 17            | Google Test for Class                      |
+|            Lecture 18            | Final Exam                                 |
 
 ## 成績考核 (Evaluation)
 
@@ -94,14 +86,10 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 學期成績 (Grade) ＝ 作業/實作 (Homework/Lab), 50% ＋ 期中考 (Midterm exam), 25% ＋ 期末考 (Final exam), 25% + Bonus, 15%
 
----
-
 ## 相關網頁(Personal Website)
 
 課程網頁 (Course website): [https://stevenokm.github.io/i2p-nthu-math/i2p2](https://stevenokm.github.io/i2p-nthu-math/i2p2)
-![bg right](qrcode_docs.google.com.png)
-
----
+![bg right fit](qrcode_stevenokm.github.io.png)
 
 ## 課程資訊
 
@@ -111,13 +99,11 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
     * 前 1 - 1.5 小時講解今日主題
     * 之後時間開放同學於現場或線上即時提問
 
----
-
 ### 課程上課地點(實體教室)
 
 * 綜三館 315 電腦教室 (座位47人，可出席人數 **47** 人)
-    * 實體上課出席登記: [出席 (不計分)](https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=538727748) 
-    * 實體上課出席座位表: [座位表](https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=0)
+    * 實體上課出席登記: [出席 (不計分)](https://docs.google.com/spreadsheets/d/1U2Dlp3O_LZSHzowlplPGk_7m03Y4vcQKjtO2P1ctjQk/edit#gid=538727748) 
+    * 實體上課出席座位表: [座位表](https://docs.google.com/spreadsheets/d/1U2Dlp3O_LZSHzowlplPGk_7m03Y4vcQKjtO2P1ctjQk/edit#gid=0)
 
 ![bg right fit](qrcode_docs.google.com.png)
 
@@ -125,8 +111,8 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 ### 課程上課地點(網路)
 
-* Youtube (Link: [上課錄影 - YouTube](https://www.youtube.com/playlist?list=PLEpArVdL-rlK1cLK7yxYcNHdL1rsvs5jB))
-* Teams (團隊代碼: 0l2nz9s)
+* Youtube (Link: [110 程式設計二 上課錄影 - YouTube](https://youtube.com/playlist?list=PLEpArVdL-rlK5YMN7m6QuuyrnH88N7RfG))
+* Teams (團隊代碼: n1wblvu)
     * 申請方式: [Office 365 服務 (nthu.edu.tw)](https://learning.site.nthu.edu.tw/p/412-1319-12292.php?Lang=zh-tw)
     * 外校同學可提供 office 365 帳號給助教協助加入團隊。
 ![bg right fit](qrcode_www.youtube.com.png)
@@ -135,17 +121,15 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 ### 加簽規則
 
-* 本課程開放加簽，原則上限制人數為 50 人，且參加實體課程需配合防疫規定。
+* 本課程開放加簽，原則上限制人數為 47 人，且參加實體課程需配合防疫規定。
     * 請使用電子加簽系統加簽。
-    * 目前開放上限為本系大一生 47 人，並另有 10 人須審核加簽名額。
+    * 目前選課系統上限為本系大一生 37 人，並另有 10 人須審核加簽名額。
     * 外系同學可線上加簽系統加選課程。
-
----
 
 ## 作業
 
 * 作業會公布在課程網頁上，並使用 eeclass 平台繳交作業。
-    * eeclass 連結: [https://eeclass.nthu.edu.tw/course/5088](https://eeclass.nthu.edu.tw/course/5088)
+    * eeclass 連結: [https://eeclass.nthu.edu.tw/course/8073](https://eeclass.nthu.edu.tw/course/8073)
     * 同學可多加利用 eeclass 的討論區進行討論。
 * 作業會使用自動化工具檢查，若有批改上有問題可與助教詢問。
 * 作業抄襲一律 0 分計算，並且不計入繳交次數。
@@ -153,15 +137,11 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 ![bg right fit](qrcode_eeclass.nthu.edu.tw.png)
 
----
-
 ## 期中 / 期末評量
 
 * 期中 / 期末評量採斷網上機測試。
     * 期中 / 期末評量會視疫情變化調整為其他方案。
 * 同學皆可參加期中 / 期末評量。
-
----
 
 ## 老師資訊
 
@@ -171,18 +151,14 @@ Office Hours: Every Mon. 14:00 - 15:00
 
 Office Room: R2341, 2F, EECS Building
 
-Note: 若要來研究室詢問問題，請 **一定要預約時間** ，臨時來研究室詢問 **不保證** 能夠當下開放詢問。
+**Note:** 若要來研究室詢問問題，請 **一定要預約時間** ，臨時來研究室詢問 **不保證** 能夠當下開放詢問。
 若要約 teams 詢問也可以約 Office Hour 時段詢問。
-
----
 
 ## TA infos
 
 許廷碩 E-mail: [tim890727@gmail.com](mailto:tim890727@gmail.com)
 
 TA Hours: 寫信詢問
-
----
 
 ## Bonus
 
