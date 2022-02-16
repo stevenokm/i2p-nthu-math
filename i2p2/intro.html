@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html" class="active"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="formatted_io/lab_1_vscode_315.html"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html" class="active"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -148,22 +148,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <hr />
-<h2>marp: true
+                        <!--
+marp: true
 author: Yi-Wen Hung
-theme: default</h2>
+theme: default
+headingDivider: 2
+paginate: true
+-->
 <h1 id="course-introduction"><a class="header" href="#course-introduction">Course Introduction</a></h1>
-<hr />
+<blockquote>
+<p>Slides version: <a href="./intro_slides.html">intro_slides.html</a>
+Website version: <a href="./intro.html">intro.html</a></p>
+</blockquote>
 <h2 id="課程說明-course-description"><a class="header" href="#課程說明-course-description">課程說明 (Course Description)</a></h2>
 <p>本課程之內容包括：物件導向程式設計 (OOP)、C/C++ OOP 寫法、程式寫作技巧與觀念及實作範例。透過課堂解釋實作範例搭配作業練習各主題的語法或技巧。</p>
 <p>The course will introduce the Object-Oriented Programming (OOP), the writing of OOP in C/C++ and the concepts and skills of programming.
 Each theme will be instructed with examples and hands-on labs in-class or off-class.</p>
-<hr />
 <h2 id="指定用書-text-books"><a class="header" href="#指定用書-text-books">指定用書 (Text Books)</a></h2>
 <ol>
 <li>課程講義，公布於課程網站上。 (Lecture notes, published on the course website.)</li>
 </ol>
-<hr />
 <h2 id="參考書籍-references"><a class="header" href="#參考書籍-references">參考書籍 (References)</a></h2>
 <p><a href="https://deitel.com/c-plus-plus-how-to-program-10-e/">Paul Deitel, and Harvey Deitel, C++ How to Program, 10/e</a> (主要參考, Primary reference)</p>
 <p><a href="https://www.mheducation.com/highered/product/object-oriented-classical-software-engineering-schach/M9780073376189.html">Stephen Schach, Object-Oriented and Classical Software Engineering, 8/e</a></p>
@@ -171,7 +175,6 @@ Each theme will be instructed with examples and hands-on labs in-class or off-cl
 <p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-096-introduction-to-c-january-iap-2011/">Introduction to C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
 <p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s096-introduction-to-c-and-c-january-iap-2013/">Introduction to C and C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
 <p><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-s096-effective-programming-in-c-and-c-january-iap-2014/index.htm">Effective Programming in C and C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
-<hr />
 <h2 id="教學方式-teaching-method"><a class="header" href="#教學方式-teaching-method">教學方式 (Teaching Method)</a></h2>
 <p>透過講義解說各主題的實作技巧，由學生練習、測試與完成相關之課堂實作或作業。
 課堂會採用實體及線上混合教學，學生可在滿足防疫規定下參加現場授課，同時於線上平台直播，同學也可同步於線上平台留言發問。
@@ -183,13 +186,12 @@ Students can attend class physically under Taiwan CDC COVID-19 guideline.
 Also, the course will stream on online streaming platform(s).
 Students can discuss in real-time on the online streaming platform(s).
 After class, students can use the discussion forum in the NTHU eeclass or make a reservation with instructor or TA.</p>
-<hr />
 <h2 id="教學進度-syllabus"><a class="header" href="#教學進度-syllabus">教學進度 (Syllabus)</a></h2>
 <p>(1/30 updated) 週次皆為暫定安排，會依實際授課情形調整。</p>
 <table><thead><tr><th align="center">課程 (Lecture)</th><th align="left">主題 (Theme)</th></tr></thead><tbody>
-<tr><td align="center">Lecture 1</td><td align="left">Course Introduction</td></tr>
+<tr><td align="center"><a href="class/lecture1.html">Lecture 1</a></td><td align="left">Course Introduction</td></tr>
 <tr><td align="center"></td><td align="left">Sturcture and Class</td></tr>
-<tr><td align="center">Lab 1</td><td align="left">Programming Environment &amp; Class Helloworld</td></tr>
+<tr><td align="center"><a href="class/lab1.html">Lab 1</a></td><td align="left">Programming Environment &amp; Class Helloworld</td></tr>
 <tr><td align="center">Lecture 2</td><td align="left">Class Design 101</td></tr>
 <tr><td align="center">Lecture 3</td><td align="left">Class Members &amp; Methods</td></tr>
 <tr><td align="center">Lecture 4</td><td align="left">Class Constructor &amp; Modifer</td></tr>
@@ -212,15 +214,12 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <tr><td align="center">Lecture 17</td><td align="left">Google Test for Class</td></tr>
 <tr><td align="center">Lecture 18</td><td align="left">Final Exam</td></tr>
 </tbody></table>
-<hr />
 <h2 id="成績考核-evaluation"><a class="header" href="#成績考核-evaluation">成績考核 (Evaluation)</a></h2>
 <p>暫定，會依實際授課情形調整。 (Tentative, will change during the course)</p>
 <p>學期成績 (Grade) ＝ 作業/實作 (Homework/Lab), 50% ＋ 期中考 (Midterm exam), 25% ＋ 期末考 (Final exam), 25% + Bonus, 15%</p>
-<hr />
 <h2 id="相關網頁personal-website"><a class="header" href="#相關網頁personal-website">相關網頁(Personal Website)</a></h2>
 <p>課程網頁 (Course website): <a href="https://stevenokm.github.io/i2p-nthu-math/i2p2">https://stevenokm.github.io/i2p-nthu-math/i2p2</a>
-<img src="qrcode_docs.google.com.png" alt="bg right" /></p>
-<hr />
+<img src="qrcode_stevenokm.github.io.png" alt="bg right fit" /></p>
 <h2 id="課程資訊"><a class="header" href="#課程資訊">課程資訊</a></h2>
 <h3 id="課程上課時間"><a class="header" href="#課程上課時間">課程上課時間</a></h3>
 <ul>
@@ -231,13 +230,12 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 </ul>
 </li>
 </ul>
-<hr />
 <h3 id="課程上課地點實體教室"><a class="header" href="#課程上課地點實體教室">課程上課地點(實體教室)</a></h3>
 <ul>
 <li>綜三館 315 電腦教室 (座位47人，可出席人數 <strong>47</strong> 人)
 <ul>
-<li>實體上課出席登記: <a href="https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=538727748">出席 (不計分)</a> </li>
-<li>實體上課出席座位表: <a href="https://docs.google.com/spreadsheets/d/19GUJi5sdlnNiZK-mzV1S1mKs6cEuMza11c3P1e5nDt0/edit#gid=0">座位表</a></li>
+<li>實體上課出席登記: <a href="https://docs.google.com/spreadsheets/d/1U2Dlp3O_LZSHzowlplPGk_7m03Y4vcQKjtO2P1ctjQk/edit#gid=538727748">出席 (不計分)</a> </li>
+<li>實體上課出席座位表: <a href="https://docs.google.com/spreadsheets/d/1U2Dlp3O_LZSHzowlplPGk_7m03Y4vcQKjtO2P1ctjQk/edit#gid=0">座位表</a></li>
 </ul>
 </li>
 </ul>
@@ -245,8 +243,8 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <hr />
 <h3 id="課程上課地點網路"><a class="header" href="#課程上課地點網路">課程上課地點(網路)</a></h3>
 <ul>
-<li>Youtube (Link: <a href="https://www.youtube.com/playlist?list=PLEpArVdL-rlK1cLK7yxYcNHdL1rsvs5jB">上課錄影 - YouTube</a>)</li>
-<li>Teams (團隊代碼: 0l2nz9s)
+<li>Youtube (Link: <a href="https://youtube.com/playlist?list=PLEpArVdL-rlK5YMN7m6QuuyrnH88N7RfG">110 程式設計二 上課錄影 - YouTube</a>)</li>
+<li>Teams (團隊代碼: n1wblvu)
 <ul>
 <li>申請方式: <a href="https://learning.site.nthu.edu.tw/p/412-1319-12292.php?Lang=zh-tw">Office 365 服務 (nthu.edu.tw)</a></li>
 <li>外校同學可提供 office 365 帳號給助教協助加入團隊。
@@ -257,20 +255,19 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <hr />
 <h3 id="加簽規則"><a class="header" href="#加簽規則">加簽規則</a></h3>
 <ul>
-<li>本課程開放加簽，原則上限制人數為 50 人，且參加實體課程需配合防疫規定。
+<li>本課程開放加簽，原則上限制人數為 47 人，且參加實體課程需配合防疫規定。
 <ul>
 <li>請使用電子加簽系統加簽。</li>
-<li>目前開放上限為本系大一生 47 人，並另有 10 人須審核加簽名額。</li>
+<li>目前選課系統上限為本系大一生 37 人，並另有 10 人須審核加簽名額。</li>
 <li>外系同學可線上加簽系統加選課程。</li>
 </ul>
 </li>
 </ul>
-<hr />
 <h2 id="作業"><a class="header" href="#作業">作業</a></h2>
 <ul>
 <li>作業會公布在課程網頁上，並使用 eeclass 平台繳交作業。
 <ul>
-<li>eeclass 連結: <a href="https://eeclass.nthu.edu.tw/course/5088">https://eeclass.nthu.edu.tw/course/5088</a></li>
+<li>eeclass 連結: <a href="https://eeclass.nthu.edu.tw/course/8073">https://eeclass.nthu.edu.tw/course/8073</a></li>
 <li>同學可多加利用 eeclass 的討論區進行討論。</li>
 </ul>
 </li>
@@ -279,7 +276,6 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <li>作業須準時繳交，遲交則得到原始成績 80% 的分數。</li>
 </ul>
 <p><img src="qrcode_eeclass.nthu.edu.tw.png" alt="bg right fit" /></p>
-<hr />
 <h2 id="期中--期末評量"><a class="header" href="#期中--期末評量">期中 / 期末評量</a></h2>
 <ul>
 <li>期中 / 期末評量採斷網上機測試。
@@ -289,18 +285,15 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 </li>
 <li>同學皆可參加期中 / 期末評量。</li>
 </ul>
-<hr />
 <h2 id="老師資訊"><a class="header" href="#老師資訊">老師資訊</a></h2>
 <p>洪奕文 E-mail: <a href="mailto:s106062802@m106.nthu.edu.tw">s106062802@m106.nthu.edu.tw</a></p>
 <p>Office Hours: Every Mon. 14:00 - 15:00</p>
 <p>Office Room: R2341, 2F, EECS Building</p>
-<p>Note: 若要來研究室詢問問題，請 <strong>一定要預約時間</strong> ，臨時來研究室詢問 <strong>不保證</strong> 能夠當下開放詢問。
+<p><strong>Note:</strong> 若要來研究室詢問問題，請 <strong>一定要預約時間</strong> ，臨時來研究室詢問 <strong>不保證</strong> 能夠當下開放詢問。
 若要約 teams 詢問也可以約 Office Hour 時段詢問。</p>
-<hr />
 <h2 id="ta-infos"><a class="header" href="#ta-infos">TA infos</a></h2>
 <p>許廷碩 E-mail: <a href="mailto:tim890727@gmail.com">tim890727@gmail.com</a></p>
 <p>TA Hours: 寫信詢問</p>
-<hr />
 <h2 id="bonus"><a class="header" href="#bonus">Bonus</a></h2>
 <ul>
 <li>課程內容如果有錯誤，可以在每頁的右上方 &quot;Suggest an edit&quot; 使用 Github 進行修改，修改完畢後利用 Pull Request 的方式提交。
@@ -318,7 +311,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                                                    <a rel="next" href="formatted_io/lab_1_vscode.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="vscode_tutorial/lab_1_vscode_315.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -329,7 +322,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                                    <a rel="next" href="formatted_io/lab_1_vscode.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="vscode_tutorial/lab_1_vscode_315.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>

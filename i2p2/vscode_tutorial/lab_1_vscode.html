@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode.html" class="active"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_315.html"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html" class="active"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -119,7 +119,7 @@
                                                 <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/formatted_io/lab_1_vscode.md" title="Suggest an edit" aria-label="Suggest an edit">
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/vscode_tutorial/lab_1_vscode.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         
@@ -363,115 +363,41 @@ $
 <p><img src="img/insert_breakpoint.png" alt="insert breakpoint" /></p>
 <p>In VSCode: <code>Run -&gt; Start Debugging F5</code></p>
 <p><img src="img/run_gdb.png" alt="run gdb" /></p>
-<h2 id="使用-vscode-server"><a class="header" href="#使用-vscode-server">使用 VSCode server</a></h2>
-<p><img src="img/login_codeserver.png" alt="login code-server" /></p>
-<h3 id="安裝-gcc--c-plugin"><a class="header" href="#安裝-gcc--c-plugin">安裝 GCC &amp; C++ plugin</a></h3>
-<p>In VSCode: <code>Terminal -&gt; New Terminal</code></p>
-<p><img src="img/codeserver_create_terminal.png" alt="create terminal" /></p>
-<pre><code class="language-console">sudo apt update
-sudo apt install -y build-essential g++ gdb
-g++ -v
-curl -L https://github.com/microsoft/vscode-cpptools/releases/download/1.5.1/cpptools-linux.vsix --output cpptools-linux.vsix
-code-server --install-extension cpptools-linux.vsix
-</code></pre>
-<p>NOTE: 須重新整理網頁才能生效</p>
-<h3 id="新增專案-hello-world-2"><a class="header" href="#新增專案-hello-world-2">新增專案 (Hello world!)</a></h3>
-<p>In VSCode: <code>Exploer -&gt; New Folder</code></p>
-<p>輸入 <code>projects</code></p>
-<p><img src="img/codeserver_new_folder.png" alt="new folder projects" /></p>
-<p>In VSCode: <code>File -&gt; Open Folder</code></p>
-<p><img src="img/codeserver_open_folder_1.png" alt="open folder projects 1" /></p>
-<p><img src="img/codeserver_open_folder_2.png" alt="open folder projects 2" /></p>
-<p>In VSCode: <code>Exploer -&gt; New File</code></p>
-<p>輸入 <code>test.cpp</code></p>
-<p><img src="img/new_file.png" alt="new file icon" /></p>
-<p>在文字輸入區輸入以下程式碼</p>
-<pre><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-
-using namespace std;
-
-int main()
-{
-    vector&lt;string&gt; msg {&quot;Hello&quot;, &quot;C++&quot;, &quot;World&quot;, &quot;from&quot;, &quot;VS Code&quot;, &quot;and the C++ extension!&quot;};
-
-    for (const string&amp; word : msg)
-    {
-        cout &lt;&lt; word &lt;&lt; &quot; &quot;;
-    }
-    cout &lt;&lt; endl;
-}
-</code></pre>
-<p><img src="img/input_cpp.png" alt="input cpp code" /></p>
-<h3 id="編譯--執行-hello-world-2"><a class="header" href="#編譯--執行-hello-world-2">編譯 &amp; 執行 Hello world!</a></h3>
-<p>In VSCode Terminal:</p>
-<pre><code class="language-console">$ g++ test.cpp
-$ ./a.out
-Hello C++ World from VS Code and the C++ extension! 
-$ 
-</code></pre>
-<h3 id="debugger-2"><a class="header" href="#debugger-2">Debugger</a></h3>
-<p>可以設置中斷點，方便程式除錯。</p>
-<h4 id="launchjson-2"><a class="header" href="#launchjson-2"><code>launch.json</code></a></h4>
-<p>In VSCode: <code>Exploer -&gt; New Folder</code></p>
-<p>輸入 <code>.vscode</code></p>
-<p><img src="img/new_folder.png" alt="new folder icon" /></p>
-<p>In VSCode: <code>Exploer -&gt; New File</code></p>
-<p>輸入 <code>launch.json</code></p>
-<p>在文字輸入區輸入以下設定檔</p>
-<pre><code class="language-json">{
-    &quot;version&quot;: &quot;0.2.0&quot;,
-    &quot;configurations&quot;: [
-        {
-            &quot;name&quot;: &quot;(gdb) Launch&quot;,
-            &quot;type&quot;: &quot;cppdbg&quot;,
-            &quot;request&quot;: &quot;launch&quot;,
-            &quot;program&quot;: &quot;${workspaceFolder}/a.out&quot;,
-            &quot;args&quot;: [],
-            &quot;stopAtEntry&quot;: false,
-            &quot;cwd&quot;: &quot;${workspaceFolder}&quot;,
-            &quot;environment&quot;: [],
-            &quot;externalConsole&quot;: false,
-            &quot;MIMode&quot;: &quot;gdb&quot;,
-            &quot;setupCommands&quot;: [
-                {
-                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,
-                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,
-                    &quot;ignoreFailures&quot;: true
-                }
-            ]
-        }
-    ]
-}
-</code></pre>
-<h4 id="編譯--執行-debugger-2"><a class="header" href="#編譯--執行-debugger-2">編譯 &amp; 執行 Debugger</a></h4>
-<p>In VSCode Terminal:</p>
-<pre><code class="language-console">$ g++ -g test.cpp
-$ 
-</code></pre>
-<p>插入中斷點</p>
-<p>在要中斷的程式碼行號左邊點一下</p>
-<p><img src="img/insert_breakpoint.png" alt="insert breakpoint" /></p>
-<p>In VSCode: <code>Run -&gt; Start Debugging F5</code></p>
-<p><img src="img/start_gdb.png" alt="start debugging" /></p>
-<p><img src="img/run_gdb.png" alt="run gdb" /></p>
+<h2 id="del使用-vscode-serverdel"><a class="header" href="#del使用-vscode-serverdel"><del>使用 VSCode server</del></a></h2>
+<h2 id="使用-web-ide"><a class="header" href="#使用-web-ide">使用 web IDE</a></h2>
+<p>Notice: 僅提供方便使用的網站，與 VSCode 環境不同，需自己學習使用。</p>
+<ul>
+<li><a href="https://replit.com/">https://replit.com/</a>
+<ul>
+<li>需註冊帳號，有部分功能需付費。</li>
+</ul>
+</li>
+<li><a href="https://www.onlinegdb.com/">https://www.onlinegdb.com/</a>
+<ul>
+<li>無須註冊帳號，僅有基本功能。</li>
+</ul>
+</li>
+<li><a href="https://www.online-ide.com/">https://www.online-ide.com/</a>
+<ul>
+<li>無須註冊帳號，僅有基本功能。</li>
+</ul>
+</li>
+</ul>
 <p>Reference: </p>
 <ul>
 <li><a href="https://code.visualstudio.com/docs/cpp/config-linux">Get Started with C++ on Linux in Visual Studio Code</a></li>
 <li><a href="https://code.visualstudio.com/docs/cpp/config-clang-mac">Configure VS Code for Clang/LLVM on macOS</a></li>
-<li><a href="https://code.visualstudio.com/docs/cpp/config-wsl">Get Started with C++ and Windows Subsystem for Linux in Visual Studio Code</a></li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../vscode_tutorial/lab_1_vscode_315.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../formatted_io/lab_1_vscode_win.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../vscode_tutorial/lab_1_vscode_win.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -481,11 +407,11 @@ $
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../vscode_tutorial/lab_1_vscode_315.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../formatted_io/lab_1_vscode_win.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../vscode_tutorial/lab_1_vscode_win.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>

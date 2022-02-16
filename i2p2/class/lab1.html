@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>VS Code Tutorial (315 classroom) - Introduction to Programming (II)</title>
+        <title>Lab 1: Hello Class - Introduction to Programming (II)</title>
                 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode.html"><strong aria-hidden="true">1.1.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_win.html"><strong aria-hidden="true">1.2.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li><li class="chapter-item expanded "><a href="../formatted_io/lab_1_vscode_315.html" class="active"><strong aria-hidden="true">1.3.</strong> VS Code Tutorial (315 classroom)</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html" class="active"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -119,7 +119,7 @@
                                                 <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/formatted_io/lab_1_vscode_315.md" title="Suggest an edit" aria-label="Suggest an edit">
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lab1.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         
@@ -148,82 +148,79 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="visual-studio-code-tutorial-315-classroom"><a class="header" href="#visual-studio-code-tutorial-315-classroom">Visual Studio Code Tutorial (315 classroom)</a></h1>
-<h2 id="使用-vscode-環境"><a class="header" href="#使用-vscode-環境">使用 VSCode 環境</a></h2>
-<p>點擊兩下，打開桌面上的 <code>Visual Studio Code</code>。</p>
-<p><img src="img/launch_vscode.png" alt="launch vscode" /></p>
-<p><img src="img/vscode_wellcome.png" alt="vscode welcome" /></p>
-<p>在文字輸入區輸入以下程式碼</p>
+                        <h1 id="lab-1-class-helloworld"><a class="header" href="#lab-1-class-helloworld">Lab 1: Class Helloworld</a></h1>
+<h2 id="顯示-complex-class-的數字"><a class="header" href="#顯示-complex-class-的數字">顯示 Complex Class 的數字</a></h2>
+<ul>
+<li>輸入：無</li>
+<li>輸出：顯示 Complex Class 的數字</li>
+<li>檔名：lab1_&lt;學號&gt;.cpp (e.g. lab1_106062802.cpp)</li>
+</ul>
+<p>程式僅需輸出兩 complex 數字 a 及 b 以及 c = a + b 的結果。</p>
+<h2 id="format"><a class="header" href="#format">Format</a></h2>
+<pre><code class="language-text">(a) = a1 + a2 i⏎
+(b) = b1 + b2 i⏎
+(c) = a + b = c1 + c2 i⏎
+</code></pre>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<pre><code class="language-console">$ ./a.out
+(a) = 1 + 2 i
+(b) = 3 + -4 i
+(c) = (a) + (b) = 4 + -2 i
+</code></pre>
+<h2 id="pseudo-code"><a class="header" href="#pseudo-code">Pseudo Code</a></h2>
 <pre><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
 
 using namespace std;
 
+class Complex
+{
+public:
+    int real;
+    int imag;
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;os, const Complex &amp;c)
+    {
+        os &lt;&lt; c.real &lt;&lt; &quot; + &quot; &lt;&lt; c.imag &lt;&lt; &quot; i&quot;;
+        return os;
+    }
+    void print() const
+    {
+        // TODO: implement this function
+        // Hint: use cout to print the complex number
+    }
+    Complex &amp;operator+(const Complex &amp;c)
+    {
+        real += c.real;
+        imag += c.imag;
+        return *this;
+    }
+};
+
 int main()
 {
-    vector&lt;string&gt; msg {&quot;Hello&quot;, &quot;C++&quot;, &quot;World&quot;, &quot;from&quot;, &quot;VS Code&quot;, &quot;and the C++ extension!&quot;};
+    Complex a, b, c;
 
-    for (const string&amp; word : msg)
-    {
-        cout &lt;&lt; word &lt;&lt; &quot; &quot;;
-    }
+    a.real = 1;
+    a.imag = 2;
+    cout &lt;&lt; &quot;(a) = &quot; &lt;&lt; a &lt;&lt; endl;
+
+    b.real = 3;
+    b.imag = -4;
+    cout &lt;&lt; &quot;(b) = &quot;;
+    b.print();
     cout &lt;&lt; endl;
+
+    c = a + b;
+    cout &lt;&lt; &quot;(c) = (a) + (b) = &quot; &lt;&lt; c &lt;&lt; endl;
+
+    return 0;
 }
 </code></pre>
-<p><img src="img/input_cpp.png" alt="input cpp code" /></p>
-<h3 id="編譯--執行-hello-world"><a class="header" href="#編譯--執行-hello-world">編譯 &amp; 執行 Hello world!</a></h3>
-<p>In VSCode: <code>Terminal -&gt; New Terminal</code></p>
-<p><img src="img/create_terminal.png" alt="create terminal" /></p>
-<p>In VSCode Terminal:</p>
-<pre><code class="language-console">$ g++ test.cpp
-$ ./a.out
-Hello C++ World from VS Code and the C++ extension! 
-$ 
-</code></pre>
-<h3 id="測試編譯以及除錯"><a class="header" href="#測試編譯以及除錯">測試編譯以及除錯</a></h3>
-<h4 id="測試編譯"><a class="header" href="#測試編譯">測試編譯</a></h4>
-<ol>
-<li>點擊左方test.cpp檔案後，在要中斷的程式碼行號左邊點一下，會出現紅點，如下圖示範：</li>
-</ol>
-<p><img src="img/insert_breakpoint.png" alt="insert breakpoint" /></p>
-<ol>
-<li>按下<code>ctrl+shift+B</code>按鍵，或上方<code>terminal -&gt; Run Build Task</code>，如下圖示範：</li>
-</ol>
-<p><img src="./img/fig_08-run_build_task.png" alt="run_build_task" /></p>
-<ol start="3">
-<li>此時上方會出現以下畫面，選擇中間選項使用 <strong>g++</strong> 編譯檔案，如下圖示範：</li>
-</ol>
-<p><img src="./img/fig_09-build_hint.png" alt="build_hint" /></p>
-<ol start="4">
-<li>設置正確的話，此時下方會出現編譯成功完成的提示，如下圖示範：</li>
-</ol>
-<p><img src="./img/fig_10-build_successfully.png" alt="build_successfully" /></p>
-<h4 id="測試除錯"><a class="header" href="#測試除錯">測試除錯</a></h4>
-<ol>
-<li>
-<p>完成前項<code>測試編譯</code>的所有流程</p>
-</li>
-<li>
-<p>按下左方三角形按鈕後選擇<code>Run and Debug</code>，如下圖示範：</p>
-</li>
-</ol>
-<p><img src="./img/fig_11-open_debugger.png" alt="open_debugger" /></p>
-<ol start="3">
-<li>此時上方會依序出現相關提示，選擇預設的即可，如下圖示範：</li>
-</ol>
-<p><img src="./img/fig_12-debuger_hint-1.png" alt="debuger_hint-1" />
-<img src="./img/fig_13-debuger_hint-2.png" alt="debuger_hint-2" /></p>
-<ol start="4">
-<li>若設定正確的話，會看到程式停留在選取的那一行，如下圖示範：</li>
-</ol>
-<p><img src="img/run_gdb.png" alt="run gdb" /></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../formatted_io/lab_1_vscode_win.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../class/lecture1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -234,7 +231,7 @@ $
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../formatted_io/lab_1_vscode_win.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../class/lecture1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
