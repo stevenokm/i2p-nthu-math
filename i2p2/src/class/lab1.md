@@ -11,9 +11,9 @@
 ## Format
 
 ``` text
-(a) = a1 + a2 i⏎
-(b) = b1 + b2 i⏎
-(c) = a + b = c1 + c2 i⏎
+(a) = a1 + a2 i
+(b) = b1 + b2 i
+(c) = a + b = c1 + c2 i
 ```
 
 ## Example
