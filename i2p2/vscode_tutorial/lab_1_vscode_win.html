@@ -273,8 +273,16 @@ $
 <p>或簡易版指令</p>
 <pre><code class="language-powershell">iwr -useb get.scoop.sh | iex
 </code></pre>
-<p><strong>Note:</strong> 如果遇到錯誤 (execution policy)，可能需要使用以下指令更改執行策略後重新執行安裝指令:</p>
+<p><strong>Note:</strong> </p>
+<p>如果遇到錯誤 (execution policy)，可能需要使用以下指令更改執行策略後重新執行安裝指令:</p>
 <pre><code class="language-powershell">Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+</code></pre>
+<p>如果遇到 &quot;無法建立 SSL/TLS 的安全通道。&quot; 問題，可能需要使用以下指令更改系統的 SSL 設定:</p>
+<pre><code class="language-powershell">[System.Net.ServicePointManager]::SecurityProtocol = &quot;tls12, tls11&quot;
+</code></pre>
+<p>如果遇到 7zip 安裝失敗，可以先安裝 7zip 再安裝 mingw，以下是指令:</p>
+<pre><code class="language-powershell">scoop install 7zip
+scoop install mingw
 </code></pre>
 <h4 id="安裝-mingw-cmake"><a class="header" href="#安裝-mingw-cmake">安裝 <code>mingw cmake</code></a></h4>
 <p>在 VSCode Terminal 中輸入:</p>
