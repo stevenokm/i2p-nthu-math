@@ -35,7 +35,7 @@ Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 在 VSCode Terminal 中輸入:
 
 ```powershell
-scoop install gcc cmake
+scoop install mingw cmake
 ```
 
 **Note:** 安裝完成後須重新啟動 VSCode 才能生效
