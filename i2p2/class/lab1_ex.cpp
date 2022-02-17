@@ -15,7 +15,9 @@ public:
     void print() const
     {
         // TODO: implement this function
-        // Hint: use cout to print the complex number
+        // Hint: use cout to print the complex number.
+        // use 'real' and 'imag' as the real and imaginary part
+        // of the complex number.
     }
     Complex &operator+(const Complex &c)
     {
