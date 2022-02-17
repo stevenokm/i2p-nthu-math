@@ -24,10 +24,25 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 iwr -useb get.scoop.sh | iex
 ```
 
-**Note:** 如果遇到錯誤 (execution policy)，可能需要使用以下指令更改執行策略後重新執行安裝指令:
+**Note:** 
+
+如果遇到錯誤 (execution policy)，可能需要使用以下指令更改執行策略後重新執行安裝指令:
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+```
+
+如果遇到 "無法建立 SSL/TLS 的安全通道。" 問題，可能需要使用以下指令更改系統的 SSL 設定:
+
+```powershell
+[System.Net.ServicePointManager]::SecurityProtocol = "tls12, tls11"
+```
+
+如果遇到 7zip 安裝失敗，可以先安裝 7zip 再安裝 mingw，以下是指令:
+
+```powershell
+scoop install 7zip
+scoop install mingw
 ```
 
 #### 安裝 `mingw cmake`
