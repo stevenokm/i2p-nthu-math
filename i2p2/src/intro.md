@@ -76,8 +76,8 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |            Lecture 14            | File Processing (1)                        |
 |            Lecture 15            | File Processing (2)                        |
 |              Lab 15              | File Export of Complex Numbers' Geometry   |
-|            Lecture 16            | C++ Image Export & Matplot++               |
-|            Lecture 17            | Google Test for Class                      |
+|            Lecture 16            | (Extra) C++ Image Export & Matplot++       |
+|            Lecture 17            | (Extra) Google Test for Class              |
 |            Lecture 18            | Final Exam                                 |
 
 ## 成績考核 (Evaluation)

@@ -30,7 +30,7 @@
             "args": [
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}_slides.html"
+                "${fileDirname}/${fileBasenameNoExtension}_slides.html"
             ],
             "options": {
                 "cwd": "${fileDirname}"
