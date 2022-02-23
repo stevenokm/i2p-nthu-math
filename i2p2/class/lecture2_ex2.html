@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Lecture 1: Sturcture and Class - Introduction to Programming (II)</title>
+        <title>Example 2: Vector - Introduction to Programming (II)</title>
                 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html" class="active"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html" class="active"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -119,7 +119,7 @@
                                                 <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture2_ex2.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                         
@@ -148,178 +148,108 @@
 
                 <div id="content" class="content">
                     <main>
-                        <!--
-marp: true
-author: Yi-Wen Hung
-theme: default
-headingDivider: 2
-paginate: true
--->
-<h1 id="sturcture-and-class"><a class="header" href="#sturcture-and-class">Sturcture and Class</a></h1>
-<blockquote>
-<p>Slides version: <a href="./lecture1_slides.html">lecture1_slides.html</a>
-Website version: <a href="./lecture1.html">lecture1.html</a></p>
-</blockquote>
-<ul>
-<li>Recap: Structure</li>
-<li>What is a <em>Class</em>?</li>
-<li>Difference between Class and Structure</li>
-<li>VSCode Tutorial</li>
-<li>Lab 1: Hello Class</li>
-</ul>
-<h2 id="recap-structure"><a class="header" href="#recap-structure">Recap: Structure</a></h2>
-<p>Example: <a href="https://www.geeksforgeeks.org/structures-c/">Structures in C - GeeksforGeeks</a></p>
-<pre><code class="language-c++">// A variable declaration with structure declaration.
-struct Point
-{
-    int x, y;
-} p1; // The variable p1 is declared with 'Point'
-
-// A variable declaration like basic data types
-struct Point
-{
-    int x, y;
-};
-
-int main()
-{
-    struct Point p1; // The variable p1 is declared like a normal variable
-}
-</code></pre>
-<h2 id="how-to-initializemodify-a-structure"><a class="header" href="#how-to-initializemodify-a-structure">How to Initialize/Modify a Structure</a></h2>
+                        <h1 id="example-2-vector"><a class="header" href="#example-2-vector">Example 2: Vector</a></h1>
 <pre><code class="language-c++">#include &lt;iostream&gt;
 
 using namespace std;
 
-// A variable declaration like basic data types
-struct Point
+class Vector
 {
-    int x, y;
+public:
+    int x, y, z;
+
+    void init();
+    void print();
+    void modify(int, int, int);
+    int dot(const Vector &amp;);
+    Vector cross(const Vector &amp;);
 };
 
-void init_point(struct Point &amp;p);
-void print_point(const struct Point &amp;p);
-void modify_point(struct Point &amp;p);
-</code></pre>
-<hr />
-<pre><code class="language-c++">int main()
+void Vector::init()
 {
-    struct Point p1; // The variable p1 is declared like a normal variable
+    x = 0;
+    y = 0;
+    z = 0;
+}
 
-    init_point(p1);
+void Vector::print()
+{
+    cout &lt;&lt; &quot;Vector: &quot;
+         &lt;&lt; &quot;(&quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; z &lt;&lt; &quot;)&quot;;
+}
 
-    print_point(p1);
+void Vector::modify(int arg_x, int arg_y, int arg_z)
+{
+    x = arg_x;
+    y = arg_y;
+    z = arg_z;
+}
 
-    modify_point(p1);
+int Vector::dot(const Vector &amp;arg_v)
+{
+    return x * arg_v.x + y * arg_v.y + z * arg_v.z;
+}
 
-    print_point(p1);
+Vector Vector::cross(const Vector &amp;arg_v)
+{
+    Vector v;
+    v.x = y * arg_v.z - z * arg_v.y;
+    v.y = z * arg_v.x - x * arg_v.z;
+    v.z = x * arg_v.y - y * arg_v.x;
+    return v;
+}
+
+int main()
+{
+    Vector v1, v2;
+    v1.init();
+    v1.print();
+    cout &lt;&lt; endl;
+    v1.modify(1, 1, 1);
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.init();
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.modify(2, 3, 4);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Dot: &quot; &lt;&lt; v1.dot(v2) &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.modify(5, 6, 7);
+    Vector v3 = v1.cross(v2);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Cross: &quot;;
+    v3.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
 
     return 0;
 }
 </code></pre>
-<hr />
-<pre><code class="language-c++">void init_point(struct Point &amp;p)
-{
-    p.x = 10;
-    p.y = 20;
-}
-
-void print_point(const struct Point &amp;p)
-{
-    std::cout &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;, &quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot; &lt;&lt; std::endl;
-}
-
-void modify_point(struct Point &amp;p)
-{
-    p.x = 100;
-    p.y = 200;
-}
-</code></pre>
-<p>Output (in console):</p>
-<pre><code class="language-console">$ ./a.out
-(10, 20)
-(100, 200)
-</code></pre>
-<h2 id="what-is-a-class"><a class="header" href="#what-is-a-class">What is a <em>Class</em>?</a></h2>
-<blockquote>
-<p>A user-defined datatype which groups together related pieces of information. </p>
-</blockquote>
-<p>-- <a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-096-introduction-to-c-january-iap-2011/">Introduction to C++ | Electrical Engineering and Computer Science | MIT OpenCourseWare</a></p>
-<h3 id="example"><a class="header" href="#example">Example</a></h3>
-<ul>
-<li>Point on a 2D plane
-<ul>
-<li>x-coordinate</li>
-<li>y-coordinate</li>
-</ul>
-</li>
-</ul>
-<h2 id="definition-of-class"><a class="header" href="#definition-of-class">Definition of Class</a></h2>
-<pre><code class="language-c++">class Point
-{
-public:
-    // Member variables
-    int x;
-    int y;
-
-    // Member functions
-    void init();
-    void print();
-    void modify();
-};
-</code></pre>
-<h2 id="difference-between-class-and-structure"><a class="header" href="#difference-between-class-and-structure">Difference between Class and Structure</a></h2>
-<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
-<pre><code class="language-c++">class Point                         struct Point
-{                                   {
-public:
-    // Member variables                 // Member variables
-    int x;                              int x;
-    int y;                              int y;
-
-    // Member functions                 // No Member functions
-    void init();
-    void print();
-    void modify();
-};                                  };
-// Class usuallay don't use         // Structure usuallay use
-// functions to manipulate          // functions to manipulate
-// the data members                 // the data members
-                                    void init_point(struct Point &amp;p);
-                                    void print_point(const struct Point &amp;p);
-                                    void modify_point(struct Point &amp;p);
-</code></pre>
-<hr />
-<h3 id="usage"><a class="header" href="#usage">Usage</a></h3>
-<pre><code class="language-c++">int main()                          int main()  
-{                                   {
-    Point p1;                           struct Point p1;
-
-    p1.init();                          init_point(p1);
-
-    p1.print();                         print_point(p1);
-
-    p1.modify();                        modify_point(p1);
-
-    p1.print();                         print_point(p1);
-
-    return 0;                           return 0;
-}                                   }
-</code></pre>
-<h1 id="a-hrefvscode_tutoriallab_1_vscode_315htmlvscode-tutoriala"><a class="header" href="#a-hrefvscode_tutoriallab_1_vscode_315htmlvscode-tutoriala"><a href="../vscode_tutorial/lab_1_vscode_315.html">VSCode Tutorial</a></a></h1>
-<h1 id="lab-1-a-hreflab1htmlhello-classa"><a class="header" href="#lab-1-a-hreflab1htmlhello-classa">Lab 1: <a href="./lab1.html">Hello Class</a></a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../vscode_tutorial/lab_1_vscode_win.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../class/lecture2_ex1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../class/lab1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -327,13 +257,10 @@ public:
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../vscode_tutorial/lab_1_vscode_win.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../class/lecture2_ex1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../class/lab1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                             </nav>
 
         </div>

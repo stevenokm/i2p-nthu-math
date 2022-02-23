@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -190,12 +190,12 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <tr><td align="center"><a href="class/lecture1.html">Lecture 1</a></td><td align="left">Course Introduction</td></tr>
 <tr><td align="center"></td><td align="left">Sturcture and Class</td></tr>
 <tr><td align="center"><a href="class/lab1.html">Lab 1</a></td><td align="left">Programming Environment &amp; Class Helloworld</td></tr>
-<tr><td align="center">Lecture 2</td><td align="left">Class Design 101</td></tr>
+<tr><td align="center"><a href="class/lecture2.html">Lecture 2</a></td><td align="left">Class Design 101</td></tr>
 <tr><td align="center">Lecture 3</td><td align="left">Class Members &amp; Methods</td></tr>
 <tr><td align="center">Lecture 4</td><td align="left">Class Constructor &amp; Modifer</td></tr>
 <tr><td align="center">Lab 4</td><td align="left">Class 101</td></tr>
 <tr><td align="center">Lecture 5</td><td align="left">Collaborate with Other Classes</td></tr>
-<tr><td align="center">Lecture 6</td><td align="left">Operaotr &amp; Operator Overloading</td></tr>
+<tr><td align="center">Lecture 6</td><td align="left">Operator &amp; Operator Overloading</td></tr>
 <tr><td align="center">Lab 6</td><td align="left">Complex Number &amp; Complex Number Calculator</td></tr>
 <tr><td align="center">Lecture 7</td><td align="left">Introduction to OOP Design</td></tr>
 <tr><td align="center">Lecture 8</td><td align="left">OOP: Inheritance (1)</td></tr>
@@ -1060,6 +1060,526 @@ int main()
 
     c = a + b;
     cout &lt;&lt; &quot;(c) = (a) + (b) = &quot; &lt;&lt; c &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><!--
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+-->
+<h1 id="class-design-101"><a class="header" href="#class-design-101">Class Design 101</a></h1>
+<blockquote>
+<p>Slides version: <a href="class/./lecture2_slides.html">lecture2_slides.html</a>
+Website version: <a href="class/./lecture2.html">lecture2.html</a></p>
+</blockquote>
+<ul>
+<li>Recap: Hello Class</li>
+<li>Class Definition</li>
+<li>Class Instance</li>
+<li>Class Usage/Method</li>
+<li>Example: Triangle</li>
+<li>Example: Vector</li>
+</ul>
+<h2 id="recap-hello-class"><a class="header" href="#recap-hello-class">Recap: Hello Class</a></h2>
+<pre><code class="language-c++">class Point
+{
+public:
+    // Member variables
+    int x;
+    int y;
+
+    // Member functions
+    void init();
+    void print();
+    void modify();
+};
+
+int main()                          
+{                                   
+    Point p1;                       
+    p1.init();                      
+    p1.print();                     
+    p1.modify();                    
+    p1.print();                     
+
+    return 0;                       
+}
+</code></pre>
+<h2 id="class-definition"><a class="header" href="#class-definition">Class Definition</a></h2>
+<p>Syntax:</p>
+<pre><code class="language-c++">class Point // the class name
+{
+public: // public member variables and functions
+        // Note: there is also private: and protected: sections.
+        // we will discuss them in following lectures
+
+    // Member variables
+    // as like as the data in a 'struct', you can have multiple 
+    // variables in different types
+    int x;
+    int y;
+};
+</code></pre>
+<h2 id="class-instance"><a class="header" href="#class-instance">Class Instance</a></h2>
+<pre><code class="language-c++">int main()      
+{               
+    Point p1, p2;   
+    // init 2 instances of Point
+    p1.x = 0; p1.y = 0;
+    p2.x = 0; p2.y = 0;
+
+    // print 2 instances of Point
+    cout &lt;&lt; &quot;p1: (&quot; &lt;&lt; p1.x &lt;&lt; &quot;, &quot; &lt;&lt; p1.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: (&quot; &lt;&lt; p2.x &lt;&lt; &quot;, &quot; &lt;&lt; p2.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+
+    // modify each instance
+    // p1 and p2 are the same class, but they are different instances
+    // so they can have different values
+    p1.x = 1; p1.y = 2;
+    p2.x = 3; p2.y = 4;
+    
+    // you can see the change in p1 and p2
+    cout &lt;&lt; &quot;p1: (&quot; &lt;&lt; p1.x &lt;&lt; &quot;, &quot; &lt;&lt; p1.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: (&quot; &lt;&lt; p2.x &lt;&lt; &quot;, &quot; &lt;&lt; p2.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+
+    return 0;   
+}               
+</code></pre>
+<hr />
+<pre><code class="language-console">$ ./a.out
+p1: (0, 0)
+p2: (0, 0)
+p1: (1, 2)
+p2: (3, 4)
+</code></pre>
+<h2 id="class-methodusage"><a class="header" href="#class-methodusage">Class Method/Usage</a></h2>
+<h3 id="class-as-a-argument"><a class="header" href="#class-as-a-argument">Class as a argument</a></h3>
+<p>As like as struct, you can use a class instance as a argument to a function.</p>
+<pre><code class="language-c++">void init_point(Point &amp;p)
+{
+    p.x = 0;
+    p.y = 0;
+}
+void print_point(const Point &amp;p)
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;, &quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot;;
+}
+void modify_point(Point &amp;p, const int&amp; arg_x, const int&amp; arg_y)
+{
+    p.x = arg_x;
+    p.y = arg_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()      
+{               
+    Point p1, p2;   
+    // init 2 instances of Point
+    init_point(p1);
+    init_point(p2);
+
+    // print 2 instances of Point
+    cout &lt;&lt; &quot;p1: &quot;; print_point(p1); cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: &quot;; print_point(p2); cout &lt;&lt; endl;
+
+    // modify each instance
+    modify_point(p1, 1, 2);
+    modify_point(p2, 3, 4);
+    
+    // you can see the change in p1 and p2
+    cout &lt;&lt; &quot;p1: &quot;; print_point(p1); cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: &quot;; print_point(p2); cout &lt;&lt; endl;
+
+    return 0;   
+}   
+</code></pre>
+<hr />
+<h3 id="use-class-method"><a class="header" href="#use-class-method">Use class method</a></h3>
+<p>Instead of using extra functions, you can use the member functions to manipulate the data.</p>
+<hr />
+<pre><code class="language-c++">class Point // the class name
+{
+public: // public member variables and functions
+        // Note: there is also private: and protected: sections.
+        // we will discuss them in following lectures
+
+    // Member variables
+    // as like as the data in a 'struct', you can have multiple 
+    // variables in different types
+    int x;
+    int y;
+
+    // Member functions
+    // different from a 'struct', you can have multiple functions
+    // in a class that related to the class
+    void init() { x = 0; y = 0; }
+    void print() { cout &lt;&lt; &quot;(&quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot;)&quot;; }
+    void modify(const int&amp; arg_x, const int&amp; arg_y) { x = arg_x; y = arg_y; }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()      
+{               
+    Point p1, p2;   
+    // init 2 instances of Point
+    p1.init(); p2.init();
+
+    // print 2 instances of Point
+    p1.print(); p2.print();
+
+    // modify each instance
+    p1.modify(1, 2); p2.modify(3, 4); 
+
+    // you can see the change in p1 and p2
+    p1.print(); p2.print();
+
+    return 0;   
+}  
+</code></pre>
+<h2 id="example-triangle-a-hrefclasslecture2_ex1htmlsourcea"><a class="header" href="#example-triangle-a-hrefclasslecture2_ex1htmlsourcea">Example: Triangle [<a href="class/./lecture2_ex1.html">Source</a>]</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Triangle
+{
+public:
+    double x1, y1, x2, y2, x3, y3;
+
+    void init();
+    void print();
+    void modify(double, double, double, double, double, double);
+    double area();
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">void Triangle::init()
+{
+    x1 = 0;
+    y1 = 0;
+    x2 = 0;
+    y2 = 0;
+    x3 = 0;
+    y3 = 0;
+}
+
+void Triangle::print()
+{
+    cout &lt;&lt; &quot;Triangle: &quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x1 &lt;&lt; &quot;, &quot; &lt;&lt; y1 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x2 &lt;&lt; &quot;, &quot; &lt;&lt; y2 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x3 &lt;&lt; &quot;, &quot; &lt;&lt; y3 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">void Triangle::modify(double arg_x1, double arg_y1, double arg_x2,
+                      double arg_y2, double arg_x3, double arg_y3)
+{
+    x1 = arg_x1;
+    y1 = arg_y1;
+    x2 = arg_x2;
+    y2 = arg_y2;
+    x3 = arg_x3;
+    y3 = arg_y3;
+}
+
+double Triangle::area()
+{
+    return (x1 * y2 + x2 * y3 + x3 * y1 - x1 * y3 - x2 * y1 - x3 * y2) / 2;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    Triangle t;
+    t.init();
+    t.print();
+    t.modify(1, 1, 2, 2, 0, 3);
+    t.print();
+    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; t.area() &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Output:</p>
+<pre><code class="language-console">$ ./a.out
+Triangle: 
+(0, 0)
+(0, 0)
+(0, 0)
+Triangle: 
+(1, 1)
+(2, 2)
+(0, 3)
+Area: 1.5
+</code></pre>
+<h2 id="example-vector-a-hrefclasslecture2_ex2htmlsourcea"><a class="header" href="#example-vector-a-hrefclasslecture2_ex2htmlsourcea">Example: Vector [<a href="class/./lecture2_ex2.html">Source</a>]</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Vector
+{
+public:
+    int x, y, z;
+
+    void init();
+    void print();
+    void modify(int, int, int);
+    int dot(const Vector &amp;);
+    Vector cross(const Vector &amp;);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">void Vector::init()
+{
+    x = 0;
+    y = 0;
+    z = 0;
+}
+
+void Vector::print()
+{
+    cout &lt;&lt; &quot;Vector: &quot;
+         &lt;&lt; &quot;(&quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; z &lt;&lt; &quot;)&quot;;
+}
+
+void Vector::modify(int arg_x, int arg_y, int arg_z)
+{
+    x = arg_x;
+    y = arg_y;
+    z = arg_z;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int Vector::dot(const Vector &amp;arg_v)
+{
+    return x * arg_v.x + y * arg_v.y + z * arg_v.z;
+}
+
+Vector Vector::cross(const Vector &amp;arg_v)
+{
+    Vector v;
+    v.x = y * arg_v.z - z * arg_v.y;
+    v.y = z * arg_v.x - x * arg_v.z;
+    v.z = x * arg_v.y - y * arg_v.x;
+    return v;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    Vector v1, v2;
+    v1.init();
+    v1.print();
+    cout &lt;&lt; endl;
+    v1.modify(1, 1, 1);
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.init();
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+</code></pre>
+<hr />
+<pre><code class="language-c++">    v2.modify(2, 3, 4);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Dot: &quot; &lt;&lt; v1.dot(v2) &lt;&lt; endl;
+    cout &lt;&lt; endl;
+</code></pre>
+<hr />
+<pre><code class="language-c++">    v2.modify(5, 6, 7);
+    Vector v3 = v1.cross(v2);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Cross: &quot;;
+    v3.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Output:</p>
+<pre><code class="language-console">Vector: (0, 0, 0)
+Vector: (1, 1, 1)
+
+Vector: (0, 0, 0)
+
+v1: Vector: (1, 1, 1)
+v2: Vector: (2, 3, 4)
+Dot: 9
+
+v1: Vector: (1, 1, 1)
+v2: Vector: (5, 6, 7)
+Cross: Vector: (1, -2, 1)
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="example-1-trangle"><a class="header" href="#example-1-trangle">Example 1: Trangle</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Triangle
+{
+public:
+    double x1, y1, x2, y2, x3, y3;
+
+    void init();
+    void print();
+    void modify(double, double, double, double, double, double);
+    double area();
+};
+
+void Triangle::init()
+{
+    x1 = 0;
+    y1 = 0;
+    x2 = 0;
+    y2 = 0;
+    x3 = 0;
+    y3 = 0;
+}
+
+void Triangle::print()
+{
+    cout &lt;&lt; &quot;Triangle: &quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x1 &lt;&lt; &quot;, &quot; &lt;&lt; y1 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x2 &lt;&lt; &quot;, &quot; &lt;&lt; y2 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x3 &lt;&lt; &quot;, &quot; &lt;&lt; y3 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+
+void Triangle::modify(double arg_x1, double arg_y1, double arg_x2,
+                      double arg_y2, double arg_x3, double arg_y3)
+{
+    x1 = arg_x1;
+    y1 = arg_y1;
+    x2 = arg_x2;
+    y2 = arg_y2;
+    x3 = arg_x3;
+    y3 = arg_y3;
+}
+
+double Triangle::area()
+{
+    return (x1 * y2 + x2 * y3 + x3 * y1 - x1 * y3 - x2 * y1 - x3 * y2) / 2;
+}
+
+int main()
+{
+    Triangle t;
+    t.init();
+    t.print();
+    t.modify(1, 1, 2, 2, 0, 3);
+    t.print();
+    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; t.area() &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="example-2-vector"><a class="header" href="#example-2-vector">Example 2: Vector</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Vector
+{
+public:
+    int x, y, z;
+
+    void init();
+    void print();
+    void modify(int, int, int);
+    int dot(const Vector &amp;);
+    Vector cross(const Vector &amp;);
+};
+
+void Vector::init()
+{
+    x = 0;
+    y = 0;
+    z = 0;
+}
+
+void Vector::print()
+{
+    cout &lt;&lt; &quot;Vector: &quot;
+         &lt;&lt; &quot;(&quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; z &lt;&lt; &quot;)&quot;;
+}
+
+void Vector::modify(int arg_x, int arg_y, int arg_z)
+{
+    x = arg_x;
+    y = arg_y;
+    z = arg_z;
+}
+
+int Vector::dot(const Vector &amp;arg_v)
+{
+    return x * arg_v.x + y * arg_v.y + z * arg_v.z;
+}
+
+Vector Vector::cross(const Vector &amp;arg_v)
+{
+    Vector v;
+    v.x = y * arg_v.z - z * arg_v.y;
+    v.y = z * arg_v.x - x * arg_v.z;
+    v.z = x * arg_v.y - y * arg_v.x;
+    return v;
+}
+
+int main()
+{
+    Vector v1, v2;
+    v1.init();
+    v1.print();
+    cout &lt;&lt; endl;
+    v1.modify(1, 1, 1);
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.init();
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.modify(2, 3, 4);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Dot: &quot; &lt;&lt; v1.dot(v2) &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.modify(5, 6, 7);
+    Vector v3 = v1.cross(v2);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Cross: &quot;;
+    v3.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
 
     return 0;
 }

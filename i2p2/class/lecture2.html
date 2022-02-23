@@ -1,0 +1,567 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 2: Class Design 101 - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html" class="active"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!--
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+-->
+<h1 id="class-design-101"><a class="header" href="#class-design-101">Class Design 101</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture2_slides.html">lecture2_slides.html</a>
+Website version: <a href="./lecture2.html">lecture2.html</a></p>
+</blockquote>
+<ul>
+<li>Recap: Hello Class</li>
+<li>Class Definition</li>
+<li>Class Instance</li>
+<li>Class Usage/Method</li>
+<li>Example: Triangle</li>
+<li>Example: Vector</li>
+</ul>
+<h2 id="recap-hello-class"><a class="header" href="#recap-hello-class">Recap: Hello Class</a></h2>
+<pre><code class="language-c++">class Point
+{
+public:
+    // Member variables
+    int x;
+    int y;
+
+    // Member functions
+    void init();
+    void print();
+    void modify();
+};
+
+int main()                          
+{                                   
+    Point p1;                       
+    p1.init();                      
+    p1.print();                     
+    p1.modify();                    
+    p1.print();                     
+
+    return 0;                       
+}
+</code></pre>
+<h2 id="class-definition"><a class="header" href="#class-definition">Class Definition</a></h2>
+<p>Syntax:</p>
+<pre><code class="language-c++">class Point // the class name
+{
+public: // public member variables and functions
+        // Note: there is also private: and protected: sections.
+        // we will discuss them in following lectures
+
+    // Member variables
+    // as like as the data in a 'struct', you can have multiple 
+    // variables in different types
+    int x;
+    int y;
+};
+</code></pre>
+<h2 id="class-instance"><a class="header" href="#class-instance">Class Instance</a></h2>
+<pre><code class="language-c++">int main()      
+{               
+    Point p1, p2;   
+    // init 2 instances of Point
+    p1.x = 0; p1.y = 0;
+    p2.x = 0; p2.y = 0;
+
+    // print 2 instances of Point
+    cout &lt;&lt; &quot;p1: (&quot; &lt;&lt; p1.x &lt;&lt; &quot;, &quot; &lt;&lt; p1.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: (&quot; &lt;&lt; p2.x &lt;&lt; &quot;, &quot; &lt;&lt; p2.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+
+    // modify each instance
+    // p1 and p2 are the same class, but they are different instances
+    // so they can have different values
+    p1.x = 1; p1.y = 2;
+    p2.x = 3; p2.y = 4;
+    
+    // you can see the change in p1 and p2
+    cout &lt;&lt; &quot;p1: (&quot; &lt;&lt; p1.x &lt;&lt; &quot;, &quot; &lt;&lt; p1.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: (&quot; &lt;&lt; p2.x &lt;&lt; &quot;, &quot; &lt;&lt; p2.y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+
+    return 0;   
+}               
+</code></pre>
+<hr />
+<pre><code class="language-console">$ ./a.out
+p1: (0, 0)
+p2: (0, 0)
+p1: (1, 2)
+p2: (3, 4)
+</code></pre>
+<h2 id="class-methodusage"><a class="header" href="#class-methodusage">Class Method/Usage</a></h2>
+<h3 id="class-as-a-argument"><a class="header" href="#class-as-a-argument">Class as a argument</a></h3>
+<p>As like as struct, you can use a class instance as a argument to a function.</p>
+<pre><code class="language-c++">void init_point(Point &amp;p)
+{
+    p.x = 0;
+    p.y = 0;
+}
+void print_point(const Point &amp;p)
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; p.x &lt;&lt; &quot;, &quot; &lt;&lt; p.y &lt;&lt; &quot;)&quot;;
+}
+void modify_point(Point &amp;p, const int&amp; arg_x, const int&amp; arg_y)
+{
+    p.x = arg_x;
+    p.y = arg_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()      
+{               
+    Point p1, p2;   
+    // init 2 instances of Point
+    init_point(p1);
+    init_point(p2);
+
+    // print 2 instances of Point
+    cout &lt;&lt; &quot;p1: &quot;; print_point(p1); cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: &quot;; print_point(p2); cout &lt;&lt; endl;
+
+    // modify each instance
+    modify_point(p1, 1, 2);
+    modify_point(p2, 3, 4);
+    
+    // you can see the change in p1 and p2
+    cout &lt;&lt; &quot;p1: &quot;; print_point(p1); cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;p2: &quot;; print_point(p2); cout &lt;&lt; endl;
+
+    return 0;   
+}   
+</code></pre>
+<hr />
+<h3 id="use-class-method"><a class="header" href="#use-class-method">Use class method</a></h3>
+<p>Instead of using extra functions, you can use the member functions to manipulate the data.</p>
+<hr />
+<pre><code class="language-c++">class Point // the class name
+{
+public: // public member variables and functions
+        // Note: there is also private: and protected: sections.
+        // we will discuss them in following lectures
+
+    // Member variables
+    // as like as the data in a 'struct', you can have multiple 
+    // variables in different types
+    int x;
+    int y;
+
+    // Member functions
+    // different from a 'struct', you can have multiple functions
+    // in a class that related to the class
+    void init() { x = 0; y = 0; }
+    void print() { cout &lt;&lt; &quot;(&quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot;)&quot;; }
+    void modify(const int&amp; arg_x, const int&amp; arg_y) { x = arg_x; y = arg_y; }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()      
+{               
+    Point p1, p2;   
+    // init 2 instances of Point
+    p1.init(); p2.init();
+
+    // print 2 instances of Point
+    p1.print(); p2.print();
+
+    // modify each instance
+    p1.modify(1, 2); p2.modify(3, 4); 
+
+    // you can see the change in p1 and p2
+    p1.print(); p2.print();
+
+    return 0;   
+}  
+</code></pre>
+<h2 id="example-triangle-a-hreflecture2_ex1htmlsourcea"><a class="header" href="#example-triangle-a-hreflecture2_ex1htmlsourcea">Example: Triangle [<a href="./lecture2_ex1.html">Source</a>]</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Triangle
+{
+public:
+    double x1, y1, x2, y2, x3, y3;
+
+    void init();
+    void print();
+    void modify(double, double, double, double, double, double);
+    double area();
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">void Triangle::init()
+{
+    x1 = 0;
+    y1 = 0;
+    x2 = 0;
+    y2 = 0;
+    x3 = 0;
+    y3 = 0;
+}
+
+void Triangle::print()
+{
+    cout &lt;&lt; &quot;Triangle: &quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x1 &lt;&lt; &quot;, &quot; &lt;&lt; y1 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x2 &lt;&lt; &quot;, &quot; &lt;&lt; y2 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; x3 &lt;&lt; &quot;, &quot; &lt;&lt; y3 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">void Triangle::modify(double arg_x1, double arg_y1, double arg_x2,
+                      double arg_y2, double arg_x3, double arg_y3)
+{
+    x1 = arg_x1;
+    y1 = arg_y1;
+    x2 = arg_x2;
+    y2 = arg_y2;
+    x3 = arg_x3;
+    y3 = arg_y3;
+}
+
+double Triangle::area()
+{
+    return (x1 * y2 + x2 * y3 + x3 * y1 - x1 * y3 - x2 * y1 - x3 * y2) / 2;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    Triangle t;
+    t.init();
+    t.print();
+    t.modify(1, 1, 2, 2, 0, 3);
+    t.print();
+    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; t.area() &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Output:</p>
+<pre><code class="language-console">$ ./a.out
+Triangle: 
+(0, 0)
+(0, 0)
+(0, 0)
+Triangle: 
+(1, 1)
+(2, 2)
+(0, 3)
+Area: 1.5
+</code></pre>
+<h2 id="example-vector-a-hreflecture2_ex2htmlsourcea"><a class="header" href="#example-vector-a-hreflecture2_ex2htmlsourcea">Example: Vector [<a href="./lecture2_ex2.html">Source</a>]</a></h2>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Vector
+{
+public:
+    int x, y, z;
+
+    void init();
+    void print();
+    void modify(int, int, int);
+    int dot(const Vector &amp;);
+    Vector cross(const Vector &amp;);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">void Vector::init()
+{
+    x = 0;
+    y = 0;
+    z = 0;
+}
+
+void Vector::print()
+{
+    cout &lt;&lt; &quot;Vector: &quot;
+         &lt;&lt; &quot;(&quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; &quot;, &quot; &lt;&lt; z &lt;&lt; &quot;)&quot;;
+}
+
+void Vector::modify(int arg_x, int arg_y, int arg_z)
+{
+    x = arg_x;
+    y = arg_y;
+    z = arg_z;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int Vector::dot(const Vector &amp;arg_v)
+{
+    return x * arg_v.x + y * arg_v.y + z * arg_v.z;
+}
+
+Vector Vector::cross(const Vector &amp;arg_v)
+{
+    Vector v;
+    v.x = y * arg_v.z - z * arg_v.y;
+    v.y = z * arg_v.x - x * arg_v.z;
+    v.z = x * arg_v.y - y * arg_v.x;
+    return v;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    Vector v1, v2;
+    v1.init();
+    v1.print();
+    cout &lt;&lt; endl;
+    v1.modify(1, 1, 1);
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.init();
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+</code></pre>
+<hr />
+<pre><code class="language-c++">    v2.modify(2, 3, 4);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Dot: &quot; &lt;&lt; v1.dot(v2) &lt;&lt; endl;
+    cout &lt;&lt; endl;
+</code></pre>
+<hr />
+<pre><code class="language-c++">    v2.modify(5, 6, 7);
+    Vector v3 = v1.cross(v2);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Cross: &quot;;
+    v3.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Output:</p>
+<pre><code class="language-console">Vector: (0, 0, 0)
+Vector: (1, 1, 1)
+
+Vector: (0, 0, 0)
+
+v1: Vector: (1, 1, 1)
+v2: Vector: (2, 3, 4)
+Dot: 9
+
+v1: Vector: (1, 1, 1)
+v2: Vector: (5, 6, 7)
+Cross: Vector: (1, -2, 1)
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../class/lab1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../class/lecture2_ex1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../class/lab1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../class/lecture2_ex1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
