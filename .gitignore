@@ -23,3 +23,7 @@ fix_permission.sh
 
 # Marp slides
 slides
+
+# execution
+*.exe
+*.out

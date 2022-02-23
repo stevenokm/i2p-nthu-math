@@ -7,3 +7,6 @@
     - [VS Code Tutorial (WSL/windows + mingw)](./vscode_tutorial/lab_1_vscode_win.md)
 - [Lecture 1: Sturcture and Class](./class/lecture1.md)
     - [Lab 1: Hello Class](./class/lab1.md)
+- [Lecture 2: Class Design 101](./class/lecture2.md)
+    - [Example 1: Triangle](./class/lecture2_ex1.md)
+    - [Example 2: Vector](./class/lecture2_ex2.md)
