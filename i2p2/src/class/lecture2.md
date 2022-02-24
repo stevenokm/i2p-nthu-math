@@ -414,5 +414,7 @@ v2: Vector: (5, 6, 7)
 Cross: Vector: (1, -2, 1)
 ```
 
-Pratice 1: 參考 `Triangle` class, 如果四邊形、多邊形要如何設計？
-Pratice 2: 參考 `Vector` class, 如果需要紀錄多維度的座標系上、或是轉換 eigen vector 為其他 vector 要如何設計？
+## Pratices
+
+* Pratice 1: 參考 `Triangle` class, 如果四邊形、多邊形要如何設計？
+* Pratice 2: 參考 `Vector` class, 如果需要紀錄多維度的座標系上、或是轉換 eigen vector 為其他 vector 要如何設計？
