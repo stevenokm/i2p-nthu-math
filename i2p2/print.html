@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -191,7 +191,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 <tr><td align="center"></td><td align="left">Sturcture and Class</td></tr>
 <tr><td align="center"><a href="class/lab1.html">Lab 1</a></td><td align="left">Programming Environment &amp; Class Helloworld</td></tr>
 <tr><td align="center"><a href="class/lecture2.html">Lecture 2</a></td><td align="left">Class Design 101</td></tr>
-<tr><td align="center">Lecture 3</td><td align="left">Class Members &amp; Methods</td></tr>
+<tr><td align="center"><a href="class/lecture3.html">Lecture 3</a></td><td align="left">Class Members &amp; Methods</td></tr>
 <tr><td align="center">Lecture 4</td><td align="left">Class Constructor &amp; Modifer</td></tr>
 <tr><td align="center">Lab 4</td><td align="left">Class 101</td></tr>
 <tr><td align="center">Lecture 5</td><td align="left">Collaborate with Other Classes</td></tr>
@@ -759,8 +759,10 @@ scoop install mingw
 <ol>
 <li>在 <code>%USERPROFILE%</code> 中新增一個資料夾，名稱可以自由取 (如 <code>test</code>)。</li>
 </ol>
+<p><strong>Note:</strong> 所有的路徑 (包含 <code>%USERPROFILE%</code>) 都不能有非英文的字元，否則 Debugger 會無法執行。
+也可以在 <code>%USERPROFILE%</code> 外的資料夾中新增資料夾，如 <code>D:\test</code>。</p>
 <p><img src="vscode_tutorial/img/fig_01-win-var.png" alt="create folder" /></p>
-<ol start="2">
+<ol>
 <li>用 <code>vscode</code> 編輯器選擇開啟新增的資料夾 (以 <code>test</code> 為例)，如下圖示範：</li>
 </ol>
 <p><img src="vscode_tutorial/img/fig_05-open_vscode.png" alt="open folder 1" />
@@ -945,7 +947,7 @@ void modify_point(struct Point &amp;p)
 <pre><code class="language-c++">class Point
 {
 public:
-    // Member variables
+    // Data members
     int x;
     int y;
 
@@ -960,7 +962,7 @@ public:
 <pre><code class="language-c++">class Point                         struct Point
 {                                   {
 public:
-    // Member variables                 // Member variables
+    // Data members                 // Data members
     int x;                              int x;
     int y;                              int y;
 
@@ -1080,7 +1082,7 @@ Website version: <a href="class/./lecture2.html">lecture2.html</a></p>
 <li>Recap: Hello Class</li>
 <li>Class Definition</li>
 <li>Class Instance</li>
-<li>Class Usage/Method</li>
+<li>Class Usage/Member Function</li>
 <li>Example: Triangle</li>
 <li>Example: Vector</li>
 </ul>
@@ -1088,7 +1090,7 @@ Website version: <a href="class/./lecture2.html">lecture2.html</a></p>
 <pre><code class="language-c++">class Point
 {
 public:
-    // Member variables
+    // Data members
     int x;
     int y;
 
@@ -1113,11 +1115,11 @@ int main()
 <p>Syntax:</p>
 <pre><code class="language-c++">class Point // the class name
 {
-public: // public member variables and functions
+public: // public data members and member functions
         // Note: there is also private: and protected: sections.
         // we will discuss them in following lectures
 
-    // Member variables
+    // Data members
     // as like as the data in a 'struct', you can have multiple 
     // variables in different types
     int x;
@@ -1156,7 +1158,7 @@ p2: (0, 0)
 p1: (1, 2)
 p2: (3, 4)
 </code></pre>
-<h2 id="class-methodusage"><a class="header" href="#class-methodusage">Class Method/Usage</a></h2>
+<h2 id="class-usagemember-function"><a class="header" href="#class-usagemember-function">Class Usage/Member Function</a></h2>
 <h3 id="class-as-a-argument"><a class="header" href="#class-as-a-argument">Class as a argument</a></h3>
 <p>As like as struct, you can use a class instance as a argument to a function.</p>
 <pre><code class="language-c++">void init_point(Point &amp;p)
@@ -1198,16 +1200,16 @@ void modify_point(Point &amp;p, const int&amp; arg_x, const int&amp; arg_y)
 }   
 </code></pre>
 <hr />
-<h3 id="use-class-method"><a class="header" href="#use-class-method">Use class method</a></h3>
-<p>Instead of using extra functions, you can use the member functions to manipulate the data.</p>
+<h3 id="use-class-member-function"><a class="header" href="#use-class-member-function">Use class member function</a></h3>
+<p>Instead of using extra functions, you can use member functions to manipulate the data.</p>
 <hr />
 <pre><code class="language-c++">class Point // the class name
 {
-public: // public member variables and functions
+public: // public data members and functions
         // Note: there is also private: and protected: sections.
         // we will discuss them in following lectures
 
-    // Member variables
+    // Data members
     // as like as the data in a 'struct', you can have multiple 
     // variables in different types
     int x;
@@ -1433,7 +1435,7 @@ Cross: Vector: (1, -2, 1)
 <h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
 <ul>
 <li>Pratice 1: 參考 <code>Triangle</code> class, 如果四邊形、多邊形要如何設計？</li>
-<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要紀錄多維度的座標系上、或是轉換 eigen vector 為其他 vector 要如何設計？</li>
+<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要紀錄多維度的座標系上、或是轉換 basis 為其他 vector 要如何設計？</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="example-1-trangle"><a class="header" href="#example-1-trangle">Example 1: Trangle</a></h1>
 <pre><code class="language-c++">#include &lt;iostream&gt;
@@ -1587,6 +1589,1052 @@ int main()
     cout &lt;&lt; endl;
 
     return 0;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><!--
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+-->
+<h1 id="class-data-members--member-functions"><a class="header" href="#class-data-members--member-functions">Class Data Members &amp; Member Functions</a></h1>
+<blockquote>
+<p>Slides version: <a href="class/./lecture3_slides.html">lecture3_slides.html</a>
+Website version: <a href="class/./lecture3.html">lecture3.html</a></p>
+</blockquote>
+<ul>
+<li>Define Class Data Members &amp; Member Functions</li>
+<li><code>public</code>, <code>private</code>, <code>protected</code> member
+<ul>
+<li>Kickstart of getter &amp; setter</li>
+</ul>
+</li>
+<li><code>this</code> member</li>
+<li>Variable scope in a class
+<ul>
+<li><code>::</code> scope resolution operator</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li><code>static</code> data member
+<ul>
+<li>Kickstart of constructor &amp; destructor </li>
+</ul>
+</li>
+<li>Example 1: Triangle (again)</li>
+<li>Example 2: Vector (again)</li>
+<li>Example 3: Integer Calculator</li>
+</ul>
+<h2 id="define-class-data-members--member-functions"><a class="header" href="#define-class-data-members--member-functions">Define Class Data Members &amp; Member Functions</a></h2>
+<ul>
+<li>Why do we need data members?
+<ul>
+<li>To store data</li>
+<li>Make data accessible</li>
+</ul>
+</li>
+<li>Why do we need member functions?
+<ul>
+<li>To perform operations</li>
+<li>Ease of access to data</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="design-data-members"><a class="header" href="#design-data-members">Design data members</a></h3>
+<p>Guidelines:</p>
+<ul>
+<li>each data member should be seen only by its owner
+<ul>
+<li>if you want to access it, you need to use getter &amp; setter (discussed on next lecture)</li>
+</ul>
+</li>
+<li>if you want a data member to be accessible by other classes, you should handle it carefully</li>
+<li>the naming convention of data members should be consistent, meaningful, and easy to understand
+<ul>
+<li><code>_</code> is used to separate words</li>
+<li><code>m_</code> is used to indicate a data member</li>
+<li><code>arg_</code> is used to indicate an argument</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Example: <code>Point_2D</code></p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D // the class name
+// we use first upper case letter to indicate a class
+{
+private: // private data members
+         // we will discuss it later
+    // Data members
+    // we use `m_` to indicate a data member
+
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+</code></pre>
+<hr />
+<pre><code class="language-c++">public: // public member functions
+        // we will discuss in the next lecture
+    
+    // Member functions
+    // we use lower case letter to indicate a member function
+    // also, we just define the function declaration
+    // and leave the definition to the end of the class
+
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    // we use `arg_` to indicate the arguments
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// function definition
+
+// initialize the x and y coordinate
+void Point_2D::init()
+{
+    m_x = 0;
+    m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+// we use `arg_` to indicate the arguments
+void Point_2D::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+
+int main()
+{
+    Point_2D p1, p2;
+    // init 2 instances of Point
+    p1.init();    p2.init();
+    // print 2 instances of Point
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    // modify each instance
+    p1.modify(1, 2);
+    p2.modify(3, 4);
+    // you can see the change in p1 and p2
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="design-member-functions--discuss-on-next-lecture"><a class="header" href="#design-member-functions--discuss-on-next-lecture">Design member functions  (discuss on next lecture)</a></h3>
+<p>Guidelines:</p>
+<ul>
+<li>each member function should show it's accessibility explicitly
+<ul>
+<li>'_' is used to indicate a member function used internally (<code>private</code>)</li>
+<li>all other functions are public</li>
+</ul>
+</li>
+<li>essential member functions should be defined in the class
+<ul>
+<li>getter &amp; setter</li>
+<li>constructor &amp; destructor</li>
+<li><code>operator=</code> (disscuss on later lecture)</li>
+</ul>
+</li>
+<li>etc.</li>
+</ul>
+<h2 id="public-private-protected-member"><a class="header" href="#public-private-protected-member"><code>public</code>, <code>private</code>, <code>protected</code> member</a></h2>
+<p>To identify the accessibility of a member, we use <code>public</code>, <code>private</code>, and <code>protected</code> keywords.</p>
+<ul>
+<li><code>public</code> data members is accessible by other classes.</li>
+<li><code>private</code> data members is accessible only by its owner.</li>
+<li><code>protected</code> data members is accessible by other inherited classes and its owner. (discuss in lecture 8)</li>
+</ul>
+<hr />
+<h3 id="public-member"><a class="header" href="#public-member"><code>public</code> member</a></h3>
+<p>Same as <code>struct</code>.</p>
+<pre><code class="language-c++">class Point // the class name
+{
+public: 
+
+    // public data members
+    // we can access them directly by use `.` operator
+    int m_x;
+    int m_y;
+};
+
+int main()
+{
+    Point p1;
+    // init p1
+    p1.m_x = 1;
+    p1.m_y = 2;
+    // print p1
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; p1.m_x &lt;&lt; &quot;, &quot; &lt;&lt; p1.m_y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="private-member"><a class="header" href="#private-member"><code>private</code> member</a></h3>
+<p>Different from <code>struct</code>, <code>private</code> member is not accessible by other classes or functions.</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+// Point_2D class
+class Point_2D
+{
+private: // private data members
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+
+public: // public member functions
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+    // modify the point by another point
+    void modify(const Point_2D &amp;arg_point);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// Point_2D_2 class
+class Point_2D_2
+{
+private: // private data members
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+
+public: // public member functions
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+    // modify the point by another point
+    // NOTE: compile error
+    void modify(const Point_2D &amp;arg_point);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// function definition
+
+// Point_2D class
+// initialize the x and y coordinate
+void Point_2D::init()
+{
+    m_x = 0;
+    m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+void Point_2D::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+}
+// modify the point by another point
+void Point_2D::modify(const Point_2D &amp;arg_point)
+{
+    m_x = arg_point.m_x;
+    m_y = arg_point.m_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// Point_2D_2 class
+// initialize the x and y coordinate
+void Point_2D_2::init()
+{
+    m_x = 0;
+    m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D_2::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+void Point_2D_2::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+}
+// modify the point by another point
+void Point_2D_2::modify(const Point_2D &amp;arg_point)
+{
+    // compile error, error: 'm_x' is a private member of 'Point_2D'
+    // need to use getter (discuss on the next lecture)
+    m_x = arg_point.m_x;
+    m_y = arg_point.m_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+
+int main()
+{
+    Point_2D point1;
+    Point_2D_2 point2;
+
+    point1.init();
+    point2.init();
+
+    point1.print();    cout &lt;&lt; endl;
+    point2.print();    cout &lt;&lt; endl;
+
+    point1.modify(1, 2);
+    point2.modify(point1);
+
+    point1.print();    cout &lt;&lt; endl;
+    point2.print();    cout &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<h2 id="this-data-member"><a class="header" href="#this-data-member"><code>this</code> data member</a></h2>
+<p>To access the data members of current class explicitly, we use <code>this</code> keyword.</p>
+<p>Usage: (inside the class definition)</p>
+<pre><code class="language-c++">void Point_2D::init()
+{
+    // access the data members of current class
+    this-&gt;m_x = 0;
+    this-&gt;m_y = 0;
+}
+</code></pre>
+<hr />
+<p>Example: <code>Point_2D</code> (use <code>this</code>)</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D
+{
+private: // private data members
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+public: // public member functions
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// function definition
+
+// initialize the x and y coordinate
+void Point_2D::init()
+{
+    // initialize the x coordinate
+    // NOTE: this is a pointer to the current object
+    //       so we can use this-&gt; to access the private data member
+    this-&gt;m_x = 0;
+    // initialize the y coordinate
+    // NOTE: this-&gt; is equivalent to (*this)
+    (*this).m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; this-&gt;m_x &lt;&lt; &quot;, &quot; &lt;&lt; this-&gt;m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+void Point_2D::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    this-&gt;m_x = arg_x;
+    this-&gt;m_y = arg_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+
+int main()
+{
+    Point_2D p1, p2;
+    // init 2 instances of Point
+    p1.init();    p2.init();
+    // print 2 instances of Point
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    // modify each instance
+    p1.modify(1, 2);
+    p2.modify(3, 4);
+    // you can see the change in p1 and p2
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="variable-scope-in-a-class"><a class="header" href="#variable-scope-in-a-class">Variable scope in a class</a></h2>
+<p>Reference: <a href="https://www.geeksforgeeks.org/scope-resolution-operator-in-c/">Scope resolution operator in C++ - GeeksforGeeks</a></p>
+<ul>
+<li>Which variables are accessible in a member function?
+<ul>
+<li>data members</li>
+<li>local variables</li>
+<li>global variables (Ref: <a href="https://stevenokm.github.io/i2p-nthu-math/i2p1/function/lecture_11.html#variable-scope--lifetime">Lecture 11: Function &amp; Reference (2)</a>)</li>
+<li>function arguments</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Example:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int a = 1;
+
+class A
+{
+public:
+    int a;
+    void f()
+    {
+        a = a; // how to access global variable a?
+    }
+};
+
+int main()
+{
+    A a;
+    a.f();
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="-scope-resolution-operator"><a class="header" href="#-scope-resolution-operator"><code>::</code> scope resolution operator</a></h3>
+<p>Usage: Global variable</p>
+<pre><code class="language-c++">// C++ program to show that we can access a global variable
+// using scope resolution operator :: when there is a local
+// variable with same name
+#include &lt;iostream&gt;
+using namespace std;
+
+int x; // Global x
+
+int main()
+{
+    int x = 10; // Local x
+    cout &lt;&lt; &quot;Value of global x is &quot; &lt;&lt; ::x;
+    cout &lt;&lt; &quot;\nValue of local x is &quot; &lt;&lt; x;
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Usage: Function name</p>
+<pre><code class="language-c++">// C++ program to show that scope resolution operator :: is used
+// to define a function outside a class
+#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+public:
+    // Only declaration
+    void fun();
+};
+
+// Definition outside class using ::
+void A::fun()
+{
+    cout &lt;&lt; &quot;fun() called&quot;;
+}
+
+int main()
+{
+    A a;
+    a.fun();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Example: </p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int global_a = 1;
+// a = 1;
+
+class A
+{
+public:
+    int local_a;
+    // int a;
+    void f()
+    {
+        local_a = ::global_a;
+        // a = ::a;
+    }
+};
+
+int main()
+{
+    A a;
+    a.f();
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="case-a-class-in-a-class"><a class="header" href="#case-a-class-in-a-class">Case: a class in a class</a></h3>
+<pre><code class="language-c++">// Use of scope resolution class inside another class.
+#include &lt;iostream&gt;
+using namespace std;
+
+class outside
+{
+public:
+    int x;
+    class inside
+    {
+    public:
+        int x;
+        static int y; // we talk it later
+        int foo();
+    };
+};
+int outside::inside::y = 5;
+
+int main()
+{
+    outside A;
+    outside::inside B;
+}
+</code></pre>
+<h2 id="static-data-member"><a class="header" href="#static-data-member"><code>static</code> data member</a></h2>
+<p>Reference: <a href="https://www.geeksforgeeks.org/static-keyword-cpp/">Static Keyword in C++ - GeeksforGeeks</a></p>
+<p>To maintain the status of a class or save memory usage, we use <code>static</code> data member.</p>
+<p>Note: the value of a <code>static</code> variable is shared during the entire execution of the program and will initialize only once.</p>
+<hr />
+<pre><code class="language-c++">// C++ program to demonstrate
+// the use of static Static
+// variables in a Function
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void demo()
+{
+    // static variable
+    static int count = 0;
+    cout &lt;&lt; count &lt;&lt; &quot; &quot;;
+
+    // value is updated and
+    // will be carried to next
+    // function calls
+    count++;
+}
+
+int main()
+{
+    for (int i = 0; i &lt; 5; i++)
+        demo();
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="example-static-data-member"><a class="header" href="#example-static-data-member">Example: static data member</a></h3>
+<p>Note: <code>static</code> data member will share the same value for all instances of the class.</p>
+<pre><code class="language-c++">// C++ program to demonstrate static
+// variables inside a class
+
+#include &lt;iostream&gt;
+using namespace std;
+
+class GfG
+{
+public:
+    static int i;
+
+    GfG(){
+        // Default constructor
+        // we will discuss this in the next lecture
+    };
+};
+
+// static data member should be initialized in global scope
+int GfG::i = 1;
+  
+int main()
+{
+    GfG obj;
+    // prints value of i
+    cout &lt;&lt; obj.i; 
+}
+</code></pre>
+<hr />
+<h3 id="initialize-static-data-member-is-important"><a class="header" href="#initialize-static-data-member-is-important">Initialize <code>static</code> data member is important</a></h3>
+<p>Without initializing <code>static</code> data member, the compiler will not know the value of <code>static</code> data member.</p>
+<pre><code class="language-c++">// C++ program to demonstrate static
+// variables inside a class
+
+#include &lt;iostream&gt;
+using namespace std;
+
+class GfG
+{
+public:
+    static int i;
+};
+
+int main()
+{
+    GfG obj;
+    // prints value of i
+    cout &lt;&lt; obj.i &lt;&lt; endl;
+}
+</code></pre>
+<h2 id="example-1-triangle-again-a-hrefclasslecture3_ex1htmlsourcea"><a class="header" href="#example-1-triangle-again-a-hrefclasslecture3_ex1htmlsourcea">Example 1: Triangle (again) [<a href="class/./lecture3_ex1.html">Source</a>]</a></h2>
+<p>A Triangle:</p>
+<ul>
+<li>contains 3 points</li>
+<li>on the 2D plane</li>
+<li>need to be able to calculate the area</li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<h2 id="example-2-vector-again-a-hrefclasslecture3_ex2htmlsourcea"><a class="header" href="#example-2-vector-again-a-hrefclasslecture3_ex2htmlsourcea">Example 2: Vector (again) [<a href="class/./lecture3_ex2.html">Source</a>]</a></h2>
+<p>A Vector:</p>
+<ul>
+<li>contains 3 factors of the 3 basis $\bold{i}$, $\bold{j}$, $\bold{k}$</li>
+<li>need to be able to calculate the length</li>
+<li>need to be able to calculate the dot, cross product</li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<h2 id="example-3-integer-calculator-a-hrefclasslecture3_ex3htmlsourcea"><a class="header" href="#example-3-integer-calculator-a-hrefclasslecture3_ex3htmlsourcea">Example 3: Integer Calculator [<a href="class/./lecture3_ex3.html">Source</a>]</a></h2>
+<p>A Integer Calculator:</p>
+<ul>
+<li>contains current value, input value, and operation</li>
+<li>neet to be able to set the input value</li>
+<li>neet to be able to set the operation</li>
+<li>neet to be able to calculate the result</li>
+<li>neet to be able to clear the input value</li>
+<li>need to be initialized</li>
+<li>need to be able to get all information</li>
+</ul>
+<h2 id="pratices-1"><a class="header" href="#pratices-1">Pratices</a></h2>
+<ul>
+<li>Pratice 1: 參考 <code>Triangle</code> class, 如果四邊形、多邊形要如何設計要儲存的變數？</li>
+<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要支援多維度的座標系上、或是轉換 basis 為其他 vector 要如何設計儲存的變數？</li>
+<li>Pratice 3: 參考 <code>Integer Calculator</code> class, 如果需要支援 <code>M+</code> 運算要如何設計相關變數？</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="example-1-trangle-1"><a class="header" href="#example-1-trangle-1">Example 1: Trangle</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+// Triangle class declaration
+class Triangle
+{
+private:
+    // define three points of the triangle
+    // in x1, y1, x2, y2, x3, y3 format
+    double m_x1, m_y1, m_x2, m_y2, m_x3, m_y3;
+
+public:
+    // initialize the triangle
+    void init();
+    // print the triangle
+    void print();
+    // modify the three points of the triangle
+    void modify(double, double, double,
+                double, double, double);
+    // calculate the area of the triangle
+    double area();
+};
+
+// Triangle class implementation
+
+// initialize the triangle
+void Triangle::init()
+{
+    // initialize the three points of the triangle
+    m_x1 = 0.0;
+    m_y1 = 0.0;
+    m_x2 = 1.0;
+    m_y2 = 0.0;
+    m_x3 = 0.0;
+    m_y3 = 1.0;
+}
+
+// print the triangle
+void Triangle::print()
+{
+    // print the three points of the triangle
+    cout &lt;&lt; &quot;Triangle: &quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x1 &lt;&lt; &quot;, &quot; &lt;&lt; m_y1 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x2 &lt;&lt; &quot;, &quot; &lt;&lt; m_y2 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x3 &lt;&lt; &quot;, &quot; &lt;&lt; m_y3 &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+
+// modify the three points of the triangle
+void Triangle::modify(double arg_x1, double arg_y1,
+                      double arg_x2, double arg_y2,
+                      double arg_x3, double arg_y3)
+{
+    // modify the three points of the triangle
+    m_x1 = arg_x1;
+    m_y1 = arg_y1;
+    m_x2 = arg_x2;
+    m_y2 = arg_y2;
+    m_x3 = arg_x3;
+    m_y3 = arg_y3;
+}
+
+// calculate the area of the triangle
+double Triangle::area()
+{
+    // calculate the area of the triangle
+    return (m_x1 * (m_y2 - m_y3) + m_x2 * (m_y3 - m_y1) + m_x3 * (m_y1 - m_y2)) / 2.0;
+}
+
+// main function
+
+int main()
+{
+    Triangle t;
+    t.init();
+    t.print();
+    t.modify(1, 1, 2, 2, 0, 3);
+    t.print();
+    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; t.area() &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="example-2-vector-1"><a class="header" href="#example-2-vector-1">Example 2: Vector</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;cmath&gt;
+
+using namespace std;
+
+// Vector class declaration
+class Vector
+{
+private:
+    // define the three factor of the basis vectors
+    // on the x, y, z axes
+    double m_x, m_y, m_z;
+
+public:
+    // initialize the vector
+    void init();
+    // print the vector
+    void print();
+    // modify the three factor of the basis vectors
+    void modify(double, double, double);
+    // calculate the length of the vector
+    double length();
+    // calculate the dot product of two vectors
+    int dot(const Vector &amp;);
+    // calculate the cross product of two vectors
+    Vector cross(const Vector &amp;);
+};
+
+// initialize the vector
+void Vector::init()
+{
+    // initialize the three factor of the basis vectors
+    m_x = 0.0;
+    m_y = 0.0;
+    m_z = 0.0;
+}
+
+// print the vector
+void Vector::print()
+{
+    // print the three factor of the basis vectors
+    cout &lt;&lt; &quot;Vector: &quot; &lt;&lt; endl;
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;, &quot; &lt;&lt; m_z &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+}
+
+// modify the three factor of the basis vectors
+void Vector::modify(double arg_x, double arg_y, double arg_z)
+{
+    // modify the three factor of the basis vectors
+    m_x = arg_x;
+    m_y = arg_y;
+    m_z = arg_z;
+}
+
+// calculate the length of the vector
+double Vector::length()
+{
+    // calculate the length of the vector
+    return sqrt(m_x * m_x + m_y * m_y + m_z * m_z);
+}
+
+// calculate the dot product of two vectors
+int Vector::dot(const Vector &amp;arg_v)
+{
+    // calculate the dot product of two vectors
+    return m_x * arg_v.m_x + m_y * arg_v.m_y + m_z * arg_v.m_z;
+}
+
+// calculate the cross product of two vectors
+Vector Vector::cross(const Vector &amp;arg_v)
+{
+    // calculate the cross product of two vectors
+    Vector v;
+    v.m_x = m_y * arg_v.m_z - m_z * arg_v.m_y;
+    v.m_y = m_z * arg_v.m_x - m_x * arg_v.m_z;
+    v.m_z = m_x * arg_v.m_y - m_y * arg_v.m_x;
+    return v;
+}
+
+// main function
+
+int main()
+{
+    Vector v1, v2;
+    v1.init();
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Length of v1: &quot; &lt;&lt; v1.length() &lt;&lt; endl;
+    v1.modify(1, 1, 1);
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Length of v1: &quot; &lt;&lt; v1.length() &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.init();
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Length of v2: &quot; &lt;&lt; v2.length() &lt;&lt; endl;
+    v2.modify(2, 3, 4);
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Length of v2: &quot; &lt;&lt; v2.length() &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Dot: &quot; &lt;&lt; v1.dot(v2) &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    v2.modify(5, 6, 7);
+    Vector v3 = v1.cross(v2);
+    cout &lt;&lt; &quot;v1: &quot;;
+    v1.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;v2: &quot;;
+    v2.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; &quot;Cross: &quot;;
+    v3.print();
+    cout &lt;&lt; endl;
+    cout &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="example-3-integer-calculator"><a class="header" href="#example-3-integer-calculator">Example 3: Integer Calculator</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+// Triangle class declaration
+class Int_Calc
+{
+private:
+    // define current value
+    long m_curr_val;
+    // define input value
+    long m_input_val;
+    // define operation
+    // `+`, `-`, `*`, `/`, and ` ` for none
+    char m_op;
+    // calculate result
+    void _calc_result(); // private function, discuss in the next lecture
+
+public:
+    // clear the input value
+    void clear();
+    // clear the entire class
+    void init();
+    // set the input value
+    void set_input(long arg_input);
+    // add the input value to the current value
+    void add();
+    // subtract the input value from the current value
+    void sub();
+    // multiply the input value with the current value
+    void mul();
+    // divide the current value by the input value
+    void div();
+    // assign the input value to the current value
+    void assign();
+    // get the current value
+    long get_curr_val();
+    // get the current operation
+    char get_op();
+    // get the input value
+    long get_input_val();
+};
+
+// Int_Calc class implementation
+
+// calculate the result
+void Int_Calc::_calc_result()
+{
+    switch (m_op)
+    {
+    case '+':
+        m_curr_val += m_input_val;
+        break;
+    case '-':
+        m_curr_val -= m_input_val;
+        break;
+    case '*':
+        m_curr_val *= m_input_val;
+        break;
+    case '/':
+        m_curr_val /= m_input_val;
+        break;
+    case ' ':
+        m_curr_val = m_input_val;
+        break;
+    default:
+        break;
+    }
+}
+
+// clear the input value
+void Int_Calc::clear()
+{
+    m_input_val = 0;
+}
+
+// clear the entire class
+void Int_Calc::init()
+{
+    m_curr_val = 0;
+    m_input_val = 0;
+    m_op = ' ';
+}
+
+// set the input value
+void Int_Calc::set_input(long arg_input)
+{
+    m_input_val = arg_input;
+}
+
+// add the input value to the current value
+void Int_Calc::add()
+{
+    _calc_result();
+    m_op = '+';
+}
+
+// subtract the input value from the current value
+void Int_Calc::sub()
+{
+    _calc_result();
+    m_op = '-';
+}
+
+// multiply the input value with the current value
+void Int_Calc::mul()
+{
+    _calc_result();
+    m_op = '*';
+}
+
+// divide the current value by the input value
+void Int_Calc::div()
+{
+    _calc_result();
+    m_op = '/';
+}
+
+// assign the input value to the current value
+void Int_Calc::assign()
+{
+    _calc_result();
+    m_op = ' ';
+}
+
+// get the current value
+long Int_Calc::get_curr_val()
+{
+    return m_curr_val;
+}
+
+// get the current operation
+char Int_Calc::get_op()
+{
+    return m_op;
+}
+
+// get the input value
+long Int_Calc::get_input_val()
+{
+    return m_input_val;
+}
+
+// main function
+
+int main()
+{
+    // create an instance of the class
+    Int_Calc calc;
+    // initialize the class
+    calc.init();
+    // set the input value
+    calc.set_input(10);
+    // get the input value
+    cout &lt;&lt; calc.get_input_val() &lt;&lt; endl;
+    // add the input value to the current value
+    calc.add();
+    // get current op
+    cout &lt;&lt; '\'' &lt;&lt; calc.get_op() &lt;&lt; '\'' &lt;&lt; endl;
+    // set another input value
+    calc.set_input(20);
+    // get the input value
+    cout &lt;&lt; calc.get_input_val() &lt;&lt; endl;
+    // clear the input value
+    calc.clear();
+    // set the input value
+    calc.set_input(30);
+    // get the input value
+    cout &lt;&lt; calc.get_input_val() &lt;&lt; endl;
+    // compute the result
+    calc.assign();
+    // print the result
+    cout &lt;&lt; calc.get_curr_val() &lt;&lt; endl;
 }
 </code></pre>
 

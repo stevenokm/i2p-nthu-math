@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html" class="active"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html" class="active"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -164,7 +164,7 @@ Website version: <a href="./lecture2.html">lecture2.html</a></p>
 <li>Recap: Hello Class</li>
 <li>Class Definition</li>
 <li>Class Instance</li>
-<li>Class Usage/Method</li>
+<li>Class Usage/Member Function</li>
 <li>Example: Triangle</li>
 <li>Example: Vector</li>
 </ul>
@@ -172,7 +172,7 @@ Website version: <a href="./lecture2.html">lecture2.html</a></p>
 <pre><code class="language-c++">class Point
 {
 public:
-    // Member variables
+    // Data members
     int x;
     int y;
 
@@ -197,11 +197,11 @@ int main()
 <p>Syntax:</p>
 <pre><code class="language-c++">class Point // the class name
 {
-public: // public member variables and functions
+public: // public data members and member functions
         // Note: there is also private: and protected: sections.
         // we will discuss them in following lectures
 
-    // Member variables
+    // Data members
     // as like as the data in a 'struct', you can have multiple 
     // variables in different types
     int x;
@@ -240,7 +240,7 @@ p2: (0, 0)
 p1: (1, 2)
 p2: (3, 4)
 </code></pre>
-<h2 id="class-methodusage"><a class="header" href="#class-methodusage">Class Method/Usage</a></h2>
+<h2 id="class-usagemember-function"><a class="header" href="#class-usagemember-function">Class Usage/Member Function</a></h2>
 <h3 id="class-as-a-argument"><a class="header" href="#class-as-a-argument">Class as a argument</a></h3>
 <p>As like as struct, you can use a class instance as a argument to a function.</p>
 <pre><code class="language-c++">void init_point(Point &amp;p)
@@ -282,16 +282,16 @@ void modify_point(Point &amp;p, const int&amp; arg_x, const int&amp; arg_y)
 }   
 </code></pre>
 <hr />
-<h3 id="use-class-method"><a class="header" href="#use-class-method">Use class method</a></h3>
-<p>Instead of using extra functions, you can use the member functions to manipulate the data.</p>
+<h3 id="use-class-member-function"><a class="header" href="#use-class-member-function">Use class member function</a></h3>
+<p>Instead of using extra functions, you can use member functions to manipulate the data.</p>
 <hr />
 <pre><code class="language-c++">class Point // the class name
 {
-public: // public member variables and functions
+public: // public data members and functions
         // Note: there is also private: and protected: sections.
         // we will discuss them in following lectures
 
-    // Member variables
+    // Data members
     // as like as the data in a 'struct', you can have multiple 
     // variables in different types
     int x;
@@ -517,7 +517,7 @@ Cross: Vector: (1, -2, 1)
 <h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
 <ul>
 <li>Pratice 1: 參考 <code>Triangle</code> class, 如果四邊形、多邊形要如何設計？</li>
-<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要紀錄多維度的座標系上、或是轉換 eigen vector 為其他 vector 要如何設計？</li>
+<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要紀錄多維度的座標系上、或是轉換 basis 為其他 vector 要如何設計？</li>
 </ul>
 
                     </main>

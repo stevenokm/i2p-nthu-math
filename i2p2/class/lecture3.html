@@ -1,0 +1,858 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 3: Class Data Members &amp; Member Functions - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html" class="active"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture3.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!--
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+-->
+<h1 id="class-data-members--member-functions"><a class="header" href="#class-data-members--member-functions">Class Data Members &amp; Member Functions</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture3_slides.html">lecture3_slides.html</a>
+Website version: <a href="./lecture3.html">lecture3.html</a></p>
+</blockquote>
+<ul>
+<li>Define Class Data Members &amp; Member Functions</li>
+<li><code>public</code>, <code>private</code>, <code>protected</code> member
+<ul>
+<li>Kickstart of getter &amp; setter</li>
+</ul>
+</li>
+<li><code>this</code> member</li>
+<li>Variable scope in a class
+<ul>
+<li><code>::</code> scope resolution operator</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li><code>static</code> data member
+<ul>
+<li>Kickstart of constructor &amp; destructor </li>
+</ul>
+</li>
+<li>Example 1: Triangle (again)</li>
+<li>Example 2: Vector (again)</li>
+<li>Example 3: Integer Calculator</li>
+</ul>
+<h2 id="define-class-data-members--member-functions"><a class="header" href="#define-class-data-members--member-functions">Define Class Data Members &amp; Member Functions</a></h2>
+<ul>
+<li>Why do we need data members?
+<ul>
+<li>To store data</li>
+<li>Make data accessible</li>
+</ul>
+</li>
+<li>Why do we need member functions?
+<ul>
+<li>To perform operations</li>
+<li>Ease of access to data</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="design-data-members"><a class="header" href="#design-data-members">Design data members</a></h3>
+<p>Guidelines:</p>
+<ul>
+<li>each data member should be seen only by its owner
+<ul>
+<li>if you want to access it, you need to use getter &amp; setter (discussed on next lecture)</li>
+</ul>
+</li>
+<li>if you want a data member to be accessible by other classes, you should handle it carefully</li>
+<li>the naming convention of data members should be consistent, meaningful, and easy to understand
+<ul>
+<li><code>_</code> is used to separate words</li>
+<li><code>m_</code> is used to indicate a data member</li>
+<li><code>arg_</code> is used to indicate an argument</li>
+<li>etc.</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Example: <code>Point_2D</code></p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D // the class name
+// we use first upper case letter to indicate a class
+{
+private: // private data members
+         // we will discuss it later
+    // Data members
+    // we use `m_` to indicate a data member
+
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+</code></pre>
+<hr />
+<pre><code class="language-c++">public: // public member functions
+        // we will discuss in the next lecture
+    
+    // Member functions
+    // we use lower case letter to indicate a member function
+    // also, we just define the function declaration
+    // and leave the definition to the end of the class
+
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    // we use `arg_` to indicate the arguments
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// function definition
+
+// initialize the x and y coordinate
+void Point_2D::init()
+{
+    m_x = 0;
+    m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+// we use `arg_` to indicate the arguments
+void Point_2D::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+
+int main()
+{
+    Point_2D p1, p2;
+    // init 2 instances of Point
+    p1.init();    p2.init();
+    // print 2 instances of Point
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    // modify each instance
+    p1.modify(1, 2);
+    p2.modify(3, 4);
+    // you can see the change in p1 and p2
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="design-member-functions--discuss-on-next-lecture"><a class="header" href="#design-member-functions--discuss-on-next-lecture">Design member functions  (discuss on next lecture)</a></h3>
+<p>Guidelines:</p>
+<ul>
+<li>each member function should show it's accessibility explicitly
+<ul>
+<li>'_' is used to indicate a member function used internally (<code>private</code>)</li>
+<li>all other functions are public</li>
+</ul>
+</li>
+<li>essential member functions should be defined in the class
+<ul>
+<li>getter &amp; setter</li>
+<li>constructor &amp; destructor</li>
+<li><code>operator=</code> (disscuss on later lecture)</li>
+</ul>
+</li>
+<li>etc.</li>
+</ul>
+<h2 id="public-private-protected-member"><a class="header" href="#public-private-protected-member"><code>public</code>, <code>private</code>, <code>protected</code> member</a></h2>
+<p>To identify the accessibility of a member, we use <code>public</code>, <code>private</code>, and <code>protected</code> keywords.</p>
+<ul>
+<li><code>public</code> data members is accessible by other classes.</li>
+<li><code>private</code> data members is accessible only by its owner.</li>
+<li><code>protected</code> data members is accessible by other inherited classes and its owner. (discuss in lecture 8)</li>
+</ul>
+<hr />
+<h3 id="public-member"><a class="header" href="#public-member"><code>public</code> member</a></h3>
+<p>Same as <code>struct</code>.</p>
+<pre><code class="language-c++">class Point // the class name
+{
+public: 
+
+    // public data members
+    // we can access them directly by use `.` operator
+    int m_x;
+    int m_y;
+};
+
+int main()
+{
+    Point p1;
+    // init p1
+    p1.m_x = 1;
+    p1.m_y = 2;
+    // print p1
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; p1.m_x &lt;&lt; &quot;, &quot; &lt;&lt; p1.m_y &lt;&lt; &quot;)&quot; &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="private-member"><a class="header" href="#private-member"><code>private</code> member</a></h3>
+<p>Different from <code>struct</code>, <code>private</code> member is not accessible by other classes or functions.</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+// Point_2D class
+class Point_2D
+{
+private: // private data members
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+
+public: // public member functions
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+    // modify the point by another point
+    void modify(const Point_2D &amp;arg_point);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// Point_2D_2 class
+class Point_2D_2
+{
+private: // private data members
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+
+public: // public member functions
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+    // modify the point by another point
+    // NOTE: compile error
+    void modify(const Point_2D &amp;arg_point);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// function definition
+
+// Point_2D class
+// initialize the x and y coordinate
+void Point_2D::init()
+{
+    m_x = 0;
+    m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+void Point_2D::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+}
+// modify the point by another point
+void Point_2D::modify(const Point_2D &amp;arg_point)
+{
+    m_x = arg_point.m_x;
+    m_y = arg_point.m_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// Point_2D_2 class
+// initialize the x and y coordinate
+void Point_2D_2::init()
+{
+    m_x = 0;
+    m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D_2::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; m_x &lt;&lt; &quot;, &quot; &lt;&lt; m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+void Point_2D_2::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+}
+// modify the point by another point
+void Point_2D_2::modify(const Point_2D &amp;arg_point)
+{
+    // compile error, error: 'm_x' is a private member of 'Point_2D'
+    // need to use getter (discuss on the next lecture)
+    m_x = arg_point.m_x;
+    m_y = arg_point.m_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+
+int main()
+{
+    Point_2D point1;
+    Point_2D_2 point2;
+
+    point1.init();
+    point2.init();
+
+    point1.print();    cout &lt;&lt; endl;
+    point2.print();    cout &lt;&lt; endl;
+
+    point1.modify(1, 2);
+    point2.modify(point1);
+
+    point1.print();    cout &lt;&lt; endl;
+    point2.print();    cout &lt;&lt; endl;
+
+    return 0;
+}
+</code></pre>
+<h2 id="this-data-member"><a class="header" href="#this-data-member"><code>this</code> data member</a></h2>
+<p>To access the data members of current class explicitly, we use <code>this</code> keyword.</p>
+<p>Usage: (inside the class definition)</p>
+<pre><code class="language-c++">void Point_2D::init()
+{
+    // access the data members of current class
+    this-&gt;m_x = 0;
+    this-&gt;m_y = 0;
+}
+</code></pre>
+<hr />
+<p>Example: <code>Point_2D</code> (use <code>this</code>)</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D
+{
+private: // private data members
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+public: // public member functions
+    // iniialize the x and y coordinate
+    void init();
+    // print the x and y coordinate
+    void print();
+    // modify the x and y coordinate
+    void modify(const int &amp;arg_x, const int &amp;arg_y);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// function definition
+
+// initialize the x and y coordinate
+void Point_2D::init()
+{
+    // initialize the x coordinate
+    // NOTE: this is a pointer to the current object
+    //       so we can use this-&gt; to access the private data member
+    this-&gt;m_x = 0;
+    // initialize the y coordinate
+    // NOTE: this-&gt; is equivalent to (*this)
+    (*this).m_y = 0;
+}
+// print the x and y coordinate
+void Point_2D::print()
+{
+    cout &lt;&lt; &quot;(&quot; &lt;&lt; this-&gt;m_x &lt;&lt; &quot;, &quot; &lt;&lt; this-&gt;m_y &lt;&lt; &quot;)&quot;;
+}
+// modify the x and y coordinate
+void Point_2D::modify(const int &amp;arg_x, const int &amp;arg_y)
+{
+    this-&gt;m_x = arg_x;
+    this-&gt;m_y = arg_y;
+}
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+
+int main()
+{
+    Point_2D p1, p2;
+    // init 2 instances of Point
+    p1.init();    p2.init();
+    // print 2 instances of Point
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    // modify each instance
+    p1.modify(1, 2);
+    p2.modify(3, 4);
+    // you can see the change in p1 and p2
+    p1.print();   cout &lt;&lt; endl;
+    p2.print();   cout &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h2 id="variable-scope-in-a-class"><a class="header" href="#variable-scope-in-a-class">Variable scope in a class</a></h2>
+<p>Reference: <a href="https://www.geeksforgeeks.org/scope-resolution-operator-in-c/">Scope resolution operator in C++ - GeeksforGeeks</a></p>
+<ul>
+<li>Which variables are accessible in a member function?
+<ul>
+<li>data members</li>
+<li>local variables</li>
+<li>global variables (Ref: <a href="https://stevenokm.github.io/i2p-nthu-math/i2p1/function/lecture_11.html#variable-scope--lifetime">Lecture 11: Function &amp; Reference (2)</a>)</li>
+<li>function arguments</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Example:</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int a = 1;
+
+class A
+{
+public:
+    int a;
+    void f()
+    {
+        a = a; // how to access global variable a?
+    }
+};
+
+int main()
+{
+    A a;
+    a.f();
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="-scope-resolution-operator"><a class="header" href="#-scope-resolution-operator"><code>::</code> scope resolution operator</a></h3>
+<p>Usage: Global variable</p>
+<pre><code class="language-c++">// C++ program to show that we can access a global variable
+// using scope resolution operator :: when there is a local
+// variable with same name
+#include &lt;iostream&gt;
+using namespace std;
+
+int x; // Global x
+
+int main()
+{
+    int x = 10; // Local x
+    cout &lt;&lt; &quot;Value of global x is &quot; &lt;&lt; ::x;
+    cout &lt;&lt; &quot;\nValue of local x is &quot; &lt;&lt; x;
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Usage: Function name</p>
+<pre><code class="language-c++">// C++ program to show that scope resolution operator :: is used
+// to define a function outside a class
+#include &lt;iostream&gt;
+using namespace std;
+
+class A
+{
+public:
+    // Only declaration
+    void fun();
+};
+
+// Definition outside class using ::
+void A::fun()
+{
+    cout &lt;&lt; &quot;fun() called&quot;;
+}
+
+int main()
+{
+    A a;
+    a.fun();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Example: </p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+
+int global_a = 1;
+// a = 1;
+
+class A
+{
+public:
+    int local_a;
+    // int a;
+    void f()
+    {
+        local_a = ::global_a;
+        // a = ::a;
+    }
+};
+
+int main()
+{
+    A a;
+    a.f();
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="case-a-class-in-a-class"><a class="header" href="#case-a-class-in-a-class">Case: a class in a class</a></h3>
+<pre><code class="language-c++">// Use of scope resolution class inside another class.
+#include &lt;iostream&gt;
+using namespace std;
+
+class outside
+{
+public:
+    int x;
+    class inside
+    {
+    public:
+        int x;
+        static int y; // we talk it later
+        int foo();
+    };
+};
+int outside::inside::y = 5;
+
+int main()
+{
+    outside A;
+    outside::inside B;
+}
+</code></pre>
+<h2 id="static-data-member"><a class="header" href="#static-data-member"><code>static</code> data member</a></h2>
+<p>Reference: <a href="https://www.geeksforgeeks.org/static-keyword-cpp/">Static Keyword in C++ - GeeksforGeeks</a></p>
+<p>To maintain the status of a class or save memory usage, we use <code>static</code> data member.</p>
+<p>Note: the value of a <code>static</code> variable is shared during the entire execution of the program and will initialize only once.</p>
+<hr />
+<pre><code class="language-c++">// C++ program to demonstrate
+// the use of static Static
+// variables in a Function
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+void demo()
+{
+    // static variable
+    static int count = 0;
+    cout &lt;&lt; count &lt;&lt; &quot; &quot;;
+
+    // value is updated and
+    // will be carried to next
+    // function calls
+    count++;
+}
+
+int main()
+{
+    for (int i = 0; i &lt; 5; i++)
+        demo();
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="example-static-data-member"><a class="header" href="#example-static-data-member">Example: static data member</a></h3>
+<p>Note: <code>static</code> data member will share the same value for all instances of the class.</p>
+<pre><code class="language-c++">// C++ program to demonstrate static
+// variables inside a class
+
+#include &lt;iostream&gt;
+using namespace std;
+
+class GfG
+{
+public:
+    static int i;
+
+    GfG(){
+        // Default constructor
+        // we will discuss this in the next lecture
+    };
+};
+
+// static data member should be initialized in global scope
+int GfG::i = 1;
+  
+int main()
+{
+    GfG obj;
+    // prints value of i
+    cout &lt;&lt; obj.i; 
+}
+</code></pre>
+<hr />
+<h3 id="initialize-static-data-member-is-important"><a class="header" href="#initialize-static-data-member-is-important">Initialize <code>static</code> data member is important</a></h3>
+<p>Without initializing <code>static</code> data member, the compiler will not know the value of <code>static</code> data member.</p>
+<pre><code class="language-c++">// C++ program to demonstrate static
+// variables inside a class
+
+#include &lt;iostream&gt;
+using namespace std;
+
+class GfG
+{
+public:
+    static int i;
+};
+
+int main()
+{
+    GfG obj;
+    // prints value of i
+    cout &lt;&lt; obj.i &lt;&lt; endl;
+}
+</code></pre>
+<h2 id="example-1-triangle-again-a-hreflecture3_ex1htmlsourcea"><a class="header" href="#example-1-triangle-again-a-hreflecture3_ex1htmlsourcea">Example 1: Triangle (again) [<a href="./lecture3_ex1.html">Source</a>]</a></h2>
+<p>A Triangle:</p>
+<ul>
+<li>contains 3 points</li>
+<li>on the 2D plane</li>
+<li>need to be able to calculate the area</li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<h2 id="example-2-vector-again-a-hreflecture3_ex2htmlsourcea"><a class="header" href="#example-2-vector-again-a-hreflecture3_ex2htmlsourcea">Example 2: Vector (again) [<a href="./lecture3_ex2.html">Source</a>]</a></h2>
+<p>A Vector:</p>
+<ul>
+<li>contains 3 factors of the 3 basis $\bold{i}$, $\bold{j}$, $\bold{k}$</li>
+<li>need to be able to calculate the length</li>
+<li>need to be able to calculate the dot, cross product</li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<h2 id="example-3-integer-calculator-a-hreflecture3_ex3htmlsourcea"><a class="header" href="#example-3-integer-calculator-a-hreflecture3_ex3htmlsourcea">Example 3: Integer Calculator [<a href="./lecture3_ex3.html">Source</a>]</a></h2>
+<p>A Integer Calculator:</p>
+<ul>
+<li>contains current value, input value, and operation</li>
+<li>neet to be able to set the input value</li>
+<li>neet to be able to set the operation</li>
+<li>neet to be able to calculate the result</li>
+<li>neet to be able to clear the input value</li>
+<li>need to be initialized</li>
+<li>need to be able to get all information</li>
+</ul>
+<h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
+<ul>
+<li>Pratice 1: 參考 <code>Triangle</code> class, 如果四邊形、多邊形要如何設計要儲存的變數？</li>
+<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要支援多維度的座標系上、或是轉換 basis 為其他 vector 要如何設計儲存的變數？</li>
+<li>Pratice 3: 參考 <code>Integer Calculator</code> class, 如果需要支援 <code>M+</code> 運算要如何設計相關變數？</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../class/lecture2_ex2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../class/lecture3_ex1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../class/lecture2_ex2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../class/lecture3_ex1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
