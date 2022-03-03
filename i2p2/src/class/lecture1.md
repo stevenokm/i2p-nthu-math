@@ -123,7 +123,7 @@ $ ./a.out
 class Point
 {
 public:
-    // Member variables
+    // Data members
     int x;
     int y;
 
@@ -142,7 +142,7 @@ public:
 class Point                         struct Point
 {                                   {
 public:
-    // Member variables                 // Member variables
+    // Data members                 // Data members
     int x;                              int x;
     int y;                              int y;
 

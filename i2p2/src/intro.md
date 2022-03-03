@@ -59,7 +59,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |                                  | Sturcture and Class                        |
 |     [Lab 1](class/lab1.html)     | Programming Environment & Class Helloworld |
 | [Lecture 2](class/lecture2.html) | Class Design 101                           |
-|            Lecture 3             | Class Members & Methods                    |
+| [Lecture 3](class/lecture3.html) | Class Members & Methods                    |
 |            Lecture 4             | Class Constructor & Modifer                |
 |              Lab 4               | Class 101                                  |
 |            Lecture 5             | Collaborate with Other Classes             |

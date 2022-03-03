@@ -61,9 +61,12 @@ scoop install mingw cmake
 
 1. 在 `%USERPROFILE%` 中新增一個資料夾，名稱可以自由取 (如 `test`)。
 
+**Note:** 所有的路徑 (包含 `%USERPROFILE%`) 都不能有非英文的字元，否則 Debugger 會無法執行。
+也可以在 `%USERPROFILE%` 外的資料夾中新增資料夾，如 `D:\test`。
+
 ![create folder](img/fig_01-win-var.png)
 
-2. 用 `vscode` 編輯器選擇開啟新增的資料夾 (以 `test` 為例)，如下圖示範：
+1. 用 `vscode` 編輯器選擇開啟新增的資料夾 (以 `test` 為例)，如下圖示範：
 
 ![open folder 1](img/fig_05-open_vscode.png)
 ![open folder 2](img/fig_02-extract_files.png)

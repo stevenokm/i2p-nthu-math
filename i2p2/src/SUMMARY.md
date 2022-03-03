@@ -10,3 +10,7 @@
 - [Lecture 2: Class Design 101](./class/lecture2.md)
     - [Example 1: Triangle](./class/lecture2_ex1.md)
     - [Example 2: Vector](./class/lecture2_ex2.md)
+- [Lecture 3: Class Data Members & Member Functions](./class/lecture3.md)
+    - [Example 1: Triangle (again)](./class/lecture3_ex1.md)
+    - [Example 2: Vector (again)](./class/lecture3_ex2.md)
+    - [Example 3: Integer Calculator](./class/lecture3_ex3.md)

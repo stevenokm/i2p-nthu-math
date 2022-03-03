@@ -14,7 +14,7 @@ paginate: true
 * Recap: Hello Class
 * Class Definition
 * Class Instance
-* Class Usage/Method
+* Class Usage/Member Function
 * Example: Triangle
 * Example: Vector
 
@@ -24,7 +24,7 @@ paginate: true
 class Point
 {
 public:
-    // Member variables
+    // Data members
     int x;
     int y;
 
@@ -53,11 +53,11 @@ Syntax:
 ```c++
 class Point // the class name
 {
-public: // public member variables and functions
+public: // public data members and member functions
         // Note: there is also private: and protected: sections.
         // we will discuss them in following lectures
 
-    // Member variables
+    // Data members
     // as like as the data in a 'struct', you can have multiple 
     // variables in different types
     int x;
@@ -103,7 +103,7 @@ p1: (1, 2)
 p2: (3, 4)
 ```
 
-## Class Method/Usage
+## Class Usage/Member Function
 
 ### Class as a argument
 
@@ -154,20 +154,20 @@ int main()
 
 ---
 
-### Use class method
+### Use class member function
 
-Instead of using extra functions, you can use the member functions to manipulate the data.
+Instead of using extra functions, you can use member functions to manipulate the data.
 
 ---
 
 ```c++
 class Point // the class name
 {
-public: // public member variables and functions
+public: // public data members and functions
         // Note: there is also private: and protected: sections.
         // we will discuss them in following lectures
 
-    // Member variables
+    // Data members
     // as like as the data in a 'struct', you can have multiple 
     // variables in different types
     int x;
@@ -417,4 +417,4 @@ Cross: Vector: (1, -2, 1)
 ## Pratices
 
 * Pratice 1: 參考 `Triangle` class, 如果四邊形、多邊形要如何設計？
-* Pratice 2: 參考 `Vector` class, 如果需要紀錄多維度的座標系上、或是轉換 eigen vector 為其他 vector 要如何設計？
+* Pratice 2: 參考 `Vector` class, 如果需要紀錄多維度的座標系上、或是轉換 basis 為其他 vector 要如何設計？
