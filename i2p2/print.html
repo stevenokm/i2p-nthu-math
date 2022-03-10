@@ -4133,120 +4133,6 @@ int main()
     return 0;
 }
 </code></pre>
-<h3 id="reference-code"><a class="header" href="#reference-code">Reference Code</a></h3>
-<pre><code class="language-c++">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;sstream&gt;
-
-using namespace std;
-
-class Complex
-{
-private:
-    // data members
-    // save the real and imaginary parts of the complex number
-    // with `double` precision
-    double m_real;
-    double m_imag;
-
-public:
-    // Constructor, initializes real and imaginary parts
-    // hint: as like as `modify` function in examples
-    // but use default constructor to implement
-    Complex(const double &amp;arg_real = 0.0, const double &amp;arg_imag = 0.0)
-    {
-        m_real = arg_real;
-        m_imag = arg_imag;
-    }
-    // print function
-    // note: be careful about the format of output
-    // especially the ` ` and newline (endl)
-    void print()
-    {
-        cout &lt;&lt; m_real &lt;&lt; &quot; + &quot; &lt;&lt; m_imag &lt;&lt; &quot; i&quot; &lt;&lt; endl;
-    }
-    // add function
-    Complex add(const Complex &amp;arg_c)
-    {
-        Complex c;
-        c.m_real = m_real + arg_c.m_real;
-        c.m_imag = m_imag + arg_c.m_imag;
-        return c;
-    }
-    // subtract function
-    Complex sub(const Complex &amp;arg_c)
-    {
-        Complex c;
-        c.m_real = m_real - arg_c.m_real;
-        c.m_imag = m_imag - arg_c.m_imag;
-        return c;
-    }
-    // multiply function
-    Complex mul(const Complex &amp;arg_c)
-    {
-        Complex c;
-        c.m_real = m_real * arg_c.m_real - m_imag * arg_c.m_imag;
-        c.m_imag = m_real * arg_c.m_imag + m_imag * arg_c.m_real;
-        return c;
-    }
-    // divide function
-    Complex div(const Complex &amp;arg_c)
-    {
-        Complex c;
-        c.m_real = (m_real * arg_c.m_real + m_imag * arg_c.m_imag) / (arg_c.m_real * arg_c.m_real + arg_c.m_imag * arg_c.m_imag);
-        c.m_imag = (m_imag * arg_c.m_real - m_real * arg_c.m_imag) / (arg_c.m_real * arg_c.m_real + arg_c.m_imag * arg_c.m_imag);
-        return c;
-    }
-};
-
-int main()
-{
-    string input;
-    Complex result_complex;
-    char op = ' ';
-
-    while (getline(cin, input))
-    {
-        // input is a operation
-        if (input == &quot;+&quot; || input == &quot;-&quot; || input == &quot;*&quot; || input == &quot;/&quot;)
-        {
-            op = input[0];
-            continue;
-        }
-        // input is a complex number
-        else
-        {
-            stringstream ss(input);
-            double real, imag;
-            ss &gt;&gt; real &gt;&gt; imag;
-            Complex current_complex(real, imag);
-            switch (op)
-            {
-            case '+':
-                result_complex = result_complex.add(current_complex);
-                break;
-            case '-':
-                result_complex = result_complex.sub(current_complex);
-                break;
-            case '*':
-                result_complex = result_complex.mul(current_complex);
-                break;
-            case '/':
-                result_complex = result_complex.div(current_complex);
-                break;
-            case ' ':
-                result_complex = current_complex;
-                break;
-            default:
-                cerr &lt;&lt; &quot;Error: unknown operation&quot; &lt;&lt; endl;
-                return 1;
-            }
-        }
-    }
-    result_complex.print();
-    return 0;
-}
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="lab-4-3-advance-complex-number-calculation-15"><a class="header" href="#lab-4-3-advance-complex-number-calculation-15">Lab 4-3: Advance Complex Number Calculation (15%)</a></h2>
 <ul>
 <li>輸入：
@@ -4432,7 +4318,7 @@ int main()
     return 0;
 }
 </code></pre>
-<h3 id="reference-code-1"><a class="header" href="#reference-code-1">Reference Code</a></h3>
+<h3 id="reference-code"><a class="header" href="#reference-code">Reference Code</a></h3>
 <pre><code class="language-c++">#include &lt;iostream&gt;
 #include &lt;string&gt;
 #include &lt;sstream&gt;
