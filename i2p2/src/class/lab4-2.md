@@ -59,9 +59,3 @@ $
 ```c++
 {{#include lab4-2_pseudo.cpp}}
 ```
-
-### Reference Code
-
-```c++
-{{#include lab4-2_ex.cpp}}
-```
