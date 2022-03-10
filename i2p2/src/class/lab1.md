@@ -4,7 +4,7 @@
 
 * 輸入：無
 * 輸出：顯示 Complex Class 的數字
-* 檔名：lab1_<學號>.cpp (e.g. lab1_106062802.cpp)
+* 檔名：`lab1_<學號>.cpp` (e.g. `lab1_106062802.cpp`)
 
 程式僅需輸出兩 complex 數字 a 及 b 以及 c = a + b 的結果。
 

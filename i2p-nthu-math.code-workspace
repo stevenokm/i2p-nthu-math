@@ -18,7 +18,8 @@
 			"iterator": "cpp",
 			"version": "cpp",
 			"ostream": "cpp",
-			"istream": "cpp"
+			"istream": "cpp",
+			"iostream": "cpp"
 		}
 	}
 }

@@ -60,11 +60,11 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |     [Lab 1](class/lab1.html)     | Programming Environment & Class Helloworld |
 | [Lecture 2](class/lecture2.html) | Class Design 101                           |
 | [Lecture 3](class/lecture3.html) | Class Members & Methods                    |
-|            Lecture 4             | Class Constructor & Modifer                |
-|              Lab 4               | Class 101                                  |
+| [Lecture 4](class/lecture4.html) | Class Constructor & Modifer                |
+|    [Lab 4](class/lab4-1.html)    | Complex Number                             |
 |            Lecture 5             | Collaborate with Other Classes             |
 |            Lecture 6             | Operator & Operator Overloading            |
-|              Lab 6               | Complex Number & Complex Number Calculator |
+|              Lab 6               | Complex Number Calculator                  |
 |            Lecture 7             | Introduction to OOP Design                 |
 |            Lecture 8             | OOP: Inheritance (1)                       |
 |            Lecture 9             | Midterm Exam                               |
