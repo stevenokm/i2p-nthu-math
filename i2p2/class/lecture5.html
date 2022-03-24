@@ -1,0 +1,680 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 5: Class Constructor &amp; Modifer - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html" class="active"><strong aria-hidden="true">7.</strong> Lecture 5: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture5.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!--
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+-->
+<h1 id="collaborate-with-other-classes"><a class="header" href="#collaborate-with-other-classes">Collaborate with Other Classes</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture5_slides.html">lecture5_slides.html</a>
+Website version: <a href="./lecture5.html">lecture5.html</a></p>
+</blockquote>
+<ul>
+<li>Interaction in other classes</li>
+<li>How to use a class with another class
+<ul>
+<li>as an argument</li>
+<li>use member functions</li>
+<li>use <code>friend</code> class</li>
+</ul>
+</li>
+<li>How to use a class in another function
+<ul>
+<li>use getter and setter</li>
+<li>use <code>friend</code> function</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li><code>friend</code> function
+<ul>
+<li>syntax &amp; example</li>
+</ul>
+</li>
+<li>Example
+<ul>
+<li>Example: Triangle (again)</li>
+<li>Example: Vector (again)</li>
+<li>Example: Integer Calculator (again)</li>
+<li>Example: Fixed Point Number</li>
+</ul>
+</li>
+<li>Pratices</li>
+</ul>
+<h2 id="interaction-with-other-classes"><a class="header" href="#interaction-with-other-classes">Interaction with other classes</a></h2>
+<p>User can use multiple classes to process data.</p>
+<ul>
+<li>use <code>std::vector</code> to store multiple <code>std::string</code> data</li>
+<li>compute the intersection of a line and a point in a 2D plane with user-defined <code>line</code> and <code>point</code> classes</li>
+<li>etc.</li>
+</ul>
+<h2 id="how-to-use-a-class-in-another-class"><a class="header" href="#how-to-use-a-class-in-another-class">How to use a class in another class</a></h2>
+<p>To use a class with another class:</p>
+<ul>
+<li>as an argument</li>
+<li>use member functions</li>
+<li><code>friend</code> class</li>
+</ul>
+<hr />
+<h3 id="use-a-class-as-an-argument"><a class="header" href="#use-a-class-as-an-argument">Use a class as an argument</a></h3>
+<p>Example: <code>Point_2D</code> and <code>Line_2D</code> (v1, partial)</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D // a point on a 2D plane
+{
+private:
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+public:
+    // Constructor
+    Point_2D(const int &amp;arg_x = 0, const int &amp;arg_y = 0);
+    Point_2D(const Point_2D &amp;arg_point);
+   
+    // Member functions
+    void set_x(const int &amp;arg_x);
+    void set_y(const int &amp;arg_y);
+    void set(const int &amp;arg_x, const int &amp;arg_y);
+    int get_x() const;
+    int get_y() const;
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Line_2D // a line on a 2D plane
+{
+private:
+    // record the start point
+    Point_2D m_start;
+    // record the end point
+    Point_2D m_end;
+public:
+    // Constructor
+    Line_2D(const Point_2D &amp;arg_start, const Point_2D &amp;arg_end);
+    Line_2D(const Line_2D &amp;arg_line);
+   
+    // Member functions
+    void set_start(const Point_2D &amp;arg_start);
+    void set_end(const Point_2D &amp;arg_end);
+    void set(const Point_2D &amp;arg_start, const Point_2D &amp;arg_end);
+    Point_2D get_start() const;
+    Point_2D get_end() const;
+};
+</code></pre>
+<hr />
+<h3 id="use-member-functions-of-a-class"><a class="header" href="#use-member-functions-of-a-class">Use member functions of a class</a></h3>
+<p>Example: <code>Point_2D</code> and <code>Line_2D</code> (v2, partial)</p>
+<pre><code class="language-c++">class Line_2D // a line on a 2D plane
+{
+private:
+    // record the start point
+    Point_2D m_start;
+    // record the end point
+    Point_2D m_end;
+public:
+    // Constructor
+    Line_2D(const Point_2D &amp;arg_start, const Point_2D &amp;arg_end);
+    Line_2D(const Line_2D &amp;arg_line);
+    // use Point_2D's constructor to set the start and end point
+    Line_2D(int arg_start_x = 0, int arg_start_y = 0,
+            int arg_end_x = 0, int arg_end_y = 0);
+</code></pre>
+<hr />
+<pre><code class="language-c++">    // Member functions
+    void set_start(const Point_2D &amp;arg_start);
+    void set_end(const Point_2D &amp;arg_end);
+    void set(const Point_2D &amp;arg_start, const Point_2D &amp;arg_end);
+    // use member function to set the x and y coordinates
+    void set_start(int arg_x, int arg_y)
+    {
+        m_start.set_x(arg_x);
+        m_start.set_y(arg_y);
+    }
+    void set_end(int arg_x, int arg_y)
+    {
+        m_end.set_x(arg_x);
+        m_end.set_y(arg_y);
+    }
+    void set(int arg_start_x, int arg_start_y,
+             int arg_end_x, int arg_end_y)
+    {
+        m_start.set_x(arg_start_x);
+        m_start.set_y(arg_start_y);
+        m_end.set_x(arg_end_x);
+        m_end.set_y(arg_end_y);
+    }
+</code></pre>
+<hr />
+<pre><code class="language-c++">    Point_2D get_start() const;
+    Point_2D get_end() const;
+    // use member function to get the x and y coordinates
+    int get_start_x() const { return m_start.get_x(); }
+    int get_start_y() const { return m_start.get_y(); }
+    int get_end_x() const { return m_end.get_x(); }
+    int get_end_y() const { return m_end.get_y(); }
+};
+</code></pre>
+<hr />
+<h3 id="use-friend-class"><a class="header" href="#use-friend-class">Use <code>friend</code> class</a></h3>
+<p>Example: <code>Point_2D</code> and <code>Line_2D</code> (v3, partial)</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D // a point on a 2D plane
+{
+private:
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+public:
+    // Constructor
+    Point_2D(const int &amp;arg_x = 0, const int &amp;arg_y = 0);
+    Point_2D(const Point_2D &amp;arg_point);
+   
+    // Member functions
+    void set_x(const int &amp;arg_x);
+    void set_y(const int &amp;arg_y);
+    void set(const int &amp;arg_x, const int &amp;arg_y);
+    int get_x() const;
+    int get_y() const;
+
+    // Friend class, can access private members
+    friend class Line_2D;
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Line_2D // a line on a 2D plane
+{
+private:
+    // record the start point
+    Point_2D m_start;
+    // record the end point
+    Point_2D m_end;
+public:
+    // Constructor
+    Line_2D(const Point_2D &amp;arg_start, const Point_2D &amp;arg_end);
+    Line_2D(const Line_2D &amp;arg_line);
+    // use Point_2D's constructor to set the start and end point
+    Line_2D(int arg_start_x = 0, int arg_start_y = 0,
+            int arg_end_x = 0, int arg_end_y = 0);
+</code></pre>
+<hr />
+<pre><code class="language-c++">    // Member functions
+    void set_start(const Point_2D &amp;arg_start);
+    void set_end(const Point_2D &amp;arg_end);
+    void set(const Point_2D &amp;arg_start, const Point_2D &amp;arg_end);
+    // set the x and y coordinates directly because of friend class
+    void set_start(int arg_x, int arg_y) 
+    { 
+        m_start.m_x = arg_x; m_start.m_y = arg_y; 
+    }
+    void set_end(int arg_x, int arg_y)
+    {
+        m_end.m_x = arg_x; m_end.m_y = arg_y;
+    }
+    void set(int arg_start_x, int arg_start_y,
+             int arg_end_x, int arg_end_y)
+    {
+        m_start.m_x = arg_start_x; m_start.m_y = arg_start_y;
+        m_end.m_x = arg_end_x; m_end.m_y = arg_end_y;
+    }
+</code></pre>
+<hr />
+<pre><code class="language-c++">    Point_2D get_start() const;
+    Point_2D get_end() const;
+    // get the x and y coordinates directly because of friend class
+    int get_start_x() const { return m_start.m_x; }
+    int get_start_y() const { return m_start.m_y; }
+    int get_end_x() const { return m_end.m_x; }
+    int get_end_y() const { return m_end.m_y; }
+};
+</code></pre>
+<h2 id="what-is-a-friend-class--friend-function"><a class="header" href="#what-is-a-friend-class--friend-function">What is a <code>friend</code> class &amp; <code>friend</code> function?</a></h2>
+<p>Ref: <a href="https://www.geeksforgeeks.org/friend-class-function-cpp/">Friend class and function in C++ - GeeksforGeeks</a></p>
+<blockquote>
+<p>A friend class can access private and protected members of other class in which it is declared as friend. It is sometimes useful to allow a particular class to access private members of other class.</p>
+</blockquote>
+<h3 id="friend-class-example"><a class="header" href="#friend-class-example">Friend Class Example</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+class A {
+private:
+    int a;
+
+public:
+    A() { a = 0; }
+    friend class B; // Friend Class
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class B {
+private:
+    int b;
+
+public:
+    void showA(A&amp; x)
+    {
+        // Since B is friend of A, it can access
+        // private members of A
+        std::cout &lt;&lt; &quot;A::a=&quot; &lt;&lt; x.a;
+    }
+};
+
+int main()
+{
+    A a;
+    B b;
+    b.showA(a);
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="friend-function-example"><a class="header" href="#friend-function-example">Friend Function Example</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+class B; // Forward declaration, used in class A
+
+class A {
+public:
+	void showB(B&amp;);
+};
+
+class B {
+private:
+	int b;
+
+public:
+	B() { b = 0; }
+	friend void A::showB(B&amp; x); // Friend function
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">void A::showB(B&amp; x)
+{
+	// Since showB() is friend of B, it can
+	// access private members of B
+	std::cout &lt;&lt; &quot;B::b = &quot; &lt;&lt; x.b;
+}
+
+int main()
+{
+	A a;
+	B x;
+	a.showB(x);
+	return 0;
+}
+</code></pre>
+<hr />
+<h3 id="friend-function-example-global"><a class="header" href="#friend-function-example-global">Friend Function Example (global)</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+class A {
+	int a;
+
+public:
+	A() { a = 0; }
+
+	// global friend function
+	friend void showA(A&amp;);
+};
+
+void showA(A&amp; x)
+{
+	// Since showA() is a friend, it can access
+	// private members of A
+	std::cout &lt;&lt; &quot;A::a=&quot; &lt;&lt; x.a;
+}
+
+int main()
+{
+	A a;
+	showA(a);
+	return 0;
+}
+
+</code></pre>
+<h2 id="how-to-use-a-class-in-another-function"><a class="header" href="#how-to-use-a-class-in-another-function">How to use a class in another function</a></h2>
+<p>To use a class with another function:</p>
+<ul>
+<li>use getter and setter</li>
+<li>use <code>friend</code> function</li>
+</ul>
+<hr />
+<h3 id="use-getter-and-setter-of-a-class"><a class="header" href="#use-getter-and-setter-of-a-class">Use getter and setter of a class</a></h3>
+<p>Example: compare two <code>Point_2D</code> objects</p>
+<pre><code class="language-c++">int compare(const Point_2D &amp;arg_point1, const Point_2D &amp;arg_point2)
+{
+    // compare the x coordinates
+    if (arg_point1.get_x() &lt; arg_point2.get_x())
+    {
+        return -1;
+    }
+    else if (arg_point1.get_x() &gt; arg_point2.get_x())
+    {
+        return 1;
+    }
+    else
+    {
+        // compare the y coordinates
+        if (arg_point1.get_y() &lt; arg_point2.get_y())
+        {
+            return -1;
+        }
+        else if (arg_point1.get_y() &gt; arg_point2.get_y())
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}
+</code></pre>
+<hr />
+<h3 id="use-friend-function"><a class="header" href="#use-friend-function">Use <code>friend</code> function</a></h3>
+<p>Example: compare two <code>Point_2D</code> objects with <code>friend</code> function</p>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Point_2D // a point on a 2D plane
+{
+private:
+    // record the x coordinate
+    int m_x;
+    // record the y coordinate
+    int m_y;
+public:
+    // Constructor
+    Point_2D(const int &amp;arg_x = 0, const int &amp;arg_y = 0);
+    Point_2D(const Point_2D &amp;arg_point);
+   
+    // Member functions
+    void set_x(const int &amp;arg_x);
+    void set_y(const int &amp;arg_y);
+    void set(const int &amp;arg_x, const int &amp;arg_y);
+    int get_x() const;
+    int get_y() const;
+
+    // Friend function, can access private members
+    friend int compare(const Point_2D &amp;arg_point1, const Point_2D &amp;arg_point2);
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int compare(const Point_2D &amp;arg_point1, const Point_2D &amp;arg_point2)
+{
+    // compare the x coordinates
+    if (arg_point1.m_x &lt; arg_point2.m_x)
+    {
+        return -1;
+    }
+    else if (arg_point1.m_x &gt; arg_point2.m_x)
+    {
+        return 1;
+    }
+    else
+    {
+        // compare the y coordinates
+        if (arg_point1.m_y &lt; arg_point2.m_y)
+        {
+            return -1;
+        }
+        else if (arg_point1.m_y &gt; arg_point2.m_y)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+}
+</code></pre>
+<h2 id="example-1-triangle-again-a-hreflecture5_ex1htmlsourcea"><a class="header" href="#example-1-triangle-again-a-hreflecture5_ex1htmlsourcea">Example 1: Triangle (again) [<a href="./lecture5_ex1.html">Source</a>]</a></h2>
+<p>A Triangle:</p>
+<ul>
+<li>contains 3 points</li>
+<li>on the 2D plane</li>
+<li>need to be able to calculate the area</li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<h2 id="example-2-vector-again-a-hreflecture5_ex2htmlsourcea"><a class="header" href="#example-2-vector-again-a-hreflecture5_ex2htmlsourcea">Example 2: Vector (again) [<a href="./lecture5_ex2.html">Source</a>]</a></h2>
+<p>A Vector:</p>
+<ul>
+<li>contains 3 factors of the 3 basis $\bold{i}$, $\bold{j}$, $\bold{k}$</li>
+<li>need to be able to calculate the length</li>
+<li>need to be able to calculate the dot, cross product</li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<h2 id="example-3-fixed-point-number--fixed-point-number-calculator-a-hreflecture5_ex3htmlsourcea"><a class="header" href="#example-3-fixed-point-number--fixed-point-number-calculator-a-hreflecture5_ex3htmlsourcea">Example 3: Fixed Point Number &amp; Fixed Point Number Calculator [<a href="./lecture5_ex3.html">Source</a>]</a></h2>
+<p>A Fixed Point Number:</p>
+<ul>
+<li>contains a integer part, a fractional part, and a precision</li>
+<li>need to be able to calculate the sum, difference</li>
+<li>need to be able to convert to/from string, <code>float</code>, and <code>double</code></li>
+<li>need to be initialized, printed, and modified</li>
+</ul>
+<hr />
+<p>A Fixed Point Number Calculator:</p>
+<ul>
+<li>contains current value, input value, and operation</li>
+<li>need to be able to set the input value</li>
+<li>need to be able to set the operation</li>
+<li>need to be able to calculate the result</li>
+<li>need to be able to clear the input value</li>
+<li>need to be initialized</li>
+<li>need to be able to get all information</li>
+</ul>
+<h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
+<ul>
+<li>Pratice 1: 參考 <code>Triangle</code> class, 如果需要支援多維度的座標系以及四邊形等其他圖形需要如何修改?</li>
+<li>Pratice 2: 參考 <code>Vector</code> class, 如果需要支援多維度的座標系上、或是轉換 basis 為其他 vector 要如何修改?</li>
+<li>Pratice 3: 參考 <code>Fp_Calc</code> class, 如果需要支援乘除法、超過 <code>Fixed_Point</code> 可儲存的範圍要如何設計相關的 member function?</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../class/lab4-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../class/lecture5_ex1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../class/lab4-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../class/lecture5_ex1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
