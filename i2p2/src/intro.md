@@ -53,32 +53,32 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 (3/24 updated) 週次皆為暫定安排，會依實際授課情形調整。
 
-|          課程 (Lecture)          | 主題 (Theme)                               |
-| :------------------------------: | :----------------------------------------- |
-| [Lecture 1](class/lecture1.html) | Course Introduction                        |
-|                                  | Sturcture and Class                        |
-|     [Lab 1](class/lab1.html)     | Programming Environment & Class Helloworld |
-| [Lecture 2](class/lecture2.html) | Class Design 101                           |
-| [Lecture 3](class/lecture3.html) | Class Members & Methods                    |
-| [Lecture 4](class/lecture4.html) | Class Constructor & Modifer                |
-|    [Lab 4](class/lab4-1.html)    | Complex Number                             |
-| [Lecture 5](class/lecture5.html) | Collaborate with Other Classes             |
-|            Lecture 6             | Operator & Operator Overloading            |
-|              Lab 6               | Complex Number Calculator                  |
-|            Lecture 7             | Introduction to OOP Design                 |
-|            Lecture 8             | Midterm Exam                               |
-|            Lecture 9             | OOP: Inheritance (1)                       |
-|            Lecture 10            | OOP: Inheritance (2)                       |
-|            Lecture 11            | OOP: Polymorphism (1)                      |
-|            Lecture 12            | OOP: Polymorphism (2)                      |
-|              Lab 12              | Complex Number's Geometry & Operations     |
-|            Lecture 13            | Advanced I/O & Exception Handling          |
-|            Lecture 14            | File Processing (1)                        |
-|            Lecture 15            | File Processing (2)                        |
-|              Lab 15              | File Export of Complex Numbers' Geometry   |
-|            Lecture 16            | (Extra) C++ Image Export & Matplot++       |
-|            Lecture 17            | (Extra, online only) Google Test for Class |
-|            Lecture 18            | Final Exam                                 |
+|             課程 (Lecture)              | 主題 (Theme)                               |
+| :-------------------------------------: | :----------------------------------------- |
+| [Lecture 1 (2/17)](class/lecture1.html) | Course Introduction                        |
+|                                         | Sturcture and Class                        |
+|     [Lab 1 (2/17)](class/lab1.html)     | Programming Environment & Class Helloworld |
+| [Lecture 2 (2/24)](class/lecture2.html) | Class Design 101                           |
+| [Lecture 3 (3/3)](class/lecture3.html)  | Class Members & Methods                    |
+| [Lecture 4 (3/10)](class/lecture4.html) | Class Constructor & Modifer                |
+|    [Lab 4 (3/10)](class/lab4-1.html)    | Complex Number                             |
+| [Lecture 5 (3/24)](class/lecture5.html) | Collaborate with Other Classes             |
+|            Lecture 6 (3/31)             | Operator & Operator Overloading            |
+|              Lab 6 (3/31)               | Complex Number Calculator                  |
+|             Lecture 7 (4/7)             | Introduction to OOP Design                 |
+|            Lecture 8 (4/14)             | Midterm Exam                               |
+|            Lecture 9 (4/21)             | OOP: Inheritance (1)                       |
+|            Lecture 10 (4/28)            | OOP: Inheritance (2)                       |
+|            Lecture 11 (5/5)             | OOP: Polymorphism (1)                      |
+|            Lecture 12 (5/12)            | OOP: Polymorphism (2)                      |
+|              Lab 12 (5/12)              | Complex Number's Geometry & Operations     |
+|            Lecture 13 (5/19)            | Advanced I/O & Exception Handling          |
+|            Lecture 14 (5/26)            | File Processing (1)                        |
+|            Lecture 15 (6/2)             | File Processing (2)                        |
+|              Lab 15  (6/2)              | File Export of Complex Numbers' Geometry   |
+|            Lecture 16 (6/9)             | (Extra) C++ Image Export & Matplot++       |
+|           Lecture 17 (online)           | (Extra) Google Test for Class              |
+|            Lecture 18 (6/16)            | Final Exam                                 |
 
 ## 成績考核 (Evaluation)
 
