@@ -51,7 +51,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 ## 教學進度 (Syllabus)
 
-(1/30 updated) 週次皆為暫定安排，會依實際授課情形調整。
+(3/24 updated) 週次皆為暫定安排，會依實際授課情形調整。
 
 |          課程 (Lecture)          | 主題 (Theme)                               |
 | :------------------------------: | :----------------------------------------- |
