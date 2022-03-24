@@ -62,12 +62,12 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 | [Lecture 3](class/lecture3.html) | Class Members & Methods                    |
 | [Lecture 4](class/lecture4.html) | Class Constructor & Modifer                |
 |    [Lab 4](class/lab4-1.html)    | Complex Number                             |
-|            Lecture 5             | Collaborate with Other Classes             |
+| [Lecture 5](class/lecture5.html) | Collaborate with Other Classes             |
 |            Lecture 6             | Operator & Operator Overloading            |
 |              Lab 6               | Complex Number Calculator                  |
 |            Lecture 7             | Introduction to OOP Design                 |
-|            Lecture 8             | OOP: Inheritance (1)                       |
-|            Lecture 9             | Midterm Exam                               |
+|            Lecture 8             | Midterm Exam                               |
+|            Lecture 9             | OOP: Inheritance (1)                       |
 |            Lecture 10            | OOP: Inheritance (2)                       |
 |            Lecture 11            | OOP: Polymorphism (1)                      |
 |            Lecture 12            | OOP: Polymorphism (2)                      |
@@ -77,7 +77,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |            Lecture 15            | File Processing (2)                        |
 |              Lab 15              | File Export of Complex Numbers' Geometry   |
 |            Lecture 16            | (Extra) C++ Image Export & Matplot++       |
-|            Lecture 17            | (Extra) Google Test for Class              |
+|            Lecture 17            | (Extra, online only) Google Test for Class |
 |            Lecture 18            | Final Exam                                 |
 
 ## 成績考核 (Evaluation)

@@ -21,3 +21,7 @@
     - [Lab 4-1: Complex Numbers (50%)](./class/lab4-1.md)
     - [Lab 4-2: Complex Number Calculation (35%)](./class/lab4-2.md)
     - [Lab 4-3: Advance Complex Number Calculation (15%)](./class/lab4-3.md)
+- [Lecture 5: Class Constructor & Modifer](./class/lecture5.md)
+    - [Example 1: Triangle (again)](./class/lecture5_ex1.md)
+    - [Example 2: Vector (again)](./class/lecture5_ex2.md)
+    - [Example 3: Fixed Point Number & Fixed Point Number Calculator](./class/lecture5_ex3.md)
