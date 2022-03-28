@@ -1,5 +1,5 @@
 # Example 2: Vector
 
 ``` c++
-{{#include lecture5_ex2.cpp}}
+{{#include example_cpp/lecture5_ex2.cpp}}
 ```

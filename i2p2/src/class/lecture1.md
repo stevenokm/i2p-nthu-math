@@ -182,4 +182,4 @@ int main()                          int main()
 
 # [VSCode Tutorial](../vscode_tutorial/lab_1_vscode_315.html)
 
-# Lab 1: [Hello Class](./lab1.html)
+# Lab 1: [Hello Class](./lab/lab1.html)

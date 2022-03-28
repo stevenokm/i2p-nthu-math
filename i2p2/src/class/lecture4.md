@@ -609,4 +609,4 @@ A Integer Calculator:
 - need to be initialized
 - need to be able to get all information
 
-## Lab 4: [Complex Number](./lab4-1.html)
+## Lab 4: [Complex Number](./lab/lab4-1.html)

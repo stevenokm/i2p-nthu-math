@@ -25,8 +25,7 @@ paginate: true
 * Example
   - Example: Triangle (again)
   - Example: Vector (again)
-  - Example: Integer Calculator (again)
-  - Example: Fixed Point Number
+  - Example: Fixed Point Number & Fixed Point Number Calculator
 * Pratices
 
 ## Interaction with other classes
