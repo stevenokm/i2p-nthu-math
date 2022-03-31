@@ -59,7 +59,7 @@ private:
     // define input value
     Complex m_input_val;
     // define operation
-    // `+`, `-`, `*`, `/`, and `=` for first assign
+    // `+`, `-`, `*`, `/`, and `=`
     char m_op;
     // calculate result
     void _calc_result();
@@ -96,42 +96,45 @@ public:
 
 void Complex_Calc::set_input(const string &arg_input)
 {
-    // input is a operation
+    // input is empty, read again
     if (arg_input.empty())
     {
         return;
     }
-    else if (arg_input == "+" || arg_input == "-" 
-            || arg_input == "*" || arg_input == "/")
+    // input is a operation
+    else if (arg_input == "+" || arg_input == "-" || arg_input == "*" || arg_input == "/" || arg_input == "=")
     {
-        m_op = arg_input[0];
+        // set the activated operation
+        // as the same as the user press the op button
+        switch (arg_input[0])
+        {
+        case '+':
+            _add();
+            break;
+        case '-':
+            _sub();
+            break;
+        case '*':
+            _mul();
+            break;
+        case '/':
+            _div();
+            break;
+        case '=':
+            _assign();
+            break;
+        }
     }
     // input is a complex number
+    // as the same as the user type a number
+    // it performs as the same as the user pressed the '=' button
+    // if the input is the first input
+    // thus, we initialize the m_op to '='
     else
     {
         stringstream ss(arg_input);
         ss >> m_input_val;
-        switch (m_op)
-        {
-        case '+':
-            m_curr_val += m_input_val;
-            break;
-        case '-':
-            m_curr_val -= m_input_val;
-            break;
-        case '*':
-            m_curr_val *= m_input_val;
-            break;
-        case '/':
-            m_curr_val /= m_input_val;
-            break;
-        case '=':
-            m_curr_val = m_input_val;
-            break;
-        default:
-            cerr << "Error: unknown operation" << endl;
-            exit(1);
-        }
+        _calc_result();
     }
 }
 
