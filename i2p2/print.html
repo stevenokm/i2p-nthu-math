@@ -7859,7 +7859,10 @@ int main()
 1.0 0.0⏎
 ^Z⏎
 1
-$
+$ ./a.out
+0.0 1.0⏎
+0 + 1i⏎
+^Z⏎
 $ ./a.out
 1.0 0.0⏎
 +⏎
@@ -8039,6 +8042,10 @@ int main()
 1
 ^Z⏎
 $ ./a.out
+0.0 1.0⏎
+0 + 1i⏎
+^Z⏎
+$ ./a.out
 1.0 0.0⏎
 1
 +⏎
@@ -8142,7 +8149,7 @@ private:
     // define input value
     Complex m_input_val;
     // define operation
-    // `+`, `-`, `*`, `/`, and `=` for first assign
+    // `+`, `-`, `*`, `/`, and `=`
     char m_op;
     // calculate result
     void _calc_result();
@@ -8179,42 +8186,45 @@ public:
 
 void Complex_Calc::set_input(const string &amp;arg_input)
 {
-    // input is a operation
+    // input is empty, read again
     if (arg_input.empty())
     {
         return;
     }
-    else if (arg_input == &quot;+&quot; || arg_input == &quot;-&quot; 
-            || arg_input == &quot;*&quot; || arg_input == &quot;/&quot;)
+    // input is a operation
+    else if (arg_input == &quot;+&quot; || arg_input == &quot;-&quot; || arg_input == &quot;*&quot; || arg_input == &quot;/&quot; || arg_input == &quot;=&quot;)
     {
-        m_op = arg_input[0];
+        // set the activated operation
+        // as the same as the user press the op button
+        switch (arg_input[0])
+        {
+        case '+':
+            _add();
+            break;
+        case '-':
+            _sub();
+            break;
+        case '*':
+            _mul();
+            break;
+        case '/':
+            _div();
+            break;
+        case '=':
+            _assign();
+            break;
+        }
     }
     // input is a complex number
+    // as the same as the user type a number
+    // it performs as the same as the user pressed the '=' button
+    // if the input is the first input
+    // thus, we initialize the m_op to '='
     else
     {
         stringstream ss(arg_input);
         ss &gt;&gt; m_input_val;
-        switch (m_op)
-        {
-        case '+':
-            m_curr_val += m_input_val;
-            break;
-        case '-':
-            m_curr_val -= m_input_val;
-            break;
-        case '*':
-            m_curr_val *= m_input_val;
-            break;
-        case '/':
-            m_curr_val /= m_input_val;
-            break;
-        case '=':
-            m_curr_val = m_input_val;
-            break;
-        default:
-            cerr &lt;&lt; &quot;Error: unknown operation&quot; &lt;&lt; endl;
-            exit(1);
-        }
+        _calc_result();
     }
 }
 
@@ -8288,6 +8298,10 @@ int main()
 <pre><code class="language-console">$ ./a.out
 1.0 0.0⏎
 1
+^Z⏎
+$ ./a.out
+0.0 1.0⏎
+0 + 1i⏎
 ^Z⏎
 $ ./a.out
 1.0 0.0⏎
@@ -8436,25 +8450,23 @@ private:
     // define input value
     Complex m_input_val;
     // define operation
-    // `+`, `-`, `*`, `/`, and `=` for first assign
+    // `+`, `-`, `*`, `/`, and `=`
     char m_op;
     // define input status, truns `op` for true and turns `value` for false
     bool m_op_input;
     // calculate result
     void _calc_result();
     // operation functions
-    // add the input value to the current value
+    // set activation op to add
     void _add();
-    // subtract the input value from the current value
+    // set activation op to subtract
     void _sub();
-    // multiply the input value with the current value
+    // set activation op to multiply
     void _mul();
-    // divide the current value by the input value
+    // set activation op to divide
     void _div();
-    // assign the input value to the current value
+    // set activation op to assign
     void _assign();
-    // error and exit
-    void _error();
 
 public:
     // Constructor
@@ -8466,6 +8478,8 @@ public:
     ~Complex_Calc(){}; // no need to do anything
 
     // set input value or operation
+    // as the same as the user input number or operation
+    // into the calculator
     void set_input(const string &amp;arg_input);
 
     // cout `&lt;&lt;` operator for print calculator status
@@ -8489,7 +8503,16 @@ void Complex_Calc::set_input(const string &amp;arg_input)
     }
     // input is a operator in right turn
 
+        // set the activated operation
+        // as the same as the user press the op button
+
+        // set to 'input a complex number' turn
+
     // input is a complex number in right turn
+    // as the same as the user type a number
+    // it performs as the same as the user pressed the '=' button
+    // if the input is the first input
+    // thus, we initialize the m_op to '='
 
     // else, input is invalid
     else

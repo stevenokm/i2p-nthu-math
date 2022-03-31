@@ -60,25 +60,23 @@ private:
     // define input value
     Complex m_input_val;
     // define operation
-    // `+`, `-`, `*`, `/`, and `=` for first assign
+    // `+`, `-`, `*`, `/`, and `=`
     char m_op;
     // define input status, truns `op` for true and turns `value` for false
     bool m_op_input;
     // calculate result
     void _calc_result();
     // operation functions
-    // add the input value to the current value
+    // set activation op to add
     void _add();
-    // subtract the input value from the current value
+    // set activation op to subtract
     void _sub();
-    // multiply the input value with the current value
+    // set activation op to multiply
     void _mul();
-    // divide the current value by the input value
+    // set activation op to divide
     void _div();
-    // assign the input value to the current value
+    // set activation op to assign
     void _assign();
-    // error and exit
-    void _error();
 
 public:
     // Constructor
@@ -90,6 +88,8 @@ public:
     ~Complex_Calc(){}; // no need to do anything
 
     // set input value or operation
+    // as the same as the user input number or operation
+    // into the calculator
     void set_input(const string &arg_input);
 
     // cout `<<` operator for print calculator status
@@ -113,7 +113,16 @@ void Complex_Calc::set_input(const string &arg_input)
     }
     // input is a operator in right turn
 
+        // set the activated operation
+        // as the same as the user press the op button
+
+        // set to 'input a complex number' turn
+
     // input is a complex number in right turn
+    // as the same as the user type a number
+    // it performs as the same as the user pressed the '=' button
+    // if the input is the first input
+    // thus, we initialize the m_op to '='
 
     // else, input is invalid
     else
