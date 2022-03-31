@@ -19,7 +19,8 @@
 			"version": "cpp",
 			"ostream": "cpp",
 			"istream": "cpp",
-			"iostream": "cpp"
+			"iostream": "cpp",
+			"string_view": "cpp"
 		}
 	}
 }

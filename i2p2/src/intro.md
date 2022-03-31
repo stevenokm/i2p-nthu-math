@@ -64,7 +64,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |  [Lab 4 (3/10)](class/lab/lab4-1.html)  | Complex Number                             |
 | [Lecture 5 (3/24)](class/lecture5.html) | Collaborate with Other Classes             |
 | [Lecture 6 (3/31)](class/lecture6.html) | Operator & Operator Overloading            |
-|    [Lab 6 (3/31)](class/lab6-1.html)    | Complex Number Calculator                  |
+|  [Lab 6 (3/31)](class/lab/lab6-1.html)  | Complex Number Calculator                  |
 |             Lecture 7 (4/7)             | Introduction to OOP Design                 |
 |            Lecture 8 (4/14)             | Midterm Exam                               |
 |            Lecture 9 (4/21)             | OOP: Inheritance (1)                       |
