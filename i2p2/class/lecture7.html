@@ -1,0 +1,725 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 7: Introduction to Object Oriented Programming &amp; Design - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture7.html" class="active"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture7.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!---
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+--->
+<h1 id="introduction-to-object-oriented-programming--design"><a class="header" href="#introduction-to-object-oriented-programming--design">Introduction to Object Oriented Programming &amp; Design</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture7_slides.html">lecture7_slides.html</a>
+Website version: <a href="./lecture7.html">lecture7.html</a></p>
+</blockquote>
+<ul>
+<li>What is Object Oriented Programming?</li>
+</ul>
+<ul>
+<li>What is Object Oriented Analysis and Design?</li>
+<li>Object Oriented Analysis
+<ul>
+<li>Example: Calculator
+<ul>
+<li>Use cases</li>
+<li>Object models</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>Object Oriented Design
+<ul>
+<li>Example: Calculator
+<ul>
+<li>System Design</li>
+<li>Object Design</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Object Oriented Implementation
+<ul>
+<li>Example: Calculator</li>
+</ul>
+</li>
+<li>Summary</li>
+<li>Pratices</li>
+</ul>
+<h2 id="what-is-object-oriented-programming"><a class="header" href="#what-is-object-oriented-programming">What is Object Oriented Programming?</a></h2>
+<p>Example: Calculator</p>
+<table><thead><tr><th align="center"></th><th align="center"></th><th align="center"></th><th align="center"></th></tr></thead><tbody>
+<tr><td align="center">C</td><td align="center">±</td><td align="center">%</td><td align="center">/</td></tr>
+<tr><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">*</td></tr>
+<tr><td align="center">4</td><td align="center">5</td><td align="center">6</td><td align="center">-</td></tr>
+<tr><td align="center">1</td><td align="center">2</td><td align="center">3</td><td align="center">+</td></tr>
+<tr><td align="center">0</td><td align="center"></td><td align="center">.</td><td align="center">=</td></tr>
+</tbody></table>
+<hr />
+<p>A calculator consists of a set of buttons, each of which has following functions:</p>
+<ul>
+<li>Numbers: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>0</code></li>
+<li>Operations: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li>
+<li>Symbols: ±(<code>p</code>lusminus), <code>%</code>, <code>.</code></li>
+<li>Function: <code>=</code>, <code>C</code>(lear)</li>
+</ul>
+<hr />
+<p>So, we can model the calculator as a class. For example:</p>
+<pre><code class="language-c++">class Button
+{
+    // ...
+};
+class Calc_Controller
+{
+    // ...
+};
+class Calculator
+{
+    // ...
+};
+</code></pre>
+<p>But, how?</p>
+<h2 id="what-is-object-oriented-analysis-and-design"><a class="header" href="#what-is-object-oriented-analysis-and-design">What is Object Oriented Analysis and Design?</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design">Object-oriented analysis and design - Wikipedia</a></p>
+<blockquote>
+<p>Object-oriented analysis and design (OOAD) is a technical approach for analyzing and designing an application, system, or business by applying object-oriented programming, as well as using visual modeling throughout the software development process to guide stakeholder communication and product quality.</p>
+</blockquote>
+<h2 id="object-oriented-analysis"><a class="header" href="#object-oriented-analysis">Object Oriented Analysis</a></h2>
+<p>First, we need to review the use cases and list the object models.</p>
+<h3 id="use-case-calculator"><a class="header" href="#use-case-calculator">Use case: Calculator</a></h3>
+<ul>
+<li>A calculator consists of a set of buttons, each of which has following functions:
+<ul>
+<li>Numbers: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>0</code></li>
+<li>Operations: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li>
+<li>Symbols: ±(<code>p</code>lusminus), <code>%</code>, <code>.</code></li>
+<li>Function: <code>=</code>, <code>C</code>(lear)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ol>
+<li>User want to type in a number, user need to press number buttons or <code>.</code>, from left to right
+<ol>
+<li>If the number is a percentage, press <code>%</code> after finish typing a number</li>
+<li>If the number is a negative number, press <code>±</code> after finish typing a number</li>
+<li>If the typed number is wrong, press <code>C</code> to clear the number</li>
+</ol>
+</li>
+<li>After finish typing a number, user need to press an operation button</li>
+<li>perform the previous operation with the current result and the typed number
+<ol>
+<li>If the typed number is the first number, set the result with the typed number, as the same as the user press <code>=</code> in 2.</li>
+</ol>
+</li>
+<li>Do 1. to 3. until user press <code>=</code></li>
+</ol>
+<hr />
+<h3 id="object-models-calculator"><a class="header" href="#object-models-calculator">Object models: Calculator</a></h3>
+<p>Next, we need to list the objects and their attributes.</p>
+<p>Calculator:</p>
+<ul>
+<li>result: number</li>
+<li>buttons:
+<ul>
+<li>Numbers: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>0</code></li>
+<li>Operations: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li>
+<li>Symbols: ±(<code>p</code>lusminus), <code>%</code>, <code>.</code></li>
+<li>Function: <code>=</code>, <code>C</code>(lear)</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>controller
+<ul>
+<li>a button is pressed</li>
+<li>a number is typed
+<ul>
+<li><code>C</code>lear is pressed</li>
+<li><code>±</code> is pressed</li>
+<li><code>%</code> is pressed</li>
+<li><code>.</code> is pressed</li>
+</ul>
+</li>
+<li>an operation is pressed</li>
+<li><code>=</code> is pressed</li>
+</ul>
+</li>
+</ul>
+<h2 id="object-oriented-design"><a class="header" href="#object-oriented-design">Object Oriented Design</a></h2>
+<p>After we have the object models, we can design the system and the objects.</p>
+<h3 id="system-design"><a class="header" href="#system-design">System Design</a></h3>
+<p>Calculator:</p>
+<ul>
+<li>input: buttons</li>
+<li>output: result</li>
+<li>status: result, controller, buttons</li>
+</ul>
+<hr />
+<p>Use cases:</p>
+<ul>
+<li>send which button is pressed to controller</li>
+<li>send result to controller as the input of previous operation</li>
+<li>contoller will update the result of the calculator with the input number, operation, and the previous result</li>
+</ul>
+<hr />
+<h3 id="object-design"><a class="header" href="#object-design">Object Design</a></h3>
+<p>Botton:</p>
+<ul>
+<li>identify which button is pressed</li>
+<li>send which button is pressed</li>
+</ul>
+<hr />
+<p>Controller </p>
+<ul>
+<li>translate the pressed buttons to the corresponding actions:
+<ul>
+<li>a number is typed
+<ul>
+<li><code>C</code>lear is pressed</li>
+<li><code>±</code> is pressed</li>
+<li><code>%</code> is pressed</li>
+</ul>
+</li>
+<li>an operation is pressed</li>
+<li><code>=</code> is pressed</li>
+</ul>
+</li>
+<li>get the previous result</li>
+<li>send the result to the calculator</li>
+</ul>
+<h2 id="object-oriented-implementation"><a class="header" href="#object-oriented-implementation">Object Oriented Implementation</a></h2>
+<p>Finally, we can implement the system and the objects.</p>
+<h3 id="botton"><a class="header" href="#botton">Botton</a></h3>
+<pre><code class="language-c++">class Button
+{
+protected:
+    char symbol;
+
+public:
+    Button(char arg_btn_char)
+        : symbol(arg_btn_char)
+    {
+    }
+    virtual char press() const // polymorphism, will discuss in lecture 11
+    {
+        return '\0';
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Num_Button : public Button // inherits from Button, will discuss in next lecture
+{
+public:
+    Num_Button(char arg_btn_char = '\0') : Button(arg_btn_char)
+    {
+        // ...
+    }
+    char press() const
+    {
+        return symbol;
+    }
+};
+class Op_Button : public Button
+{
+public:
+    Op_Button(char arg_btn_char = '\0') : Button(arg_btn_char)
+    {
+        // ...
+    }
+    char press() const
+    {
+        return symbol;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Sym_Button : public Button
+{
+public:
+    Sym_Button(char arg_btn_char = '\0') : Button(arg_btn_char)
+    {
+        // ...
+    }
+    char press() const
+    {
+        return symbol;
+    }
+};
+class Func_button : public Button
+{
+public:
+    Func_button(char arg_btn_char = '\0') : Button(arg_btn_char)
+    {
+        // ...
+    }
+    char press() const
+    {
+        return symbol;
+    }
+};
+</code></pre>
+<hr />
+<h3 id="controller"><a class="header" href="#controller">Controller</a></h3>
+<pre><code class="language-c++">class Calc_Controller
+{
+private:
+    int status; // 0 = init, 1 = type num, 2 = press op or assign
+    char next_op;
+    char curr_op;
+    bool decimal_pressed;
+    double type_num;
+    bool minus_pressed;
+    int decimal_offset;
+</code></pre>
+<hr />
+<pre><code class="language-c++">public:
+    Calc_Controller()
+        : status(0), next_op('='), curr_op('='), decimal_pressed(false),
+          type_num(0), minus_pressed(false), decimal_offset(1)
+    {
+    }
+    void button_pressed(Button &amp;arg_btn)
+    {
+        switch (status)
+        {
+        case 0:
+            if (typeid(arg_btn) == typeid(Num_Button))
+            {
+                status = 1;
+                type_num = arg_btn.press() - '0';
+            }
+            else if (typeid(arg_btn) == typeid(Op_Button))
+            {
+                status = 2;
+                next_op = arg_btn.press();
+            }
+</code></pre>
+<hr />
+<pre><code class="language-c++">            else if (typeid(arg_btn) == typeid(Sym_Button))
+            {
+                status = 1;
+                switch (arg_btn.press())
+                {
+                case '.':
+                    decimal_pressed = true;
+                    break;
+                case 'p':
+                    minus_pressed = true;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (typeid(arg_btn) == typeid(Func_button))
+            {
+                status = 0;
+                next_op = '=';
+                arg_btn.press();
+            }
+            break;
+</code></pre>
+<hr />
+<pre><code class="language-c++">        case 1:
+            if (typeid(arg_btn) == typeid(Num_Button))
+            {
+                if (decimal_pressed)
+                {
+                    decimal_offset *= 10;
+                }
+                type_num *= 10;
+                type_num += arg_btn.press() - '0';
+            }
+            else if (typeid(arg_btn) == typeid(Op_Button))
+            {
+                status = 2;
+                curr_op = next_op;
+                next_op = arg_btn.press();
+                type_num = type_num * (minus_pressed ? -1 : 1) / decimal_offset;
+            }
+</code></pre>
+<hr />
+<pre><code class="language-c++">            else if (typeid(arg_btn) == typeid(Sym_Button))
+            {
+                switch (arg_btn.press())
+                {
+                case '.':
+                    decimal_pressed = true;
+                    break;
+                case 'p':
+                    minus_pressed = !minus_pressed;
+                    break;
+                case '%':
+                    type_num = type_num * 0.01;
+                    break;
+                default:
+                    break;
+                }
+            }
+            else if (typeid(arg_btn) == typeid(Func_button))
+            {
+                switch (arg_btn.press())
+                {
+                case 'c':
+                    type_num = 0;
+                    break;
+                case '=':
+                    curr_op = next_op;
+                    next_op = arg_btn.press();
+                    status = 2;
+                    type_num = type_num * (minus_pressed ? -1 : 1) / decimal_offset;
+                }
+            }
+            break;
+</code></pre>
+<hr />
+<pre><code class="language-c++">        case 2:
+            if (typeid(arg_btn) == typeid(Num_Button))
+            {
+                status = 1;
+                type_num = arg_btn.press() - '0';
+            }
+            else if (typeid(arg_btn) == typeid(Op_Button))
+            {
+                next_op = arg_btn.press();
+            }
+            else if (typeid(arg_btn) == typeid(Sym_Button))
+            {
+                status = 1;
+                switch (arg_btn.press())
+                {
+                case '.':
+                    decimal_pressed = true;
+                    break;
+                case 'p':
+                    minus_pressed = !minus_pressed;
+                    break;
+                case '%':
+                    type_num = type_num * 0.01;
+                    break;
+                default:
+                    break;
+                }
+            }
+</code></pre>
+<hr />
+<pre><code class="language-c++">            else if (typeid(arg_btn) == typeid(Func_button))
+            {
+                switch (arg_btn.press())
+                {
+                case 'c':
+                    type_num = 0;
+                    status = 0;
+                    curr_op = '=';
+                    next_op = '=';
+                    break;
+                case '=':
+                    curr_op = '=';
+                    next_op = '=';
+                    break;
+                }
+            }
+            break;
+        }
+    }
+</code></pre>
+<hr />
+<pre><code class="language-c++">    double update_result(const double &amp;arg_result)
+    {
+        switch (status)
+        {
+        case 0:
+            return arg_result;
+        case 1:
+            return arg_result;
+        case 2:
+            switch (curr_op)
+            {
+            case '+':
+                return arg_result + type_num;
+            case '-':
+                return arg_result - type_num;
+            case '*':
+                return arg_result * type_num;
+            case '/':
+                return arg_result / type_num;
+            case '=':
+                return type_num;
+            default:
+                return arg_result;
+            }
+        }
+        return arg_result;
+    }
+};
+</code></pre>
+<hr />
+<h3 id="calculator"><a class="header" href="#calculator">Calculator</a></h3>
+<pre><code class="language-c++">class Calculator
+{
+private:
+    double result;
+    Calc_Controller controller;
+    Num_Button num_buttons[10];
+    Op_Button op_buttons[4];
+    Sym_Button sym_buttons[3];
+    Func_button func_buttons[2];
+    void _run()
+    {
+        controller.button_pressed(num_buttons[1]); // 1
+        result = controller.update_result(result);
+        controller.button_pressed(op_buttons[0]); // +
+        result = controller.update_result(result);
+        controller.button_pressed(num_buttons[2]); // 2
+        result = controller.update_result(result);
+        controller.button_pressed(func_buttons[1]); // =
+        result = controller.update_result(result);
+    }
+</code></pre>
+<hr />
+<pre><code class="language-c++">public:
+    Calculator() // like we turn on a calculator
+        : result(0.0), controller()
+    {
+        // init num_buttons
+        for (int i = 0; i &lt; 10; i++)
+        {
+            num_buttons[i] = Num_Button(i + '0');
+        }
+        // init op_buttons
+        op_buttons[0] = Op_Button('+');
+        op_buttons[1] = Op_Button('-');
+        op_buttons[2] = Op_Button('*');
+        op_buttons[3] = Op_Button('/');
+        // init sym_buttons
+        sym_buttons[0] = Sym_Button('.');
+        sym_buttons[1] = Sym_Button('p');
+        sym_buttons[2] = Sym_Button('%');
+        // init func_buttons
+        func_buttons[0] = Func_button('C');
+        func_buttons[1] = Func_button('=');
+        _run();
+    }
+    ~Calculator() // like we turn off a calculator
+    {
+    }
+};
+
+int main()
+{
+    Calculator calc;
+    return 0;
+}
+</code></pre>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<p>4 steps to perform object-oriented programming:</p>
+<ol start="0">
+<li>Define use cases</li>
+<li>Define objects by use cases</li>
+<li>Define whole system by objects</li>
+<li>Detail define objects and their properties </li>
+<li>Implement objects and system</li>
+</ol>
+<h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
+<p>Use the workflow above to implement the following problems:</p>
+<ol>
+<li>Elevator system</li>
+<li>Basketball game</li>
+<li>Closet</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../class/lab/lab6-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../class/lab/lab6-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
