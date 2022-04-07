@@ -65,7 +65,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 | [Lecture 5 (3/24)](class/lecture5.html) | Collaborate with Other Classes                       |
 | [Lecture 6 (3/31)](class/lecture6.html) | Operator & Operator Overloading                      |
 |  [Lab 6 (3/31)](class/lab/lab6-1.html)  | Complex Number Calculator                            |
-|             Lecture 7 (4/7)             | Introduction to Object Oriented Programming & Design |
+| [Lecture 7 (4/7)](class/lecture7.html)  | Introduction to Object Oriented Programming & Design |
 |            Lecture 8 (4/14)             | OOP: Inheritance (1)                                 |
 |            Project 8 (4/14)             | Midterm Project Announcement                         |
 |              Demo 9 (4/21)              | Midterm Project Demo                                 |
@@ -161,7 +161,8 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
      1. 改動部分程式碼，回答結果會變成什麼？
      2. 若要新增功能，回答實做方式會是什麼？
      3. etc.
-  5. 範例題目會與 Project 一同公告於課程網站，供同學參考題型，實際題目以 Demo 為主。
+  5. 範例題目會於 Demo 前公布於課程網站，供同學參考題型，實際題目以 Demo 為主。
+     - 公布時間不晚於 Demo 前一日 18:00，並會於 eeclass 上公布。
 
 ## 老師資訊
 

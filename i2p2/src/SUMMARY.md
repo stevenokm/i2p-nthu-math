@@ -32,3 +32,4 @@
     - [Lab 6-1: Enhanced Complex Numbers (40%)](./class/lab/lab6-1.md)
     - [Lab 6-2: Simple Complex Number Calculator (40%)](./class/lab/lab6-2.md)
     - [Lab 6-3: Enhanced Complex Number Calculator (20%)](./class/lab/lab6-3.md)
+- [Lecture 7: Introduction to Object Oriented Programming & Design](./class/lecture7.md)

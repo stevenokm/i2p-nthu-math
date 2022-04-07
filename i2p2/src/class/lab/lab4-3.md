@@ -104,3 +104,17 @@ $
 ```c++
 {{#include lab4-3_pseudo.cpp}}
 ```
+
+### Reference Code: 
+
+#### 藍珮芳(110021116)
+
+```c++
+{{#include lab4-3_110021116.cpp}}
+```
+
+#### TA
+
+```c++
+{{#include lab4-3_TA.cpp}}
+```
