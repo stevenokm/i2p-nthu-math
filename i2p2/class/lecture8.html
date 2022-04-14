@@ -1,0 +1,579 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 8: OOP: Inheritance - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../class/lecture8.html" class="active"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../class/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../class/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/class/lecture8.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!---
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+--->
+<h1 id="oop-inheritance"><a class="header" href="#oop-inheritance">OOP: Inheritance</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture8_slides.html">lecture8_slides.html</a>
+Website version: <a href="./lecture8.html">lecture8.html</a></p>
+</blockquote>
+<ul>
+<li>What is Inheritance? and Why do we need it?
+<ul>
+<li>Example: Bus, Car, and Truck.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Syntax</li>
+<li>Inheritance Mode
+<ul>
+<li>Public, Protected, Private
+<ul>
+<li>Example</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>Inheritance Type
+<ul>
+<li>Single</li>
+<li>Multiple</li>
+<li>Multi-level</li>
+<li>Hierarchical (discuss in the next lecture)</li>
+<li>Hybrid (Virtual) Inheritance (discuss in the next lecture)</li>
+<li>Multipath inheritance (discuss in the next lecture)</li>
+</ul>
+</li>
+<li>Example 1: Integer &amp; Real</li>
+<li>Example 2: Complex Number</li>
+<li>Example 3: Integer &amp; Real &amp; Complex Number</li>
+<li>Pratices</li>
+</ul>
+<h2 id="what-is-inheritance-and-why-do-we-need-it"><a class="header" href="#what-is-inheritance-and-why-do-we-need-it">What is Inheritance? and Why do we need it?</a></h2>
+<p>Ref: <a href="https://www.geeksforgeeks.org/inheritance-in-c/">Inheritance in C++</a></p>
+<blockquote>
+<p>The capability of a class to derive properties and characteristics from another class is called <strong>Inheritance</strong>.</p>
+</blockquote>
+<h3 id="example-bus-car-and-truck"><a class="header" href="#example-bus-car-and-truck">Example: Bus, Car, and Truck.</a></h3>
+<p><img src="./img/inheritance.png" alt="" /></p>
+<hr />
+<p>Because bus, car and truck are all vehicles, and they all have the same member functions, we can use inheritance to reduce the amount of code we need to write. For example, <code>class Vehicle</code>:</p>
+<p><img src="./img/inheritance2.png" alt="" /></p>
+<h2 id="syntax"><a class="header" href="#syntax">Syntax</a></h2>
+<pre><code class="language-c++">class subclass_name : access_mode base_class_name
+{
+  // body of subclass
+};
+</code></pre>
+<hr />
+<h3 id="example-bus-car-and-truck-1"><a class="header" href="#example-bus-car-and-truck-1">Example: Bus, Car, and Truck.</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Vehicle
+{
+public:
+    void run()
+    {
+        std::cout &lt;&lt; &quot;Vehicle is running&quot; &lt;&lt; std::endl;
+    }
+};
+class Bus : public Vehicle
+{
+};
+class Car : public Vehicle
+{
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Truck : public Vehicle
+{
+};
+int main()
+{
+    Bus bus;
+    Car car;
+    Truck truck;
+    bus.run();
+    car.run();
+    truck.run();
+    return 0;
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-console">$ ./a.out
+Vehicle is running
+Vehicle is running
+Vehicle is running
+</code></pre>
+<hr />
+<h3 id="example-parent--child"><a class="header" href="#example-parent--child">Example: Parent &amp; Child</a></h3>
+<pre><code class="language-c++">// C++ program to demonstrate implementation
+// of Inheritance
+
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// Base class
+class Parent
+{
+public:
+    int id_p;
+};
+
+// Sub class inheriting from Base Class(Parent)
+class Child : public Parent
+{
+public:
+    int id_c;
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+int main()
+{
+    Child obj1;
+
+    // An object of class child has all data members
+    // and member functions of class parent
+    obj1.id_c = 7;
+    obj1.id_p = 91;
+    cout &lt;&lt; &quot;Child id is: &quot; &lt;&lt; obj1.id_c &lt;&lt; '\n';
+    cout &lt;&lt; &quot;Parent id is: &quot; &lt;&lt; obj1.id_p &lt;&lt; '\n';
+
+    return 0;
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="language-console">$ ./a.out
+Child id is: 7
+Parent id is: 91
+</code></pre>
+<h2 id="inheritance-mode"><a class="header" href="#inheritance-mode">Inheritance Mode</a></h2>
+<table><thead><tr><th align="center">Class Member Type</th><th align="center">Type of</th><th align="center">Inheritence</th><th align="center"></th></tr></thead><tbody>
+<tr><td align="center"></td><td align="center">Public</td><td align="center">Protected</td><td align="center">Private</td></tr>
+<tr><td align="center">Public</td><td align="center"><strong>Public</strong></td><td align="center"><strong>Protected</strong></td><td align="center"><strong>Private</strong></td></tr>
+<tr><td align="center">Protected</td><td align="center"><strong>Protected</strong></td><td align="center"><strong>Protected</strong></td><td align="center"><strong>Private</strong></td></tr>
+<tr><td align="center">Private</td><td align="center"><strong>Not accessible</strong></td><td align="center"><strong>Not accessible</strong></td><td align="center"><strong>Not accessible</strong></td></tr>
+</tbody></table>
+<hr />
+<h3 id="example-inheritance-mode"><a class="header" href="#example-inheritance-mode">Example: Inheritance Mode</a></h3>
+<pre><code class="language-c++">// C++ Implementation to show that a derived class
+// doesn’t inherit access to private data members.
+// However, it does inherit a full parent object.
+class A
+{
+public:
+    int x;
+
+protected:
+    int y;
+
+private:
+    int z;
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class B : public A
+{
+    // x is public
+    // y is protected
+    // z is not accessible from B
+};
+
+class C : protected A
+{
+    // x is protected
+    // y is protected
+    // z is not accessible from C
+};
+
+class D : private A // 'private' is default for classes
+{
+    // x is private
+    // y is private
+    // z is not accessible from D
+};
+</code></pre>
+<h2 id="inheritance-type"><a class="header" href="#inheritance-type">Inheritance Type</a></h2>
+<ul>
+<li>Single</li>
+<li>Multiple</li>
+<li>Multi-level</li>
+<li>Hierarchical (discuss in the next lecture)</li>
+<li>Hybrid (Virtual) Inheritance (discuss in the next lecture)</li>
+<li>Multipath inheritance (discuss in the next lecture)</li>
+</ul>
+<hr />
+<h3 id="single-inheritance"><a class="header" href="#single-inheritance">Single Inheritance</a></h3>
+<p><img src="img/single-inheritance.png" alt="bg right fit" /></p>
+<p>Syntax:</p>
+<pre><code class="language-c++">class subclass_name : access_mode base_class
+{
+    // body of subclass
+};
+</code></pre>
+<hr />
+<h4 id="example-single-inheritance"><a class="header" href="#example-single-inheritance">Example: Single Inheritance</a></h4>
+<p><img src="img/single-inheritance.png" alt="bg right fit" /></p>
+<pre><code class="language-c++">// C++ program to explain
+// Single inheritance
+#include &lt;iostream&gt;
+using namespace std;
+
+// base class
+class Vehicle
+{
+public:
+    Vehicle()
+    {
+        cout &lt;&lt; &quot;This is a Vehicle\n&quot;;
+    }
+};
+
+// sub class derived from a single base classes
+class Car : public Vehicle
+{
+};
+
+// main function
+int main()
+{
+    // Creating object of sub class will
+    // invoke the constructor of base classes
+    Car obj;
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="multiple-inheritance"><a class="header" href="#multiple-inheritance">Multiple Inheritance</a></h3>
+<p><img src="img/multiple-inheritance.png" alt="bg right fit" /></p>
+<p>Syntax:</p>
+<pre><code class="language-c++">class subclass_name : access_mode base_class1,
+                      access_mode base_class2,
+                      ....
+{
+    // body of subclass
+};
+</code></pre>
+<hr />
+<h4 id="example-multiple-inheritance"><a class="header" href="#example-multiple-inheritance">Example: Multiple Inheritance</a></h4>
+<p><img src="img/multiple-inheritance.png" alt="bg right fit" /></p>
+<pre><code class="language-c++">// C++ program to explain
+// multiple inheritance
+#include &lt;iostream&gt;
+using namespace std;
+
+// first base class
+class Vehicle
+{
+public:
+    Vehicle()
+    {
+        cout &lt;&lt; &quot;This is a Vehicle\n&quot;;
+    }
+};
+
+// second base class
+class FourWheeler
+{
+public:
+    FourWheeler()
+    {
+        cout &lt;&lt; &quot;This is a 4 wheeler Vehicle\n&quot;;
+    }
+};
+
+// sub class derived from two base classes
+class Car : public Vehicle, public FourWheeler
+{
+};
+
+// main function
+int main()
+{
+    // Creating object of sub class will
+    // invoke the constructor of base classes.
+    Car obj;
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="multi-level-inheritance"><a class="header" href="#multi-level-inheritance">Multi-level Inheritance</a></h3>
+<p><img src="img/multilevel-inheritance.png" alt="bg right fit" /></p>
+<p>Syntax:</p>
+<pre><code class="language-c++">class base_class_1 : access_mode base_class_2
+{
+    // body of base class 1
+};
+class subclass_name : access_mode base_class_1
+{
+    // body of subclass
+};
+</code></pre>
+<hr />
+<h4 id="example-multi-level-inheritance"><a class="header" href="#example-multi-level-inheritance">Example: Multi-level Inheritance</a></h4>
+<p><img src="img/multilevel-inheritance.png" alt="bg right fit" /></p>
+<pre><code class="language-c++">// C++ program to implement
+// Multilevel Inheritance
+#include &lt;iostream&gt;
+using namespace std;
+
+// base class
+class Vehicle
+{
+public:
+    Vehicle()
+    {
+        cout &lt;&lt; &quot;This is a Vehicle\n&quot;;
+    }
+};
+
+// first sub_class derived from class vehicle
+class fourWheeler : public Vehicle
+{
+public:
+    fourWheeler()
+    {
+        cout &lt;&lt; &quot;Objects with 4 wheels are vehicles\n&quot;;
+    }
+};
+// sub class derived from the derived base class fourWheeler
+class Car : public fourWheeler
+{
+public:
+    Car()
+    {
+        cout &lt;&lt; &quot;Car has 4 Wheels\n&quot;;
+    }
+};
+
+// main function
+int main()
+{
+    // Creating object of sub class will
+    // invoke the constructor of base classes.
+    Car obj;
+    return 0;
+}
+</code></pre>
+<h2 id="example-1-integer--real-a-hreflecture8_ex1htmlsourcea"><a class="header" href="#example-1-integer--real-a-hreflecture8_ex1htmlsourcea">Example 1: Integer &amp; Real [<a href="./lecture8_ex1.html">Source</a>]</a></h2>
+<h2 id="example-2-complex-number-a-hreflecture8_ex2htmlsourcea"><a class="header" href="#example-2-complex-number-a-hreflecture8_ex2htmlsourcea">Example 2: Complex Number [<a href="./lecture8_ex2.html">Source</a>]</a></h2>
+<h2 id="example-3-integer--real--complex-number-a-hreflecture8_ex3htmlsourcea"><a class="header" href="#example-3-integer--real--complex-number-a-hreflecture8_ex3htmlsourcea">Example 3: Integer &amp; Real &amp; Complex Number [<a href="./lecture8_ex3.html">Source</a>]</a></h2>
+<h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
+<ul>
+<li>Design a class hierarchy for Fruit. Contains:
+<ul>
+<li>Grape</li>
+<li>Apple</li>
+<li>Orange</li>
+</ul>
+</li>
+<li>Design a class hierarchy for Quadrilateral. Contains:
+<ul>
+<li>Square</li>
+<li>Rectangle</li>
+<li>Rhombus</li>
+<li>Parallelogram</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../class/lecture7.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../class/lecture8_ex1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../class/lecture7.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../class/lecture8_ex1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
