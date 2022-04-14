@@ -66,8 +66,8 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 | [Lecture 6 (3/31)](class/lecture6.html) | Operator & Operator Overloading                      |
 |  [Lab 6 (3/31)](class/lab/lab6-1.html)  | Complex Number Calculator                            |
 | [Lecture 7 (4/7)](class/lecture7.html)  | Introduction to Object Oriented Programming & Design |
-|            Lecture 8 (4/14)             | OOP: Inheritance (1)                                 |
-|            Project 8 (4/14)             | Midterm Project Announcement                         |
+| [Lecture 8 (4/14)](class/lecture8.html) | OOP: Inheritance (1)                                 |
+|   [Project 8 (4/14)](midterm-1.html)    | Midterm Project Announcement                         |
 |              Demo 9 (4/21)              | Midterm Project Demo                                 |
 |            Lecture 10 (4/28)            | OOP: Inheritance (2)                                 |
 |            Lecture 11 (5/5)             | OOP: Polymorphism (1)                                |
