@@ -149,7 +149,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
   - Demo 時間表 (連結待補)
   - 每位同學 8 分鐘 Demo 時間，請務必準時參加
   - 遲交的同學仍須另外約 Demo 時間，最晚不得超過該次 Demo 時間後的次週四 18:30
-    -  e.g. 該 Project 4/11 公布後，同學遲交的話，需於 4/25 18:30 前約 Demo
+    -  e.g. 該 Project 4/14 公布後，同學遲交的話，需於 4/25 18:30 前約 Demo
 ---
 - Demo 地點: 綜三館 315 電腦教室
   - 若改為遠距教學時，則使用 Teams 進行 Demo
@@ -158,9 +158,10 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
   2. 使用 [windows + mingw 環境](vscode_tutorial/lab_1_vscode_win.html#設定-vscode-環境-windows--mingw)下的 g++ 編譯程式碼
   3. 簡述如何實作
   4. 助教會隨機挑選一個擬定好的問題，請同學試著解出問題 (白板題)
-     1. 改動部分程式碼，回答結果會變成什麼？
-     2. 若要新增功能，回答實做方式會是什麼？
-     3. etc.
+     1. 部分程式碼/member function的運作邏輯？
+     2. 部分程式碼/member function的用途？
+     3. 輸入至輸出的程式碼運作流程？
+     4. 調整部分程式碼/member function後，部分程式碼的運作流程/結果會如何改變？
   5. 範例題目會於 Demo 前公布於課程網站，供同學參考題型，實際題目以 Demo 為主。
      - 公布時間不晚於 Demo 前一日 18:00，並會於 eeclass 上公布。
 
