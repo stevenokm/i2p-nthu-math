@@ -160,6 +160,14 @@ $ ./a.out
 sdoifjwepoirjpwoie⏎
 Error: Invalid input
 $
+$ ./a.out
+1.⏎
+Error: Invalid input
+$
+$ ./a.out
+.90⏎
+Error: Invalid input
+$
 ```
 
 ## Reference
