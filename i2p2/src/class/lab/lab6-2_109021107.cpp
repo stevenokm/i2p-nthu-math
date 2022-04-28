@@ -12,7 +12,7 @@ class Complex
 private:
     // data members
     // save the real and imaginary parts of the complex number
-    // with `double` precision
+    // with double precision
     double m_real;
     double m_imag;
 
@@ -44,11 +44,106 @@ public:
     friend ostream &operator<<(ostream &arg_os, const Complex &arg_c);
     // cin `>>` operator for input complex number
     // note: be careful about the format of input
-    // hint: use `stod` to convert string to double
+    // hint: use stod to convert string to double
     friend istream &operator>>(istream &arg_is, Complex &arg_c);
 
     friend class Complex_Calc;
 };
+
+Complex::Complex(const double &arg_real, const double &arg_image)
+    : m_real(arg_real), m_imag(arg_image)
+{
+}
+
+Complex::Complex(const Complex &arg_c)
+    : m_real(arg_c.m_real), m_imag(arg_c.m_imag)
+{
+}
+
+Complex &Complex::operator=(const Complex &arg_c)
+{
+    m_real = arg_c.m_real;
+    m_imag = arg_c.m_imag;
+    return *this;
+}
+
+Complex &Complex::operator+=(const Complex &arg_c)
+{
+    m_real += arg_c.m_real;
+    m_imag += arg_c.m_imag;
+    return *this;
+}
+
+Complex &Complex::operator-=(const Complex &arg_c)
+{
+    m_real -= arg_c.m_real;
+    m_imag -= arg_c.m_imag;
+    return *this;
+}
+
+Complex &Complex::operator*=(const Complex &arg_c)
+{
+    Complex a;
+    a.m_real = m_real;
+    a.m_imag = m_imag;
+    m_real = a.m_real * arg_c.m_real - a.m_imag * arg_c.m_imag;
+    m_imag = a.m_real * arg_c.m_imag + arg_c.m_real * a.m_imag;
+    return *this;
+}
+
+Complex &Complex::operator/=(const Complex &arg_c)
+{
+    Complex a;
+    a.m_real = m_real;
+    a.m_imag = m_imag;
+    m_real = (a.m_real * arg_c.m_real + a.m_imag * arg_c.m_imag) 
+        / (arg_c.m_real * arg_c.m_real + arg_c.m_imag * arg_c.m_imag);
+    m_imag = (arg_c.m_real * a.m_imag - a.m_real * arg_c.m_imag) 
+        / (arg_c.m_real * arg_c.m_real + arg_c.m_imag * arg_c.m_imag);
+    return *this;
+}
+
+ostream &operator<<(ostream &arg_os, const Complex &arg_c)
+{
+    if (arg_c.m_imag == 0)
+    {
+        arg_os << arg_c.m_real;
+    }
+    else if (arg_c.m_imag < 0)
+    {
+        arg_os << arg_c.m_real << " - " << 0.0 - arg_c.m_imag << "i";
+    }
+    else
+    {
+        arg_os << arg_c.m_real << " + " << arg_c.m_imag << "i";
+    }
+    return arg_os;
+}
+
+istream &operator>>(istream &arg_is, Complex &arg_c)
+{
+    string strs;
+    size_t sz;
+    arg_c = {0, 0};
+    arg_is >> strs;
+    try
+    {
+        arg_c.m_real = stod(strs);
+    }
+    catch (const invalid_argument &ia)
+    {
+    }
+    strs = "";
+    arg_is >> strs;
+    try
+    {
+        arg_c.m_imag = stod(strs);
+    }
+    catch (const invalid_argument &ia)
+    {
+    }
+    return arg_is;
+}
 
 // Complex calculator class declaration
 class Complex_Calc
@@ -91,6 +186,90 @@ public:
     // note: be careful about the format of output
     friend ostream &operator<<(ostream &arg_os, const Complex_Calc &arg_comp_calc);
 };
+
+Complex_Calc::Complex_Calc()
+    : m_curr_val(), m_input_val(), m_op('=')
+{
+}
+
+Complex_Calc::Complex_Calc(const Complex_Calc &arg_int_calc)
+    : m_curr_val(arg_int_calc.m_curr_val),
+      m_input_val(arg_int_calc.m_input_val),
+      m_op(arg_int_calc.m_op)
+{
+}
+
+void Complex_Calc::_calc_result()
+{
+    switch (m_op)
+    {
+    case '+':
+        m_curr_val += m_input_val;
+        break;
+    case '-':
+        m_curr_val -= m_input_val;
+        break;
+    case '*':
+        m_curr_val *= m_input_val;
+        break;
+    case '/':
+        m_curr_val /= m_input_val;
+        break;
+    case '=':
+        m_curr_val = m_input_val;
+        break;
+    default:
+        break;
+    }
+}
+
+void Complex_Calc::_add()
+{
+    m_op = '+';
+}
+
+void Complex_Calc::_sub()
+{
+    m_op = '-';
+}
+
+void Complex_Calc::_mul()
+{
+    m_op = '*';
+}
+
+void Complex_Calc::_div()
+{
+    m_op = '/';
+}
+
+void Complex_Calc::_assign()
+{
+    m_op = '=';
+}
+
+ostream &operator<<(ostream &arg_os, const Complex_Calc &arg_comp_calc)
+{
+    Complex arg_c = arg_comp_calc.m_curr_val;
+    arg_os << arg_c;
+    return arg_os;
+}
+
+/*
+ostream &operator<<(ostream &arg_os, const Complex_Calc &arg_comp_calc){
+    if (arg_c.m_imag==0){
+        arg_os << arg_c.m_real <<endl;
+    }
+    else if (arg_c.m_imag<0){
+        arg_c.m_imag*=(-1);
+        arg_os<<arg_c.m_real<<" - "<<arg_c.m_imag<<" i"<<endl;
+    }
+    else{
+        arg_os << arg_c.m_real << " + " << arg_c.m_imag <<" i"<<endl;
+    }
+    return arg_os;
+}
+*/
 
 // parse the test cases, do not modify belows
 

@@ -6,7 +6,7 @@ headingDivider: 2
 paginate: true
 --->
 
-# OOP: Inheritance
+# OOP: Inheritance (1)
 
 > Slides version: [lecture8_slides.html](./lecture8_slides.html)
 > Website version: [lecture8.html](./lecture8.html)

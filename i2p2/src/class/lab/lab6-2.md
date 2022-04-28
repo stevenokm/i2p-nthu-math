@@ -98,3 +98,17 @@ $
 ```c++
 {{#include lab6-2_pseudo.cpp}}
 ```
+
+### Reference Code: 
+
+#### 林恩佑(109021107)
+
+```c++
+{{#include lab6-2_109021107.cpp}}
+```
+
+#### TA
+  
+```c++
+{{#include lab6-2_TA.cpp}}
+```

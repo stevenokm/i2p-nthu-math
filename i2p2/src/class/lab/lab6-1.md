@@ -78,3 +78,17 @@ $ ./a.out
 ```c++
 {{#include lab6-1_pseudo.cpp}}
 ```
+
+### Reference Code: 
+
+#### 陳誼倫(110021127)
+
+```c++
+{{#include lab6-1_110021127.cpp}}
+```
+
+#### 林恩佑(109021107)
+
+```c++
+{{#include lab6-1_109021107.cpp}}
+```

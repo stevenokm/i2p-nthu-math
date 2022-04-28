@@ -145,3 +145,23 @@ $
 ```c++
 {{#include lab6-3_pseudo.cpp}}
 ```
+
+### Reference Code: 
+
+#### 林元鴻(110021120)
+
+```c++
+{{#include lab6-3_110021120.cpp}}
+```
+
+#### 陳誼倫(110021127)
+
+```c++
+{{#include lab6-3_110021127.cpp}}
+```
+
+#### TA
+
+```c++
+{{#include lab6-3_TA.cpp}}
+```
