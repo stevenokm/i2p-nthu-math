@@ -1,0 +1,595 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Example 1: Integer &amp; Real &amp; Complex Number Calculator - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../oop/lecture8.html"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture10.html"><strong aria-hidden="true">12.</strong> Lecture 10: OOP: Inheritance (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture10_ex1.html" class="active"><strong aria-hidden="true">12.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex2.html"><strong aria-hidden="true">12.2.</strong> Example 2: Complex Number &amp; Triangle</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex3.html"><strong aria-hidden="true">12.3.</strong> Example 3: Complex Number &amp; Triangles</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/oop/lecture10_ex1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="example-1-integer--real--complex-number-calculator"><a class="header" href="#example-1-integer--real--complex-number-calculator">Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+
+using namespace std;
+
+class Integer
+{
+protected:
+    int m_int_value;
+
+public:
+    Integer(int arg_int_value = 0) : m_int_value(arg_int_value)
+    {
+    }
+    Integer(const Integer &amp;arg_int) : m_int_value(arg_int.m_int_value)
+    {
+    }
+    operator int() const
+    {
+        return m_int_value;
+    }
+    Integer &amp;operator=(const Integer &amp;arg_int)
+    {
+        m_int_value = arg_int.m_int_value;
+        return *this;
+    }
+    void set_int_value(int arg_int_value)
+    {
+        m_int_value = arg_int_value;
+    }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Integer &amp;arg_integer)
+    {
+        arg_os &lt;&lt; arg_integer.m_int_value;
+        return arg_os;
+    }
+    friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Integer &amp;arg_integer)
+    {
+        arg_is &gt;&gt; arg_integer.m_int_value;
+        return arg_is;
+    }
+    friend Integer operator+(const Integer &amp;arg_integer1, const Integer &amp;arg_integer2)
+    {
+        Integer temp_integer(arg_integer1.m_int_value + arg_integer2.m_int_value);
+        return temp_integer;
+    }
+    friend Integer operator-(const Integer &amp;arg_integer1, const Integer &amp;arg_integer2)
+    {
+        Integer temp_integer(arg_integer1.m_int_value - arg_integer2.m_int_value);
+        return temp_integer;
+    }
+    friend Integer operator*(const Integer &amp;arg_integer1, const Integer &amp;arg_integer2)
+    {
+        Integer temp_integer(arg_integer1.m_int_value * arg_integer2.m_int_value);
+        return temp_integer;
+    }
+    friend Integer operator/(const Integer &amp;arg_integer1, const Integer &amp;arg_integer2)
+    {
+        Integer temp_integer(arg_integer1.m_int_value / arg_integer2.m_int_value);
+        return temp_integer;
+    }
+};
+
+// Real is a Integer
+class Real : public Integer
+{
+protected:
+    double m_after_decimal;
+
+public:
+    Real(double arg_value = 0.0) : Integer((int)arg_value),
+                                   m_after_decimal(arg_value - (int)arg_value)
+    {
+    }
+    Real(const Real &amp;arg_real) : Integer(arg_real),
+                                 m_after_decimal(arg_real.m_after_decimal)
+    {
+    }
+    operator double() const
+    {
+        return m_after_decimal + (double)m_int_value;
+    }
+    Real &amp;operator=(const Real &amp;arg_real)
+    {
+        m_int_value = arg_real.m_int_value;
+        m_after_decimal = arg_real.m_after_decimal;
+        return *this;
+    }
+    void set_real_value(double arg_value)
+    {
+        m_int_value = (int)arg_value;
+        m_after_decimal = arg_value - m_int_value;
+    }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Real &amp;arg_real)
+    {
+        arg_os &lt;&lt; (double)arg_real;
+        return arg_os;
+    }
+    friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Real &amp;arg_real)
+    {
+        double temp_double;
+        arg_is &gt;&gt; temp_double;
+        arg_real.set_real_value(temp_double);
+        return arg_is;
+    }
+    friend Real operator+(const Real &amp;arg_real1, const Real &amp;arg_real2)
+    {
+        // call the Integer operator+ to add the Integer part
+        Integer temp_integer((Integer)arg_real1 + (Integer)arg_real2);
+        Real temp_real(arg_real1.m_after_decimal + arg_real2.m_after_decimal);
+        temp_real.set_int_value((int)temp_integer + (int)temp_real);
+        return temp_real;
+    }
+    friend Real operator-(const Real &amp;arg_real1, const Real &amp;arg_real2)
+    {
+        Real temp_real((double)arg_real1 - (double)arg_real2);
+        return temp_real;
+    }
+    friend Real operator*(const Real &amp;arg_real1, const Real &amp;arg_real2)
+    {
+        Real temp_real((double)arg_real1 * (double)arg_real2);
+        return temp_real;
+    }
+    friend Real operator/(const Real &amp;arg_real1, const Real &amp;arg_real2)
+    {
+        Real temp_real((double)arg_real1 / (double)arg_real2);
+        return temp_real;
+    }
+};
+
+class Imaginary
+{
+protected:
+    double m_imaginary_value;
+
+public:
+    Imaginary(double arg_imaginary_value = 0.0) : m_imaginary_value(arg_imaginary_value)
+    {
+    }
+    Imaginary(const Imaginary &amp;arg_imaginary) : m_imaginary_value(arg_imaginary.m_imaginary_value)
+    {
+    }
+    Imaginary &amp;operator=(const Imaginary &amp;arg_imaginary)
+    {
+        m_imaginary_value = arg_imaginary.m_imaginary_value;
+        return *this;
+    }
+    double get_imaginary_value() const
+    {
+        return m_imaginary_value;
+    }
+    void set_imaginary_value(double arg_imaginary_value)
+    {
+        m_imaginary_value = arg_imaginary_value;
+    }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Imaginary &amp;arg_imaginary)
+    {
+        arg_os &lt;&lt; arg_imaginary.m_imaginary_value &lt;&lt; &quot;i&quot;;
+        return arg_os;
+    }
+    friend Imaginary operator+(const Imaginary &amp;arg_imaginary1, const Imaginary &amp;arg_imaginary2)
+    {
+        Imaginary temp_imaginary(arg_imaginary1.m_imaginary_value + arg_imaginary2.m_imaginary_value);
+        return temp_imaginary;
+    }
+    friend Imaginary operator-(const Imaginary &amp;arg_imaginary1, const Imaginary &amp;arg_imaginary2)
+    {
+        Imaginary temp_imaginary(arg_imaginary1.m_imaginary_value - arg_imaginary2.m_imaginary_value);
+        return temp_imaginary;
+    }
+};
+
+class Complex : public Real, public Imaginary
+{
+public:
+    Complex(double arg_real_value = 0.0,
+            double arg_imaginary_value = 0.0)
+        : Real(arg_real_value),
+          Imaginary(arg_imaginary_value)
+    {
+    }
+    Complex(const Complex &amp;arg_complex)
+        : Real(arg_complex),
+          Imaginary(arg_complex)
+    {
+    }
+    Complex &amp;operator=(const Complex &amp;arg_complex)
+    {
+        Real::operator=(arg_complex);
+        Imaginary::operator=(arg_complex);
+        return *this;
+    }
+    Complex reciprocal() const
+    {
+        Complex temp_complex(*this);
+        double temp_real_value = temp_complex;
+        double temp_imaginary_value = temp_complex.get_imaginary_value();
+        double temp_denominator = temp_real_value * temp_real_value + temp_imaginary_value * temp_imaginary_value;
+        temp_complex.set_real_value(temp_real_value / temp_denominator);
+        temp_complex.set_imaginary_value(-temp_imaginary_value / temp_denominator);
+        return temp_complex;
+    }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Complex &amp;arg_complex)
+    {
+        arg_os &lt;&lt; (Real)arg_complex &lt;&lt; &quot; + &quot; &lt;&lt; (Imaginary)arg_complex;
+        return arg_os;
+    }
+    friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Complex &amp;arg_complex)
+    {
+        string temp_string;
+        getline(arg_is, temp_string);
+        size_t plus_pos = temp_string.find(&quot;+&quot;);
+        if (plus_pos != string::npos)
+        {
+            arg_complex.set_real_value(atof(temp_string.substr(0, plus_pos).c_str()));
+        }
+        size_t i_pos = temp_string.find(&quot;i&quot;);
+        if (i_pos != string::npos)
+        {
+            arg_complex.set_imaginary_value(
+                atof(temp_string.substr(plus_pos + 1, i_pos - plus_pos - 1)
+                         .c_str()));
+        }
+        return arg_is;
+    }
+    friend Complex operator+(const Complex &amp;arg_complex1, const Complex &amp;arg_complex2)
+    {
+        Complex temp_complex((double)arg_complex1 + (double)arg_complex2,
+                             arg_complex1.get_imaginary_value() + arg_complex2.get_imaginary_value());
+        return temp_complex;
+    }
+    friend Complex operator-(const Complex &amp;arg_complex1, const Complex &amp;arg_complex2)
+    {
+        Complex temp_complex((double)arg_complex1 - (double)arg_complex2,
+                             arg_complex1.get_imaginary_value() - arg_complex2.get_imaginary_value());
+        return temp_complex;
+    }
+    friend Complex operator*(const Complex &amp;arg_complex1, const Complex &amp;arg_complex2)
+    {
+        Complex temp_complex((double)arg_complex1 * (double)arg_complex2 -
+                                 arg_complex1.get_imaginary_value() * arg_complex2.get_imaginary_value(),
+                             (double)arg_complex1 * arg_complex2.get_imaginary_value() +
+                                 arg_complex1.get_imaginary_value() * (double)arg_complex2);
+        return temp_complex;
+    }
+    friend Complex operator/(const Complex &amp;arg_complex1, const Complex &amp;arg_complex2)
+    {
+        Complex temp_complex(arg_complex1 * arg_complex2.reciprocal());
+        return temp_complex;
+    }
+};
+
+// Complex calculator class declaration
+class Complex_Calc
+{
+private:
+    // define current value
+    Complex m_curr_val;
+    // define input value
+    Complex m_input_val;
+    // define operation
+    // `+`, `-`, `*`, `/`, and `=`
+    char m_op;
+    // define input status, turns `op` for true and turns `value` for false
+    bool m_op_input;
+    // calculate result
+    void _calc_result()
+    {
+        switch (m_op)
+        {
+        case '+':
+            m_curr_val = m_curr_val + m_input_val;
+            break;
+        case '-':
+            m_curr_val = m_curr_val - m_input_val;
+            break;
+        case '*':
+            m_curr_val = m_curr_val * m_input_val;
+            break;
+        case '/':
+            m_curr_val = m_curr_val / m_input_val;
+            break;
+        case '=':
+            m_curr_val = m_input_val;
+            break;
+        default:
+            break;
+        }
+    }
+    // operation functions
+    // set activation op to add
+    void _add()
+    {
+        m_op = '+';
+        m_op_input = false;
+    }
+    // set activation op to subtract
+    void _sub()
+    {
+        m_op = '-';
+        m_op_input = false;
+    }
+    // set activation op to multiply
+    void _mul()
+    {
+        m_op = '*';
+        m_op_input = false;
+    }
+    // set activation op to divide
+    void _div()
+    {
+        m_op = '/';
+        m_op_input = false;
+    }
+    // set activation op to assign
+    void _assign()
+    {
+        m_op = '=';
+        m_op_input = false;
+    }
+
+public:
+    // Constructor
+    Complex_Calc()
+        : m_curr_val(), m_input_val(), m_op('='), m_op_input(false)
+    {
+    }
+
+    // Copy constructor
+    Complex_Calc(const Complex_Calc &amp;arg_comp_calc)
+        : m_curr_val(arg_comp_calc.m_curr_val), m_input_val(arg_comp_calc.m_input_val),
+          m_op(arg_comp_calc.m_op), m_op_input(arg_comp_calc.m_op_input)
+    {
+    }
+
+    // Destructor
+    ~Complex_Calc(){}; // no need to do anything
+
+    // cin `&gt;&gt;` operator for set input value or operation
+    friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Complex_Calc &amp;arg_comp_calc)
+    {
+        string temp_string;
+        getline(arg_is, temp_string);
+        if (temp_string == &quot;+&quot;)
+        {
+            arg_comp_calc._add();
+        }
+        else if (temp_string == &quot;-&quot;)
+        {
+            arg_comp_calc._sub();
+        }
+        else if (temp_string == &quot;*&quot;)
+        {
+            arg_comp_calc._mul();
+        }
+        else if (temp_string == &quot;/&quot;)
+        {
+            arg_comp_calc._div();
+        }
+        else if (temp_string == &quot;=&quot;)
+        {
+            arg_comp_calc._assign();
+        }
+        else
+        {
+            stringstream temp_string_stream(temp_string);
+            temp_string_stream &gt;&gt; arg_comp_calc.m_input_val;
+            arg_comp_calc.m_op_input = true;
+            arg_comp_calc._calc_result();
+        }
+        return arg_is;
+    }
+
+    // cout `&lt;&lt;` operator for print calculator status
+    // note: be careful about the format of output
+    // cout `&lt;&lt;` operator for print calculator status
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Complex_Calc &amp;arg_comp_calc)
+    {
+        arg_os &lt;&lt; arg_comp_calc.m_curr_val;
+        return arg_os;
+    }
+};
+
+int main()
+{
+    // create an instance of the class
+    Complex_Calc calc;
+    while (cin &gt;&gt; calc)
+    {
+        cout &lt;&lt; calc &lt;&lt; endl;
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../oop/lecture10.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../oop/lecture10_ex2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../oop/lecture10.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../oop/lecture10_ex2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
