@@ -1,0 +1,789 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 11: OOP: Polymorphism (1) - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../oop/lecture8.html"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture10.html"><strong aria-hidden="true">12.</strong> Lecture 10: OOP: Inheritance (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture10_ex1.html"><strong aria-hidden="true">12.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex2.html"><strong aria-hidden="true">12.2.</strong> Example 2: Complex Number &amp; Triangle</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex3.html"><strong aria-hidden="true">12.3.</strong> Example 3: Complex Number &amp; Triangles</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture11.html" class="active"><strong aria-hidden="true">13.</strong> Lecture 11: OOP: Polymorphism (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture11_ex1.html"><strong aria-hidden="true">13.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex2.html"><strong aria-hidden="true">13.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex3.html"><strong aria-hidden="true">13.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/oop/lecture11.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!---
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+--->
+<h1 id="oop-polymorphism-1"><a class="header" href="#oop-polymorphism-1">OOP: Polymorphism (1)</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture11_slides.html">lecture11_slides.html</a>
+Website version: <a href="./lecture11.html">lecture11.html</a></p>
+</blockquote>
+<ul>
+<li>What is Polymorphism? and Why do we need it?
+<ul>
+<li>Example: Bus, Car, and Truck.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Polymorphism Types
+<ul>
+<li>Compile time</li>
+<li>Run time</li>
+</ul>
+</li>
+<li>Virtual Function
+<ul>
+<li>Syntax: <code>virtual</code> member function &amp; object pointer</li>
+<li>Example:</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>Example 1: Integer &amp; Real</li>
+<li>Example 2: Complex Number</li>
+<li>Example 3: Integer &amp; Real &amp; Complex Number</li>
+<li>Pratices</li>
+</ul>
+<h2 id="what-is-polymorphism-and-why-do-we-need-it"><a class="header" href="#what-is-polymorphism-and-why-do-we-need-it">What is Polymorphism? and Why do we need it?</a></h2>
+<blockquote>
+<p>The word polymorphism means having many forms. In simple words, we can define polymorphism as the ability of a message to be displayed in more than one form. 
+A real-life example of polymorphism, a person at the same time can have different characteristics. Like a man at the same time is a father, a husband, an employee. 
+So the same person posses different behavior in different situations. This is called polymorphism.</p>
+</blockquote>
+<hr />
+<h3 id="example-bus-car-and-truck"><a class="header" href="#example-bus-car-and-truck">Example: Bus, Car, and Truck</a></h3>
+<ul>
+<li>A Bus:
+<ul>
+<li>has 4 wheels</li>
+<li>has 20 seats</li>
+<li>has 2 doors</li>
+<li>has 20 windows</li>
+</ul>
+</li>
+<li>A Car:
+<ul>
+<li>has 4 wheels</li>
+<li>has 4 seats</li>
+<li>has 4 doors</li>
+<li>has 4 windows</li>
+</ul>
+</li>
+</ul>
+<hr />
+<ul>
+<li>A Truck:
+<ul>
+<li>has 6 wheels</li>
+<li>has 2 seats</li>
+<li>has 2 doors</li>
+<li>has 2 windows</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="function-overloading"><a class="header" href="#function-overloading">function overloading</a></h4>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Vehicle
+{
+public:
+    void wheels() {}
+    void seats() {}
+    void doors() {}
+    void windows() {}
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Bus : public Vehicle
+{
+public:
+    void wheels()
+    {
+        cout &lt;&lt; &quot;Wheels: 4&quot; &lt;&lt; endl;
+    }
+    void seats()
+    {
+        cout &lt;&lt; &quot;Seats: 20&quot; &lt;&lt; endl;
+    }
+    void doors()
+    {
+        cout &lt;&lt; &quot;Doors: 2&quot; &lt;&lt; endl;
+    }
+    void windows()
+    {
+        cout &lt;&lt; &quot;Windows: 20&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Car : public Vehicle
+{
+public:
+    void wheels()
+    {
+        cout &lt;&lt; &quot;Wheels: 4&quot; &lt;&lt; endl;
+    }
+    void seats()
+    {
+        cout &lt;&lt; &quot;Seats: 4&quot; &lt;&lt; endl;
+    }
+    void doors()
+    {
+        cout &lt;&lt; &quot;Doors: 4&quot; &lt;&lt; endl;
+    }
+    void windows()
+    {
+        cout &lt;&lt; &quot;Windows: 4&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Truck : public Vehicle
+{
+public:
+    void wheels()
+    {
+        cout &lt;&lt; &quot;Wheels: 6&quot; &lt;&lt; endl;
+    }
+    void seats()
+    {
+        cout &lt;&lt; &quot;Seats: 2&quot; &lt;&lt; endl;
+    }
+    void doors()
+    {
+        cout &lt;&lt; &quot;Doors: 2&quot; &lt;&lt; endl;
+    }
+    void windows()
+    {
+        cout &lt;&lt; &quot;Windows: 2&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    Bus b;
+    Car c;
+    Truck t;
+
+    b.wheels();
+    b.seats();
+    b.doors();
+    b.windows();
+
+    c.wheels();
+    c.seats();
+    c.doors();
+    c.windows();
+
+    t.wheels();
+    t.seats();
+    t.doors();
+    t.windows();
+}
+</code></pre>
+<hr />
+<p>Output:</p>
+<pre><code class="language-console">$ ./a.out
+Wheels: 4
+Seats: 20
+Doors: 2
+Windows: 20
+Wheels: 4
+Seats: 4
+Doors: 4
+Windows: 4
+Wheels: 6
+Seats: 2
+Doors: 2
+Windows: 2
+</code></pre>
+<hr />
+<h4 id="virtual-member-function"><a class="header" href="#virtual-member-function"><code>virtual</code> member function</a></h4>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+class Vehicle
+{
+public:
+    virtual void wheels() {}
+    virtual void seats() {}
+    virtual void doors() {}
+    virtual void windows() {}
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Bus : public Vehicle
+{
+public:
+    void wheels()
+    {
+        cout &lt;&lt; &quot;Wheels: 4&quot; &lt;&lt; endl;
+    }
+    void seats()
+    {
+        cout &lt;&lt; &quot;Seats: 20&quot; &lt;&lt; endl;
+    }
+    void doors()
+    {
+        cout &lt;&lt; &quot;Doors: 2&quot; &lt;&lt; endl;
+    }
+    void windows()
+    {
+        cout &lt;&lt; &quot;Windows: 20&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Car : public Vehicle
+{
+public:
+    void wheels()
+    {
+        cout &lt;&lt; &quot;Wheels: 4&quot; &lt;&lt; endl;
+    }
+    void seats()
+    {
+        cout &lt;&lt; &quot;Seats: 4&quot; &lt;&lt; endl;
+    }
+    void doors()
+    {
+        cout &lt;&lt; &quot;Doors: 4&quot; &lt;&lt; endl;
+    }
+    void windows()
+    {
+        cout &lt;&lt; &quot;Windows: 4&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Truck : public Vehicle
+{
+public:
+    void wheels()
+    {
+        cout &lt;&lt; &quot;Wheels: 6&quot; &lt;&lt; endl;
+    }
+    void seats()
+    {
+        cout &lt;&lt; &quot;Seats: 2&quot; &lt;&lt; endl;
+    }
+    void doors()
+    {
+        cout &lt;&lt; &quot;Doors: 2&quot; &lt;&lt; endl;
+    }
+    void windows()
+    {
+        cout &lt;&lt; &quot;Windows: 2&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    Vehicle *v[3];    // array of pointers to Vehicle
+                      // used for polymorphism
+    v[0] = new Bus;   // dynamically allocate Bus
+    v[1] = new Car;   // dynamically allocate Car
+    v[2] = new Truck; // dynamically allocate Truck
+
+    for (int i = 0; i &lt; 3; i++)
+    {
+        v[i]-&gt;wheels();
+        v[i]-&gt;seats();
+        v[i]-&gt;doors();
+        v[i]-&gt;windows();
+    }
+    
+    for (int i = 0; i &lt; 3; i++)
+    {
+        delete v[i];
+    }
+}
+</code></pre>
+<hr />
+<p>Output:</p>
+<pre><code class="language-console">$ ./a.out
+Wheels: 4
+Seats: 20
+Doors: 2
+Windows: 20
+Wheels: 4
+Seats: 4
+Doors: 4
+Windows: 4
+Wheels: 6
+Seats: 2
+Doors: 2
+Windows: 2
+</code></pre>
+<h2 id="polymorphism-types"><a class="header" href="#polymorphism-types">Polymorphism Types</a></h2>
+<p>Ref: https://www.geeksforgeeks.org/polymorphism-in-c/</p>
+<ul>
+<li>In C++ polymorphism is mainly divided into two types:
+<ul>
+<li>Compile time Polymorphism</li>
+<li>Runtime Polymorphism</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/Polymorphism-in-CPP.png" alt="bg right fit" /></p>
+<hr />
+<h3 id="compile-time-polymorphism-functionoperator-overloading"><a class="header" href="#compile-time-polymorphism-functionoperator-overloading">Compile time Polymorphism (Function/Operator Overloading)</a></h3>
+<pre><code class="language-c++">// C++ program for function overloading
+#include &lt;iostream&gt;
+
+using namespace std;
+class Geeks
+{
+public:
+    // function with 1 int parameter
+    void func(int x)
+    {
+        cout &lt;&lt; &quot;value of x is &quot; &lt;&lt; x &lt;&lt; endl;
+    }
+
+    // function with same name but 1 double parameter
+    void func(double x)
+    {
+        cout &lt;&lt; &quot;value of x is &quot; &lt;&lt; x &lt;&lt; endl;
+    }
+
+    // function with same name and 2 int parameters
+    void func(int x, int y)
+    {
+        cout &lt;&lt; &quot;value of x and y is &quot; &lt;&lt; x &lt;&lt; &quot;, &quot; &lt;&lt; y &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+
+    Geeks obj1;
+
+    // Which function is called will depend on the parameters passed
+    // The first 'func' is called
+    obj1.func(7);
+
+    // The second 'func' is called
+    obj1.func(9.132);
+
+    // The third 'func' is called
+    obj1.func(85, 64);
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="runtime-polymorphism-virtual-function-with-object-pointer"><a class="header" href="#runtime-polymorphism-virtual-function-with-object-pointer">Runtime Polymorphism (Virtual Function with object pointer)</a></h3>
+<pre><code class="language-c++">// C++ program for function overriding
+
+#include &lt;iostream&gt;
+using namespace std;
+
+class base
+{
+public:
+    virtual void print()
+    {
+        cout &lt;&lt; &quot;print base class&quot; &lt;&lt; endl;
+    }
+
+    void show()
+    {
+        cout &lt;&lt; &quot;show base class&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class derived : public base
+{
+public:
+    void print() // print () is already virtual function in derived class,
+                 // we could also declared as virtual void print () explicitly
+    {
+        cout &lt;&lt; &quot;print derived class&quot; &lt;&lt; endl;
+    }
+
+    void show()
+    {
+        cout &lt;&lt; &quot;show derived class&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+int main()
+{
+    base *bptr;
+    derived d;
+    bptr = &amp;d;
+
+    // virtual function, binded at runtime (Runtime polymorphism)
+    bptr-&gt;print();
+
+    // Non-virtual function, binded at compile time
+    bptr-&gt;show();
+
+    return 0;
+}
+</code></pre>
+<h2 id="virtual-function"><a class="header" href="#virtual-function">Virtual Function</a></h2>
+<p>Ref: https://www.geeksforgeeks.org/virtual-functions-and-runtime-polymorphism-in-c-set-1-introduction/</p>
+<blockquote>
+<p>A <strong>virtual</strong> function is a <em>member</em> function which is declared in the <em>base</em> class using the keyword <code>virtual</code> and is re-defined (Overriden) by the <em>derived</em> class.</p>
+</blockquote>
+<hr />
+<h3 id="syntax-virtual-member-function--object-pointer"><a class="header" href="#syntax-virtual-member-function--object-pointer">Syntax: <code>virtual</code> member function &amp; object pointer</a></h3>
+<pre><code class="language-c++">class base
+{
+public:
+    virtual void a() {} // virtual function
+};
+class derived : public base
+{
+public:
+    void a() {} // non-virtual function, overridden by derived class
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">int main()
+{
+    base *b_ptr;
+    derived d;
+    b_ptr = &amp;d; // object pointer of derived class
+
+    // virtual function, binded at runtime (Runtime polymorphism)
+    b_ptr-&gt;a();
+
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="example-1"><a class="header" href="#example-1">Example 1:</a></h3>
+<pre><code class="language-c++">// C++ program for function overriding
+
+#include &lt;iostream&gt;
+using namespace std;
+
+class base
+{
+public:
+    virtual void print()
+    {
+        cout &lt;&lt; &quot;print base class&quot; &lt;&lt; endl;
+    }
+
+    void show()
+    {
+        cout &lt;&lt; &quot;show base class&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class derived : public base
+{
+public:
+    void print() // print () is already virtual function in derived class,
+                 // we could also declared as virtual void print () explicitly
+    {
+        cout &lt;&lt; &quot;print derived class&quot; &lt;&lt; endl;
+    }
+
+    void show()
+    {
+        cout &lt;&lt; &quot;show derived class&quot; &lt;&lt; endl;
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">// main function
+int main()
+{
+    base *bptr;
+    derived d;
+    bptr = &amp;d;
+
+    // virtual function, binded at runtime (Runtime polymorphism)
+    bptr-&gt;print();
+
+    // Non-virtual function, binded at compile time
+    bptr-&gt;show();
+
+    return 0;
+}
+</code></pre>
+<hr />
+<h3 id="example-2"><a class="header" href="#example-2">Example 2:</a></h3>
+<pre><code class="language-c++">class Employee
+{
+public:
+    virtual void raiseSalary()
+    {
+        /* common raise salary code */
+    }
+
+    virtual void promote()
+    { 
+        /* common promote code */
+    }
+};
+</code></pre>
+<hr />
+<pre><code class="language-c++">class Manager : public Employee
+{
+    virtual void raiseSalary()
+    {
+        /* Manager specific raise salary code, may contain
+        increment of manager specific incentives */
+    }
+
+    virtual void promote()
+    {
+        /* Manager specific promote */
+    }
+};
+
+// Similarly, there may be other types of employees
+</code></pre>
+<hr />
+<pre><code class="language-c++">// We need a very simple function
+// to increment the salary of all employees
+// Note that emp[] is an array of pointers
+// and actual pointed objects can
+// be any type of employees.
+// This function should ideally
+// be in a class like Organization,
+// we have made it global to keep things simple
+void globalRaiseSalary(Employee *emp[], int n)
+{
+    for (int i = 0; i &lt; n; i++)
+    {
+        // Polymorphic Call: Calls raiseSalary()
+        // according to the actual object, not
+        // according to the type of pointer
+        emp[i]-&gt;raiseSalary();
+    }
+}
+</code></pre>
+<h2 id="example-1-integer--real-a-hreflecture11_ex1htmlsourcea"><a class="header" href="#example-1-integer--real-a-hreflecture11_ex1htmlsourcea">Example 1: Integer &amp; Real [<a href="./lecture11_ex1.html">Source</a>]</a></h2>
+<h2 id="example-2-complex-number-a-hreflecture11_ex2htmlsourcea"><a class="header" href="#example-2-complex-number-a-hreflecture11_ex2htmlsourcea">Example 2: Complex Number [<a href="./lecture11_ex2.html">Source</a>]</a></h2>
+<h2 id="example-3-integer--real--complex-number-a-hreflecture11_ex3htmlsourcea"><a class="header" href="#example-3-integer--real--complex-number-a-hreflecture11_ex3htmlsourcea">Example 3: Integer &amp; Real &amp; Complex Number [<a href="./lecture11_ex3.html">Source</a>]</a></h2>
+<h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
+<ul>
+<li>
+<p>Design a class hierarchy for Fruit.</p>
+<ul>
+<li>Contains: Grape, Apple, Orange</li>
+<li>Implement with based class <code>Fruit</code></li>
+<li>Use <code>virtual</code> function to provide universal <code>print()</code>, <code>color()</code> functions</li>
+</ul>
+</li>
+<li>
+<p>Design a class hierarchy for Quadrilateral. </p>
+<ul>
+<li>Contains: Square, Rectangle, Rhombus, Parallelogram</li>
+<li>Implement with based class <code>Quadrilateral</code></li>
+<li>Use <code>virtual</code> function to provide universal <code>print()</code>, <code>area()</code> functions</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../oop/lecture10_ex3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../oop/lecture11_ex1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../oop/lecture10_ex3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../oop/lecture11_ex1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
