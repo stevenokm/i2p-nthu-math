@@ -70,7 +70,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |   [Project 8 (4/14)](midterm-1.html)    | Midterm Project Announcement                         |
 |              Demo 9 (4/21)              | Midterm Project Demo                                 |
 | [Lecture 10 (4/28)](oop/lecture10.html) | OOP: Inheritance (2)                                 |
-|            Lecture 11 (5/5)             | OOP: Polymorphism (1)                                |
+| [Lecture 11 (5/5)](oop/lecture11.html)  | OOP: Polymorphism (1)                                |
 |            Lecture 12 (5/12)            | OOP: Polymorphism (2)                                |
 |              Lab 12 (5/12)              | Complex Number's Geometry & Operations               |
 |            Lecture 13 (5/19)            | Advanced I/O & Exception Handling                    |

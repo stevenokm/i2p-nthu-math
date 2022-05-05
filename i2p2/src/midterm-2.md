@@ -110,3 +110,9 @@ $ ./a.out
 ```c++
 {{#include midterm-2_pseudo.cpp}}
 ```
+
+## TA Version Code
+
+``` c++
+{{#include midterm-2_TA.cpp}}
+```

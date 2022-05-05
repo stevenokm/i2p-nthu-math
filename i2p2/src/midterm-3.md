@@ -178,3 +178,9 @@ $
 ```c++
 {{#include midterm-3_pseudo.cpp}}
 ```
+
+## TA Version Code
+
+``` c++
+{{#include midterm-3_TA.cpp}}
+```
