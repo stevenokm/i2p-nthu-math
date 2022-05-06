@@ -16702,7 +16702,7 @@ public:
     {
         return &quot;&quot;;
     }
-    virtual void set_value(double value)
+    virtual void set_value(string arg_s)
     {
     }
 };
@@ -16740,9 +16740,10 @@ public:
         m_int_value = arg_int.m_int_value;
         return *this;
     }
-    void set_value(int arg_int_value) // int version
+    void set_value(string arg_int_value) // int version
     {
-        m_int_value = arg_int_value;
+        stringstream ss(arg_int_value); // use operator&gt;&gt; to convert string to Integer
+        ss &gt;&gt; m_int_value;
     }
     friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Integer &amp;arg_integer)
     {
@@ -16789,10 +16790,12 @@ public:
         m_after_decimal = arg_real.m_after_decimal;
         return *this;
     }
-    void set_value(double arg_value) // double version
+    void set_value(string arg_value) // double version
     {
-        m_int_value = (int)arg_value;
-        m_after_decimal = arg_value - m_int_value;
+        double temp_double;
+        temp_double = stod(arg_value);
+        m_int_value = (int)temp_double;
+        m_after_decimal = temp_double - (double)m_int_value;
     }
     friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Real &amp;arg_real)
     {
@@ -16801,33 +16804,103 @@ public:
     }
     friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Real &amp;arg_real)
     {
-        double temp_double;
-        arg_is &gt;&gt; temp_double;
-        arg_real.set_value(temp_double);
+        string temp_string;
+        arg_is &gt;&gt; temp_string;
+        arg_real.set_value(temp_string);
+        return arg_is;
+    }
+};
+
+class Complex : public Real
+{
+private:
+    Real m_imaginary;
+
+public:
+    Complex(double arg_real_value = 0.0,
+            double arg_imaginary_value = 0.0)
+        : Real(arg_real_value),
+          m_imaginary(arg_imaginary_value)
+    {
+    }
+    Complex(const Complex &amp;arg_complex)
+        : Real(arg_complex),
+          m_imaginary(arg_complex.m_imaginary)
+    {
+    }
+    double get_value() const
+    {
+        cout &lt;&lt; &quot;not implemented&quot; &lt;&lt; endl;
+        return 0.0;
+    }
+    string get_string() const
+    {
+        return to_string((double)*this) + &quot; + &quot; + m_imaginary.get_string() + &quot;i&quot;;
+    }
+    Complex &amp;operator=(const Complex &amp;arg_complex)
+    {
+        Real::operator=(arg_complex);
+        m_imaginary = arg_complex.m_imaginary;
+        return *this;
+    }
+    void set_value(string arg_value) // complex version
+    {
+        size_t plus_pos = arg_value.find(&quot;+&quot;);
+        if (plus_pos != string::npos)
+        {
+            Real::set_value(arg_value.substr(0, plus_pos));
+        }
+        size_t i_pos = arg_value.find(&quot;i&quot;);
+        if (i_pos != string::npos)
+        {
+            m_imaginary.set_value(arg_value.substr(plus_pos + 1, i_pos - plus_pos - 1));
+        }
+    }
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Complex &amp;arg_complex)
+    {
+        arg_os &lt;&lt; arg_complex.get_string();
+        return arg_os;
+    }
+    friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Complex &amp;arg_complex)
+    {
+        string temp_string;
+        getline(arg_is, temp_string);
+        arg_complex.set_value(temp_string);
         return arg_is;
     }
 };
 
 int main()
 {
-    Number *p[2];
+    Number *p[3];
 
     p[0] = new Integer(10);
     p[1] = new Real(10.5);
+    p[2] = new Complex(10.5, 3.5);
 
     cout &lt;&lt; &quot;virtual function call&quot; &lt;&lt; endl;
-    for (int i = 0; i &lt; 2; i++)
+    for (int i = 0; i &lt; 3; i++)
     {
         cout &lt;&lt; &quot;p[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot; &lt;&lt; p[i]-&gt;get_string() &lt;&lt; endl;
     }
 
     cout &lt;&lt; &quot;address of object&quot; &lt;&lt; endl;
-    for (int i = 0; i &lt; 2; i++)
+    for (int i = 0; i &lt; 3; i++)
     {
         cout &lt;&lt; &quot;p[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot; &lt;&lt; p[i] &lt;&lt; endl;
     }
 
-    for (int i = 0; i &lt; 2; i++)
+    p[0]-&gt;set_value(&quot;20&quot;);
+    p[1]-&gt;set_value(&quot;20.5&quot;);
+    p[2]-&gt;set_value(&quot;20.5 + 3.5i&quot;);
+
+    cout &lt;&lt; &quot;set value by virtual function&quot; &lt;&lt; endl;
+    for (int i = 0; i &lt; 3; i++)
+    {
+        cout &lt;&lt; &quot;p[&quot; &lt;&lt; i &lt;&lt; &quot;] = &quot; &lt;&lt; p[i]-&gt;get_string() &lt;&lt; endl;
+    }
+
+    for (int i = 0; i &lt; 3; i++)
     {
         delete p[i];
     }
