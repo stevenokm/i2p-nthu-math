@@ -1,10 +1,10 @@
-<!--
+<!---
 marp: true
 author: Yi-Wen Hung
 theme: default
 headingDivider: 2
 paginate: true
--->
+--->
 
 # Course Introduction
 > Slides version: [intro_slides.html](./intro_slides.html)
@@ -71,8 +71,8 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 |              Demo 9 (4/21)              | Midterm Project Demo                                 |
 | [Lecture 10 (4/28)](oop/lecture10.html) | OOP: Inheritance (2)                                 |
 | [Lecture 11 (5/5)](oop/lecture11.html)  | OOP: Polymorphism (1)                                |
-|            Lecture 12 (5/12)            | OOP: Polymorphism (2)                                |
-|              Lab 12 (5/12)              | Complex Number's Geometry & Operations               |
+| [Lecture 12 (5/12)](oop/lecture12.html) | OOP: Polymorphism (2)                                |
+|  [Lab 12 (5/12)](oop/lab/lab12-1.html)  | Complex Number's Geometry & Operations               |
 |            Lecture 13 (5/19)            | Advanced I/O & Exception Handling                    |
 |            Lecture 14 (5/26)            | File Processing (1)                                  |
 |              Lab 14 (5/26)              | File Export of Complex Numbers' Geometry             |
@@ -114,7 +114,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 ### 課程上課地點(網路)
 
 - Youtube (Link: [110 程式設計二 上課錄影 - YouTube](https://youtube.com/playlist?list=PLEpArVdL-rlK5YMN7m6QuuyrnH88N7RfG))
-* Teams (團隊代碼: n1wblvu)
+* Teams (Link: [110 程式設計二](https://teams.microsoft.com/l/team/19%3aH19zZss1ePwnH8nZ_gaAsqMG1PosSj1uMiFL9blDMOw1%40thread.tacv2/conversations?groupId=145776ff-8b4a-4119-bab0-2d3896331e18&tenantId=6c3bc511-43c7-4596-baeb-2335c69c41f1))
     - 申請方式: [Office 365 服務 (nthu.edu.tw)](https://learning.site.nthu.edu.tw/p/412-1319-12292.php?Lang=zh-tw)
     - 外校同學可提供 office 365 帳號給助教協助加入團隊。
 ![bg right fit](qrcode_www.youtube.com.png)
