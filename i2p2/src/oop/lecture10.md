@@ -326,7 +326,7 @@ int main()
 }
 ```
 
-## Inheritance in OOP
+## Inheritance in Software Engineering
 
 Why use inheritance?
 
@@ -359,6 +359,7 @@ Ref: [vaishali bhatia](https://practice.geeksforgeeks.org/problems/what-are-adva
 
 ---
 ### Cons of Inheritance
+
 Disadvantages:
 - Inherited functions work slower than normal function as there is indirection.
 * Improper use of inheritance may lead to wrong solutions.
