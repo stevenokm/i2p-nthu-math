@@ -1,0 +1,879 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lab 12-2: Simple Complex Number Geometry Transformation (40%) - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../../favicon.svg">
+                        <link rel="shortcut icon" href="../../favicon.png">
+                <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+                <link rel="stylesheet" href="../../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../../oop/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../../oop/lecture8.html"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../oop/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../../oop/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../../oop/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../../oop/lecture10.html"><strong aria-hidden="true">12.</strong> Lecture 10: OOP: Inheritance (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../oop/lecture10_ex1.html"><strong aria-hidden="true">12.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../../oop/lecture10_ex2.html"><strong aria-hidden="true">12.2.</strong> Example 2: Complex Number &amp; Triangle</a></li><li class="chapter-item expanded "><a href="../../oop/lecture10_ex3.html"><strong aria-hidden="true">12.3.</strong> Example 3: Complex Number &amp; Triangles</a></li></ol></li><li class="chapter-item expanded "><a href="../../oop/lecture11.html"><strong aria-hidden="true">13.</strong> Lecture 11: OOP: Polymorphism (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../oop/lecture11_ex1.html"><strong aria-hidden="true">13.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../../oop/lecture11_ex2.html"><strong aria-hidden="true">13.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../../oop/lecture11_ex3.html"><strong aria-hidden="true">13.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><a href="../../oop/lecture12.html"><strong aria-hidden="true">14.</strong> Lecture 12: OOP: Polymorphism (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../oop/lecture12_ex1.html"><strong aria-hidden="true">14.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../../oop/lecture12_ex2.html"><strong aria-hidden="true">14.2.</strong> Example 2: Complex Number &amp; Triangles</a></li><li class="chapter-item expanded "><a href="../../oop/lab/lab12-1.html"><strong aria-hidden="true">14.3.</strong> Lab 12-1: Complex Number's Geometry (40%)</a></li><li class="chapter-item expanded "><a href="../../oop/lab/lab12-2.html" class="active"><strong aria-hidden="true">14.4.</strong> Lab 12-2: Simple Complex Number Geometry Transformation (40%)</a></li><li class="chapter-item expanded "><a href="../../oop/lab/lab12-3.html"><strong aria-hidden="true">14.5.</strong> Lab 12-3: Enhanced Complex Number Geometry Transformation (20%)</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/oop/lab/lab12-2.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="lab-12-2-simple-complex-number-geometry-transformation-40"><a class="header" href="#lab-12-2-simple-complex-number-geometry-transformation-40">Lab 12-2: Simple Complex Number Geometry Transformation (40%)</a></h2>
+<ul>
+<li>輸入：
+<ol>
+<li>幾何圖形</li>
+<li>以 <code>char</code> 格式輸入幾何圖形形狀，包含三角形 (<code>t</code>)、四邊形 (<code>q</code>)、多邊形 (<code>p</code>)、圓形 (<code>c</code>)，一行輸入一個幾何圖形</li>
+<li>以 <code>unsinged int</code> 格式輸入幾何圖形的頂點數，一行輸入一個正整數
+<ol>
+<li>三角形：3</li>
+<li>四邊形：4</li>
+<li>多邊形：大於 3 的正整數</li>
+<li>圓形：2</li>
+</ol>
+</li>
+<li>以 <code>double</code> 格式輸入組合幾何圖形的複數的實數及虛數部分，以空格分開，一行輸入一個複數</li>
+<li>輸入幾何圖形形狀及頂點數後依據 <strong>2.</strong> 的頂點數接著輸入相對應的複數
+<ol>
+<li>三角形：連續輸入三個複數</li>
+<li>四邊形：連續輸入四個複數</li>
+<li>多邊形：連續輸入多個複數</li>
+<li>圓形：連續輸入兩個複數</li>
+</ol>
+</li>
+<li>幾何變換</li>
+<li>以 <code>char</code> 格式輸入幾何變換字元，包含以 <code>0</code> 點旋轉 (<code>r</code>)、以 <code>0</code> 點縮放 (<code>z</code>)、平移 (<code>m</code>)，一行輸入一個幾何變換</li>
+<li>以 <code>double</code> 格式輸入幾何變換的複數的實數及虛數部分，以空格分開，一行輸入一個複數
+<ol>
+<li>以 <code>0</code> 點旋轉：\(z * (cos(\theta) + sin(\theta)i), norm = 1\)</li>
+<li>以 <code>0</code> 點縮放：\(z * (r + 0i)\)</li>
+<li>平移：\(z + (x + yi)\)</li>
+</ol>
+</li>
+<li>輸入幾何變換後須將所有的幾何圖形複數變換</li>
+<li>輸入 <kbd>Ctrl</kbd>+<kbd>D</kbd> 結束程式
+<ul>
+<li>Windows 請輸入 <kbd>Ctrl</kbd>+<kbd>Z</kbd> (會在螢幕上顯示 <code>^Z</code>) 再輸入 <kbd>Enter</kbd> (Format 中的 <code>⏎</code>) 完成輸入</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>輸出：
+<ol>
+<li>幾何圖形
+<ol>
+<li>顯示紀錄幾何圖形的形狀、頂點個數及其複數
+<ol>
+<li>格式請參考 <a href="#format">Format</a> 中的說明</li>
+<li>頂點順序與輸入順序相同</li>
+</ol>
+</li>
+<li>複數的格式為 <code>(-)&lt;real result&gt; (+|-) (&lt;imag result&gt;i)</code>
+<ol>
+<li>若虛數部分為 0 則僅顯示實數部分</li>
+<li>若虛數部分小於 0 則中間的 <code>+</code> 要改成 <code>-</code>，並且虛數部分要顯示絕對值</li>
+</ol>
+</li>
+<li>虛數及實數部分皆以預設 <code>double</code> 格式顯示</li>
+</ol>
+</li>
+<li>幾何變換
+<ol>
+<li>輸出變換後的所有幾何圖形複數</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>檔名：<code>lab12-2_&lt;學號&gt;.cpp</code> (e.g. <code>lab12-2_106062802.cpp</code>)</li>
+</ul>
+<p>注意事項：</p>
+<ul>
+<li>程式不會輸出任何使用者提示，只會輸出程式結果</li>
+<li>使用者不需要處理錯誤輸入</li>
+<li>請使用 pseudo code 提供的 <code>main</code> 來處理輸入與輸出</li>
+<li>程式需要於 10 秒內完成，所有的測資皆會保證於 10 秒內完成</li>
+</ul>
+<h3 id="format"><a class="header" href="#format">Format</a></h3>
+<h4 id="input"><a class="header" href="#input">Input</a></h4>
+<pre><code class="language-text">&lt;geometry type&gt;⏎
+n⏎
+&lt;real 1&gt; &lt;imag 1&gt;⏎
+&lt;real 2&gt; &lt;imag 2&gt;⏎
+...
+&lt;real n&gt; &lt;imag n&gt;⏎
+&lt;geometry type&gt;
+n
+(-)&lt;real 1&gt; (+|-) (&lt;imag 1&gt;i)
+(-)&lt;real 2&gt; (+|-) (&lt;imag 2&gt;i)
+...
+(-)&lt;real n&gt; (+|-) (&lt;imag n&gt;i)
+</code></pre>
+<h4 id="transformation"><a class="header" href="#transformation">Transformation</a></h4>
+<pre><code class="language-text">&lt;geometry type 1&gt;⏎
+n⏎
+&lt;real 1&gt; &lt;imag 1&gt;⏎
+&lt;real 2&gt; &lt;imag 2&gt;⏎
+...
+&lt;real n&gt; &lt;imag n&gt;⏎
+&lt;geometry type 1&gt;
+n
+(-)&lt;real 1&gt; (+|-) (&lt;imag 1&gt;i)
+(-)&lt;real 2&gt; (+|-) (&lt;imag 2&gt;i)
+...
+(-)&lt;real n&gt; (+|-) (&lt;imag n&gt;i)
+&lt;geometry type 2&gt;⏎
+n⏎
+&lt;real 1&gt; &lt;imag 1&gt;⏎
+&lt;real 2&gt; &lt;imag 2&gt;⏎
+...
+&lt;real n&gt; &lt;imag n&gt;⏎
+&lt;geometry type 2&gt;
+n
+(-)&lt;real 1&gt; (+|-) (&lt;imag 1&gt;i)
+(-)&lt;real 2&gt; (+|-) (&lt;imag 2&gt;i)
+...
+(-)&lt;real n&gt; (+|-) (&lt;imag n&gt;i)
+&lt;geometry transformation type&gt;⏎
+(-)&lt;real trans&gt; (+|-) (&lt;imag trans&gt;i)⏎
+&lt;geometry type 1&gt;
+n
+(-)&lt;real 1&gt; (+|-) (&lt;imag 1&gt;i)
+(-)&lt;real 2&gt; (+|-) (&lt;imag 2&gt;i)
+...
+(-)&lt;real n&gt; (+|-) (&lt;imag n&gt;i)
+&lt;geometry type 2&gt;
+n
+(-)&lt;real 1&gt; (+|-) (&lt;imag 1&gt;i)
+(-)&lt;real 2&gt; (+|-) (&lt;imag 2&gt;i)
+...
+(-)&lt;real n&gt; (+|-) (&lt;imag n&gt;i)
+...
+^Z⏎
+</code></pre>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<h4 id="input-1"><a class="header" href="#input-1">Input</a></h4>
+<h5 id="triangle"><a class="header" href="#triangle">Triangle</a></h5>
+<pre><code class="language-console">$ ./a.out
+t⏎
+3⏎
+1.0 2.0⏎
+3.0 4.0⏎
+5.0 0.0⏎
+t
+3
+1 + 2i
+3 + 4i
+5
+^Z⏎
+</code></pre>
+<h5 id="quadrilateral"><a class="header" href="#quadrilateral">Quadrilateral</a></h5>
+<pre><code class="language-console">$ ./a.out
+q⏎
+4⏎
+1.0 2.0⏎
+3.0 2.0⏎
+3.0 4.0⏎
+1.0 4.0⏎
+q
+4
+1 + 2i
+3 + 2i
+3 + 4i
+1 + 4i
+^Z⏎
+</code></pre>
+<h5 id="circle"><a class="header" href="#circle">Circle</a></h5>
+<pre><code class="language-console">$ ./a.out
+c⏎
+2⏎
+1.0 2.0⏎
+3.0 4.0⏎
+c
+2
+1 + 2i
+3 + 4i
+^Z⏎
+</code></pre>
+<h5 id="polygon"><a class="header" href="#polygon">Polygon</a></h5>
+<pre><code class="language-console">$ ./a.out
+p⏎
+5⏎
+1.0 0.0⏎
+2.0 1.1⏎
+-3.0 -2.2⏎
+4.3 2.1⏎
+-1.2 3.4⏎
+p
+5
+1
+2 + 1.1i
+-3 - 2.2i
+4.3 + 2.1i
+-1.2 + 3.4i
+^Z⏎
+</code></pre>
+<h5 id="multiple-objects"><a class="header" href="#multiple-objects">Multiple Objects</a></h5>
+<pre><code class="language-console">$ ./a.out
+t⏎
+3⏎
+1.0 2.0⏎
+3.0 4.0⏎
+5.0 0.0⏎
+t
+3
+1 + 2i
+3 + 4i
+5
+q⏎
+4⏎
+1.0 2.0⏎
+3.0 2.0⏎
+3.0 4.0⏎
+1.0 4.0⏎
+q
+4
+1 + 2i
+3 + 2i
+3 + 4i
+1 + 4i
+c⏎
+2⏎
+1.0 2.0⏎
+3.0 4.0⏎
+c
+2
+1 + 2i
+3 + 4i
+p⏎
+5⏎
+1.0 0.0⏎
+2.0 1.1⏎
+-3.0 -2.2⏎
+4.3 2.1⏎
+-1.2 3.4⏎
+p
+5
+1
+2 + 1.1i
+-3 - 2.2i
+4.3 + 2.1i
+-1.2 + 3.4i
+^Z⏎
+</code></pre>
+<h4 id="transformation-1"><a class="header" href="#transformation-1">Transformation</a></h4>
+<h5 id="scaling"><a class="header" href="#scaling">Scaling</a></h5>
+<pre><code class="language-console">$ ./a.out
+t⏎
+3⏎
+1.0 2.0⏎
+3.0 4.0⏎
+5.0 0.0⏎
+t
+3
+1 + 2i
+3 + 4i
+5
+z⏎
+2.0 0.0⏎
+t
+3
+2 + 4i
+6 + 8i
+10
+^Z⏎
+</code></pre>
+<h5 id="translation"><a class="header" href="#translation">Translation</a></h5>
+<pre><code class="language-console">$ ./a.out
+q⏎
+4⏎
+1.0 2.0⏎
+3.0 2.0⏎
+3.0 4.0⏎
+1.0 4.0⏎
+q
+4
+1 + 2i
+3 + 2i
+3 + 4i
+1 + 4i
+m⏎
+3.0 -1.0⏎
+q
+4
+4 + 1i
+6 + 1i
+6 + 3i
+4 + 3i
+^Z⏎
+</code></pre>
+<h5 id="rotation"><a class="header" href="#rotation">Rotation</a></h5>
+<pre><code class="language-console">$ ./a.out
+c⏎
+2⏎
+1.0 2.0⏎
+3.0 4.0⏎
+c
+2
+1 + 2i
+3 + 4i
+r⏎
+0.99990604980155 0.013707354604752⏎
+c
+2
+0.972491 + 2.01352i
+2.94489 + 4.04075i
+^Z⏎
+</code></pre>
+<h5 id="multiple-transformations"><a class="header" href="#multiple-transformations">Multiple Transformations</a></h5>
+<pre><code class="language-console">$ ./a.out
+p⏎
+5⏎
+1.0 0.0⏎
+2.0 1.1⏎
+-3.0 -2.2⏎
+4.3 2.1⏎
+-1.2 3.4⏎
+p
+5
+1
+2 + 1.1i
+-3 - 2.2i
+4.3 + 2.1i
+-1.2 + 3.4i
+z⏎
+2.0 0.0⏎
+p
+5
+2
+4 + 2.2i
+-6 - 4.4i
+8.6 + 4.2i
+-2.4 + 6.8i
+m⏎
+3.0 -1.0⏎
+p
+5
+5 - 1i
+7 + 1.2i
+-3 - 5.4i
+11.6 + 3.2i
+0.6 + 5.8i
+r⏎
+0.99990604980155 0.013707354604752⏎
+p
+5
+5.01324 - 0.931369i
+6.98289 + 1.29584i
+-2.9257 - 5.44061i
+11.555 + 3.3587i
+0.520441 + 5.80768i
+^Z⏎
+</code></pre>
+<h5 id="multiple-transformations-on-multiple-objects"><a class="header" href="#multiple-transformations-on-multiple-objects">Multiple Transformations on Multiple Objects</a></h5>
+<pre><code class="language-console">$ ./a.out
+t⏎
+3⏎
+1.0 2.0⏎
+3.0 4.0⏎
+5.0 0.0⏎
+t
+3
+1 + 2i
+3 + 4i
+5
+q⏎
+4⏎
+1.0 2.0⏎
+3.0 2.0⏎
+3.0 4.0⏎
+1.0 4.0⏎
+q
+4
+1 + 2i
+3 + 2i
+3 + 4i
+1 + 4i
+c⏎
+2⏎
+1.0 2.0⏎
+3.0 4.0⏎
+c
+2
+1 + 2i
+3 + 4i
+p⏎
+5⏎
+1.0 0.0⏎
+2.0 1.1⏎
+-3.0 -2.2⏎
+4.3 2.1⏎
+-1.2 3.4⏎
+p
+5
+1
+2 + 1.1i
+-3 - 2.2i
+4.3 + 2.1i
+-1.2 + 3.4i
+z⏎
+2.0 0.0⏎
+t
+3
+2 + 4i
+6 + 8i
+10
+q
+4
+2 + 4i
+6 + 4i
+6 + 8i
+2 + 8i
+c
+2
+2 + 4i
+6 + 8i
+p
+5
+2
+4 + 2.2i
+-6 - 4.4i
+8.6 + 4.2i
+-2.4 + 6.8i
+m⏎
+3.0 -1.0⏎
+t
+3
+5 + 3i
+9 + 7i
+13 - 1i
+q
+4
+5 + 3i
+9 + 3i
+9 + 7i
+5 + 7i
+c
+2
+5 + 3i
+9 + 7i
+p
+5
+5 - 1i
+7 + 1.2i
+-3 - 5.4i
+11.6 + 3.2i
+0.6 + 5.8i
+r⏎
+0.99990604980155 0.013707354604752⏎
+t
+3
+4.95841 + 3.06825i
+8.9032 + 7.12271i
+13.0125 - 0.82171i
+q
+4
+4.95841 + 3.06825i
+8.95803 + 3.12308i
+8.9032 + 7.12271i
+4.90358 + 7.06788i
+c
+2
+4.95841 + 3.06825i
+8.9032 + 7.12271i
+p
+5
+5.01324 - 0.931369i
+6.98289 + 1.29584i
+-2.9257 - 5.44061i
+11.555 + 3.3587i
+0.520441 + 5.80768i
+^Z⏎
+</code></pre>
+<h3 id="pseudo-code"><a class="header" href="#pseudo-code">Pseudo Code</a></h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;sstream&gt;
+#include &lt;cmath&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+class Geometry_Comp;
+
+class Complex
+{
+private:
+    // data members
+    // save the real and imaginary parts of the complex number
+    // with `double` precision
+    double m_real;
+    double m_imag;
+
+public:
+    // Constructor, initializes real and imaginary parts
+    Complex(const double &amp;arg_real = 0.0, const double &amp;arg_imag = 0.0);
+    // Copy constructor
+    Complex(const Complex &amp;arg_c);
+    // assignment operator
+    Complex &amp;operator=(const Complex &amp;arg_c);
+    // add assignment operator
+    Complex &amp;operator+=(const Complex &amp;arg_c);
+    // multiply assignment operator
+    Complex &amp;operator*=(const Complex &amp;arg_c);
+    // length of the complex number
+    double length() const;
+    // angle of the complex number in radians
+    // use `atan2` to compute the angle by the formula `atan(imag/real)`
+    // and use `NAN` for 0/0 case
+    // `atan2` ref: https://en.cppreference.com/w/cpp/numeric/math/atan2
+    // `NAN` ref: https://en.cppreference.com/w/cpp/numeric/math/NAN
+    double angle() const;
+    // cout `&lt;&lt;` operator for print complex number
+    // note: be careful about the format of output
+    friend ostream &amp;operator&lt;&lt;(ostream &amp;arg_os, const Complex &amp;arg_c);
+    // cin `&gt;&gt;` operator for input complex number
+    // note: use `&gt;&gt;` to parse the string to double,
+    // use `istream::fail()` to check the conversion is successful
+    // and use `istream::eof()` to check the is parse to the end of line
+    friend istream &amp;operator&gt;&gt;(istream &amp;arg_is, Complex &amp;arg_c);
+    // friend class
+    friend class Geometry_Comp;
+};
+
+class Geometry_Comp
+{
+protected:
+    // data members
+    vector&lt;Complex&gt; m_comp_array;
+    // utility function to check if the transformation is valid
+    // hint: use `isnan` to check the angle is valid or not
+    // ref: https://en.cppreference.com/w/cpp/numeric/math/isnan
+    bool _check_transform(const Complex &amp;arg_trans_c, const char &amp;arg_op);
+
+public:
+    // Constructor, initializes the array
+    Geometry_Comp(const unsigned int &amp;arg_num_of_vertex = 0);
+    // Copy constructor
+    Geometry_Comp(const Geometry_Comp &amp;arg_gc);
+    // assignment operator
+    Geometry_Comp &amp;operator=(const Geometry_Comp &amp;arg_gc);
+    // print the geometry
+    virtual void print_geometry();
+    // parse the cin to the geometry
+    virtual void parse_geometry(istream &amp;arg_is);
+    // apply transformation to the geometry
+    void transform_geometry(const Complex &amp;arg_trans_c, const char &amp;arg_op);
+    // set the geometry
+    void set_geometry(const vector&lt;Complex&gt; &amp;arg_comp_array);
+    // get the geometry array
+    vector&lt;Complex&gt; get_geometry_array();
+};
+
+class Triangle_Comp : public Geometry_Comp
+{
+public:
+    // Constructor, initializes the array
+    Triangle_Comp();
+    // Copy constructor
+    Triangle_Comp(const Triangle_Comp &amp;arg_tc);
+    // assignment operator
+    Triangle_Comp &amp;operator=(const Triangle_Comp &amp;arg_tc);
+    // print the geometry
+    void print_geometry();
+    // parse the cin to the geometry
+    void parse_geometry(istream &amp;arg_is);
+};
+const unsigned triangle_num_of_vertex = 3;
+
+class Quadrilateral_Comp : public Geometry_Comp
+{
+public:
+    // Constructor, initializes the array
+    Quadrilateral_Comp();
+    // Copy constructor
+    Quadrilateral_Comp(const Quadrilateral_Comp &amp;arg_qc);
+    // assignment operator
+    Quadrilateral_Comp &amp;operator=(const Quadrilateral_Comp &amp;arg_qc);
+    // print the geometry
+    void print_geometry();
+    // parse the cin to the geometry
+    void parse_geometry(istream &amp;arg_is);
+};
+const unsigned quadrilateral_num_of_vertex = 4;
+
+class Polygon_Comp : public Geometry_Comp
+{
+public:
+    // Constructor, initializes the array
+    Polygon_Comp();
+    // Copy constructor
+    Polygon_Comp(const Polygon_Comp &amp;arg_pc);
+    // assignment operator
+    Polygon_Comp &amp;operator=(const Polygon_Comp &amp;arg_pc);
+    // print the geometry
+    void print_geometry();
+    // parse the cin to the geometry
+    void parse_geometry(istream &amp;arg_is);
+};
+
+class Circle_Comp : public Geometry_Comp
+{
+public:
+    // Constructor, initializes the array
+    Circle_Comp();
+    // Copy constructor
+    Circle_Comp(const Circle_Comp &amp;arg_cc);
+    // assignment operator
+    Circle_Comp &amp;operator=(const Circle_Comp &amp;arg_cc);
+    // print the geometry
+    void print_geometry();
+    // parse the cin to the geometry
+    void parse_geometry(istream &amp;arg_is);
+};
+const unsigned circle_num_of_vertex = 2;
+
+// error and exit
+void error_and_exit()
+{
+    cout &lt;&lt; &quot;Error: Invalid input&quot; &lt;&lt; endl;
+    exit(1);
+}
+
+// used for process the test cases, do not modify
+int main()
+{
+    string input, temp;
+    vector&lt;Geometry_Comp *&gt; geo_ptr_array;
+    Geometry_Comp *geo_ptr;
+    Complex trans_c;
+    char trans_op;
+
+    while (getline(cin, input))
+    {
+        // check the geometry type
+        switch (input[0])
+        {
+        case 't':
+            geo_ptr = new Triangle_Comp();
+            break;
+        case 'q':
+            geo_ptr = new Quadrilateral_Comp();
+            break;
+        case 'p':
+            geo_ptr = new Polygon_Comp();
+            break;
+        case 'c':
+            geo_ptr = new Circle_Comp();
+            break;
+        case 'r':
+        case 'z':
+        case 'm':
+            getline(cin, temp);
+            break;
+        }
+        if (input[0] == 't' || input[0] == 'q' || input[0] == 'p' || input[0] == 'c')
+        {
+            // parse the cin to the geometry
+            geo_ptr-&gt;parse_geometry(cin);
+            // print the geometry
+            geo_ptr-&gt;print_geometry();
+            // push the pointer to the array
+            geo_ptr_array.push_back(geo_ptr);
+        }
+        else if (input[0] == 'r' || input[0] == 'z' || input[0] == 'm')
+        {
+            stringstream ss(temp);
+            ss &gt;&gt; trans_c;
+            // transform the geometry using operator and complex
+            for (int i = 0; i &lt; geo_ptr_array.size(); i++)
+            {
+                geo_ptr_array[i]-&gt;transform_geometry(trans_c, input[0]);
+                // print transformed geometry
+                geo_ptr_array[i]-&gt;print_geometry();
+            }
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../../oop/lab/lab12-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../../oop/lab/lab12-3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../../oop/lab/lab12-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../../oop/lab/lab12-3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
