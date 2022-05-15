@@ -51,7 +51,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 
 ## 教學進度 (Syllabus) (Project Version)
 
-(4/6 updated) 週次皆為暫定安排，會依實際授課情形調整。
+(5/15 updated) 週次皆為暫定安排，會依實際授課情形調整。
 
 |             課程 (Lecture)              | 主題 (Theme)                                         |
 | :-------------------------------------: | :--------------------------------------------------- |
@@ -73,10 +73,10 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 | [Lecture 11 (5/5)](oop/lecture11.html)  | OOP: Polymorphism (1)                                |
 | [Lecture 12 (5/12)](oop/lecture12.html) | OOP: Polymorphism (2)                                |
 |  [Lab 12 (5/12)](oop/lab/lab12-1.html)  | Complex Number's Geometry & Operations               |
-|            Lecture 13 (5/19)            | Advanced I/O & Exception Handling                    |
-|            Lecture 14 (5/26)            | File Processing (1)                                  |
+|            Lecture 13 (5/19)            | File Processing (1)                                  |
+|            Lecture 14 (5/26)            | File Processing (2)                                  |
 |              Lab 14 (5/26)              | File Export of Complex Numbers' Geometry             |
-|            Lecture 15 (6/2)             | File Processing (2)                                  |
+|            Lecture 15 (6/2)             | Advanced I/O & Exception Handling                    |
 |            Lecture 16 (6/9)             | (Extra) C++ Image Export & Matplot++                 |
 |            Project 16 (6/9)             | Final Project Announcment                            |
 |             Demo 17 (6/16)              | Final Project Demo                                   |
