@@ -1,0 +1,595 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Example 1: Big Real Number in Text File - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../oop/lecture8.html"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture10.html"><strong aria-hidden="true">12.</strong> Lecture 10: OOP: Inheritance (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture10_ex1.html"><strong aria-hidden="true">12.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex2.html"><strong aria-hidden="true">12.2.</strong> Example 2: Complex Number &amp; Triangle</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex3.html"><strong aria-hidden="true">12.3.</strong> Example 3: Complex Number &amp; Triangles</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture11.html"><strong aria-hidden="true">13.</strong> Lecture 11: OOP: Polymorphism (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture11_ex1.html"><strong aria-hidden="true">13.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex2.html"><strong aria-hidden="true">13.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex3.html"><strong aria-hidden="true">13.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture12.html"><strong aria-hidden="true">14.</strong> Lecture 12: OOP: Polymorphism (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture12_ex1.html"><strong aria-hidden="true">14.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture12_ex2.html"><strong aria-hidden="true">14.2.</strong> Example 2: Complex Number &amp; Triangles</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-1.html"><strong aria-hidden="true">14.3.</strong> Lab 12-1: Complex Number's Geometry (40%)</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-2.html"><strong aria-hidden="true">14.4.</strong> Lab 12-2: Simple Complex Number Geometry Transformation (40%)</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-3.html"><strong aria-hidden="true">14.5.</strong> Lab 12-3: Enhanced Complex Number Geometry Transformation (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture13.html"><strong aria-hidden="true">15.</strong> Lecture 13: File Processing (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture13_ex1.html" class="active"><strong aria-hidden="true">15.1.</strong> Example 1: Big Real Number in Text File</a></li><li class="chapter-item expanded "><a href="../file/lecture13_ex2.html"><strong aria-hidden="true">15.2.</strong> Example 2: Point &amp; Triangle in Text File (function ver.)</a></li><li class="chapter-item expanded "><a href="../file/lecture13_ex3.html"><strong aria-hidden="true">15.3.</strong> Example 3: Vector &amp; Matrix in Binary File (function ver.)</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/file/lecture13_ex1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="example-1-big-real-number-in-text-file"><a class="header" href="#example-1-big-real-number-in-text-file">Example 1: Big Real Number in Text File</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+
+using namespace std;
+
+int main()
+{
+    char buffer[10001];
+    vector&lt;int&gt; a, b, c;
+    int n, a_sign = 1, b_sign = 1, c_sign = 1;
+    bool zero_start = true;
+
+    ofstream log_file(&quot;log.txt&quot;, ios::out | ios::app);
+
+    cout &lt;&lt; &quot;Big number calculator&quot;
+         &lt;&lt; endl
+         &lt;&lt; &quot;1) display only&quot;
+         &lt;&lt; endl
+         &lt;&lt; &quot;2) plus (+)&quot;
+         &lt;&lt; endl
+         &lt;&lt; &quot;3) minus (-)&quot;
+         &lt;&lt; endl
+         &lt;&lt; &quot;4) multiplication (*)&quot;
+         &lt;&lt; endl
+         &lt;&lt; &quot;5) division (/)&quot;
+         &lt;&lt; endl
+         &lt;&lt; &quot;Please select the operator: &quot;;
+
+    cin &gt;&gt; buffer;
+    if (!isdigit(buffer[0]) || buffer[1] != '\0')
+    {
+        cout &lt;&lt; &quot;Invalid input: &quot; &lt;&lt; buffer &lt;&lt; endl;
+        return 0;
+    }
+
+    n = buffer[0] - '0';
+    switch (n)
+    {
+    case 1:
+        cout &lt;&lt; &quot;You selected: display only&quot; &lt;&lt; endl;
+        break;
+    case 2:
+        cout &lt;&lt; &quot;You selected: +&quot; &lt;&lt; endl;
+        break;
+    case 3:
+        cout &lt;&lt; &quot;You selected: -&quot; &lt;&lt; endl;
+        break;
+    case 4:
+        cout &lt;&lt; &quot;You selected: *&quot; &lt;&lt; endl;
+        break;
+    case 5:
+        cout &lt;&lt; &quot;You selected: /&quot; &lt;&lt; endl;
+        break;
+    default:
+        cout &lt;&lt; &quot;Invalid input: &quot; &lt;&lt; buffer &lt;&lt; endl;
+        return 0;
+    }
+
+    for (int i = 0; buffer[i] != '\0'; i++)
+        buffer[i] = '\0';
+    cout &lt;&lt; &quot;Input integer number (a): &quot;;
+    cin &gt;&gt; buffer;
+    zero_start = true;
+
+    for (int i = 0; buffer[i] != '\0'; i++)
+    {
+        if (!isdigit(buffer[i]))
+        {
+            if (i == 0 &amp;&amp; buffer[i] == '-')
+            {
+                a_sign = -1;
+                continue;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;Invalid input: &quot; &lt;&lt; buffer &lt;&lt; endl;
+                return 0;
+            }
+        }
+
+        if (buffer[i] == '0' &amp;&amp; zero_start)
+            continue;
+        else
+        {
+            a.push_back((int)(buffer[i] - '0'));
+            zero_start = false;
+        }
+    }
+    if (a.empty())
+    {
+        a.push_back(0);
+        a_sign = 0;
+    }
+    reverse(a.begin(), a.end());
+
+    for (int i = 0; buffer[i] != '\0'; i++)
+        buffer[i] = '\0';
+    cout &lt;&lt; &quot;Input integer number (b): &quot;;
+    cin &gt;&gt; buffer;
+    zero_start = true;
+    for (int i = 0; buffer[i] != '\0'; i++)
+    {
+        if (!isdigit(buffer[i]))
+        {
+            if (i == 0 &amp;&amp; buffer[i] == '-')
+            {
+                b_sign = -1;
+                continue;
+            }
+            else
+            {
+                cout &lt;&lt; &quot;Invalid input: &quot; &lt;&lt; buffer &lt;&lt; endl;
+                return 0;
+            }
+        }
+
+        if (buffer[i] == '0' &amp;&amp; zero_start)
+            continue;
+        else
+        {
+            b.push_back((int)(buffer[i] - '0'));
+            zero_start = false;
+        }
+    }
+    if (b.empty())
+    {
+        if (n == 5)
+        {
+            cout &lt;&lt; &quot;Invalid input: &quot; &lt;&lt; buffer &lt;&lt; endl;
+            return 0;
+        }
+        b.push_back(0);
+        b_sign = 0;
+    }
+    reverse(b.begin(), b.end());
+
+    cout &lt;&lt; &quot;(a) = &quot; &lt;&lt; (a_sign == -1 ? &quot;-&quot; : &quot;&quot;);
+    for (int i = a.size() - 1; i &gt;= 0; i--)
+        cout &lt;&lt; a[i];
+    cout &lt;&lt; '\n'
+         &lt;&lt; &quot;(b) = &quot; &lt;&lt; (b_sign == -1 ? &quot;-&quot; : &quot;&quot;);
+    for (int i = b.size() - 1; i &gt;= 0; i--)
+        cout &lt;&lt; b[i];
+    cout &lt;&lt; endl;
+    // write to log file
+    log_file &lt;&lt; &quot;(a) = &quot; &lt;&lt; (a_sign == -1 ? &quot;-&quot; : &quot;&quot;);
+    for (int i = a.size() - 1; i &gt;= 0; i--)
+        log_file &lt;&lt; a[i];
+    log_file &lt;&lt; '\n'
+             &lt;&lt; &quot;(b) = &quot; &lt;&lt; (b_sign == -1 ? &quot;-&quot; : &quot;&quot;);
+    for (int i = b.size() - 1; i &gt;= 0; i--)
+        log_file &lt;&lt; b[i];
+    log_file &lt;&lt; endl;
+    // Initialization Done
+
+    int carry = 0;
+    if (n == 1)
+    {
+        log_file.close();
+        return 0; // &quot;Display only&quot;
+    }
+    // &quot;Display only&quot; Done
+
+    else if (n == 2) // &quot;+&quot;
+    {
+        for (int i = 0; i &lt; a.size() &amp;&amp; i &lt; b.size(); i++)
+        {
+            c.push_back((a[i] * a_sign + b[i] * b_sign + carry) % 10);
+            carry = (a[i] * a_sign + b[i] * b_sign + carry) / 10;
+        }
+        if (a.size() &gt; b.size())
+        {
+            for (int i = b.size(); i &lt; a.size(); i++)
+            {
+                c.push_back((a[i] * a_sign + carry) % 10);
+                carry = (a[i] * a_sign + carry) / 10;
+            }
+        }
+        else
+        {
+            for (int i = a.size(); i &lt; b.size(); i++)
+            {
+                c.push_back((b[i] * b_sign + carry) % 10);
+                carry = (b[i] * b_sign + carry) / 10;
+            }
+        }
+        c.push_back(carry);
+
+        zero_start = true;
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+        {
+            if (c[i] == 0 &amp;&amp; zero_start)
+                c.pop_back();
+            else
+                break;
+        }
+        if (c.empty())
+            c.push_back(0);
+
+        c_sign = (c[c.size() - 1] &lt; 0 ? -1 : 1);
+
+        for (int i = 0; i &lt; c.size(); i++)
+        {
+            if (c_sign * c[i] &lt; 0)
+            {
+                c[i] += (10 * c_sign);
+                if (i + 1 &lt; c.size())
+                    c[i + 1] += (-1 * c_sign);
+                else
+                    c.push_back(-1 * c_sign);
+            }
+            c[i] *= c_sign;
+        }
+
+        cout &lt;&lt; &quot;(a) + (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;);
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; c[i];
+        cout &lt;&lt; endl;
+        // write to log file
+        log_file &lt;&lt; &quot;(a) + (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;);
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+            log_file &lt;&lt; c[i];
+        log_file &lt;&lt; endl;
+        log_file.close();
+        return 0;
+    }
+    // &quot;+&quot; Done
+
+    else if (n == 3) // &quot;-&quot;
+    {
+        for (int i = 0; i &lt; a.size() &amp;&amp; i &lt; b.size(); i++)
+        {
+            c.push_back((a[i] * a_sign - b[i] * b_sign + carry) % 10);
+            carry = (a[i] * a_sign - b[i] * b_sign + carry) / 10;
+        }
+        if (a.size() &gt; b.size())
+        {
+            for (int i = b.size(); i &lt; a.size(); i++)
+            {
+                c.push_back((a[i] * a_sign + carry) % 10);
+                carry = (a[i] * a_sign + carry) / 10;
+            }
+        }
+        else
+        {
+            for (int i = a.size(); i &lt; b.size(); i++)
+            {
+                c.push_back((-b[i] * b_sign + carry) % 10);
+                carry = (-b[i] * b_sign + carry) / 10;
+            }
+        }
+        c.push_back(carry);
+
+        zero_start = true;
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+        {
+            if (c[i] == 0 &amp;&amp; zero_start)
+                c.pop_back();
+            else
+                break;
+        }
+        if (c.empty())
+            c.push_back(0);
+
+        c_sign = (c[c.size() - 1] &lt; 0 ? -1 : 1);
+
+        for (int i = 0; i &lt; c.size(); i++)
+        {
+            if (c_sign * c[i] &lt; 0)
+            {
+                c[i] += (10 * c_sign);
+                if (i + 1 &lt; c.size())
+                    c[i + 1] += (-1 * c_sign);
+                else
+                    c.push_back(-1 * c_sign);
+            }
+            c[i] *= c_sign;
+        }
+
+        cout &lt;&lt; &quot;(a) - (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;);
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; c[i];
+        cout &lt;&lt; endl;
+        // write to log file
+        log_file &lt;&lt; &quot;(a) - (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;);
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+            log_file &lt;&lt; c[i];
+        log_file &lt;&lt; endl;
+        log_file.close();
+        return 0;
+    }
+    // &quot;-&quot; Done
+
+    else if (n == 4) // &quot;*&quot;
+    {
+        c_sign = a_sign * b_sign;
+        for (int i = 0; i &lt; b.size(); i++)
+        {
+            for (int j = 0; j &lt; a.size(); j++)
+            {
+                if (i + j &gt;= c.size())
+                    c.push_back(a[j] * b[i]);
+                else
+                    c[i + j] += a[j] * b[i];
+            }
+        }
+        for (int i = 0; i &lt; c.size(); i++)
+        {
+            carry += c[i];
+            c[i] = carry % 10;
+            carry /= 10;
+        }
+        c.push_back(carry);
+
+        zero_start = true;
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+        {
+            if (c[i] == 0 &amp;&amp; zero_start)
+                c.pop_back();
+            else
+                break;
+        }
+        if (c.empty())
+            c.push_back(0);
+
+        cout &lt;&lt; &quot;(a) * (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;);
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+            cout &lt;&lt; c[i];
+        cout &lt;&lt; endl;
+        // write to log file
+        log_file &lt;&lt; &quot;(a) * (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;);
+        for (int i = c.size() - 1; i &gt;= 0; i--)
+            log_file &lt;&lt; c[i];
+        log_file &lt;&lt; endl;
+        log_file.close();
+        return 0;
+    }
+    // &quot;*&quot; Done
+
+    else if (n == 5) // &quot;/&quot;
+    {
+        c_sign = a_sign * b_sign;
+        c.push_back(0);
+
+        while (a.size() &gt;= b.size())
+        {
+            for (int i = 0; i &lt; b.size(); i++)
+            {
+                carry += a[i] - b[i] + 10;
+                a[i] = carry % 10;
+                carry = carry / 10 - 1;
+            }
+
+            for (int i = b.size(); i &lt; a.size(); i++)
+            {
+                if (carry == 0)
+                    break;
+                carry += a[i] + 10;
+                a[i] = carry % 10;
+                carry = carry / 10 - 1;
+            }
+            a.push_back(carry);
+
+            zero_start = true;
+            for (int i = a.size() - 1; i &gt;= 0; i--)
+            {
+                if (a[i] == 0 &amp;&amp; zero_start)
+                    a.pop_back();
+                else
+                    break;
+            }
+            if (a.empty())
+                a.push_back(0);
+
+            if (a[a.size() - 1] &gt;= 0)
+                c[0]++;
+            else
+                break;
+        }
+
+        cout &lt;&lt; &quot;(a) / (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;) &lt;&lt; c[0] &lt;&lt; endl;
+        // write to log file
+        log_file &lt;&lt; &quot;(a) / (b) = &quot; &lt;&lt; (c_sign &lt; 0 ? &quot;-&quot; : &quot;&quot;) &lt;&lt; c[0] &lt;&lt; endl;
+        log_file.close();
+        return 0;
+    }
+    // &quot;/&quot; Done
+
+    return 0;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../file/lecture13.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../file/lecture13_ex2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../file/lecture13.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../file/lecture13_ex2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
