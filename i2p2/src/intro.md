@@ -73,9 +73,9 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 | [Lecture 11 (5/5)](oop/lecture11.html)  | OOP: Polymorphism (1)                                |
 | [Lecture 12 (5/12)](oop/lecture12.html) | OOP: Polymorphism (2)                                |
 |  [Lab 12 (5/12)](oop/lab/lab12-1.html)  | Complex Number's Geometry & Operations               |
-|            Lecture 13 (5/19)            | File Processing (1)                                  |
+| [Lecture 13 (5/19)](file/lecture13.md)  | File Processing (1)                                  |
 |            Lecture 14 (5/26)            | File Processing (2)                                  |
-|              Lab 14 (5/26)              | File Export of Complex Numbers' Geometry             |
+|              Lab 14 (5/26)              | File Export of Complex Number's Geometry             |
 |            Lecture 15 (6/2)             | Advanced I/O & Exception Handling                    |
 |            Lecture 16 (6/9)             | (Extra) C++ Image Export & Matplot++                 |
 |            Project 16 (6/9)             | Final Project Announcment                            |

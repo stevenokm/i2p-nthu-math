@@ -55,3 +55,7 @@
     - [Lab 12-1: Complex Number's Geometry (40%)](./oop/lab/lab12-1.md)
     - [Lab 12-2: Simple Complex Number Geometry Transformation (40%)](./oop/lab/lab12-2.md)
     - [Lab 12-3: Enhanced Complex Number Geometry Transformation (20%)](./oop/lab/lab12-3.md)
+- [Lecture 13: File Processing (1)](./file/lecture13.md)
+    - [Example 1: Big Real Number in Text File](./file/lecture13_ex1.md)
+    - [Example 2: Point & Triangle in Text File (function ver.)](./file/lecture13_ex2.md)
+    - [Example 3: Vector & Matrix in Binary File (function ver.)](./file/lecture13_ex3.md)
