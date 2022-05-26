@@ -97,6 +97,10 @@ public:
     // calculate the cross product of two vectors
     Vector_3D cross(const Vector_3D &);
 
+    // write the Vector_3D in binary format
+    void write_binary(std::ofstream &arg_ofs);
+    // read the Vector_3D in binary format
+    void read_binary(std::ifstream &arg_ifs);
     // print the Vector_3D in format (x, y, z)
     // accessable to const object
     friend std::ostream &operator<<(std::ostream &arg_os,
@@ -105,12 +109,6 @@ public:
     // format: (x, y, z) and ignore space
     friend std::istream &operator>>(std::istream &arg_is,
                                     Vector_3D &arg_point);
-    // write the Vector_3D in binary format
-    friend void write_vector_binary(std::ofstream &arg_ofs,
-                                    const Vector_3D &arg_vector);
-    // read the Vector_3D in binary format
-    friend void read_vector_binary(std::ifstream &arg_ifs,
-                                   Vector_3D &arg_vector);
 };
 
 // Point_3D class implementation
@@ -304,6 +302,22 @@ Vector_3D Vector_3D::cross(const Vector_3D &arg_v)
     return v;
 }
 
+// write the vector to the file in binary format
+void Vector_3D::write_binary(std::ofstream &arg_ofs)
+{
+    arg_ofs.write((char *)&m_x, sizeof(double));
+    arg_ofs.write((char *)&m_y, sizeof(double));
+    arg_ofs.write((char *)&m_z, sizeof(double));
+}
+
+// read the vector from the file in binary format
+void Vector_3D::read_binary(std::ifstream &arg_ifs)
+{
+    arg_ifs.read((char *)&m_x, sizeof(double));
+    arg_ifs.read((char *)&m_y, sizeof(double));
+    arg_ifs.read((char *)&m_z, sizeof(double));
+}
+
 // print the point in the format (x, y, z)
 std::ostream &operator<<(std::ostream &arg_os, const Vector_3D &arg_vector)
 {
@@ -336,22 +350,6 @@ std::istream &operator>>(std::istream &arg_is, Vector_3D &arg_vector)
     return arg_is;
 }
 
-// write the vector to the file in binary format
-void write_vector_binary(std::ofstream &arg_ofs, const Vector_3D &arg_vector)
-{
-    arg_ofs.write((char *)&arg_vector.m_x, sizeof(double));
-    arg_ofs.write((char *)&arg_vector.m_y, sizeof(double));
-    arg_ofs.write((char *)&arg_vector.m_z, sizeof(double));
-}
-
-// read the vector from the file in binary format
-void read_vector_binary(std::ifstream &arg_ifs, Vector_3D &arg_vector)
-{
-    arg_ifs.read((char *)&arg_vector.m_x, sizeof(double));
-    arg_ifs.read((char *)&arg_vector.m_y, sizeof(double));
-    arg_ifs.read((char *)&arg_vector.m_z, sizeof(double));
-}
-
 // main function
 
 int main()
@@ -364,18 +362,34 @@ int main()
 
     // save the vector to the file in binary format
     ofstream ofs("vector.bin", ios::binary | ios::trunc);
-    write_vector_binary(ofs, v1);
-    write_vector_binary(ofs, v2);
+    v1.write_binary(ofs);
+    v2.write_binary(ofs);
     ofs.close();
 
     // read the vector from the file in binary format
     ifstream ifs("vector.bin", ios::binary);
     Vector_3D v3, v4;
-    read_vector_binary(ifs, v3);
-    read_vector_binary(ifs, v4);
+    v3.read_binary(ifs);
+    v4.read_binary(ifs);
 
     cout << "v3 = " << v3 << endl;
     cout << "v4 = " << v4 << endl;
+
+    // or read/write whole object
+    ofstream ofs2("vector_whole.bin", ios::binary | ios::trunc);
+    ofs2.write((char *)&v1, sizeof(Vector_3D));
+    ofs2.write((char *)&v2, sizeof(Vector_3D));
+    ofs2.close();
+
+    ifstream ifs2("vector_whole.bin", ios::binary);
+    Vector_3D v5, v6;
+    ifs2.read((char *)&v5, sizeof(Vector_3D));
+    ifs2.read((char *)&v6, sizeof(Vector_3D));
+
+    cout << "v5 = " << v5 << endl;
+    cout << "v6 = " << v6 << endl;
+
+    // NOTE: compaire "vector.bin" and "vector_whole.bin"
 
     return 0;
 }

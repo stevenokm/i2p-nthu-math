@@ -59,3 +59,8 @@
     - [Example 1: Big Real Number in Text File](./file/lecture13_ex1.md)
     - [Example 2: Point & Triangle in Text File (function ver.)](./file/lecture13_ex2.md)
     - [Example 3: Vector & Matrix in Binary File (function ver.)](./file/lecture13_ex3.md)
+- [Lecture 12: File Processing (2)](./file/lecture14.md)
+    - [Example 1: Point & Triangle in Text File (class ver.)](./file/lecture14_ex1.md)
+    - [Example 2: Vector & Matrix in Binary File (class ver.)](./file/lecture14_ex2.md)
+    - [Lab 14-1: Simple Complex Number Geometry Transformation (Text File ver.) (75%)](./file/lab/lab14-1.md)
+    - [Lab 14-2: Simple Complex Number Geometry Transformation (Binary File ver.) (25%)](./file/lab/lab14-2.md)
