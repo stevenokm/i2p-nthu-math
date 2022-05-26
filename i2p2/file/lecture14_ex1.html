@@ -1,0 +1,741 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Example 1: Point &amp; Triangle in Text File (class ver.) - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../oop/lecture8.html"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture10.html"><strong aria-hidden="true">12.</strong> Lecture 10: OOP: Inheritance (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture10_ex1.html"><strong aria-hidden="true">12.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex2.html"><strong aria-hidden="true">12.2.</strong> Example 2: Complex Number &amp; Triangle</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex3.html"><strong aria-hidden="true">12.3.</strong> Example 3: Complex Number &amp; Triangles</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture11.html"><strong aria-hidden="true">13.</strong> Lecture 11: OOP: Polymorphism (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture11_ex1.html"><strong aria-hidden="true">13.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex2.html"><strong aria-hidden="true">13.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex3.html"><strong aria-hidden="true">13.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture12.html"><strong aria-hidden="true">14.</strong> Lecture 12: OOP: Polymorphism (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture12_ex1.html"><strong aria-hidden="true">14.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture12_ex2.html"><strong aria-hidden="true">14.2.</strong> Example 2: Complex Number &amp; Triangles</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-1.html"><strong aria-hidden="true">14.3.</strong> Lab 12-1: Complex Number's Geometry (40%)</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-2.html"><strong aria-hidden="true">14.4.</strong> Lab 12-2: Simple Complex Number Geometry Transformation (40%)</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-3.html"><strong aria-hidden="true">14.5.</strong> Lab 12-3: Enhanced Complex Number Geometry Transformation (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture13.html"><strong aria-hidden="true">15.</strong> Lecture 13: File Processing (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture13_ex1.html"><strong aria-hidden="true">15.1.</strong> Example 1: Big Real Number in Text File</a></li><li class="chapter-item expanded "><a href="../file/lecture13_ex2.html"><strong aria-hidden="true">15.2.</strong> Example 2: Point &amp; Triangle in Text File (function ver.)</a></li><li class="chapter-item expanded "><a href="../file/lecture13_ex3.html"><strong aria-hidden="true">15.3.</strong> Example 3: Vector &amp; Matrix in Binary File (function ver.)</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture14.html"><strong aria-hidden="true">16.</strong> Lecture 12: File Processing (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture14_ex1.html" class="active"><strong aria-hidden="true">16.1.</strong> Example 1: Point &amp; Triangle in Text File (class ver.)</a></li><li class="chapter-item expanded "><a href="../file/lecture14_ex2.html"><strong aria-hidden="true">16.2.</strong> Example 2: Vector &amp; Matrix in Binary File (class ver.)</a></li><li class="chapter-item expanded "><a href="../file/lab/lab14-1.html"><strong aria-hidden="true">16.3.</strong> Lab 14-1: Simple Complex Number Geometry Transformation (Text File ver.) (75%)</a></li><li class="chapter-item expanded "><a href="../file/lab/lab14-2.html"><strong aria-hidden="true">16.4.</strong> Lab 14-2: Simple Complex Number Geometry Transformation (Binary File ver.) (25%)</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/file/lecture14_ex1.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="example-1-point--triangle-in-text-file-class-ver"><a class="header" href="#example-1-point--triangle-in-text-file-class-ver">Example 1: Point &amp; Triangle in Text File (class ver.)</a></h1>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+
+class Triangle_2D; // forward declaration
+
+class Point_2D // the class name
+// we use first upper case letter to indicate a class
+{
+private: // private data members &amp; member functions
+    // Data members
+    // we use `m_` to indicate a data member
+
+    // record the x coordinate
+    double m_x;
+    // record the y coordinate
+    double m_y;
+
+    // Member functions
+    // we use `_` to indicate a member function
+
+    // check if the point is valid
+    void _check_validity();
+
+public: // public member functions
+    // Constructor
+
+    // Constructor &amp; Default constructor
+    // initialize data members, with default values
+    // accessable to const object by default
+    Point_2D(const double &amp;arg_x = 0, const double &amp;arg_y = 0);
+
+    // Copy constructor
+    // copy the data members from the given object
+    // accessable to const object by default
+    Point_2D(const Point_2D &amp;arg_point);
+
+    // Destructor
+    ~Point_2D() // destructor
+    {
+        // do nothing, because we don't
+        // have any dynamic memory
+    }
+
+    // Member functions
+    // we use lower case letter to indicate a member function
+    // also, we just define the function declaration
+    // and leave the definition to the end of the class
+
+    // modify the x and y coordinate
+    // we use `arg_` to indicate the arguments
+    // and re-write with setter
+    void set_x(const double &amp;arg_x);
+    void set_y(const double &amp;arg_y);
+    void set(const double &amp;arg_x, const double &amp;arg_y);
+    // get the x coordinate and y coordinate
+    // accessable to const object
+    double get_x() const;
+    double get_y() const;
+    // // compare two points
+    bool operator==(const Point_2D &amp;arg_point) const;
+    bool operator!=(const Point_2D &amp;arg_point) const;
+    bool operator&lt;(const Point_2D &amp;arg_point) const;
+    bool operator&gt;(const Point_2D &amp;arg_point) const;
+    bool operator&lt;=(const Point_2D &amp;arg_point) const;
+    bool operator&gt;=(const Point_2D &amp;arg_point) const;
+    // assign the point with another point
+    Point_2D &amp;operator=(const Point_2D &amp;arg_point);
+
+    // friend class
+    friend class Triangle_2D;
+    // friend function
+    // print the x and y coordinate in format (x, y)
+    // accessable to const object
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;arg_os, const Point_2D &amp;arg_point);
+    // read the coordinate of a point from the input, format: (x, y) and ignore space
+    friend std::istream &amp;operator&gt;&gt;(std::istream &amp;arg_is, Point_2D &amp;arg_point);
+};
+
+// Triangle_2D class declaration
+class Triangle_2D
+{
+private:
+    // define three points of the Triangle_2D
+    // in array of Point_2D format
+    Point_2D m_point[3];
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    void _check_points();
+
+public:
+    // Constructor
+    Triangle_2D(const double &amp;arg_x0 = 0.0, const double &amp;arg_y0 = 0.0,
+                const double &amp;arg_x1 = 0.0, const double &amp;arg_y1 = 0.0,
+                const double &amp;arg_x2 = 0.0, const double &amp;arg_y2 = 0.0);
+
+    // Copy constructor
+    Triangle_2D(const Triangle_2D &amp;arg_triangle);
+
+    // Destructor
+    ~Triangle_2D()
+    {
+        // do nothing
+    }
+
+    // modify the three points of the Triangle_2D
+    void set_points(const double &amp;arg_x0, const double &amp;arg_y0,
+                    const double &amp;arg_x1, const double &amp;arg_y1,
+                    const double &amp;arg_x2, const double &amp;arg_y2);
+    void set_point1(const double &amp;arg_x0, const double &amp;arg_y0);
+    void set_point2(const double &amp;arg_x1, const double &amp;arg_y1);
+    void set_point3(const double &amp;arg_x2, const double &amp;arg_y2);
+    void set_x0(const double &amp;arg_x0);
+    void set_y0(const double &amp;arg_y0);
+    void set_x1(const double &amp;arg_x1);
+    void set_y1(const double &amp;arg_y1);
+    void set_x2(const double &amp;arg_x2);
+    void set_y2(const double &amp;arg_y2);
+    // get the three points of the Triangle_2D
+    double get_x0() const;
+    double get_y0() const;
+    double get_x1() const;
+    double get_y1() const;
+    double get_x2() const;
+    double get_y2() const;
+
+    // calculate the area of the Triangle_2D
+    double area();
+
+    // print the Triangle_2D
+    // format: ((x0, y0), (x1, y1), (x2, y2))
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;arg_os, const Triangle_2D &amp;arg_tri);
+    // read the coordinate of a point from the input,
+    // format: ((x0, y0), (x1, y1), (x2, y2)) and ignore space
+    friend std::istream &amp;operator&gt;&gt;(std::istream &amp;arg_is, Triangle_2D &amp;arg_tri);
+};
+
+// function definition
+
+// check if the point is valid
+void Point_2D::_check_validity()
+{
+    // check if the x coordinate is valid
+    if (m_x &lt; 0)
+    {
+        // if not, set it to 0
+        m_x = 0;
+    }
+    // check if the y coordinate is valid
+    if (m_y &lt; 0)
+    {
+        // if not, set it to 0
+        m_y = 0;
+    }
+}
+// Constructor &amp; Default constructor
+// initialize data members, with default values
+Point_2D::Point_2D(const double &amp;arg_x, const double &amp;arg_y)
+    // use `: var_name1(arg_var_name1), var_name2(arg_var_name2)`
+    // to initialize data members
+    : m_x(arg_x),
+      m_y(arg_y)
+{
+    // check if the point is valid
+    _check_validity();
+}
+
+// Copy constructor
+// copy the data members from the given object
+Point_2D::Point_2D(const Point_2D &amp;arg_point)
+    : m_x(arg_point.m_x),
+      m_y(arg_point.m_y)
+{
+    // check if the point is valid
+    _check_validity();
+}
+
+// modify the x and y coordinate
+// we use `arg_` to indicate the arguments
+// and re-write with setter
+void Point_2D::set_x(const double &amp;arg_x)
+{
+    m_x = arg_x;
+    // check if the point is valid
+    _check_validity();
+}
+void Point_2D::set_y(const double &amp;arg_y)
+{
+    m_y = arg_y;
+    // check if the point is valid
+    _check_validity();
+}
+void Point_2D::set(const double &amp;arg_x, const double &amp;arg_y)
+{
+    m_x = arg_x;
+    m_y = arg_y;
+    // check if the point is valid
+    _check_validity();
+}
+
+// get the x coordinate and y coordinate
+// accessable to const object
+double Point_2D::get_x() const
+{
+    return m_x;
+}
+double Point_2D::get_y() const
+{
+    return m_y;
+}
+
+// // compare two points
+bool Point_2D::operator==(const Point_2D &amp;arg_point) const
+{
+    // if the x and y coordinates are equal,
+    // return true
+    return (m_x == arg_point.m_x &amp;&amp; m_y == arg_point.m_y);
+}
+bool Point_2D::operator!=(const Point_2D &amp;arg_point) const
+{
+    return !(*this == arg_point);
+}
+bool Point_2D::operator&lt;(const Point_2D &amp;arg_point) const
+{
+    // if the x coordinate is smaller than the other point,
+    // return true
+    if (m_x &lt; arg_point.m_x)
+    {
+        return true;
+    }
+    // if the x coordinate is equal to the other point,
+    // check if the y coordinate is smaller than the other point
+    else if (m_x == arg_point.m_x)
+    {
+        // if the y coordinate is smaller, return true
+        if (m_y &lt; arg_point.m_y)
+        {
+            return true;
+        }
+        // if the y coordinate is equal to the other point,
+        // return false
+        else if (m_y == arg_point.m_y)
+        {
+            return false;
+        }
+        // if the y coordinate is larger, return false
+        else
+        {
+            return false;
+        }
+    }
+    // if the x coordinate is larger, return false
+    else
+    {
+        return false;
+    }
+}
+bool Point_2D::operator&gt;(const Point_2D &amp;arg_point) const
+{
+    return !(*this &lt; arg_point || *this == arg_point);
+}
+bool Point_2D::operator&lt;=(const Point_2D &amp;arg_point) const
+{
+    return (*this &lt; arg_point || *this == arg_point);
+}
+bool Point_2D::operator&gt;=(const Point_2D &amp;arg_point) const
+{
+    return !(*this &lt; arg_point);
+}
+// assign the point with another point
+Point_2D &amp;Point_2D::operator=(const Point_2D &amp;arg_point)
+{
+    // check if the point is valid
+    _check_validity();
+    // assign the x and y coordinate
+    m_x = arg_point.m_x;
+    m_y = arg_point.m_y;
+    // check if the point is valid
+    _check_validity();
+    return *this;
+}
+
+// print the point in the format (x, y)
+std::ostream &amp;operator&lt;&lt;(std::ostream &amp;arg_os, const Point_2D &amp;arg_point)
+{
+    arg_os &lt;&lt; &quot;(&quot; &lt;&lt; arg_point.m_x &lt;&lt; &quot;, &quot; &lt;&lt; arg_point.m_y &lt;&lt; &quot;)&quot;;
+    return arg_os;
+}
+
+// read the coordinate of a point from the input, format: (x, y) and ignore space
+std::istream &amp;operator&gt;&gt;(std::istream &amp;arg_is, Point_2D &amp;arg_point)
+{
+    string str_x, str_y, temp;
+
+    if (getline(arg_is, temp, '(')) // ignore the first '('
+    {
+        if (getline(arg_is, str_x, ','))
+        {
+            if (getline(arg_is, str_y, ')'))
+            {
+                arg_point.m_x = stod(str_x);
+                arg_point.m_y = stod(str_y);
+            }
+        }
+    }
+
+    // check if the point is valid
+    arg_point._check_validity();
+
+    return arg_is;
+}
+
+// Triangle_2D class implementation
+
+// check &amp; correct the Triangle_2D points to counterclockwise order
+void Triangle_2D::_check_points()
+{
+    // sort the points in ascending order
+    for (int i = 0; i &lt; 3; i++)
+    {
+        for (int j = i + 1; j &lt; 3; j++)
+        {
+            if (m_point[i] &gt; m_point[j])
+            {
+                // swap the points
+                Point_2D temp = m_point[i];
+                m_point[i] = m_point[j];
+                m_point[j] = temp;
+            }
+        }
+    }
+
+    // if the area is negative, swap the points
+    if (area() &lt; 0.0)
+    {
+        Point_2D temp = m_point[0];
+        m_point[0] = m_point[1];
+        m_point[1] = temp;
+    }
+}
+
+// Constructor
+Triangle_2D::Triangle_2D(const double &amp;arg_x0, const double &amp;arg_y0,
+                         const double &amp;arg_x1, const double &amp;arg_y1,
+                         const double &amp;arg_x2, const double &amp;arg_y2)
+    : m_point{Point_2D(arg_x0, arg_y0),
+              Point_2D(arg_x1, arg_y1),
+              Point_2D(arg_x2, arg_y2)} // init the array with {}
+{
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+
+// Copy constructor
+Triangle_2D::Triangle_2D(const Triangle_2D &amp;arg_triangle)
+    : m_point{Point_2D(arg_triangle.m_point[0]),
+              Point_2D(arg_triangle.m_point[1]),
+              Point_2D(arg_triangle.m_point[2])} // init the array with {}
+{
+}
+
+// set the three points of the Triangle_2D
+void Triangle_2D::set_points(const double &amp;arg_x0, const double &amp;arg_y0,
+                             const double &amp;arg_x1, const double &amp;arg_y1,
+                             const double &amp;arg_x2, const double &amp;arg_y2)
+{
+    m_point[0].set(arg_x0, arg_y0);
+    m_point[1].set(arg_x1, arg_y1);
+    m_point[2].set(arg_x2, arg_y2);
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_point1(const double &amp;arg_x0, const double &amp;arg_y0)
+{
+    m_point[0].set(arg_x0, arg_y0);
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_point2(const double &amp;arg_x1, const double &amp;arg_y1)
+{
+    m_point[1].set(arg_x1, arg_y1);
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_point3(const double &amp;arg_x2, const double &amp;arg_y2)
+{
+    m_point[2].set(arg_x2, arg_y2);
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_x0(const double &amp;arg_x0)
+{
+    m_point[0].m_x = arg_x0;
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_y0(const double &amp;arg_y0)
+{
+    m_point[0].m_y = arg_y0;
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_x1(const double &amp;arg_x1)
+{
+    m_point[1].m_x = arg_x1;
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_y1(const double &amp;arg_y1)
+{
+    m_point[1].m_y = arg_y1;
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_x2(const double &amp;arg_x2)
+{
+    m_point[2].m_x = arg_x2;
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+void Triangle_2D::set_y2(const double &amp;arg_y2)
+{
+    m_point[2].m_y = arg_y2;
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    _check_points();
+}
+
+// get the three points of the Triangle_2D
+double Triangle_2D::get_x0() const
+{
+    return m_point[0].m_x;
+}
+double Triangle_2D::get_y0() const
+{
+    return m_point[0].m_y;
+}
+double Triangle_2D::get_x1() const
+{
+    return m_point[1].m_x;
+}
+double Triangle_2D::get_y1() const
+{
+    return m_point[1].m_y;
+}
+double Triangle_2D::get_x2() const
+{
+    return m_point[2].m_x;
+}
+double Triangle_2D::get_y2() const
+{
+    return m_point[2].m_y;
+}
+
+// calculate the area of the Triangle_2D
+double Triangle_2D::area()
+{
+    // calculate the area of the Triangle_2D
+    return (m_point[0].m_x * m_point[1].m_y +
+            m_point[1].m_x * m_point[2].m_y +
+            m_point[2].m_x * m_point[0].m_y -
+            m_point[0].m_x * m_point[2].m_y -
+            m_point[1].m_x * m_point[0].m_y -
+            m_point[2].m_x * m_point[1].m_y) /
+           2.0;
+}
+
+// print the Triangle_2D
+// format: ((x0, y0), (x1, y1), (x2, y2))
+std::ostream &amp;operator&lt;&lt;(std::ostream &amp;arg_os, const Triangle_2D &amp;arg_tri)
+{
+    arg_os &lt;&lt; &quot;(&quot;;
+    for (int i = 0; i &lt; 3; i++)
+    {
+        arg_os &lt;&lt; arg_tri.m_point[i];
+        if (i &lt; 2)
+            arg_os &lt;&lt; &quot;, &quot;;
+    }
+    arg_os &lt;&lt; &quot;)&quot;;
+    return arg_os;
+}
+// read the coordinate of a point from the input,
+// format: ((x0, y0), (x1, y1), (x2, y2)) and ignore space
+std::istream &amp;operator&gt;&gt;(std::istream &amp;arg_is, Triangle_2D &amp;arg_tri)
+{
+    string temp;
+    if (getline(arg_is, temp, '(')) // ignore the first '('
+    {
+        for (int i = 0; i &lt; 3; i++)
+        {
+            arg_is &gt;&gt; arg_tri.m_point[i];
+            if (i &lt; 2)
+            {
+                getline(arg_is, temp, ','); // ignore the ','
+            }
+        }
+        getline(arg_is, temp, ')'); // ignore the last ')'
+    }
+
+    // check &amp; correct the Triangle_2D points to counterclockwise order
+    arg_tri._check_points();
+
+    return arg_is;
+}
+
+// main function
+
+int main()
+{
+    Triangle_2D t(1, 1, 2, 2, 0, 3);
+    cout &lt;&lt; t &lt;&lt; endl;
+    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; t.area() &lt;&lt; endl;
+
+    ofstream t_file(&quot;triangle.txt&quot;, ios::out | ios::trunc);
+    // reuse the `&lt;&lt;` operator to write the Triangle_2D to the file
+    t_file &lt;&lt; t &lt;&lt; endl;
+    t_file.close();
+
+    // read the Triangle_2D from the file
+    ifstream t_file_in(&quot;triangle.txt&quot;, ios::in);
+    Triangle_2D t_in;
+    t_file_in &gt;&gt; t_in;
+    cout &lt;&lt; t_in &lt;&lt; endl;
+    cout &lt;&lt; &quot;Area: &quot; &lt;&lt; t_in.area() &lt;&lt; endl;
+    t_file_in.close();
+
+    return 0;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../file/lecture14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../file/lecture14_ex2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../file/lecture14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../file/lecture14_ex2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
