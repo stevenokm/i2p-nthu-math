@@ -76,7 +76,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
 | [Lecture 13 (5/19)](file/lecture13.html) | File Processing (1)                                  |
 | [Lecture 14 (5/26)](file/lecture14.html) | File Processing (2)                                  |
 |  [Lab 14 (5/26)](file/lab/lab14-1.html)  | File Export of Complex Number's Geometry             |
-|             Lecture 15 (6/2)             | Advanced I/O & Exception Handling                    |
+| [Lecture 15 (6/2)](file/lecture1h.html)  | Advanced I/O & Exception Handling                    |
 |             Lecture 16 (6/9)             | (Extra) C++ Image Export & Matplot++                 |
 |             Project 16 (6/9)             | Final Project Announcment                            |
 |              Demo 17 (6/16)              | Final Project Demo                                   |

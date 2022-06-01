@@ -64,3 +64,5 @@
     - [Example 2: Vector & Matrix in Binary File (class ver.)](./file/lecture14_ex2.md)
     - [Lab 14-1: Simple Complex Number Geometry Transformation (Text File ver.) (75%)](./file/lab/lab14-1.md)
     - [Lab 14-2: Simple Complex Number Geometry Transformation (Binary File ver.) (25%)](./file/lab/lab14-2.md)
+- [Lecture 15: Advanced I/O & Exception Handling](./file/lecture15.md)
+    - [Example: Exception Handling, `iostream` & `fstream` Error Handling](./file/lecture15_ex.md)
