@@ -1157,7 +1157,7 @@ void error_and_exit()
 // Ref: https://stackoverflow.com/q/9621893
 void print_output_file(int argc, char *argv[])
 {
-    ifstream ans_ifs(argv[2]);
+    ifstream ans_ifs(argv[2], ios::in | ios::binary);
     if (!ans_ifs)
     {
         cout &lt;&lt; &quot;Error: Cannot open output file&quot; &lt;&lt; endl;
