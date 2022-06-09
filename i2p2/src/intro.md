@@ -147,7 +147,7 @@ After class, students can use the discussion forum in the NTHU eeclass or make a
   - 未 Demo 則該次 Project 成績為 0 分
 * Demo 時間: 公布後次週四 15:30 - 18:30 (與上學期期中/期末評量時間相同)
   - Demo 時間表 (連結待補)
-  - 每位同學 8 分鐘 Demo 時間，請務必準時參加
+  - 每位同學 10 分鐘 Demo 時間，請務必準時參加
   - 遲交的同學仍須另外約 Demo 時間，最晚不得超過該次 Demo 時間後的次週四 18:30
     -  e.g. 該 Project 4/14 公布後，同學遲交的話，需於 4/25 18:30 前約 Demo
 ---
