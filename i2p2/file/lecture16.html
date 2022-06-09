@@ -1,0 +1,623 @@
+<!DOCTYPE HTML>
+<html lang="zh-TW" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lecture 16: (Extra) C++ Image Export &amp; Matplot++ - Introduction to Programming (II)</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="程式設計(二)教材">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+                <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../intro.html"><strong aria-hidden="true">1.</strong> Course Introduction</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> VS Code Tutorial</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_315.html"><strong aria-hidden="true">2.1.</strong> VS Code Tutorial (315 classroom)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode.html"><strong aria-hidden="true">2.2.</strong> VS Code Tutorial (Linux/macOS/code server)</a></li><li class="chapter-item expanded "><a href="../vscode_tutorial/lab_1_vscode_win.html"><strong aria-hidden="true">2.3.</strong> VS Code Tutorial (WSL/windows + mingw)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture1.html"><strong aria-hidden="true">3.</strong> Lecture 1: Sturcture and Class</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lab/lab1.html"><strong aria-hidden="true">3.1.</strong> Lab 1: Hello Class</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture2.html"><strong aria-hidden="true">4.</strong> Lecture 2: Class Design 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture2_ex1.html"><strong aria-hidden="true">4.1.</strong> Example 1: Triangle</a></li><li class="chapter-item expanded "><a href="../class/lecture2_ex2.html"><strong aria-hidden="true">4.2.</strong> Example 2: Vector</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture3.html"><strong aria-hidden="true">5.</strong> Lecture 3: Class Data Members &amp; Member Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture3_ex1.html"><strong aria-hidden="true">5.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex2.html"><strong aria-hidden="true">5.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture3_ex3.html"><strong aria-hidden="true">5.3.</strong> Example 3: Integer Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture4.html"><strong aria-hidden="true">6.</strong> Lecture 4: Class Constructor &amp; Modifer</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture4_ex1.html"><strong aria-hidden="true">6.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex2.html"><strong aria-hidden="true">6.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture4_ex3.html"><strong aria-hidden="true">6.3.</strong> Example 3: Integer Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-1.html"><strong aria-hidden="true">6.4.</strong> Lab 4-1: Complex Numbers (50%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-2.html"><strong aria-hidden="true">6.5.</strong> Lab 4-2: Complex Number Calculation (35%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab4-3.html"><strong aria-hidden="true">6.6.</strong> Lab 4-3: Advance Complex Number Calculation (15%)</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture5.html"><strong aria-hidden="true">7.</strong> Lecture 5: Collaborate with Other Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture5_ex1.html"><strong aria-hidden="true">7.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex2.html"><strong aria-hidden="true">7.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture5_ex3.html"><strong aria-hidden="true">7.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../class/lecture6.html"><strong aria-hidden="true">8.</strong> Lecture 6: Operator &amp; Operator Overloading</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../class/lecture6_ex1.html"><strong aria-hidden="true">8.1.</strong> Example 1: Triangle (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex2.html"><strong aria-hidden="true">8.2.</strong> Example 2: Vector (again)</a></li><li class="chapter-item expanded "><a href="../class/lecture6_ex3.html"><strong aria-hidden="true">8.3.</strong> Example 3: Fixed Point Number &amp; Fixed Point Number Calculator (again)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-1.html"><strong aria-hidden="true">8.4.</strong> Lab 6-1: Enhanced Complex Numbers (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-2.html"><strong aria-hidden="true">8.5.</strong> Lab 6-2: Simple Complex Number Calculator (40%)</a></li><li class="chapter-item expanded "><a href="../class/lab/lab6-3.html"><strong aria-hidden="true">8.6.</strong> Lab 6-3: Enhanced Complex Number Calculator (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture7.html"><strong aria-hidden="true">9.</strong> Lecture 7: Introduction to Object Oriented Programming &amp; Design</a></li><li class="chapter-item expanded "><a href="../oop/lecture8.html"><strong aria-hidden="true">10.</strong> Lecture 8: OOP: Inheritance (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture8_ex1.html"><strong aria-hidden="true">10.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex2.html"><strong aria-hidden="true">10.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture8_ex3.html"><strong aria-hidden="true">10.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">11.</strong> Midterm Project: Big Positive Real Number Calculator</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../midterm-1.html"><strong aria-hidden="true">11.1.</strong> Midterm-1: Big Positive Real Number in Decimal Point Format</a></li><li class="chapter-item expanded "><a href="../midterm-2.html"><strong aria-hidden="true">11.2.</strong> Midterm-2: Simple Big Positive Real Number Calculator</a></li><li class="chapter-item expanded "><a href="../midterm-3.html"><strong aria-hidden="true">11.3.</strong> Midterm-3: Enhanced Big Positive Real Number Calculator</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture10.html"><strong aria-hidden="true">12.</strong> Lecture 10: OOP: Inheritance (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture10_ex1.html"><strong aria-hidden="true">12.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex2.html"><strong aria-hidden="true">12.2.</strong> Example 2: Complex Number &amp; Triangle</a></li><li class="chapter-item expanded "><a href="../oop/lecture10_ex3.html"><strong aria-hidden="true">12.3.</strong> Example 3: Complex Number &amp; Triangles</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture11.html"><strong aria-hidden="true">13.</strong> Lecture 11: OOP: Polymorphism (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture11_ex1.html"><strong aria-hidden="true">13.1.</strong> Example 1: Integer &amp; Real</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex2.html"><strong aria-hidden="true">13.2.</strong> Example 2: Complex Number</a></li><li class="chapter-item expanded "><a href="../oop/lecture11_ex3.html"><strong aria-hidden="true">13.3.</strong> Example 3: Integer &amp; Real &amp; Complex Number</a></li></ol></li><li class="chapter-item expanded "><a href="../oop/lecture12.html"><strong aria-hidden="true">14.</strong> Lecture 12: OOP: Polymorphism (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../oop/lecture12_ex1.html"><strong aria-hidden="true">14.1.</strong> Example 1: Integer &amp; Real &amp; Complex Number Calculator</a></li><li class="chapter-item expanded "><a href="../oop/lecture12_ex2.html"><strong aria-hidden="true">14.2.</strong> Example 2: Complex Number &amp; Triangles</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-1.html"><strong aria-hidden="true">14.3.</strong> Lab 12-1: Complex Number's Geometry (40%)</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-2.html"><strong aria-hidden="true">14.4.</strong> Lab 12-2: Simple Complex Number Geometry Transformation (40%)</a></li><li class="chapter-item expanded "><a href="../oop/lab/lab12-3.html"><strong aria-hidden="true">14.5.</strong> Lab 12-3: Enhanced Complex Number Geometry Transformation (20%)</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture13.html"><strong aria-hidden="true">15.</strong> Lecture 13: File Processing (1)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture13_ex1.html"><strong aria-hidden="true">15.1.</strong> Example 1: Big Real Number in Text File</a></li><li class="chapter-item expanded "><a href="../file/lecture13_ex2.html"><strong aria-hidden="true">15.2.</strong> Example 2: Point &amp; Triangle in Text File (function ver.)</a></li><li class="chapter-item expanded "><a href="../file/lecture13_ex3.html"><strong aria-hidden="true">15.3.</strong> Example 3: Vector &amp; Matrix in Binary File (function ver.)</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture14.html"><strong aria-hidden="true">16.</strong> Lecture 14: File Processing (2)</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture14_ex1.html"><strong aria-hidden="true">16.1.</strong> Example 1: Point &amp; Triangle in Text File (class ver.)</a></li><li class="chapter-item expanded "><a href="../file/lecture14_ex2.html"><strong aria-hidden="true">16.2.</strong> Example 2: Vector &amp; Matrix in Binary File (class ver.)</a></li><li class="chapter-item expanded "><a href="../file/lab/lab14-1.html"><strong aria-hidden="true">16.3.</strong> Lab 14-1: Simple Complex Number Geometry Transformation (Text File ver.) (75%)</a></li><li class="chapter-item expanded "><a href="../file/lab/lab14-2.html"><strong aria-hidden="true">16.4.</strong> Lab 14-2: Simple Complex Number Geometry Transformation (Binary File ver.) (25%)</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture15.html"><strong aria-hidden="true">17.</strong> Lecture 15: Advanced I/O &amp; Exception Handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture15_ex.html"><strong aria-hidden="true">17.1.</strong> Example: Exception Handling, iostream &amp; fstream Error Handling</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">18.</strong> Final Project: Geometry Processing</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../final-1.html"><strong aria-hidden="true">18.1.</strong> Final-1: Geometry Objects</a></li><li class="chapter-item expanded "><a href="../final-2.html"><strong aria-hidden="true">18.2.</strong> Final-2: Save Geometry Objects to Binary File</a></li><li class="chapter-item expanded "><a href="../final-3.html"><strong aria-hidden="true">18.3.</strong> Final-3: Save Geometry Objects to Binary File &amp; Exception Handling</a></li></ol></li><li class="chapter-item expanded "><a href="../file/lecture16.html" class="active"><strong aria-hidden="true">19.</strong> Lecture 16: (Extra) C++ Image Export &amp; Matplot++</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../file/lecture16_ex.html"><strong aria-hidden="true">19.1.</strong> Example: Plot a Geometry on Complex Plane</a></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title">Introduction to Programming (II)</h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                                                <a href="https://github.com/stevenokm/i2p-nthu-math/edit/main/i2p2/src/file/lecture16.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!---
+marp: true
+author: Yi-Wen Hung
+theme: default
+headingDivider: 2
+paginate: true
+--->
+<h1 id="extra-c-image-export--matplot"><a class="header" href="#extra-c-image-export--matplot">(Extra) C++ Image Export &amp; Matplot++</a></h1>
+<blockquote>
+<p>Slides version: <a href="./lecture16_slides.html">lecture16_slides.html</a>
+Website version: <a href="./lecture16.html">lecture16.html</a></p>
+</blockquote>
+<ul>
+<li>Tutorail: Matplot++
+<ul>
+<li>Installation</li>
+<li>Hello world</li>
+<li>Plot Functions</li>
+<li>Annotations</li>
+<li>Appearance</li>
+<li>Export to image</li>
+</ul>
+</li>
+<li>Example: Plot a Geometry on Complex Plane</li>
+<li>Pratices</li>
+</ul>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<h3 id="windows--mingw-update-gcc"><a class="header" href="#windows--mingw-update-gcc">Windows + MinGW: Update <code>gcc</code></a></h3>
+<p><strong>Note</strong>: 須先完成 <a href="../vscode_tutorial/lab_1_vscode_win.html#%E8%A8%AD%E5%AE%9A-vscode-%E7%92%B0%E5%A2%83-windows--mingw">設定 VSCode 環境 (Windows + MinGW)</a> 再進行下一步</p>
+<p>Terminal:</p>
+<pre><code class="language-sh"># remove old gcc 8.1.0
+scoop uninstall mingw
+# install new gcc 12.1.0
+scoop install mingw-winlibs
+</code></pre>
+<hr />
+<h3 id="linuxmacos-install-cmake"><a class="header" href="#linuxmacos-install-cmake">Linux/macOS: Install CMake</a></h3>
+<p>Terminal:</p>
+<h4 id="linux"><a class="header" href="#linux">Linux</a></h4>
+<pre><code class="language-bash">sudo apt install cmake
+</code></pre>
+<h4 id="macos"><a class="header" href="#macos">macOS</a></h4>
+<pre><code class="language-bash">brew install cmake
+</code></pre>
+<hr />
+<h3 id="install-a-hrefhttpwwwgnuplotinfodownloadhtmlgnuplota"><a class="header" href="#install-a-hrefhttpwwwgnuplotinfodownloadhtmlgnuplota">Install <a href="http://www.gnuplot.info/download.html"><code>gnuplot</code></a></a></h3>
+<p>Terminal:</p>
+<h4 id="windows"><a class="header" href="#windows">Windows</a></h4>
+<pre><code class="language-powershell">scoop install gnuplot
+</code></pre>
+<h4 id="linux-1"><a class="header" href="#linux-1">Linux</a></h4>
+<pre><code class="language-bash">sudo apt install gnuplot
+</code></pre>
+<h4 id="macos-1"><a class="header" href="#macos-1">macOS</a></h4>
+<pre><code class="language-bash">brew install gnuplot
+</code></pre>
+<p><strong>Note</strong>: 安裝完成後須重新啟動 VSCode 及重新打開 Terminal 才能生效</p>
+<hr />
+<h3 id="update-vscode-cc-extension"><a class="header" href="#update-vscode-cc-extension">Update VSCode C/C++ Extension</a></h3>
+<p>Install <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack">C/C++ Extension Pack</a></p>
+<p>Correct:</p>
+<p><img src="./img/vscode_cpptools_correct.png" alt="" /></p>
+<hr />
+<h3 id="install-a-hrefhttpsgithubcomalandefreitasmatplotplusplusmatplota"><a class="header" href="#install-a-hrefhttpsgithubcomalandefreitasmatplotplusplusmatplota">Install <a href="https://github.com/alandefreitas/matplotplusplus">Matplot++</a></a></h3>
+<h4 id="download-project-file--open-in-vscode"><a class="header" href="#download-project-file--open-in-vscode">Download project file &amp; open in VSCode:</a></h4>
+<ol>
+<li>github link <a href="https://github.com/stevenokm/matplotplusplus/archive/refs/heads/master.zip">stevenokm/matplotplusplus-master.zip</a></li>
+<li>解壓縮全部，解壓縮後會有一個 <code>matplotplusplus-master</code> 目錄</li>
+<li>使用 VSCode 打開 <code>matplotplusplus-master</code> 目錄</li>
+</ol>
+<hr />
+<h4 id="build-matplot--test-matplot"><a class="header" href="#build-matplot--test-matplot">Build Matplot++ &amp; Test Matplot++</a></h4>
+<ol>
+<li>configure project &quot;matplotplusplus-master&quot; (Yes)</li>
+</ol>
+<p><img src="img/config_cmake.png" alt="" /></p>
+<hr />
+<ol start="2">
+<li>select right active kit
+<ol>
+<li>Windows: <code>GCC 12.1.0 x86_64-w64-mingw32</code></li>
+<li>Linux: <code>GCC 9.4.0 x86_64-linux-gnu</code> (Ubuntu 20.04)</li>
+<li>macOS: <code>Clang 13.0.0 arm64-apple-darwin20.6.0</code> (macOS Big Sur, Apple Silicon)</li>
+</ol>
+</li>
+</ol>
+<p><img src="img/select_active_kit.png" alt="bg right fit" /></p>
+<hr />
+<ol start="3">
+<li>Press &quot;Build&quot; button on the bottom of the VSCode window</li>
+</ol>
+<p><img src="img/build_cmake.png" alt="" /></p>
+<hr />
+<ol start="4">
+<li>Press &quot;Run&quot; button on the bottom of the VSCode window</li>
+</ol>
+<p><img src="img/run_cmake.png" alt="" /></p>
+<hr />
+<ol start="5">
+<li>Press &quot;Debug&quot; button on the bottom of the VSCode window to debug</li>
+</ol>
+<p><strong>Note</strong> 要注意 CMake 的設定是在 Debug <code>CMake: [Debug]</code> 下執行的</p>
+<p><img src="img/debug_cmake.png" alt="" /></p>
+<h2 id="hello-world"><a class="header" href="#hello-world">Hello world</a></h2>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/discrete-data/bar-plot/">Bar Plot - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;double&gt; y = {75, 91, 105, 123.5, 131, 150,
+                             179, 203, 226, 249, 281.5};
+    bar(y);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="./img/matplotplusplus_hello_world.png" alt="" /></p>
+<h2 id="plot-functions"><a class="header" href="#plot-functions">Plot Functions</a></h2>
+<ul>
+<li>Line Plot</li>
+<li>Histogram</li>
+<li>Scatter Plot</li>
+<li>Bar Plot</li>
+<li>Pareto Chat</li>
+<li>Polar Line Plot</li>
+</ul>
+<hr />
+<h3 id="line-plot"><a class="header" href="#line-plot">Line Plot</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/line-plots/line-plot/">Line Plot - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;int&gt; y = {2, 4, 7, 7, 6, 3, 9, 7, 3, 5};
+    plot(y);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/lineplot.png" alt="" /></p>
+<hr />
+<h3 id="histogram"><a class="header" href="#histogram">Histogram</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/data-distribution/histogram/">Histogram - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+#include &lt;random&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;double&gt; x = randn(10000, 0, 1);
+
+    auto h = hist(x);
+    std::cout &lt;&lt; &quot;Histogram with &quot; &lt;&lt; h-&gt;num_bins() &lt;&lt; &quot; bins&quot; &lt;&lt; std::endl;
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/histogram.png" alt="" /></p>
+<hr />
+<h3 id="scatter-plot"><a class="header" href="#scatter-plot">Scatter Plot</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/data-distribution/scatter-plot/">Scatter Plot - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;matplot/matplot.h&gt;
+#include &lt;random&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    auto x = linspace(0, 3 * pi, 200);
+    auto y = transform(x, [&amp;](double x)
+                       { return cos(x) + rand(0, 1); });
+
+    scatter(x, y);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/scatterplot.png" alt="" /></p>
+<hr />
+<h3 id="bar-plot"><a class="header" href="#bar-plot">Bar Plot</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/discrete-data/bar-plot/">Bar Plot - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+#include &lt;random&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;std::vector&lt;double&gt;&gt; Y = {
+        {2, 2, 2, 2}, {2, 5, 8, 11}, {3, 6, 9, 12}};
+    bar(Y);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/barplot.png" alt="" /></p>
+<hr />
+<h3 id="pareto-chat"><a class="header" href="#pareto-chat">Pareto Chat</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/discrete-data/pareto-chat/">Pareto Chat - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+#include &lt;random&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;double&gt; codelines = {200, 120, 555, 608, 1024, 101, 57, 687};
+    std::vector&lt;std::string&gt; coders = {&quot;Fred&quot;, &quot;Ginger&quot;, &quot;Norman&quot;, &quot;Max&quot;,
+                                       &quot;Julia&quot;, &quot;Wally&quot;, &quot;Heidi&quot;, &quot;Pat&quot;};
+
+    pareto(codelines, coders);
+    title(&quot;Lines of Code by Programmer&quot;);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/paretochat.png" alt="" /></p>
+<hr />
+<h3 id="polar-line-plot"><a class="header" href="#polar-line-plot">Polar Line Plot</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/plot-types/polar-plots/polar-line-plot/">Polar Line Plot - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;double&gt; theta_degrees = linspace(0, 360, 50);
+    std::vector&lt;double&gt; rho =
+        transform(theta_degrees, [](auto t)
+                  { return 0.005 * t / 10.; });
+    std::vector&lt;double&gt; theta_radians = deg2rad(theta_degrees);
+    polarplot(theta_radians, rho);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/polarline.png" alt="" /></p>
+<h2 id="annotations"><a class="header" href="#annotations">Annotations</a></h2>
+<ul>
+<li>Text</li>
+<li>Text with Arrow</li>
+<li>Rectangle</li>
+<li>Textbox</li>
+</ul>
+<hr />
+<h3 id="text"><a class="header" href="#text">Text</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/annotations/text/">Text - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    std::vector&lt;double&gt; x = linspace(-5, +5);
+    std::vector&lt;double&gt; y =
+        transform(x, [](auto x)
+                  { return pow(x, 3) - 12 * x; });
+    plot(x, y);
+
+    std::vector&lt;double&gt; xt = {-2, +2};
+    std::vector&lt;double&gt; yt = {16, -16};
+    std::string str = &quot;dy/dx = 0&quot;;
+    text(xt, yt, str);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/text.png" alt="" /></p>
+<hr />
+<h3 id="text-with-arrow"><a class="header" href="#text-with-arrow">Text with Arrow</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/annotations/text-with-arrow/">Text with Arrow - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    plot(iota(1, 10));
+    auto [t, a] = textarrow(2.5, 6.5, 5, 5, &quot;y=x&quot;);
+    t-&gt;color(&quot;red&quot;).font_size(14);
+    a-&gt;color(&quot;blue&quot;);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/textwitharrow.png" alt="" /></p>
+<hr />
+<h3 id="rectangle"><a class="header" href="#rectangle">Rectangle</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/annotations/rectangle/">Rectangle - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    rectangle(2, 4, 2, 2, 1.);
+    auto r2 = rectangle(2, 4, 2, 2, 0.);
+    r2-&gt;color(&quot;red&quot;);
+    axis(equal);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/rectangle.png" alt="" /></p>
+<hr />
+<h3 id="textbox"><a class="header" href="#textbox">Textbox</a></h3>
+<p>Ref: <a href="https://alandefreitas.github.io/matplotplusplus/annotations/textbox/">Textbox - Matplot++</a></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    plot(iota(1, 10));
+    textbox(2, 8, 4, 0.5, &quot;String line from 1 to 10&quot;);
+
+    show();
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result:</p>
+<p><img src="img/textbox.png" alt="" /></p>
+<h2 id="export-to-image"><a class="header" href="#export-to-image">Export to image</a></h2>
+<ul>
+<li>Manually</li>
+<li>Programmatically</li>
+</ul>
+<hr />
+<h3 id="manually"><a class="header" href="#manually">Manually</a></h3>
+<ol>
+<li>Click on the <code>Export to image</code> button</li>
+</ol>
+<p><img src="img/export_man_1.png" alt="" /></p>
+<hr />
+<ol start="2">
+<li>Type filename</li>
+</ol>
+<p><img src="img/export_man_2.png" alt="" /></p>
+<hr />
+<h3 id="progprogrammatically"><a class="header" href="#progprogrammatically">ProgProgrammatically</a></h3>
+<p>Export files with <code>save()</code></p>
+<pre><code class="language-cpp">#include &lt;cmath&gt;
+#include &lt;matplot/matplot.h&gt;
+
+int main()
+{
+    using namespace matplot;
+
+    plot(iota(1, 10));
+    textbox(2, 8, 4, 0.5, &quot;String line from 1 to 10&quot;);
+
+    // show();
+
+    // windows gnuplot bug workaround
+    save(&quot;../textbox_export.png&quot;);
+
+    // export to file with fileextension .png
+    save(&quot;../textbox_export.png&quot;);
+    // or with filename and filetype
+    save(&quot;../textbox_export&quot;, &quot;svg&quot;);
+
+    return 0;
+}
+</code></pre>
+<hr />
+<p>Result: <code>textbox_export.png</code></p>
+<p><img src="img/textbox_export.png" alt="" /></p>
+<hr />
+<p>Result: <code>textbox_export.svg</code></p>
+<p><img src="img/textbox_export.svg" alt="" /></p>
+<h2 id="example-plot-a-geometry-on-complex-plane-a-hreflecture16_exhtmlsourcea"><a class="header" href="#example-plot-a-geometry-on-complex-plane-a-hreflecture16_exhtmlsourcea">Example: Plot a Geometry on Complex Plane [<a href="./lecture16_ex.html">Source</a>]</a></h2>
+<h2 id="pratices"><a class="header" href="#pratices">Pratices</a></h2>
+<ul>
+<li>Draw &amp; Save <code>Triangle_2D</code> in 2D plane by matplot++</li>
+<li>Draw &amp; Save <code>Triangle_Comp</code> in Polar Complex plane by matplot++</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../final-3.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../file/lecture16_ex.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../final-3.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../file/lecture16_ex.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
