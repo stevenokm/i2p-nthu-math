@@ -133,7 +133,7 @@ Output File: [`output_multiple_objects_2d.bin`](final_data/output_multiple_objec
 Terminal:
 
 ```console
-$ ./a.out input_multiple_2d.bin output_multiple_2d.bin
+$ ./a.out input_multiple_objects_2d.bin output_multiple_objects_2d.bin
 {{#include final_data/output_multiple_objects_2d.bin.dump}}
 $
 ```
@@ -223,7 +223,7 @@ Output File: [`output_multiple_objects_3d.bin`](final_data/output_multiple_objec
 Terminal:
 
 ```console
-$ ./a.out input_multiple_3d.bin output_multiple_3d.bin
+$ ./a.out input_multiple_objects_3d.bin output_multiple_objects_3d.bin
 {{#include final_data/output_multiple_objects_3d.bin.dump}}
 $
 ```
