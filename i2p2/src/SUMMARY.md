@@ -72,3 +72,5 @@
     - [Final-3: Save Geometry Objects to Binary File & Exception Handling](./final-3.md)
 - [Lecture 16: (Extra) C++ Image Export & Matplot++](./file/lecture16.md)
     - [Example: Plot a Geometry on Complex Plane](./file/lecture16_ex.md)
+- [Lecture 18: (Extra) C++ Image Export & Matplot++](./googletest/lecture18.md)
+    - [Example: Plot a Geometry on Complex Plane](./googletest/lecture18_ex.md)

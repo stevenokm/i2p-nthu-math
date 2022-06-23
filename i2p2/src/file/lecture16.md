@@ -11,7 +11,7 @@ paginate: true
 > Slides version: [lecture16_slides.html](./lecture16_slides.html)
 > Website version: [lecture16.html](./lecture16.html)
 
-- Tutorail: Matplot++
+- Tutorial: Matplot++
   - Installation
   - Hello world
   - Plot Functions

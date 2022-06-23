@@ -284,3 +284,11 @@ $
 ```c++
 {{#include final-1_pseudo.cpp}}
 ```
+
+## Reference Code: 
+
+### TA
+
+```c++
+{{#include final-1_TA.cpp}}
+```

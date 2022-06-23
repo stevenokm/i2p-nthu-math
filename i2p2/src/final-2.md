@@ -232,3 +232,23 @@ $
 ```c++
 {{#include final-2_pseudo.cpp}}
 ```
+
+## Reference Code: 
+
+### TA
+
+```c++
+{{#include final-2_TA.cpp}}
+```
+
+### Convert Text Version Input to Binary Version Input
+
+```c++
+{{#include final-txt_to_bin.cpp}}
+```
+
+### Convert Binary Version Input/Output to Human-readable Input/Output & Dump HEX File
+
+```c++
+{{#include final-bin_to_txt.cpp}}
+```
